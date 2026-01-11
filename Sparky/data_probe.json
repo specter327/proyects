@@ -1,0 +1,16 @@
+{
+    "USER":{
+        "NAME":"Sparky",
+        "CREDENTIALS":{
+            "PASSWORD":"Sparky1234"
+        }
+    },
+
+    "SERVICE":{
+        "STATUS":"Available"
+    },
+
+    "ACCOUNT":{
+        "SIGNED_UP":"27/06/2026"
+    }
+}
