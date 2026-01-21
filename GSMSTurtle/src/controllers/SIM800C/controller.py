@@ -5,15 +5,18 @@ from ...contracts.operations import OperationParametersInterface, OperationResul
 from ...contracts.device_controller.configurations import Configurations
 from ...contracts.device_controller.setting import Setting
 from ...contracts.data_classes.primitive_data import PrimitiveData
-from typing import List, Type, Optional
+from typing import List, Type, Optional, Dict
 from .. import PlatformLayer
-from ..transport_layers.serial_at import TransportLayer
+from ..transport_layers.serial import TransportLayer
+from ..transport_layers.ATEngine import ATEngine
 
 from ...contracts.properties.signal_level import SignalLevel
 from .properties.signal_level import Property as SignalLevelImplementation
 
 from ...contracts.operations.send_sms import SendSMS
 from .operations.send_sms import Operation as SendSMSImplementation
+from ...contracts.operations.receive_sms import ReceiveSMS
+from .operations.receive_sms import Operation as ReceiveSMSImplementation
 
 # Classes definition
 class Controller(DeviceControllerInterface):
@@ -27,8 +30,10 @@ class Controller(DeviceControllerInterface):
             SignalLevel:SignalLevelImplementation
         }
         self.operations: Dict[object, object] = {
-            SendSMS:SendSMSImplementation
+            SendSMS:SendSMSImplementation,
+            ReceiveSMS:ReceiveSMSImplementation
         }
+        self.ATEngine: Optional[ATEngine] = None
         self.transport_layer: Optional[TransportLayer] = None
 
         # Adjust settings of Configurations
@@ -73,36 +78,44 @@ class Controller(DeviceControllerInterface):
         return system_ports
     
     def _detect(self, device: str) -> bool:
-        # Try to connect with the device
+        transport_layer: Optional[TransportLayer] = None
+        at_engine: Optional[ATEngine] = None
+
         try:
             transport_layer = TransportLayer(
                 device_port=device,
-                baudrate=115200
+                baudrate=115200,
+                timeout=10
             )
-
-            # Open connection
             transport_layer.connect()
 
-            # Send AT identification command
-            transport_layer.send_at_command("AT+CGMM")
+            at_engine = ATEngine(transport_layer)
+            at_engine.start()
 
-            # Get the AT command response
-            response = transport_layer.read_at_response()
+            # Comando de identificación de modelo
+            at_engine.send_at_command("AT+CGMM")
 
-            # Verify the response result
-            if "SIM800C" in " ".join(response):
-                return True
-            else:
-                return False
-        except:
+            # Consumir TODA la respuesta del comando
+            response = at_engine.read_at_response()
+            print("Response:")
+            print(response.content)
+            print(response.compact())
+
+            # Verificación explícita
+            return any(b"SIM800C" in r for r in response.content)
+
+        except Exception:
             return False
-        
+
         finally:
-            try:
-                transport_layer.disconnect()
-            except:
-                pass
-    
+            if at_engine:
+                at_engine.stop()
+            if transport_layer:
+                try:
+                    transport_layer.disconnect()
+                except Exception:
+                    pass
+
     # Public methods
     def recognize(self) -> List[str]:
         potential_identified_devices = self._identify()
@@ -115,24 +128,40 @@ class Controller(DeviceControllerInterface):
         return confirmed_devices
 
     def connect(self) -> bool:
-        # Validate the current settings
-        if not self.configurations.query_setting("COMMUNICATION_PORT").value.content: raise ValueError(f"The COMMUNICATION_PORT setting is invalid")
-        if not self.configurations.query_setting("BAUDRATE").value.content: raise ValueError(f"The BAUDRATE setting is invalid")
+        # Validar configuración
+        port = self.configurations.query_setting("COMMUNICATION_PORT").value.content
+        baudrate = self.configurations.query_setting("BAUDRATE").value.content
 
-        # Try to connect with the current settings 
+        if not port:
+            raise ValueError("The COMMUNICATION_PORT setting is invalid")
+        if not baudrate:
+            raise ValueError("The BAUDRATE setting is invalid")
+
+        # Crear capa de transporte
         self.transport_layer = TransportLayer(
-            device_port=self.configurations.query_setting("COMMUNICATION_PORT").value.content,
-            baudrate=self.configurations.query_setting("BAUDRATE").value.content
+            device_port=port,
+            baudrate=baudrate
         )
-
-        # Connect with the device
         self.transport_layer.connect()
 
-        # Update the connection status
+        # Crear y arrancar ATEngine
+        self.ATEngine = ATEngine(self.transport_layer)
+        self.ATEngine.start()
+
+        # Inicialización estándar del módem
+        # ATE0: desactivar eco
+        self.ATEngine.send_at_command("ATE0")
+        response = self.ATEngine.read_at_response()
+        if b"OK" not in response.content: raise RuntimeError(f"Error connecting with the device. ATE0 command respond: {response.content}")
+
+        # AT+CMEE=1: errores extendidos
+        self.ATEngine.send_at_command("AT+CMEE=1")
+        response = self.ATEngine.read_at_response()
+
+        # Actualizar estado
         self._set_physical_connection_status(is_connected=True)
         self._set_virtual_connection_status(is_connected=True)
 
-        # Return results
         return True
 
     def configure(self, configurations: Configurations) -> bool:
@@ -143,9 +172,18 @@ class Controller(DeviceControllerInterface):
         return True 
 
     def disconnect(self) -> bool:
-        if not self.connection_status: return True
+        if not self.connection_status:
+            return True
 
-        self.transport_layer.disconnect()
+        if self.ATEngine:
+            self.ATEngine.stop()
+            self.ATEngine = None
+        if self.transport_layer:
+            try:
+                self.transport_layer.disconnect()
+            except Exception:
+                pass
+            self.transport_layer = None
 
         self._set_physical_connection_status(is_connected=False)
         self._set_virtual_connection_status(is_connected=False)

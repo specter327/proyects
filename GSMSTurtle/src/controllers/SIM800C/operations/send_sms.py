@@ -1,4 +1,5 @@
 # Library import
+import time
 from ....contracts.operations.send_sms import SendSMS, SendSMSOperationParameters, SendSMSOperationResults
 from .. import NAME as CONTROLLER_NAME
 from .. import VERSION as CONTROLLER_VERSION
@@ -22,40 +23,54 @@ class Operation(SendSMS):
         
         # Try the operation execution
         try:
+            at = self.controller.ATEngine
+            if not at:
+                return SendSMSOperationResults(send_result=False, status_code=1)
+
+            # Set the device on text mode
+            print("Setting the device on text mode (SMS)...")
+            at.send_at_command("AT+CMGF=1")
+            r = at.read_at_response()
+
+            # Validate the response
+            #if b"OK" not in r.content: raise RuntimeError(f"There was an error on setting the device on text mode: AT+CMGF=1: {r.content}")
+            
+            print(f"Result: {r.content if r else None}")
+
             command = f'AT+CMGS="{parameters.destinatary_phone_number.phone_number.content}"'
-            
             print(f"[LOG] Sending AT Command: {command}...")
+            at.send_at_command(command)
+            print("Command send successfully")
 
-            # Send the command
-            self.controller.transport_layer.send_at_command(command)
+            # Wait for the ">" prompt (timeout 5s)
+            response = at.read_at_response()
 
-            print(f"Command send sucessfully")
+            print("Response:", response.content)
+            # Verify the response
+            if b">" not in response.compact(): raise RuntimeError(f"There was an error receiving the prompt simbol: {response.content}")
 
-            # Wait for the prompt
-            prompt = self.controller.transport_layer.read_at_response(timeout=5)
+            # Send the message (Ctrl+Z para finalizar SMS) por transport, no AT
+            message_content = parameters.message.content.content
+            print(f"[LOG] Sending message: {message_content[:50]}...")
             
-            print(f"[LOG] Received prompt: {prompt}")
+            at.send_at_command(f"{message_content}\x1a", append_newline=False)
 
-            # Verify the prompt result
-            if ">" not in prompt:
-                return SendSMSOperationResults(send_result=False, status_code=2)
-            
-            # Send the message
-            message = f"{parameters.message.content.content}\\x1a"
+            # Esperar resultado final (OK / ERROR / +CMS ERROR) con timeout 15s
+            response = at.read_at_response(timeout_seconds=60)
 
-            print(f"[LOG] Sending message: {message}")
+            # Validate the final response
+            #if c == "OK" or c == "ERROR" or "+CMS ERROR:" in c:
 
-            self.controller.transport_layer.send_at_command(message)
+            print(f"[LOG] Final result: {response.content if response else None}")
 
-            # Capture the send result
-            final_result = self.controller.transport_layer.read_at_response(timeout=15)
-
-            print(f"[LOG] Final result: {final_result}")
-            # Evaluate the final result
-            if "OK" in final_result:
+            if b"OK" in response.content:
                 return SendSMSOperationResults(send_result=True, status_code=0)
-            else:
+            if b"+CMS ERROR:" in response.content or b"ERROR" in response.content:
                 return SendSMSOperationResults(send_result=False, status_code=3)
-        except Exception as Error:
+            if response is None:
+                return SendSMSOperationResults(send_result=False, status_code=2)
+            return SendSMSOperationResults(send_result=False, status_code=3)
+        
+        except KeyboardInterrupt:
             print(f"[{CONTROLLER_NAME}x{CONTROLLER_VERSION}:{SendSMS().name}x{SendSMS().version}] Unknown error: {Error.__class__}")
             return SendSMSOperationResults(send_result=False, status_code=1)

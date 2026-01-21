@@ -2,15 +2,14 @@
 from ..operations import OperationInterface, OperationParametersInterface, OperationResultsInterface
 from ..data_classes.phone_number import PhoneNumber
 from ..data_classes.message import Message
-from typing import Dict
+from typing import Dict, List
 from ..data_classes.primitive_data import PrimitiveData
 
 # Classes definition
-class SendSMS(OperationInterface):
-    # Class properties definition
-    NAME: str = "Send SMS"
-    IDENTIFICATION: str = "SEND_SMS"
-    DESCRIPTION: str = "This operation allows to send a SMS message to a specified phone number destinatary"
+class ReceiveSMS(OperationInterface):
+    NAME: str = "Receive SMS"
+    IDENTIFICATION: str = "RECEIVE_SMS"
+    DESCRIPTION: str = "This operation allows to receive all the current pending SMS messages on the device"
     VERSION: str = "1"
 
     def __init__(self) -> None:
@@ -31,43 +30,26 @@ class SendSMS(OperationInterface):
     @property
     def identification(self) -> str:
         return self.IDENTIFICATION
-    
 
-class SendSMSOperationParameters(OperationParametersInterface):
-    def __init__(self,
-        phone_number: str,
-        message: str
-    ) -> None:
-        # Instance property definition
-        self.destinatary_phone_number: PhoneNumber = PhoneNumber(phone_number)
-        self.message: Message = Message(message)
-    
-    # Public methods
-    def validate(self) -> bool:
-        return True
+class ReceiveSMSOperationParameters(OperationParametersInterface):
+    def __init__(self) -> None:
+        pass
 
-class SendSMSOperationResults(OperationResultsInterface):
+    def validate(self) -> bool: return True
+
+class ReceiveSMSOperationResults(OperationResultsInterface):
     # Class properties definition
     STATUS_CODE: Dict[int, str] = {
         0:"SUCCESS",
-        1:"UNKNOWN_ERROR",
-        2:"TIMEOUT_ERROR",
-        3:"SEND_ERROR"
+        1:"UNKNOWN_ERROR"
     }
 
     def __init__(self,
-        send_result: bool,
+        messages: List[Message],
         status_code: int
     ) -> None:
         # Instance properties assignment
-        self.send_result = PrimitiveData(
-            data_type=bool,
-            minimum_length=None,
-            maximum_length=None,
-            possible_values=(True, False),
-            content=send_result
-        )
-
+        self.messages = messages
         self.status_code = PrimitiveData(
             data_type=int,
             minimum_length=None,
@@ -78,6 +60,6 @@ class SendSMSOperationResults(OperationResultsInterface):
     
     def to_dict(self) -> dict:
         return {
-            "SEND_RESULT":self.send_result.content,
+            "MESSAGES":self.messages,
             "STATUS_CODE":self.status_code.content
         }

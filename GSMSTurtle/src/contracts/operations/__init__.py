@@ -20,10 +20,14 @@ class OperationParametersInterface(ABC):
         """
         raise NotImplementedError
 
+    def to_dict(self) -> dict: raise NotImplementedError
+
 class OperationResultsInterface(ABC):
     "This class represents a interface (contract) for a operation results, following the defined standard."
     def __init__(self) -> None:
         pass
+
+    def to_dict(self) -> dict: raise NotImplementedError
 
 class OperationInterface(ABC):
     "This class represents a interface (contract) for a operation, following the defined standard."

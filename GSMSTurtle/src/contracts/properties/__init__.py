@@ -10,3 +10,5 @@ class PropertyInterface(ABC):
         pass
     
     def read(self) -> Any: raise NotImplementedError
+
+    def to_dict(self) -> dict: raise NotImplementedError

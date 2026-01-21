@@ -97,3 +97,16 @@ class SignalLevel(PropertyInterface):
             possible_values=None,
             content=timestamp
         )
+    
+    def to_dict(self) -> dict:
+        return {
+            "TECHNOLOGY":self.technology.content,
+            "RSSI_RAW":self.rssi_raw.content,
+            "RSSI_DBM":self.rssi_dbm.content,
+            "BER":self.ber.content,
+            "RSRP":self.rsrp.content,
+            "RSRQ":self.rsrq.content,
+            "SINR":self.sinr.content,
+            "SIGNAL_QUALITY":self.signal_quality.content,
+            "TIMESTAMP":self.timestamp.content
+        }
