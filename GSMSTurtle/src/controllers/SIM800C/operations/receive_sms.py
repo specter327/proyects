@@ -2,9 +2,10 @@
 from ....contracts.operations.receive_sms import ReceiveSMS, ReceiveSMSOperationParameters, ReceiveSMSOperationResults
 from .. import NAME as CONTROLLER_NAME
 from .. import VERSION as CONTROLLER_VERSION
-from ....contracts.data_classes.message import Message
+from ....contracts.data_classes.message import Message, MessageMetadata
 import time
 from typing import List
+import re
 
 # Classes definition
 class Operation(ReceiveSMS):
@@ -17,123 +18,76 @@ class Operation(ReceiveSMS):
         # Verify the controller status
         if not self.controller.connection_status:
             raise RuntimeError(f"Controller is not connected with the device")
+        
+        # Instance properties definition
+        self.message_pattern = re.compile(r'\+CMGL:\s*(\d+),"([^"]+)","([^"]+)",.*,"([^"]+)"')    
     
     # Private methods
-    def _read_sms_at_index(self, index: int):
-        at = self.controller.ATEngine
-        at.send_at_command(f"AT+CMGR={index}")
-        resp = at.read_at_response()
-        
-        # La respuesta de CMGR en modo texto es:
-        # [b'+CMGR: "REC UNREAD","+52...",,"23/10/26,12:00:00+08"', b'Texto del mensaje', b'OK']
-        if b"OK" in resp.content and len(resp.content) >= 2:
-            # Aquí instanciarías tu clase Message con los datos parseados
-            # ...
-            message = Message(resp.content[-2].decode("UTF-8"), timestamp=time.time(), type=Message.TYPE_RECEIVED)
-
-            return message
-        return None
-
     def _read_all_stored_messages(self) -> List[Message]:
-        at = self.controller.ATEngine
         messages: List[Message] = []
         
         # Consultamos todos los mensajes
-        at.send_at_command('AT+CMGL="ALL"')
+        self.controller.ATEngine.send_at_command('AT+CMGL="ALL"')
         
         try:
             # Aumentamos el timeout: la lectura de SIM puede ser muy lenta (I2C/SPI interno del módem)
-            response = at.read_at_response(timeout_seconds=30)
+            response = self.controller.ATEngine.read_at_response(timeout_seconds=30)
             
             if not response or b"OK" not in response.content:
                 return messages
 
-            for i, line in enumerate(response.content):
-                # Buscamos la cabecera: +CMGL: <index>,<stat>,<oa>,[<alpha>],[<scts>]
-                if line.startswith(b"+CMGL:"):
-                    try:
-                        # Extraemos metadatos (opcional pero recomendado para Message)
-                        # Ejemplo: b'+CMGL: 1,"REC READ","+5256...","","24/01/21,00:00:00+00"'
-                        metadata = line.split(b',')
-                        sender = metadata[2].replace(b'"', b'')
-                        
-                        # El cuerpo es la siguiente línea que NO sea otra cabecera ni OK
-                        if i + 1 < len(response.content):
-                            body = response.content[i + 1]
-                            if not body.startswith(b"+CMGL:") and body != b"OK":
-                                # Instanciamos con datos reales
-                                msg = Message(
-                                    message=body.decode("UTF-8"), 
-                                    timestamp=time.time(), # Aquí podrías parsear el string de fecha del módem
-                                    type=Message.TYPE_RECEIVED
-                                )
-                                # Agregamos una propiedad extra para de-duplicación por índice de SIM si lo deseas
-                                msg.sim_index = int(metadata[0].split(b':')[1].strip())
-                                messages.append(msg)
-                    except Exception as e:
-                        print(f"[ERROR] Parsing CMGL line {i}: {e}")
-                            
-        except TimeoutError:
-            print("[ERROR] Timeout crítico en CMGL. El buffer no se llenó a tiempo.")
-            
-        return messages
+            for index in range(len(response.content)):
+                line = response.content[index].decode("UTF-8", errors="replace").strip()
 
-    def _merge_messages(self, list_a: List[Message], list_b: List[Message]) -> List[Message]:
-        merged = {}
+                match = self.message_pattern.search(line)
+                if match:
+                    try:
+                        sim_index = int(match.group(1))
+                        status = match.group(2)
+                        sender = match.group(3)
+                        scts = match.group(4)
+
+                        if index + 1 < len(response.content):
+                            body_raw = response.content[index + 1].decode("UTF-8", errors="replace").strip()
+
+                            metadata = MessageMetadata(
+                                sim_index=sim_index,
+                                sim_status=status,
+                                network_timestamp=scts,
+                                raw_header=line
+                            )
+
+                            message = Message(
+                                message=body_raw,
+                                metadata=metadata,
+                                sender=sender,
+                                type=Message.TYPE_RECEIVED,
+                                timestamp=int(time.time())
+                            )
+
+                            messages.append(message)
+                    except Exception as Error:
+                        print(f"[{CONTROLLER_NAME}] Error parsing message at line: {index}: {Error}")
+
+        except TimeoutError:
+            print(f"[{CONTROLLER_NAME}] Critic timeout: The SIM not responses at time")
         
-        for msg in list_a + list_b:
-            # Generamos una firma única (SHA-1 o simplemente concatenación)
-            # Si el contenido es bytes, lo usamos directamente
-            content_raw = msg.content.content if hasattr(msg.content, 'content') else msg.content
-            
-            # Firma: Hash del contenido para ahorrar memoria en el dict
-            signature = hash(content_raw)
-            
-            if signature not in merged:
-                merged[signature] = msg
-                
-        return list(merged.values())
+        return messages
 
     # Public methods
     def execute(self, parameters: ReceiveSMSOperationParameters) -> ReceiveSMSOperationResults:
-        print("Executing ReadSMS Operation...")
+        # Set the device on text mode
+        self.controller.ATEngine.send_at_command("AT+CMGF=1")
+        print("Response AT+CMGF=1:", self.controller.ATEngine.read_at_response())
 
-        # Try the operation execution
-        current_events = tuple(self.controller.ATEngine.events.keys())
-        found_messages: list = []
+        # Get the current storaged messages
+        current_storaged_messages = self._read_all_stored_messages()
 
-        # Process and filter every event
-        for event_index in current_events:
-            event = self.controller.ATEngine.events.get(event_index)
+        # Prepare results
+        print("Messages:")
+        print(current_storaged_messages)
 
-            # Verify the event content
-            if b"CMTI" in event.content:
-                try:
-                    # Parse the event data
-                    parts = event.content.split(b",")
-                    if len(parts) >= 2:
-                        sms_index = int(parts[1].strip())
-
-                        # Query the specific message data
-                        message = self._read_sms_at_index(sms_index)
-
-                        # Verify the query result
-                        if message:
-                            found_messages.append(message)
-                        
-                        # Mark the event like seen
-                        event.mark_seen()
-                except KeyboardInterrupt:
-                    print(f"[{CONTROLLER_NAME}x{CONTROLLER_VERSION}:{ReceiveSMS().name}x{ReceiveSMS().version}] Unknown error: {Error.__class__}")
-            
-        # Query current existent messages (not captured like events)
-        stored_messages: list = self._read_all_stored_messages()
-
-        # Merge all the messages to get a complete output
-        final_list = self._merge_messages(found_messages, stored_messages)
-
-        # Return standard results
         return ReceiveSMSOperationResults(
-            final_list,
-            status_code=0
+            current_storaged_messages,
+            status_code=0 if current_storaged_messages else 1
         )

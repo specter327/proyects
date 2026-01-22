@@ -16,7 +16,9 @@ from .properties.signal_level import Property as SignalLevelImplementation
 from ...contracts.operations.send_sms import SendSMS
 from .operations.send_sms import Operation as SendSMSImplementation
 from ...contracts.operations.receive_sms import ReceiveSMS
+from ...contracts.operations.delete_sms import DeleteSMS
 from .operations.receive_sms import Operation as ReceiveSMSImplementation
+from .operations.delete_sms import Operation as DeleteSMSImplementation
 
 # Classes definition
 class Controller(DeviceControllerInterface):
@@ -31,7 +33,8 @@ class Controller(DeviceControllerInterface):
         }
         self.operations: Dict[object, object] = {
             SendSMS:SendSMSImplementation,
-            ReceiveSMS:ReceiveSMSImplementation
+            ReceiveSMS:ReceiveSMSImplementation,
+            DeleteSMS:DeleteSMSImplementation
         }
         self.ATEngine: Optional[ATEngine] = None
         self.transport_layer: Optional[TransportLayer] = None

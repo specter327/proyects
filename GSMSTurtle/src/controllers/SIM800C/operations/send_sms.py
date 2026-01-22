@@ -71,6 +71,6 @@ class Operation(SendSMS):
                 return SendSMSOperationResults(send_result=False, status_code=2)
             return SendSMSOperationResults(send_result=False, status_code=3)
         
-        except KeyboardInterrupt:
+        except Exception as Error:
             print(f"[{CONTROLLER_NAME}x{CONTROLLER_VERSION}:{SendSMS().name}x{SendSMS().version}] Unknown error: {Error.__class__}")
             return SendSMSOperationResults(send_result=False, status_code=1)
