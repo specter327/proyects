@@ -6,7 +6,10 @@ from typing import Any
 class PropertyInterface(ABC):
     "This class represents a property interface (contract) defined on the standard."
     
-    def __init__(self) -> None:
+    def __init__(self,
+        imei: str,
+        status_code: int
+    ) -> None:
         pass
     
     def read(self) -> Any: raise NotImplementedError

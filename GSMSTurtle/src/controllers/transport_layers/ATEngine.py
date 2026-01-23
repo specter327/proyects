@@ -144,6 +144,10 @@ class ATEngine:
                 # Restablish the character
                 pass
 
+            except Exception as Error:
+                print(f"[ATEngine] There was an error reading a character on the read routine: {type(Error)}")
+                pass
+
             # Append the new character readed
             self._read_bytes_buffer += character_readed
 

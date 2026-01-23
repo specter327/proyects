@@ -17,8 +17,11 @@ from ...contracts.operations.send_sms import SendSMS
 from .operations.send_sms import Operation as SendSMSImplementation
 from ...contracts.operations.receive_sms import ReceiveSMS
 from ...contracts.operations.delete_sms import DeleteSMS
+from ...contracts.properties.query_imei import QueryIMEI
+
 from .operations.receive_sms import Operation as ReceiveSMSImplementation
 from .operations.delete_sms import Operation as DeleteSMSImplementation
+from .properties.query_imei import Property as QueryIMEIImplementation
 
 # Classes definition
 class Controller(DeviceControllerInterface):
@@ -29,7 +32,8 @@ class Controller(DeviceControllerInterface):
         # Instance properties definition
         self.configurations = Configurations()
         self.properties: Dict[object, object] = {
-            SignalLevel:SignalLevelImplementation
+            SignalLevel:SignalLevelImplementation,
+            QueryIMEI:QueryIMEIImplementation
         }
         self.operations: Dict[object, object] = {
             SendSMS:SendSMSImplementation,

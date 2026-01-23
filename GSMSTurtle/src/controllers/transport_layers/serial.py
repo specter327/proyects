@@ -1,5 +1,5 @@
 # Library import
-from .. import TransportLayerInterface
+from . import TransportLayerInterface
 import serial
 import time
 from typing import Optional, List
