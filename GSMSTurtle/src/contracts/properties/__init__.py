@@ -11,7 +11,10 @@ class PropertyInterface(ABC):
         status_code: int
     ) -> None:
         pass
-    
+
+    @property
+    def name(self) -> str: return self.NAME
+
     def read(self) -> Any: raise NotImplementedError
 
     def to_dict(self) -> dict: raise NotImplementedError

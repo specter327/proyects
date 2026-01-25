@@ -23,6 +23,15 @@ class MessageMetadata:
     network_timestamp: str
     raw_header: str
 
+    # Public methods
+    def to_dict(self) -> dict:
+        return {
+            "RAW_HEADER":self.raw_header,
+            "SIM_INDEX":self.sim_index,
+            "SIM_STATUS":self.sim_status,
+            "NETWORK_TIMESTAMP":self.network_timestamp
+        }
+
 class Message:
     "This class represents a SMS message."
 
@@ -75,3 +84,12 @@ class Message:
     def generate_uid(self) -> str:
         signature = f"{self.sender.content}|{self.metadata.network_timestamp}|{self.content.content}"
         return hashlib.sha256(signature.encode('UTF-8')).hexdigest()
+    
+    def to_dict(self) -> dict:
+        return {
+            "METADATA":self.metadata.to_dict(),
+            "TYPE":self.type.content,
+            "TIMESTAMP":self.timestamp.content,
+            "SENDER":self.sender.content,
+            "CONTENT":self.content.content
+        }

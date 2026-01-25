@@ -1,10 +1,10 @@
 # Library import
 from ...contracts.device_controller.device_controller import DeviceControllerInterface
-from ...controllers import identify_controllers, PlatformLayer
+from ...controllers import identify_controllers, PlatformLayer, SystemPort
 from typing import List
 
 # Functions definition
-def identify_devices() -> List[DeviceControllerInterface]:
+def identify_devices() -> List[SystemPort]:
     return PlatformLayer().identify_system_ports()
 
 def load_controllerS() -> List[DeviceControllerInterface]:

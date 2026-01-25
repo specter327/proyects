@@ -197,39 +197,41 @@ class Controller(DeviceControllerInterface):
         return True
 
     def request_operation(self, operation: object, parameters: OperationParametersInterface) -> OperationResultsInterface:
-        # Verify the connection status
-        if not self.connection_status: raise RuntimeError(f"The controller is not connected with the device")
+        with self.work_lock:
+            # Verify the connection status
+            if not self.connection_status: raise RuntimeError(f"The controller is not connected with the device")
 
-        # Verify if the device supports the requested operation
-        if operation not in self.operations: raise NotImplementedError(f"The operation: {operation.__class__}, is not supported by this device. Read the operations list: {str(self.operations.keys())}")
+            # Verify if the device supports the requested operation
+            if operation not in self.operations: raise NotImplementedError(f"The operation: {operation.__class__}, is not supported by this device. Read the operations list: {str(self.operations.keys())}")
 
-        # Get the operation implementation
-        operation_implementation = self.operations.get(operation)
+            # Get the operation implementation
+            operation_implementation = self.operations.get(operation)
 
-        # Instance the operation implementation
-        operation_implementation = operation_implementation(self)
+            # Instance the operation implementation
+            operation_implementation = operation_implementation(self)
 
-        # Execute the operation and get the results
-        results = operation_implementation.execute(parameters)
+            # Execute the operation and get the results
+            results = operation_implementation.execute(parameters)
 
         # Return standard results
         return results
 
     def request_property(self, property: object) -> PropertyInterface:
-        # Verify the connection status
-        if not self.connection_status: raise RuntimeError(f"The controller is not connected with the device")
+        with self.work_lock:
+            # Verify the connection status
+            if not self.connection_status: raise RuntimeError(f"The controller is not connected with the device")
 
-        # Verify if the device supports the requested operation
-        if property not in self.properties: raise NotImplementedError(f"The property: {property.__class__}, is not supported by this device. Read the properties list: {str(self.properties.keys())}")
+            # Verify if the device supports the requested operation
+            if property not in self.properties: raise NotImplementedError(f"The property: {property.__class__}, is not supported by this device. Read the properties list: {str(self.properties.keys())}")
 
-        # Get the specified property implementation object
-        property_implementation = self.properties.get(property)
+            # Get the specified property implementation object
+            property_implementation = self.properties.get(property)
 
-        # Instance the property implementation
-        property_implementation = property_implementation(self)
+            # Instance the property implementation
+            property_implementation = property_implementation(self)
 
-        # Get the data query result
-        results = property_implementation.read()
+            # Get the data query result
+            results = property_implementation.read()
 
         # Return results
         return results

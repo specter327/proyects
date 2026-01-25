@@ -3,25 +3,42 @@ import time
 
 # Functions definition
 def _update_loaded_controllers_routine(core) -> None:
-    while core.status == core.STATUS_ACTIVE:
+    while core.is_active:
+        try:
+            # Identify the available controllers    
+            available_controllers = core.load_controllers(auto_update=False)
+
+            with core.loaded_controllers_lock:
+                # Load the new controller modules
+                core.loaded_controllers = available_controllers
+            
+        except Exception as Error:
+            print(f"[CORE.SUPPORT.CONTROLLERS_ROUTINE] Error updating the loaded controllers: {Error}")
+
         # Execution temporizer
-        if time.time() - core.last_update["CONTROLLERS"] > 60 or core.last_update["CONTROLLERS"] == 0:
-            core.last_update["CONTROLLERS"] = time.time()
-        else:
-            continue
-        
-        # Load the new controller modules
-        core.load_controllers()
+        time.sleep(60)
 
 def _update_available_compatible_devices(core) -> None:
-    while core.status == core.STATUS_ACTIVE:
-        if time.time() - core.last_update["COMPATIBLE_DEVICES"] > 40 or core.last_update["COMPATIBLE_DEVICES"] == 0:
-            if not core.loaded_controllers: continue
-            
-            core.last_update["COMPATIBLE_DEVICES"] = time.time()
-        else:
-            continue
-        
+    while core.is_active:
+        # Verify that theres available controllers loaded
+        if not core.loaded_controllers: time.sleep(3); continue
 
-        # Recognize automatically new devices
-        core.available_compatible_devices = core.auto_recognize_compatible_devices()
+        try:
+            # Recognize automatically new devices
+            compatible_devices = core.auto_recognize_compatible_devices(auto_update=False)
+
+            with core.compatible_devices_lock:
+                # Securely update the data
+                core.compatible_devices = compatible_devices
+            
+        except Exception as Error:
+            print(f"[CORE.SUPPORT.COMPATIBLE_DEVICES_ROUTINE] Error updating the compatible devices: {Error}")
+        
+        # Execution temporizer
+        time.sleep(65)
+
+def _receive_sms(core) -> None:
+    pass
+
+def _update_controlled_devices_information(core) -> None:
+    pass

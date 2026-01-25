@@ -10,7 +10,8 @@ class QueryIMEI(PropertyInterface):
         0:"SUCCESS",
         1:"UNKNOWN_ERROR"
     }
-
+    NAME: str = "QUERY_IMEI"
+    
     def __init__(self,
         imei: str,
         status_code: int

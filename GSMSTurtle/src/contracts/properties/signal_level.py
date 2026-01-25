@@ -14,6 +14,8 @@ class SignalLevel(PropertyInterface):
         "UNKNOWN"
     )
 
+    NAME: str = "SIGNAL_LEVEL"
+    
     def __init__(self,
         technology: str,
         rssi_raw: int | None,

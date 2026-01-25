@@ -5,6 +5,7 @@ from typing import Dict, List, Any
 from . import constants
 from ..operations import OperationParametersInterface, OperationResultsInterface
 from ..properties import PropertyInterface
+import threading
 
 # Classes definition
 class DeviceControllerInterface(ABC):
@@ -23,6 +24,8 @@ class DeviceControllerInterface(ABC):
         self.virtual_connection_status: str = constants.DISCONNECTED
         self.device_status: str = constants.UNAVAILABLE
         self.connection_controller: object | None = None
+
+        self.work_lock: threading.Lock = threading.Lock()
     
     @property
     def connection_status(self) -> bool:
