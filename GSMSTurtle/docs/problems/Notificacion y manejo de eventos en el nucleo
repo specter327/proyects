@@ -1,0 +1,27 @@
+El nucleo implementara un sistema de control de eventos, que permitira la ejecucion de funciones determinadas como "manejadores de eventos"
+
+Los eventos seran definidos de una manera estandar, e incluiran un conjunto de datos y funciones bien definidos. Entre los eventos existentes se encontraran:
+
+- SIM_INSERTED
+- DEVICE_DISCONNECTED
+- DEVICE_CONNECTED
+- DEVICE_DETECTED
+
+Entre otros. Y estaran definidos por interfaces (contratos)
+
+Con una estructura de datos compartida:
+- Tabla de eventos: (diccionario)
+    - Clase de evento (clave): Suscriptores activos (lista de funciones)
+
+Donde cada funcion se ejecutara CADA que se presente un evento de dicha CLASE, y se le proporcionaran parametros estandar, mientras que sus resultados seran ignorados. Los parametros estandar seran:
+
+- Objeto evento (estandarizado); que debera incluir toda la informacion del evento
+
+Y, se proporcionara una funcion para suscribir un gancho a una clase de evento en particular. Tambien para poder desuscribirla (probablemente usemos un esquema de identificaciones)
+
+==========
+Solucion
+
+De esta manera, por ejemplo, el Sistema de Aplicacion (ApplicationSystem), podra agregar un escuchante de evento: SIM_INSERTED, con el cual podra ejecutar inmediatamente una consulta de la identificacion de la tarjeta SIM, y almacenar esta informacion de forma segura en la abse de datos: sim_cards.sqlite
+
+Siendo un ejemplo simple pero realista de lo que en este momento queremos realizar, y porque esta solucion lo permitira

@@ -1,0 +1,50 @@
+Tengo un pequeño problema con la implementacion de la deteccion de tarjeta SIM:
+
+Puedo ejecutar una consulta de tarjeta SIM en el momento en que se conecta,
+o reconecta un dispositivo, pero puede suceder que esta no este colocada,
+o que no este disponible y no se puedan obtener los datos. Ademas es necesario
+actualizarlo ya que este dato puede cambiar en cualquier momento
+
+*El cambio de tarjeta SIM desconectando el dispositivo, insertando la tarjeta y volviendolo
+a conectar, se denomina como "cambio en frio", mientras que un cambio de tarjeta SIM con
+el dispositivo conectado, se denomina como "cambio en caliente" ("hotswap")
+
+Entonces, la otra manera es realizar consultas eventuales (cada cierto tiempo), para
+obtener la identificacion de la tarjeta SIM actual. El problema es que si realizamos
+actualizaciones de manera constante, esto genera trafico de datos en el dispositivo,
+que si recordamos esta limitado a 1 operacion simultanea, por lo que esto generaria una
+carga parcialmente innecesaria, que deterioraria el rendimiento
+
+Pero, si dejo las actualizaciones demasiado espaciadas, lo que va a suceder es que, si
+el usuario cambia la tarjeta SIM, quiza nisiquiera nos demos cuenta (espacios o puntos
+ciegos)
+
+Esto es:
+- Poca frecuencia de actualizacion: potenciales espacios de tiempo ciegos, podrian haber
+cambios no detectados
+- Mucha frecuencia de actualizacion: impacto en el rendimiento del dispositivo y las operaciones
+- Mediana frecuencia de actualizacion: una solucion equilibrada, pero aun asi las operaciones realizadas generan un impacto en el rendimiento, y hay espacios ciegos
+
+Otra opcion seria: si el dispositivo genera eventos URC cuando sucede un cambio de tarjeta sim
+en caliente (hotswap), entonces podemos crear una rutina concurrente encargada de monitorear este
+evento, y ejecutar inmediatamente (lo antes posible, en cuanto se desocupe el dispositivo) una
+operacion de consulta de tarjeta SIM
+
+Y esto lo complementamos realizando consultas en conexiones y reconexiones, para cubrir la situacion de cambio en frio
+
+Asi cubrimos ambas situaciones:
+- Coldswap: Se cambio la tarjeta SIM mientras el dispositivo estaba desconectado; se ejecuta
+una actualizacion en la conexion o reconexion
+- Hotswap: Se cambio la tarjeta SIM mientras el dispositivo estaba conectado; se ejecuta una
+actualizacion inmediata segun se detecte el evento (notificacion URC), o cada cierto tiempo
+
+==========
+La solucion propuesta es configurar minimamente el dispositivo durante la conexion para habilitar la notificacion de insercion de tarjeta (evento "SIM_INSERTED"), con el comando AT: "AT+CSDT=1", desde el controlador del dispositivo (en este caso: SIM800C)
+
+*Esto en el controlador de dispositivo (bajo nivel)
+
+De esta forma, cuando se inserte la tarjeta SIM, se producira un evento URC, que podra ser capturado automaticamente por el motor ATEngine actualmente implementado
+
+*Esto en el controlador de comunicacion (bajo nivel)
+
+Y, desde un medio nivel para el nucleo, y un alto nivel para la aplicacion, estos podran monitorear los nuevos eventos, y procesarlos. Aqui por ejemplo, el nucleo podria ofrecer una interfaz de "ganchos", para que la aplicacion suscriba funciones a ejecutar (con acceso al evento y otros metadatos) que el nucleo auto-ejecute en el momento en que una rutina suya detecte el evento nuevo

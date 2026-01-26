@@ -18,10 +18,12 @@ from .operations.send_sms import Operation as SendSMSImplementation
 from ...contracts.operations.receive_sms import ReceiveSMS
 from ...contracts.operations.delete_sms import DeleteSMS
 from ...contracts.properties.query_imei import QueryIMEI
+from ...contracts.properties.query_ccid import QueryCCID
 
 from .operations.receive_sms import Operation as ReceiveSMSImplementation
 from .operations.delete_sms import Operation as DeleteSMSImplementation
 from .properties.query_imei import Property as QueryIMEIImplementation
+from .properties.query_ccid import Property as QueryCCIDImplementation
 
 # Classes definition
 class Controller(DeviceControllerInterface):
@@ -33,7 +35,8 @@ class Controller(DeviceControllerInterface):
         self.configurations = Configurations()
         self.properties: Dict[object, object] = {
             SignalLevel:SignalLevelImplementation,
-            QueryIMEI:QueryIMEIImplementation
+            QueryIMEI:QueryIMEIImplementation,
+            QueryCCID:QueryCCIDImplementation
         }
         self.operations: Dict[object, object] = {
             SendSMS:SendSMSImplementation,
@@ -123,6 +126,27 @@ class Controller(DeviceControllerInterface):
                 except Exception:
                     pass
 
+    def _initialize_device(self) -> bool:
+        # Verify the current connection status
+        if not self.connection_status: raise RuntimeError("The device is not conencted, we cant initialize it")
+        
+        # Execute all basic configurations for the device
+        # SIM events
+        self.ATEngine.send_at_command("AT+CSDT=1")
+        self.ATEngine.read_at_response()
+
+        # Inicialización estándar del módem
+        # ATE0: desactivar eco
+        self.ATEngine.send_at_command("ATE0")
+        response = self.ATEngine.read_at_response()
+
+        # AT+CMEE=1: errores extendidos
+        self.ATEngine.send_at_command("AT+CMEE=1")
+        response = self.ATEngine.read_at_response()
+
+        # Return results
+        return True
+
     # Public methods
     def recognize(self) -> List[str]:
         potential_identified_devices = self._identify()
@@ -155,20 +179,14 @@ class Controller(DeviceControllerInterface):
         self.ATEngine = ATEngine(self.transport_layer)
         self.ATEngine.start()
 
-        # Inicialización estándar del módem
-        # ATE0: desactivar eco
-        self.ATEngine.send_at_command("ATE0")
-        response = self.ATEngine.read_at_response()
-        if b"OK" not in response.content: raise RuntimeError(f"Error connecting with the device. ATE0 command respond: {response.content}")
-
-        # AT+CMEE=1: errores extendidos
-        self.ATEngine.send_at_command("AT+CMEE=1")
-        response = self.ATEngine.read_at_response()
-
         # Actualizar estado
         self._set_physical_connection_status(is_connected=True)
         self._set_virtual_connection_status(is_connected=True)
 
+        # Ejecutar inicializacion del dispositivo
+        self._initialize_device()
+
+        # Retornar resultados
         return True
 
     def configure(self, configurations: Configurations) -> bool:
