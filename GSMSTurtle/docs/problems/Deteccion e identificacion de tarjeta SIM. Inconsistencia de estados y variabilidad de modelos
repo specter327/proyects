@@ -1,0 +1,62 @@
+La solucion planteada anteriormente para la deteccion e identificacion de tarjetas SIM parecia adecuada, pero no concluyo con el problema. La propuesta era esta:
+
+Detectar la tarjeta SIM del dispositivo:
+
+- Al conectar/reconectar el dispositivo
+- Al detectar un evento de insercion de tarjeta SIM
+
+*Aqui, sabemos que hay datos que pueden ser "cacheados". Es decir, datos como la identificacion del dispositivo (codigo IMEI), solo deberian necesitarse consultar UNA vez desde la conexion hasta la desconexion del mismo. Otros datos como la identificacion de la tarjeta SIM, pueden consultarse poco, mientras que otros datos como el nivel de señal si requieren de una actualizacion mas frecuente.
+
+Es decir:
+- Hay consultas que pueden ser eventualizadas (cuando suceda tal evento)
+- Hay consultas que pueden ser temporizadas (cada cierto tiempO)
+- O ambas: eventuales y temporizadas
+
+Cada una con un distinto nivel de urgencia:
+- Alto: requiere actualizacion constante
+- Bajo: requiere poca actualizacion
+
+Todo esto evita consultas innecesarias o demasiado frecuentes que impacten en el rendimiento de un recurso privativo
+*
+
+Lo primero es totalmente posible, pero lo segundo no. Ya que sucede que:
+
+- Si el dispositivo se conecto con tarjeta SIM insertada; si se extrae la tarjeta se detecta el evento, pero si se vuelve a reinsertar NO se detecta: el dispositivo queda en un estado inconsistente y es necesario un restablecimiento por software y/o hardware
+
+- Si el dispositivo se conecto sin tarjeta SIM; si se inserta la tarjeta, NO se detecta: tambien es necesario realizar un restablecimiento por software y/o hardware
+
+
+Por otra parte, la IA indica:
+
+"El dispositivo queda en estado inconsistente despues de la extraccion de la tarjeta SIM. Es necesario un restablecimiento por hardware" - ChatGPT
+
+"El dispositivo queda en estado inconsistente despues de la extraccion de la tarjeta SIM, pero es posible realizar un restablecimiento por software" - Gemini
+
+Lo cual es confuso entre las respuetas de una y otra, y llegamos a la conclusion de que esta situacion puede depender de:
+
+- Tipo (virtual o fisico)
+- Modelo (p. Ej: SIM800C, SIM7600G, etc.)
+- Las circunstancias (insercion/extraccion en caliente)
+- La configuracion
+
+Como se puede observar, existen varios puntos variables que provocan que la solucion y capacidad de realizar lo anteriormente dicho sea posible, y esto dependeria exactamente del controlador y dispositivo en cuestion.
+
+Por esta razon, una de los puntos mas logicos seria: agregar funciones como:
+
+- reset()
+
+Y datos como:
+
+- status: AVAILABLE/UNAVAILABLE/INITIALIZING/RECONNECTING/DISCONNECTING/CONNECTING/RECOVERING/RESETING/RECOVERY_REQUIRED/OTROS
+
+De manera que se puedan manejar los distintos estados de un dispositivo, y tambien disponer de opciones para su reinicio, u otros casos de emergencia.
+
+Asi, si bien inicialmente queriamos identificar la tarjeta SIM extrayendo su identificacion en cada ocasion que fuese posible, ahora la unica opcion segura es hacerlo CUANDO necesitemos ese dato. Por ejemplo:
+
+- Antes de enviar un mensaje: consultar la identificacion de la tarjeta SIM; si falla (no hay, o genera un error), arrojar una excepcion. Si hay, se registra la tarjeta SIM (si YA existia se omite), y se vincula el mensaje a esa tarjeta SIM
+
+- Antes de consultar mensajes recibidos: consultar la identificacion de la tarjeta SIM; si falla (no hay, o genera un error), arrojar una excepcion. Si hay, se registra la tarjeta SIM (si YA existia se omite), y se vinculan los mensajes recibidos a esa tarjeta SIM
+
+De esa forma, hacemos dos cosas de una vez: identificamos y registramos/actualizamos la tarjeta SIM, y vinculamos los mensajes enviados/recibidos a ella.
+
+Aunque sabemos que sigue habiendo un hueco logico que representa un punto ciego: ¿Que pasa si se inserta/cambia en caliente (hotswap) la tarjeta SIM mientras no se consulta? Nisiquiera detectaremos eso hasta que se requiera su consulta
