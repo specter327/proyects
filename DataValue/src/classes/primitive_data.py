@@ -9,7 +9,7 @@ class PrimitiveData:
         data_type: Type,
         value: Any,
         maximum_length: Optional[int] = None, minimum_length: Optional[int] = None,
-        maximum_size: Optional[Union[int, float] = None, minimum_size: Optional[Union[int, float]] = None,
+        maximum_size: Optional[Union[int, float]] = None, minimum_size: Optional[Union[int, float]] = None,
         possible_values: Optional[Iterable] = None,
         regular_expression: Optional[str] = None,
         
