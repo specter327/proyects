@@ -66,6 +66,9 @@ Presenta los siguientes parametros:
 
     > Se puede especificar: ```None```, si no aplica
 - **value**: especifica el valor con el que se construira el dato. Sobre el se aplicaran las validaciones anteriormente descriptas
+- **data_class**: Especifica si la definicion de esta instancia sera utilizada para validar un valor como tipo de dato, o como plantilla para la validacion de valores
+
+> Por defecto es False; se validara el dato con el cual es creada la instancia
 
 ## Ejemplos de uso
 ### Ejemplo 1
