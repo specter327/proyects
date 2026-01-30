@@ -28,11 +28,16 @@ class PrimitiveData:
             self.validate()
     
     # Private methods
-    def __get_length(self) -> Optional[int]:
-        if isinstance(self.value, (str, bytes, bytearray)):
-            return len(self.value)
-        elif isinstance(self.value, (int, float)):
-            return len([digit for digit in str(self.value) if digit.isdigit()])
+    def __get_length(self, data: Optional[Any] = None) -> Optional[int]:
+        if data is None:
+            data_objective = self.value
+        else:
+            data_objective = data
+
+        if isinstance(data_objective, (str, bytes, bytearray)):
+            return len(data_objective)
+        elif isinstance(data_objective, (int, float)):
+            return len([digit for digit in str(data_objective) if digit.isdigit()])
         else:
             return None
     
@@ -50,16 +55,22 @@ class PrimitiveData:
             "DATA_CLASS":self.data_class
         }
         
-    def validate(self) -> bool:
+    def validate(self, data: Optional[Any] = None) -> bool:
+        # Define the data to validate
+        if data is None:
+            data_objective = self.value
+        else:
+            data_objective = data
+
         # Validacion de tipo de dato
-        if not isinstance(self.value, self.data_type):
+        if not isinstance(data_objective, self.data_type):
             raise exceptions.DataTypeException(
-                f"Incorrect data type.\nExpected: {self.data_type.__name__} - Received: {type(self.value).__name__}"
+                f"Incorrect data type.\nExpected: {self.data_type.__name__} - Received: {type(data_objective).__name__}"
             )
         
         # Validacion de longitud de caracteres (minimo, y maximo)
         if self.minimum_length is not None or self.maximum_length is not None:
-            length = self.__get_length()
+            length = self.__get_length(data_objective)
             
             if length is not None:
                 if self.minimum_length is not None and length < self.minimum_length:
@@ -69,31 +80,33 @@ class PrimitiveData:
         
         # Validacion de tamaño (magnitud)
         if self.minimum_size is not None or self.maximum_size is not None:
-            if isinstance(self.value, (int, float)):
-                if self.minimum_size is not None and self.value < self.minimum_size:
-                    raise exceptions.SizeException(f"Numerical value below the minimum: {self.value} < {self.minimum_size}")
-                if self.maximum_size is not None and self.value > self.maximum_size:
-                    raise exceptions.SizeException(f"Numerical value above the maximum: {self.value} > {self.maximum_size}")
+            if isinstance(data_objective, (int, float)):
+                if self.minimum_size is not None and data_objective < self.minimum_size:
+                    raise exceptions.SizeException(f"Numerical value below the minimum: {data_objective} < {self.minimum_size}")
+                if self.maximum_size is not None and data_objective > self.maximum_size:
+                    raise exceptions.SizeException(f"Numerical value above the maximum: {data_objective} > {self.maximum_size}")
         
         # Validacion de posibles valores (conjunto)
         if self.data_type is bool:
-            if self.value not in (True, False):
+            if data_objective not in (True, False):
                 raise exceptions.PossibleValueException(
-                    f"The boolean value has to be True or False: {self.value} != True/False"
+                    f"The boolean value has to be True or False: {data_objective} != True/False"
                 )
         if self.possible_values is not None:
-            if self.value not in self.possible_values:
+            if data_objective not in self.possible_values:
                 raise exceptions.PossibleValueException(
-                    f"The value is not in the possible values set: {self.value} not in {self.possible_values}"
+                    f"The value is not in the possible values set: {data_objective} not in {self.possible_values}"
                 )
         
         # Validacion de expresion regular
         if self.regular_expression is not None:
-            if isinstance(self.value, (str, bytes, bytearray)):
+            if isinstance(data_objective, (str, bytes, bytearray)):
                 # Soporte para bytes/bytearray convirtiendo el patrón si es necesario
                 pattern = self.regular_expression
-                if isinstance(self.value, (bytes, bytearray)) and isinstance(pattern, str):
+                if isinstance(data_objective, (bytes, bytearray)) and isinstance(pattern, str):
                     pattern = pattern.encode()
                 
-                if not re.fullmatch(pattern, self.value):
+                if not re.fullmatch(pattern, data_objective):
                     raise exceptions.RegularExpressionException(f"The value does not meet the required pattern: {self.regular_expression}")
+        
+        return True
