@@ -6,7 +6,9 @@ from ...contracts.device_controller.configurations import Configurations
 from ...contracts.device_controller.setting import Setting
 from ...contracts.data_classes.primitive_data import PrimitiveData
 from typing import List, Type, Optional, Dict
+import threading
 from .. import PlatformLayer
+from . import NAME
 from ..transport_layers.serial import TransportLayer
 from ..transport_layers.ATEngine import ATEngine
 
@@ -25,6 +27,57 @@ from .operations.delete_sms import Operation as DeleteSMSImplementation
 from .properties.query_imei import Property as QueryIMEIImplementation
 from .properties.query_ccid import Property as QueryCCIDImplementation
 
+from ...contracts.events.sim_removed import SIMRemovedEvent
+from .events.sim_removed import Event as SIMRemovedEventImplementation
+
+import time
+
+# Functions definition
+def _capture_standard_events(controller: "Controller") -> None:
+    # While the controller is connected
+    print("Starting standard events processing routine...")
+
+    #time.sleep(30)
+    while controller.connection_status:
+        # For every standard event supported by this device...
+        for standard_event, event_implementation in controller.standard_events.items():
+            # Capture the current raw events identifiers
+            raw_events_identifiers = tuple(controller.ATEngine.events.keys())
+
+            # For every raw event...
+            for event_identifier in raw_events_identifiers:
+                # Get the raw event
+                raw_event = controller.ATEngine.events.get(event_identifier)
+
+                # Verify the event status
+                if not raw_event or raw_event.status_seen:
+                    print("Skipping event:", raw_event.content, "|", raw_event.timestamp)
+                    continue
+                
+                # Mark the seen event
+                raw_event.mark_seen()
+
+                # Apply the event detector on the raw event
+                # Create a event detector class
+                event_detector = event_implementation(
+                    device_identifier=NAME,
+                    event=raw_event
+                )
+
+                if event_detector.identify(raw_event):
+                    print(f"[{NAME}] EVENT DETECTED: {event_detector.NAME}")
+
+                    # Save the standard event detected
+                    controller._append_event(standard_event, event_detector)
+
+            # Execution temporizer
+            time.sleep(0.1)
+
+        # Execution temporizer
+        time.sleep(1)
+
+    print("Stopping events processing routine...")
+
 # Classes definition
 class Controller(DeviceControllerInterface):
     def __init__(self) -> None:
@@ -42,6 +95,9 @@ class Controller(DeviceControllerInterface):
             SendSMS:SendSMSImplementation,
             ReceiveSMS:ReceiveSMSImplementation,
             DeleteSMS:DeleteSMSImplementation
+        }
+        self.standard_events: Dict[object, object] = {
+            SIMRemovedEvent:SIMRemovedEventImplementation
         }
         self.ATEngine: Optional[ATEngine] = None
         self.transport_layer: Optional[TransportLayer] = None
@@ -80,8 +136,24 @@ class Controller(DeviceControllerInterface):
                 optional=False
             )
         )
+        
+        self.support_routines: tuple = (
+            _capture_standard_events,
+        )
     
     # Private methods
+    def __initialize_support_routines(self) -> bool:
+        for routine in self.support_routines:
+            routine_controller = threading.Thread(
+                target=routine,
+                args=[self],
+                daemon=True
+            )
+            routine_controller.start()
+            #time.sleep(20)
+        
+        return True
+    
     def _identify(self) -> List[str]:
         system_ports = PlatformLayer().identify_system_ports()
 
@@ -132,7 +204,7 @@ class Controller(DeviceControllerInterface):
         
         # Execute all basic configurations for the device
         # SIM events
-        self.ATEngine.send_at_command("AT+CSDT=1")
+        self.ATEngine.send_at_command("AT+CSDT=0")
         self.ATEngine.read_at_response()
 
         # Inicialización estándar del módem
@@ -142,6 +214,10 @@ class Controller(DeviceControllerInterface):
 
         # AT+CMEE=1: errores extendidos
         self.ATEngine.send_at_command("AT+CMEE=1")
+        response = self.ATEngine.read_at_response()
+
+        # AT+CNMI=2,1,0,0,0; Notificacion de mensajes entrantes
+        self.ATEngine.send_at_command("AT+CNMI=2,1,0,0,0")
         response = self.ATEngine.read_at_response()
 
         # Return results
@@ -185,6 +261,9 @@ class Controller(DeviceControllerInterface):
 
         # Ejecutar inicializacion del dispositivo
         self._initialize_device()
+
+        # Initialize the support routines
+        self.__initialize_support_routines()
 
         # Retornar resultados
         return True

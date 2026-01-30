@@ -18,12 +18,23 @@ class QueryCCID(PropertyInterface):
         status_code: int
     ) -> None:
         # Instance properties assignment
-        self.ccid = PrimitiveData(
-            data_type=str,
-            minimum_length=19,
-            maximum_length=20,
-            content=ccid
-        )
+        # Verify the data
+        if status_code != 0:
+            self.ccid = PrimitiveData(
+                data_type=None,
+                minimum_length=None,
+                maximum_length=None,
+                possible_values=None,
+                content=ccid
+            )
+        else:
+            self.ccid = PrimitiveData(
+                data_type=str,
+                minimum_length=19,
+                maximum_length=20,
+                possible_values=None,
+                content=ccid
+            )
 
         self.status_code = PrimitiveData(
             data_type=int,

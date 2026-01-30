@@ -14,11 +14,11 @@ class Property(QueryCCID):
         # Get the command AT response
         response = self.controller.ATEngine.read_at_response()
 
-        print(f"[SIM800C: Query CCID] Response: {response}")
+        print(f"[SIM800C: Query CCID] Response: {response.content}")
 
         # Verify the command response
-        if b"OK" in response:
-            ccid = response[0].decode().strip()
+        if b"OK" in response.content:
+            ccid = response.content[0].decode("UTF-8").strip()
             print("CCID:", ccid)
             return QueryCCID(
                 ccid=ccid,
@@ -26,6 +26,6 @@ class Property(QueryCCID):
             )
         else:
             return QueryCCID(
-                ccid="",
+                ccid=None,
                 status_code=1
             )

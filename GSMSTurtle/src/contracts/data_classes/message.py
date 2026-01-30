@@ -42,7 +42,7 @@ class Message:
 
     def __init__(self,
         message: str,
-        metadata: MessageMetadata,
+        metadata: MessageMetadata = None,
         timestamp: int = None,
         type: str = None,
         sender: str = None,
@@ -62,6 +62,7 @@ class Message:
             possible_values=None,
             content=timestamp
         )
+
         self.type = PrimitiveData(
             data_type=None,
             minimum_length=None,
@@ -70,6 +71,16 @@ class Message:
             content=type
         )
 
+        if self.type.content == self.TYPE_SENT:
+            self.metadata = MessageMetadata(
+                sim_index=None,
+                sim_status=None,
+                network_timestamp=None,
+                raw_header=None
+            )
+        else:
+            self.metadata = metadata
+
         self.sender = PrimitiveData(
             data_type=None,
             minimum_length=None,
@@ -77,8 +88,6 @@ class Message:
             possible_values=None,
             content=sender
         )
-
-        self.metadata = metadata
     
     # Public methods
     def generate_uid(self) -> str:

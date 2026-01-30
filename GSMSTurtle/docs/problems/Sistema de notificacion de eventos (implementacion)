@@ -1,0 +1,24 @@
+Se implemento un sistema de notificacion de eventos estructurado de la siguiente manera:
+
+==========
+Controladores
+
+En los controladores de dispositivo: en este caso, del modelo SIM800C, se utiliza el motor AT
+(ATEngine). Este motor se encarga de la recepcion continua de datos, separando las respuestas
+a comandos AT ejecutados, de eventos URC, generando asi un filtramiento y separacion robusta
+
+Posteriormente, los controladores deben implementar una clase de evento estandar que permita
+detectar un evento estandar a partir de un evento crudo (datos crudos), como: "+CPIN NOT
+READY", y convertirlo a un evento estandarizado como: SIM_REMOVED, almacenandolo en una interfaz
+uniforme: events, en el controlador del dispositivo
+
+==========
+Nucleo
+
+El nucleo mantiene un sistema que permite asociar funciones manejadoras a eventos estandar, como:
+SIM_REMOVED; se mantiene en segundo plano verificando si algun dispositivo notifica un evento estandar de dicho tipo, y en ese caso ejecuta TODAS las funciones manejadoras, entregandoles toda la informacion y recursos necesarios
+
+==========
+Aplicacion
+
+De esta forma, desde la aplicacion, unicamente se necesita especificar la clase de evento estandar a escuchar, y una funcion manejadora para reaccionar ante dicho evento cuando suceda en algun dispositivo

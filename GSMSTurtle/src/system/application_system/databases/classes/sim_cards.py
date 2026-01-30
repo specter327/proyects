@@ -39,7 +39,7 @@ class SIMCardsDatabase(Database):
     # Public methods
     def regist_sim_card(self, ccid: str) -> int | bool:
         operation = """
-        INSERT INTO sim_cards (CCID, REGIST_DATE) 
+        INSERT OR IGNORE INTO sim_cards (CCID, REGIST_DATE) 
         VALUES (?, ?);
         """
         # Formato de fecha legible (ISO 8601) o podrías usar str(int(time.time()))

@@ -25,7 +25,7 @@ def _receive_sms(application: object, device_identifier: str) -> None:
         print(dir(current_storaged_messages))
 
         # Execution temporizer
-        time.sleep(60)
+        time.sleep(120)
 
 def _update_device_information(application: object, device_identifier: str) -> None:
     while application.is_active:

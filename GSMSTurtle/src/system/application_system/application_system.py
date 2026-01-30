@@ -1,11 +1,15 @@
 # Library import
 from .databases.classes import devices, sim_cards, messages
+from ...contracts.properties.query_ccid import QueryCCID
+from ...contracts.operations.send_sms import SendSMS, SendSMSOperationParameters, SendSMSOperationResults
 from .databases import resources as DatabasesResources
+from .events import EventHandlers
 from ..core.core import Core, utils as CoreUtils
 from . import support
 from typing import Type, List, Dict, Any
 import threading
 import time
+import hashlib
 
 
 # Classes definition
@@ -19,6 +23,7 @@ class ApplicationSystem:
         # Instance properties definition
         self.status: str = self.APPLICATION_STATUS_INACTIVE
         self.core: Type[Core] = None
+        self.event_handlers = EventHandlers(self)
 
         # Databases
         self.DevicesDatabase: Type[devices.DevicesDatabase] = None
@@ -37,7 +42,6 @@ class ApplicationSystem:
         # of the standard property, and every value is their query result
         self._cached_controlled_devices_information: Dict[str, object] = {}
         self.cached_controlled_devices_information_lock = threading.Lock()
-
 
     # Properties
     @property
@@ -99,6 +103,10 @@ class ApplicationSystem:
         
         return True
     
+    def _subscribe_event_handlers(self) -> bool:
+        self.event_handlers.subscribe_event_handlers()
+        return True
+
     def _load_databases(self) -> bool:
         # Devices database
         self.DevicesDatabase = devices.DevicesDatabase(storage_path=self.DATABASES_STORAGE)
@@ -129,6 +137,9 @@ class ApplicationSystem:
 
         # Start the support routines
         self._start_support_routines()
+
+        # Subscribe the event handlers functions
+        self._subscribe_event_handlers()
 
         # Return results
         return True
@@ -207,3 +218,54 @@ class ApplicationSystem:
             
 
         return True
+    
+    def send_sms(self, device_identifier: str, destinatary: str, message: str) -> str:
+        # Verify if the device exists on the controlled devices
+        if device_identifier not in self.controlled_devices: raise KeyError(f"The specified device: {device_identifier}, not exists in the controlled devices")
+
+        # Create the operation parameters
+        send_sms_parameters = SendSMSOperationParameters(
+            phone_number=destinatary,
+            message=message
+        )
+
+        # Query the current SIM card identification
+        current_sim_card_identification = self.core.request_property(device_identifier, QueryCCID)
+
+        # Verify the CCID property
+        if not current_sim_card_identification.ccid.content:
+            raise RuntimeError(f"The query of the SIM card identification (CCID) has failed")
+        else:
+            # Log or skip the SIM card identification (CCID)
+            self.SIMCardsDatabase.regist_sim_card(
+                ccid=current_sim_card_identification.ccid.content
+            )
+
+            print("Registered SIM card identification (CCID):", current_sim_card_identification.ccid.content)
+
+        # Request the operation
+        operation_results = self.core.request_operation(device_identifier, SendSMS, send_sms_parameters)
+
+        # Regist the message sended
+        if operation_results.send_result:
+            raw_identifier = f"{device_identifier}{destinatary}{message}{time.time()}"
+            unique_identifier = hashlib.sha256(raw_identifier.encode("UTF-8")).hexdigest()[:16]
+
+            # Log in the database
+            self.MessagesDatabase.regist_message(
+                unique_id=unique_identifier,
+                imei=device_identifier,
+                ccid=current_sim_card_identification.ccid.content,
+                content=message,
+                message_type="SENT",
+                status="PENDING",
+                destinatary=destinatary
+            )
+
+            print(f"SMS registrado: {unique_identifier}")
+
+        # Return results
+        print("SIM Card:", current_sim_card_identification.ccid.content)
+        print("Send result:", operation_results.to_dict())
+
+        return operation_results

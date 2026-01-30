@@ -3,6 +3,7 @@ import threading
 from typing import List, Dict
 from dataclasses import dataclass
 import time
+import traceback
 
 # Classes definition
 @dataclass
@@ -69,12 +70,15 @@ class ATEngine:
         self._read_bytes_buffer: bytes = b""
         self._read_lines_buffer: List[bytes] = []
         self.events: Dict[int, List[Event]] = {}
+        #self.standard_events: Dict[int, object] = {}
         self.responses: Dict[int, List[Response]] = {}
         self._routines: list = [
             self._read_routine,
             self._process_routine,
             self._analize_routine
         ]
+
+        self.work_lock = threading.Lock()
 
     @property
     def responses_counter(self) -> int: return len(self.responses.keys())
@@ -138,16 +142,23 @@ class ATEngine:
             # Read from the transport layer
             try:
                 character_readed = self.transport_layer.read(amount=1)
+
+                # Verify the new character readed
+                if not character_readed: character_readed = b""
+                if character_readed == b"\x00": character_readed = b""
             except TypeError:
                 print(f"[ATEngine] There was an error reading a character on the read routine: TypeError")
                 
                 # Restablish the character
-                pass
+                character_readed = b""
 
             except Exception as Error:
-                print(f"[ATEngine] There was an error reading a character on the read routine: {type(Error)}")
-                pass
+                print(f"[ATEngine] There was an error reading a character on the read routine: {type(Error), Error.__traceback__}")
+                traceback.print_exc()
+                character_readed = b""
 
+
+            
             # Append the new character readed
             self._read_bytes_buffer += character_readed
 
@@ -204,10 +215,12 @@ class ATEngine:
             b"RING", b"CLIP", b"CREG", 
             b"CGREG", b"CTZV", b"UGNSINF", 
             b"RDY", b"Call Ready", b"SMS Ready", 
-            b"UNDER-VOLTAGE", b"OVER-VOLTAGE", b"NORMAL POWER DOWN")
+            b"UNDER-VOLTAGE", b"OVER-VOLTAGE", b"NORMAL POWER DOWN",
+            b"CPIN",
+            )
         
         for event_pattern in EVENTS:
-            if event_pattern in line: return True
+            if event_pattern in line: print(f"URC detected: {line}"); return True
         
         return False
     
@@ -225,7 +238,7 @@ class ATEngine:
             for line_number in tuple(range(len(self._read_lines_buffer))):
                 print("Line number:", line_number)
                 print("ATEngine: New Readlines buffer:", self._read_lines_buffer)
-                
+
                 # Identify and capture URC events
                 if self._identify_event_urc(self._read_lines_buffer[line_number]):
                     # Cut the current content
@@ -293,14 +306,16 @@ class ATEngine:
         return True
         
     def send_at_command(self, command: str, append_newline: bool = True) -> bool:
-        decoded_command = f"{command}".encode("UTF-8")
-        
-        if append_newline:
-            decoded_command += "\r\n".encode("UTF-8")
+        with self.work_lock:
+            decoded_command = f"{command}".encode("UTF-8")
+            
+            if append_newline:
+                decoded_command += "\r\n".encode("UTF-8")
         
         return self.transport_layer.write(decoded_command)
     
     def read_at_response(self, timeout_seconds: float = 30.0) -> Response:
+        with self.work_lock:
             start_timestamp = time.monotonic()
             
             # Bucle de sondeo (polling) con guarda de tiempo

@@ -1,6 +1,7 @@
 # Library import
 from typing import List, Dict, Any
 import threading
+import traceback
 from . import utils, support
 from ...controllers import ControllerDescriptor, DeviceControllerInterface, SystemPort
 from ...contracts.operations import OperationInterface, OperationParametersInterface, OperationResultsInterface
@@ -40,8 +41,12 @@ class Core:
         # Support routines
         self.support_routines = [
             support._update_loaded_controllers_routine,
-            support._update_available_compatible_devices
+            support._update_available_compatible_devices,
+            support._handle_standard_events
         ]
+
+        # Event notification system
+        self.event_notification_table: Dict[object, Dict[int, callable]] = {}
 
         # Concurrence security (mutex's)
         self.loaded_controllers_lock = threading.Lock()
@@ -66,6 +71,7 @@ class Core:
     
     def _set_status_active(self) -> bool: self.status = self.CORE_STATUS_ACTIVE; return True
     def _set_status_inactive(self) -> bool: self.status = self.self.CORE_STATUS_INACTIVE; return True
+
 
     # Public methods
     def start(self) -> bool:
@@ -183,6 +189,11 @@ class Core:
                 if instance:
                     instance.disconnect()
                 print(f"[CORE.CONNECT] Critical error: {e}")
+                print("Traceback:")
+                print("==========")
+                traceback.print_exc()
+                print("==========")
+
                 return False
 
     def disconnect_device(self, device_identification: str) -> bool:
@@ -244,3 +255,16 @@ class Core:
 
             # Return results
             return property
+
+    def subscribe_notification(self, event: object, handler_function: callable) -> int:
+        # Verify the current event existence (or regist it if not exists)
+        if event not in self.event_notification_table: self.event_notification_table[event] = {}
+
+        # Append the handler function to the subscribed handlers
+        next_event_identification = len(self.event_notification_table[event].keys())
+
+        # Insert the handler function
+        self.event_notification_table[event][next_event_identification] = handler_function
+
+        # Return results
+        return next_event_identification

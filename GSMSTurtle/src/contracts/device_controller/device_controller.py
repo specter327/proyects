@@ -20,10 +20,12 @@ class DeviceControllerInterface(ABC):
             "PROPERTIES":self.properties,
             "OPERATIONS":self.operations
         }
+        self.standard_events: Dict[object, object] = {}
         self.physical_connection_status: str = constants.DISCONNECTED
         self.virtual_connection_status: str = constants.DISCONNECTED
         self.device_status: str = constants.UNAVAILABLE
         self.connection_controller: object | None = None
+        self.events: Dict[object, Dict[str, object]] = {}
 
         self.work_lock: threading.Lock = threading.Lock()
     
@@ -56,6 +58,16 @@ class DeviceControllerInterface(ABC):
         
         return True
     
+    def _append_event(self, standard_event: object, event: object) -> bool:
+        if standard_event not in self.events: 
+            self.events[standard_event] = {}
+        
+        next_event_identifier = len(self.events[standard_event])
+
+        self.events[standard_event][next_event_identifier] = event
+
+        return True
+
     @abstractmethod
     def _identify(self) -> List[str]:
         """This method allows to identify devices that apparent be compatible with this controller.
