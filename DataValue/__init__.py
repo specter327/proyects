@@ -1,2 +1,2 @@
 # Library import
-from src.classes.primitive_data import PrimitiveData
+from .datavalue.classes.primitive_data import PrimitiveData

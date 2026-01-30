@@ -1,7 +1,7 @@
 # Library import
 import re
 from typing import Type, Optional, Any, Iterable, Union
-import exceptions
+from .. import exceptions
 
 # Classes definition
 class PrimitiveData:

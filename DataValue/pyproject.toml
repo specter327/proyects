@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "datavalue" # Nombre en PyPI
+version = "0.1.1"
+description = "Librería de tipos de datos primitivos y complejos"
+readme = "README.md"
+authors = [{ name="Specter" }]
+requires-python = ">=3.10"
+
+[tool.setuptools]
+# Esto le dice a Python que el paquete es la carpeta actual
+packages = ["datavalue"]
