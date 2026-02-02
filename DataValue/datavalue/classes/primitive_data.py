@@ -59,15 +59,58 @@ class PrimitiveData:
     def to_json(self) -> str:
         return json.dumps(self.to_dict(), indent=4)
 
-    def from_json(self, text_content: str) -> dict:
-        data_table = json.loads(text_content)
-        local_table = self.to_dict()
-
-        for element in data_table:
-            if element not in local_table: raise ValueError(f"The loaded table has a unknown value: {element}")
-
-        return data_table
+    
+    def from_dict(self, data: dict) -> 'PrimitiveData':
+        # Expected keys definition
+        expected_keys = {
+            "DATA_TYPE", "VALUE", "MAXIMUM_LENGTH", "MINIMUM_LENGTH",
+            "MAXIMUM_SIZE", "MINIMUM_SIZE", "POSSIBLE_VALUES",
+            "REGULAR_EXPRESSION", "DATA_CLASS"
+        }
         
+        # Verify unknown keys on the table
+        unknown_keys = set(data.keys()) - expected_keys
+        if unknown_keys:
+            raise ValueError(f"Unknown keys in data structure: {unknown_keys}")
+
+        # Secure type mapping
+        type_mapping = {
+            "str": str,
+            "int": int,
+            "float": float,
+            "bool": bool,
+            "bytes": bytes,
+            "bytearray": bytearray,
+            "NoneType": type(None)
+        }
+
+        type_str = data.get("DATA_TYPE")
+        real_type = type_mapping.get(type_str)
+
+        if real_type is None and type_str != "None":
+             raise TypeError(f"Unsupported or unsafe data type for deserialization: {type_str}")
+
+        # return instance result
+        return PrimitiveData(
+            data_type=real_type,
+            value=data.get("VALUE"),
+            maximum_length=data.get("MAXIMUM_LENGTH"),
+            minimum_length=data.get("MINIMUM_LENGTH"),
+            maximum_size=data.get("MAXIMUM_SIZE"),
+            minimum_size=data.get("MINIMUM_SIZE"),
+            possible_values=data.get("POSSIBLE_VALUES"),
+            regular_expression=data.get("REGULAR_EXPRESSION"),
+            data_class=data.get("DATA_CLASS", False)
+        )
+        
+    def from_json(self, text_content: str) -> 'PrimitiveData':
+        try:
+            data_table = json.loads(text_content)
+        except json.JSONDecodeError as Error:
+            raise ValueError(f"Invalid JSON format: {Error}")
+            
+        return self.from_dict(data_table)
+
     def validate(self, data: Optional[Any] = None) -> bool:
         # Define the data to validate
         if data is None:

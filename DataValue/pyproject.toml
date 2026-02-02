@@ -4,11 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "datavalue"
-version = "0.1.3" 
+version = "0.1.6" 
 description = "Librería de tipos de datos primitivos y complejos"
 readme = "README.md"
 authors = [{ name="Specter" }]
 requires-python = ">=3.10"
 
-[tool.setuptools]
-packages = { find = {} }
+[tool.setuptools.packages.find]
+include = ["datavalue*"]
+exclude = ["docs*"]

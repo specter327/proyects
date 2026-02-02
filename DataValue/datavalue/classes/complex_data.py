@@ -2,6 +2,7 @@
 from typing import Type, Optional, Any, Iterable
 from .. import exceptions
 from .primitive_data import PrimitiveData
+import json
 
 # Classes definition
 class ComplexData:
@@ -95,7 +96,129 @@ class ComplexData:
 
         return True
         
+    def _serialize_recursive(self, element: Any) -> Any:
+        # 1. Caso: Instancias de tus clases
+        if isinstance(element, (PrimitiveData, ComplexData)):
+            return {
+                "__type__": element.__class__.__name__,
+                "content": element.to_dict()
+            }
+        
+        # 2. Caso: Tipos de datos (clases como str, int, dict)
+        if isinstance(element, type):
+            return {"__class__": element.__name__}
+        
+        # 3. Caso: Colecciones estándar (recursión profunda)
+        if isinstance(element, (list, tuple, set, frozenset)):
+            return [self._serialize_recursive(i) for i in element]
+        
+        if isinstance(element, dict):
+            return {str(k): self._serialize_recursive(v) for k, v in element.items()}
+        
+        # 4. Caso: Literales serializables (int, str, float, bool, None)
+        return element
+
+    def _deserialize_recursive(self, element: Any) -> Any:
+        SAFE_TYPES = {
+            "list": list, "tuple": tuple, "set": set, "frozenset": frozenset, 
+            "dict": dict, "str": str, "int": int, "float": float, "bool": bool,
+            "bytes": bytes, "bytearray": bytearray
+        }
+
+        # A. Manejo de Diccionarios (Estructuras u Objetos Serializados)
+        if isinstance(element, dict):
+            # Caso 1: Es un objeto serializado (PrimitiveData o ComplexData)
+            if "__type__" in element:
+                obj_type = element["__type__"]
+                content = element["content"]
+                
+                if obj_type == "PrimitiveData":
+                    return PrimitiveData(value=None, data_type=None, data_class=True).from_dict(content)
+                elif obj_type == "ComplexData":
+                    return self.from_dict(content)
+                else:
+                    raise ValueError(f"Unknown serialized object type: {obj_type}")
+
+            # Caso 2: Es una referencia a un tipo de clase (__class__)
+            if "__class__" in element:
+                type_name = element["__class__"]
+                if type_name in SAFE_TYPES:
+                    return SAFE_TYPES[type_name]
+                raise ValueError(f"Type '{type_name}' is not allowed or unknown.")
+
+            # Caso 3: Es un diccionario de datos común (recurse keys & values)
+            return {k: self._deserialize_recursive(v) for k, v in element.items()}
+
+        # B. Manejo de Listas (recurse items)
+        if isinstance(element, list):
+            return [self._deserialize_recursive(item) for item in element]
+        
+        # C. Literales (retorno directo)
+        return element
+
+
     # Public methods
+    def to_dict(self) -> dict:
+        return {
+            "DATA_TYPE":self.data_type.__name__ if hasattr(self.data_type, '__name__') else str(self.data_type),
+            "VALUE":self._serialize_recursive(self.value),
+            "MAXIMUM_LENGTH":self.maximum_length,
+            "MINIMUM_LENGTH":self.minimum_length,
+            "POSSIBLE_VALUES":self._serialize_recursive(self.possible_values) if self.possible_values is not None else None,
+            "DATA_CLASS":self.data_class
+        }
+
+    
+    def from_dict(self, data: dict) -> 'ComplexData':
+        # 1. Secure types mapping
+        SAFE_TYPES = {
+            "list": list, "tuple": tuple, "set": set, "frozenset": frozenset, 
+            "dict": dict, "str": str, "int": int, "float": float, "bool": bool,
+            "bytes": bytes, "bytearray": bytearray
+        }
+
+        # 3. Validación y Reconstrucción del Root
+        # Recuperamos el tipo de dato principal
+        raw_type = data.get("DATA_TYPE")
+        data_type = SAFE_TYPES.get(raw_type)
+        if not data_type:
+            raise TypeError(f"Invalid root data type: {raw_type}")
+
+        # Procesamos los possible_values con el motor recursivo
+        raw_possible = data.get("POSSIBLE_VALUES")
+        possible_values = self._deserialize_recursive(raw_possible) if raw_possible is not None else None
+        
+        # Corrección de tipo para tuplas (JSON no tiene tuplas, devuelve listas)
+        # Si su __init__ es estricto y requiere tupla para possible_values, convertimos aquí:
+        if isinstance(possible_values, list) and data_type != dict:
+             possible_values = tuple(possible_values)
+        
+        # Para dicts, mantenemos la lista de listas o convertimos según su preferencia estricta
+        if isinstance(possible_values, list) and data_type == dict:
+             # Opcional: convertir sub-listas a tuplas si su validador lo prefiere, 
+             # aunque su validación actual acepta listas.
+             pass
+
+        return ComplexData(
+            data_type=data_type,
+            value=data.get("VALUE"), # Asumimos valor literal o serializable simple
+            maximum_length=data.get("MAXIMUM_LENGTH"),
+            minimum_length=data.get("MINIMUM_LENGTH"),
+            possible_values=possible_values,
+            data_class=data.get("DATA_CLASS", False)
+        )
+
+    
+    def from_json(self, text_content: str) -> 'ComplexData':
+        try:
+            data = json.loads(text_content)
+        except json.JSONDecodeError as e:
+            raise ValueError(f"Invalid JSON: {e}")
+        return self.from_dict(data)
+
+    def to_json(self) -> str:
+        return json.dumps(self.to_dict(), indent=4)
+    
     def validate(self, data: Any = None) -> bool:
         # Determine objective data
         if data is None:

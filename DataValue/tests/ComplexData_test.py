@@ -1,5 +1,5 @@
 # Library import
-from ..datavalue import ComplexData
+from datavalue import ComplexData, PrimitiveData
 
 # Execute validations
 print("="*5)
@@ -9,10 +9,11 @@ values_validation = ComplexData(
   value=["A", "B", "D"],
   possible_values=["A", "B", "D", "C"]
 )
+print("Values:", values_validation.value)
 values_validation.validate()
 print("Validation completed successfully")
 
-print("="+5)
+print("="*5)
 print("Validating list of IPv4 and IPv6 addresses...")
 # IPv4 schema definition
 ipv4_schema = PrimitiveData(
@@ -45,6 +46,10 @@ ip_address_set = ComplexData(
   possible_values=(ipv4_schema, ipv6_schema)
 )
 
+print("Values:", ip_address_set.value)
+print("Allowed values:")
+for schema in ip_address_set.possible_values:
+    print(schema.to_json())
 ip_address_set.validate()
 print("Validation completed successfully")
 
@@ -60,6 +65,12 @@ user_profile_validator = ComplexData(
   maximum_length=None, minimum_length=None,
   possible_values=([str], [str, int])
 )
+
+print("Values:", user_profile_validator.value)
+
+print("Allowed values:")
+for schema in user_profile_validator.possible_values:
+    print(schema)
 
 user_profile_validator.validate()
 print("Validation completed successfully")
@@ -85,6 +96,11 @@ phone_numbers_set = ComplexData(
   maximum_length=None, minimum_length=None,
   possible_values=(phone_number_schema, )
 )
+
+print("Values:", phone_numbers_set.value)
+print("Allowed values:")
+for schema in phone_numbers_set.possible_values:
+    print(schema.to_json())
 
 phone_numbers_set.validate()
 
