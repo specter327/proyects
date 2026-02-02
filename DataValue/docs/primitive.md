@@ -54,7 +54,7 @@ Presenta los siguientes parametros:
 - **possible_values**: especifica un conjunto de valores posibles para el dato.
   Si el valor no se encuentra entre las opciones, se genera una excepcion.
   
-  Para el tipo de dato bool (**data_type**), las opciones posibles siempre se aplicaran y seran: ```True```/```False```
+  Para el tipo de dato  ```bool``` (**data_type**), las opciones posibles siempre se aplicaran y seran: ```True```/```False```
   > Se puede especificar ```None``` si no aplica.
   
 - **regular_expression**: especifica una expresion regular que sera validada en el valor entregado.
@@ -66,9 +66,9 @@ Presenta los siguientes parametros:
 
     > Se puede especificar: ```None```, si no aplica
 - **value**: especifica el valor con el que se construira el dato. Sobre el se aplicaran las validaciones anteriormente descriptas
-- **data_class**: Especifica si la definicion de esta instancia sera utilizada para validar un valor como tipo de dato, o como plantilla para la validacion de valores
+- **data_class**: especifica si la definicion de esta instancia sera utilizada para validar un valor como tipo de dato, o como plantilla para la validacion de valores
 
-> Por defecto es False; se validara el dato con el cual es creada la instancia
+> Por defecto es ```False```; se validara el dato con el cual es creada la instancia
 
 ## Ejemplos de uso
 ### Ejemplo 1

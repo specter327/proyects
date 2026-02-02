@@ -2,6 +2,7 @@
 import re
 from typing import Type, Optional, Any, Iterable, Union
 from .. import exceptions
+import json
 
 # Classes definition
 class PrimitiveData:
@@ -54,6 +55,18 @@ class PrimitiveData:
             "REGULAR_EXPRESSION":self.regular_expression,
             "DATA_CLASS":self.data_class
         }
+    
+    def to_json(self) -> str:
+        return json.dumps(self.to_dict(), indent=4)
+
+    def from_json(self, text_content: str) -> dict:
+        data_table = json.loads(text_content)
+        local_table = self.to_dict()
+
+        for element in data_table:
+            if element not in local_table: raise ValueError(f"The loaded table has a unknown value: {element}")
+
+        return data_table
         
     def validate(self, data: Optional[Any] = None) -> bool:
         # Define the data to validate
