@@ -14,6 +14,9 @@ phone_number = PrimitiveData(
   possible_values=None, # Not specify obligatory possible values
   regular_expression=r"^\+[1-9]\d{6,14}$"
 )
+print("Value:", phone_number.value)
+print("Allowed values:")
+print(phone_number.to_json())
 
 print("Phone number validated sucessfully:", phone_number.value)
 
@@ -30,6 +33,9 @@ connection_port = PrimitiveData(
   possible_values=None, # Possible options
   regular_expression=None # Regular expression applied
 )
+print("Value:", connection_port.value)
+print("Allowed values:")
+print(connection_port.to_json())
 print("Connection port validated:", connection_port.value)
 
 # Transport protocol validation
@@ -45,6 +51,9 @@ transport_protocol = PrimitiveData(
   possible_values=("TCP", "UDP"),
   regular_expression=None
 )
+print("Value:", transport_protocol.value)
+print("Allowed values:")
+print(transport_protocol.to_json())
 print("Transport protocol validated:", transport_protocol.value)
 
 # Validating IPv4 address
@@ -59,4 +68,7 @@ ip_address = PrimitiveData(
   possible_values=None,
   regular_expression=r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
 )
+print("Value:", ip_address.value)
+print("Allowed values:")
+print(ip_address.to_json())
 print("IPv4 address validated:", ip_address.value)

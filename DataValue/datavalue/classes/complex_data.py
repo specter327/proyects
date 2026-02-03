@@ -96,7 +96,8 @@ class ComplexData:
 
         return True
         
-    def _serialize_recursive(self, element: Any) -> Any:
+    @classmethod
+    def _serialize_recursive(cls, element: Any) -> Any:
         # 1. Caso: Instancias de tus clases
         if isinstance(element, (PrimitiveData, ComplexData)):
             return {
@@ -110,15 +111,16 @@ class ComplexData:
         
         # 3. Caso: Colecciones estándar (recursión profunda)
         if isinstance(element, (list, tuple, set, frozenset)):
-            return [self._serialize_recursive(i) for i in element]
+            return [cls._serialize_recursive(i) for i in element]
         
         if isinstance(element, dict):
-            return {str(k): self._serialize_recursive(v) for k, v in element.items()}
+            return {str(k): cls._serialize_recursive(v) for k, v in element.items()}
         
         # 4. Caso: Literales serializables (int, str, float, bool, None)
         return element
 
-    def _deserialize_recursive(self, element: Any) -> Any:
+    @classmethod
+    def _deserialize_recursive(cls, element: Any) -> Any:
         SAFE_TYPES = {
             "list": list, "tuple": tuple, "set": set, "frozenset": frozenset, 
             "dict": dict, "str": str, "int": int, "float": float, "bool": bool,
@@ -133,9 +135,9 @@ class ComplexData:
                 content = element["content"]
                 
                 if obj_type == "PrimitiveData":
-                    return PrimitiveData(value=None, data_type=None, data_class=True).from_dict(content)
+                    return PrimitiveData.from_dict(content)
                 elif obj_type == "ComplexData":
-                    return self.from_dict(content)
+                    return cls.from_dict(content)
                 else:
                     raise ValueError(f"Unknown serialized object type: {obj_type}")
 
@@ -147,11 +149,11 @@ class ComplexData:
                 raise ValueError(f"Type '{type_name}' is not allowed or unknown.")
 
             # Caso 3: Es un diccionario de datos común (recurse keys & values)
-            return {k: self._deserialize_recursive(v) for k, v in element.items()}
+            return {k: cls._deserialize_recursive(v) for k, v in element.items()}
 
         # B. Manejo de Listas (recurse items)
         if isinstance(element, list):
-            return [self._deserialize_recursive(item) for item in element]
+            return [cls._deserialize_recursive(item) for item in element]
         
         # C. Literales (retorno directo)
         return element
@@ -165,11 +167,13 @@ class ComplexData:
             "MAXIMUM_LENGTH":self.maximum_length,
             "MINIMUM_LENGTH":self.minimum_length,
             "POSSIBLE_VALUES":self._serialize_recursive(self.possible_values) if self.possible_values is not None else None,
-            "DATA_CLASS":self.data_class
+            "DATA_CLASS":self.data_class,
+            "__type__":"ComplexData"
         }
 
     
-    def from_dict(self, data: dict) -> 'ComplexData':
+    @classmethod
+    def from_dict(cls, data: dict) -> 'ComplexData':
         # 1. Secure types mapping
         SAFE_TYPES = {
             "list": list, "tuple": tuple, "set": set, "frozenset": frozenset, 
@@ -186,7 +190,7 @@ class ComplexData:
 
         # Procesamos los possible_values con el motor recursivo
         raw_possible = data.get("POSSIBLE_VALUES")
-        possible_values = self._deserialize_recursive(raw_possible) if raw_possible is not None else None
+        possible_values = cls._deserialize_recursive(raw_possible) if raw_possible is not None else None
         
         # Corrección de tipo para tuplas (JSON no tiene tuplas, devuelve listas)
         # Si su __init__ es estricto y requiere tupla para possible_values, convertimos aquí:
@@ -199,7 +203,7 @@ class ComplexData:
              # aunque su validación actual acepta listas.
              pass
 
-        return ComplexData(
+        return cls(
             data_type=data_type,
             value=data.get("VALUE"), # Asumimos valor literal o serializable simple
             maximum_length=data.get("MAXIMUM_LENGTH"),
@@ -209,12 +213,13 @@ class ComplexData:
         )
 
     
-    def from_json(self, text_content: str) -> 'ComplexData':
+    @classmethod
+    def from_json(cls, text_content: str) -> 'ComplexData':
         try:
             data = json.loads(text_content)
         except json.JSONDecodeError as e:
             raise ValueError(f"Invalid JSON: {e}")
-        return self.from_dict(data)
+        return cls.from_dict(data)
 
     def to_json(self) -> str:
         return json.dumps(self.to_dict(), indent=4)

@@ -53,19 +53,20 @@ class PrimitiveData:
             "MINIMUM_SIZE":self.minimum_size,
             "POSSIBLE_VALUES":self.possible_values if self.possible_values is not None else None,
             "REGULAR_EXPRESSION":self.regular_expression,
-            "DATA_CLASS":self.data_class
+            "DATA_CLASS":self.data_class,
+            "__type__":"PrimitiveData"
         }
     
     def to_json(self) -> str:
         return json.dumps(self.to_dict(), indent=4)
-
     
-    def from_dict(self, data: dict) -> 'PrimitiveData':
+    @classmethod
+    def from_dict(cls, data: dict) -> 'PrimitiveData':
         # Expected keys definition
         expected_keys = {
             "DATA_TYPE", "VALUE", "MAXIMUM_LENGTH", "MINIMUM_LENGTH",
             "MAXIMUM_SIZE", "MINIMUM_SIZE", "POSSIBLE_VALUES",
-            "REGULAR_EXPRESSION", "DATA_CLASS"
+            "REGULAR_EXPRESSION", "DATA_CLASS", "__type__"
         }
         
         # Verify unknown keys on the table
@@ -91,7 +92,7 @@ class PrimitiveData:
              raise TypeError(f"Unsupported or unsafe data type for deserialization: {type_str}")
 
         # return instance result
-        return PrimitiveData(
+        return cls(
             data_type=real_type,
             value=data.get("VALUE"),
             maximum_length=data.get("MAXIMUM_LENGTH"),
@@ -103,13 +104,14 @@ class PrimitiveData:
             data_class=data.get("DATA_CLASS", False)
         )
         
-    def from_json(self, text_content: str) -> 'PrimitiveData':
+    @classmethod
+    def from_json(cls, text_content: str) -> 'PrimitiveData':
         try:
             data_table = json.loads(text_content)
         except json.JSONDecodeError as Error:
             raise ValueError(f"Invalid JSON format: {Error}")
             
-        return self.from_dict(data_table)
+        return cls.from_dict(data_table)
 
     def validate(self, data: Optional[Any] = None) -> bool:
         # Define the data to validate
