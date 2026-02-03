@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61.0", "datavalue"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "configurations-stc"
+version = "0.1.0" 
+description = "Librería de configuraciones y ajustes con tipos de datos ricos"
+readme = "README.md"
+authors = [{ name="Specter" }]
+requires-python = ">=3.10"
+
+[tool.setuptools.packages.find]
+include = ["configurations*"]
+exclude = ["docs*", "tests*"]

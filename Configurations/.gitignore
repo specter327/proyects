@@ -1,1 +1,21 @@
-__pycache__
+# --- Python Build & Distribution ---
+build/
+dist/
+node_modules/
+*.egg-info/
+*.egg
+
+# --- Byte-compiled / optimized / DLL files ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Virtual Environments ---
+venv/
+.venv/
+env/
+
+# --- IDEs & OS ---
+.vscode/
+.idea/
+.DS_Store
