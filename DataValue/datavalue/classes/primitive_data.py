@@ -59,17 +59,28 @@ class PrimitiveData:
     
     # Public methods
     def to_dict(self) -> dict:
+        normalized_possible = None
+        if self.possible_values is not None:
+            normalized_possible = []
+            for item in self.possible_values:
+                if isinstance(item, PrimitiveData):
+                    normalized_possible.append(item.to_dict())
+                elif isinstance(item, type):
+                    normalized_possible.append({"__class__": item.__name__})
+                else:
+                    normalized_possible.append(item)
+
         return {
-            "DATA_TYPE":self.data_type.__name__ if hasattr(self.data_type, '__name__') else str(self.data_type),
-            "VALUE":self.value,
-            "MAXIMUM_LENGTH":self.maximum_length,
-            "MINIMUM_LENGTH":self.minimum_length,
-            "MAXIMUM_SIZE":self.maximum_size,
-            "MINIMUM_SIZE":self.minimum_size,
-            "POSSIBLE_VALUES":self.possible_values if self.possible_values is not None else None,
-            "REGULAR_EXPRESSION":self.regular_expression,
-            "DATA_CLASS":self.data_class,
-            "__type__":"PrimitiveData"
+            "DATA_TYPE": self.data_type.__name__ if hasattr(self.data_type, '__name__') else str(self.data_type),
+            "VALUE": self.value,
+            "MAXIMUM_LENGTH": self.maximum_length,
+            "MINIMUM_LENGTH": self.minimum_length,
+            "MAXIMUM_SIZE": self.maximum_size,
+            "MINIMUM_SIZE": self.minimum_size,
+            "POSSIBLE_VALUES": normalized_possible,
+            "REGULAR_EXPRESSION": self.regular_expression,
+            "DATA_CLASS": self.data_class,
+            "__type__": "PrimitiveData"
         }
     
     def to_json(self) -> str:
@@ -77,36 +88,45 @@ class PrimitiveData:
     
     @classmethod
     def from_dict(cls, data: dict) -> 'PrimitiveData':
-        # Expected keys definition
         expected_keys = {
             "DATA_TYPE", "VALUE", "MAXIMUM_LENGTH", "MINIMUM_LENGTH",
             "MAXIMUM_SIZE", "MINIMUM_SIZE", "POSSIBLE_VALUES",
             "REGULAR_EXPRESSION", "DATA_CLASS", "__type__"
         }
         
-        # Verify unknown keys on the table
         unknown_keys = set(data.keys()) - expected_keys
         if unknown_keys:
             raise ValueError(f"Unknown keys in data structure: {unknown_keys}")
 
         # Secure type mapping
         type_mapping = {
-            "str": str,
-            "int": int,
-            "float": float,
-            "bool": bool,
-            "bytes": bytes,
-            "bytearray": bytearray,
-            "NoneType": type(None)
+            "str": str, "int": int, "float": float, "bool": bool,
+            "bytes": bytes, "bytearray": bytearray, "NoneType": type(None)
         }
 
         type_str = data.get("DATA_TYPE")
         real_type = type_mapping.get(type_str)
 
         if real_type is None and type_str != "None":
-             raise TypeError(f"Unsupported or unsafe data type for deserialization: {type_str}")
+             raise TypeError(f"Unsupported or unsafe data type: {type_str}")
 
-        # return instance result
+        # --- NORMALIZACIÓN DE POSSIBLE_VALUES (DESERIALIZACIÓN) ---
+        raw_possible = data.get("POSSIBLE_VALUES")
+        possible_values = None
+        if raw_possible is not None:
+            possible_values = []
+            for item in raw_possible:
+                if isinstance(item, dict):
+                    if item.get("__type__") == "PrimitiveData":
+                        possible_values.append(cls.from_dict(item))
+                    elif "__class__" in item:
+                        possible_values.append(type_mapping.get(item["__class__"]))
+                    else:
+                        possible_values.append(item)
+                else:
+                    possible_values.append(item)
+        # ----------------------------------------------------------
+
         return cls(
             data_type=real_type,
             value=data.get("VALUE"),
@@ -114,7 +134,7 @@ class PrimitiveData:
             minimum_length=data.get("MINIMUM_LENGTH"),
             maximum_size=data.get("MAXIMUM_SIZE"),
             minimum_size=data.get("MINIMUM_SIZE"),
-            possible_values=data.get("POSSIBLE_VALUES"),
+            possible_values=possible_values,
             regular_expression=data.get("REGULAR_EXPRESSION"),
             data_class=data.get("DATA_CLASS", False)
         )
