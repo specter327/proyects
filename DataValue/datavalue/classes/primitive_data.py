@@ -2,6 +2,7 @@
 import re
 from typing import Type, Optional, Any, Iterable, Union
 from .. import exceptions
+from .complex_data import ComplexData
 import json
 
 # Classes definition
@@ -29,6 +30,21 @@ class PrimitiveData:
             self.validate()
     
     # Private methods
+    def _is_match(self, element: Any, schema: Any) -> bool:        
+        if isinstance(schema, (PrimitiveData, ComplexData)):
+            try:
+                # Si el validador hijo no lanza excepción, el match es exitoso
+                return schema.validate(element)
+            except (exceptions.DataValueException, ValueError, TypeError):
+                return False
+        
+        # 2. Caso: El esquema es un tipo de dato (clase como str, int)
+        if isinstance(schema, type):
+            return isinstance(element, schema)
+    
+        # 3. Caso: El esquema es un valor literal
+        return element == schema
+
     def __get_length(self, data: Optional[Any] = None) -> Optional[int]:
         if data is None:
             data_objective = self.value
@@ -150,10 +166,12 @@ class PrimitiveData:
                 raise exceptions.PossibleValueException(
                     f"The boolean value has to be True or False: {data_objective} != True/False"
                 )
+        
         if self.possible_values is not None:
-            if data_objective not in self.possible_values:
+            # Implementación de any() con _is_match para soportar la composición de tipos
+            if not any(self._is_match(data_objective, validator) for validator in self.possible_values):
                 raise exceptions.PossibleValueException(
-                    f"The value is not in the possible values set: {data_objective} not in {self.possible_values}"
+                    f"Value '{data_objective}' is not allowed by any of the provided validators."
                 )
         
         # Validacion de expresion regular
