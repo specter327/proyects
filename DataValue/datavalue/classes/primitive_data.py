@@ -2,7 +2,6 @@
 import re
 from typing import Type, Optional, Any, Iterable, Union
 from .. import exceptions
-from .complex_data import ComplexData
 import json
 
 # Classes definition
@@ -31,7 +30,7 @@ class PrimitiveData:
     
     # Private methods
     def _is_match(self, element: Any, schema: Any) -> bool:        
-        if isinstance(schema, (PrimitiveData, ComplexData)):
+        if isinstance(schema, PrimitiveData):
             try:
                 # Si el validador hijo no lanza excepción, el match es exitoso
                 return schema.validate(element)
