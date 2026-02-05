@@ -79,6 +79,9 @@ class Configurations:
     def to_json(self) -> str:
         return json.dumps(self.to_dict(), indent=4)
 
+    def copy(self) -> "Configurations":
+        return self.from_json(self.to_json())
+    
     @classmethod
     def from_json(cls, text_content: str) -> "Configurations":
         return cls.from_dict(json.loads(text_content))
