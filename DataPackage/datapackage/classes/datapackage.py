@@ -3,7 +3,7 @@ import json
 import time
 import threading
 import queue
-from typing import Optional
+from typing import Optional, Any
 
 # Classes definition
 class Datapackage:
@@ -21,13 +21,16 @@ class Datapackage:
         # Package list
         self._package_queue: queue.Queue = queue.Queue()
 
-        # Data reception buffer
-        self._reception_buffer: bytes = bytes()
+        # Data reception
+        self._reception_parameters: Any = None
+        self._read_arguments: tuple = ()
+        self._read_keyword_arguments: dict = {}
 
         # Control
         self._running = True
 
         # Routines
+        self._parameters_lock: threading.Lock = threading.Lock()
         self._reader_thread: threading.Thread = threading.Thread(
             target=self._reader_thread_routine,
             daemon=True
@@ -39,7 +42,8 @@ class Datapackage:
         while self._running:
             try:
                 # Read a load of bytes
-                chunk = self._read_function()
+                with self._parameters_lock:
+                    chunk = self._read_function(*self._read_arguments, **self._read_keyword_arguments)
 
                 # Verify read result
                 if not chunk:
@@ -73,12 +77,19 @@ class Datapackage:
             pass
 
     # Public methods
-    def send_datapackage(self, data_package: dict) -> bool:
+    def set_reception_parameters(self, *args, **kwargs) -> bool:
+        with self._parameters_lock:
+            self._read_arguments = args
+            self._read_keyword_arguments = kwargs
+        
+        return True
+    
+    def send_datapackage(self, data_package: dict, *args, **kwargs) -> bool:
         try:
             datapackage_serialized = json.dumps(data_package).encode("UTF-8")
             full_dataframe = datapackage_serialized + self.PACKAGE_DELIMITER
 
-            return self._write_function(full_dataframe)
+            return self._write_function(full_dataframe, *args, **kwargs)
         except (TypeError, ValueError):
             return False
     
