@@ -4,6 +4,14 @@ Esta libreria proporciona una abstraccion generica para el uso de paquetes de da
 
 Los paquetes de datos son presentados como un diccionario (```dict```), y serializados en ```bytes``` en formato ```JSON``` (```UTF-8```) para su envio, o deserializados de ```bytes``` en formato ```JSON``` (```UTF-8```) a un diccionario (```dict```) en su recepcion, de manera que el intercambio de mensajes estructurados es simple y potente
 
+# Instalacion
+
+Para instalar la libreria unicamente ejecuta en un terminal:
+
+```bash
+$ pip install datapackage-messages
+```
+
 # Control
 
 La libreria requiere que se le proporcione acceso a dos funciones:
