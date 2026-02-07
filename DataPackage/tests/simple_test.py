@@ -1,5 +1,5 @@
 import time
-from datapackage_messages import Datapackage
+from datapackage import Datapackage
 
 # --- Simulación de Transporte (Loopback Buffer) ---
 virtual_transport_buffer = b""
