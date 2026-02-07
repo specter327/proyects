@@ -47,6 +47,10 @@ class Datapackage:
             try:
                 # Read a load of bytes
                 with self._parameters_lock:
+                    # Verify the current status
+                    if not self._running:
+                        break # Stop the reader
+
                     chunk = self._read_function(*self._read_arguments, **self._read_keyword_arguments)
 
                 # Verify read result
@@ -66,6 +70,10 @@ class Datapackage:
                     # Verify the result
                     if data_package:
                         self._process_packet(data_package)
+
+                    # Verify the current status
+                    if not self._running:
+                        return None # Stop the reader
 
             except Exception as Error:
                 traceback.print_exc()

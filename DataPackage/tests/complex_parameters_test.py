@@ -1,77 +1,87 @@
 import time
 import threading
-from typing import Dict
+from typing import Dict, List
 from datapackage import Datapackage 
+import json
 
-# --- MOCK DE CAPA DE TRANSPORTE ---
-class MockTransport:
+# --- SIMULACIÓN DE CAPA DE COMUNICACIÓN (MOCK) ---
+class GenericTransport:
+    """
+    Simula un backend de comunicaciones multiplexado que requiere 
+    un identificador de recurso para realizar operaciones de E/S.
+    """
     def __init__(self):
-        # Simula buffers de red para diferentes IDs de conexión
-        self.buffers: Dict[int, list] = {1: [], 2: []}
+        # Almacena buffers independientes por identificador
+        self.resource_buffers: Dict[int, List[bytes]] = {
+            101: [], 
+            102: []
+        }
 
-    def send(self, data: bytes, connection_id: int) -> bool:
-        print(f"[Transport] Enviando a ID {connection_id}: {data}")
-        # En una prueba real, aquí enviarías por un socket
+    def write(self, data: bytes, resource_id: int) -> bool:
+        """Simula una escritura en un recurso específico."""
+        print(f"[Transport] I/O Write -> Resource {resource_id}: {data}")
         return True
 
-    def receive(self, connection_id: int, limit: int = 4096, timeout: int = 1) -> bytes:
-        # Simula espera de datos
-        if connection_id in self.buffers and self.buffers[connection_id]:
-            return self.buffers[connection_id].pop(0)
-        time.sleep(0.1) # Simula latencia
+    def read(self, resource_id: int, buffer_limit: int = 4096, timeout: int = 1) -> bytes:
+        """Simula una lectura bloqueante de un recurso específico."""
+        if resource_id in self.resource_buffers and self.resource_buffers[resource_id]:
+            return self.resource_buffers[resource_id].pop(0)
+        
+        # Simulación de latencia de red/E/S
+        time.sleep(0.05)
         return b""
 
-# --- SCRIPT DE PRUEBA ---
-def test_datapackage_context():
-    transport = MockTransport()
+# --- BANCO DE PRUEBAS (TEST SUITE) ---
+def run_integration_test():
+    transport = GenericTransport()
     
-    print("--- Iniciando Prueba de Datapackage con Inyección de Contexto ---")
+    print("=== Datapackage: Generic Integration Test ===")
+    print("[1/5] Inicialización de instancia con parámetros de construcción...")
 
-    # 1. Instanciamos Datapackage
-    # Observa que pasamos las funciones del transporte directamente
+    # Instanciación con parámetros iniciales para Recurso 101
     dp = Datapackage(
-        write_function=transport.send,
-        read_function=transport.receive
+        write_function=transport.write,
+        read_function=transport.read,
+        read_arguments=(101, 2048) # Resource ID y Buffer Limit
     )
 
-    # 2. Configuramos los parámetros de recepción para la "Conexión 1"
-    # El hilo interno empezará a llamar a transport.receive(connection_id=1, limit=1024)
-    print("[*] Configurando Datapackage para Conexión ID: 1")
-    dp.set_reception_parameters(connection_id=1, limit=1024)
+    # Simulación de carga de datos en el backend
+    test_payload = {"status": "success", "data": "payload_alpha", "timestamp": time.time()}
+    raw_frame = json.dumps(test_payload).encode("UTF-8") + Datapackage.PACKAGE_DELIMITER
+    transport.resource_buffers[101].append(raw_frame)
 
-    # 3. Simulamos la llegada de un paquete al buffer del transporte para el ID 1
-    test_data = {"MSG": "Hola Stark", "SEQ": 1}
-    raw_packet = b'{"MSG": "Hola Stark", "SEQ": 1}' + Datapackage.PACKAGE_DELIMITER
-    transport.buffers[1].append(raw_packet)
-
-    # 4. Intentamos recibir el paquete procesado
-    print("[*] Esperando paquete procesado...")
+    print("[2/5] Verificación de recepción con contexto inicial...")
     received = dp.receive_datapackage(timeout=2)
     
-    if received:
-        print(f"[+] Éxito! Recibido en Capa Superior: {received}")
+    if received and received.get("data") == "payload_alpha":
+        print(f"    [OK] Datos procesados correctamente: {received}")
     else:
-        print("[!] Error: No se recibió el paquete.")
+        print("    [FAIL] Error en la recepción o procesamiento de datos.")
 
-    # 5. Probamos el Envío (Pasando el ID dinámicamente)
-    print("\n[*] Probando envío con parámetros dinámicos...")
-    send_status = dp.send_datapackage({"CMD": "PING"}, connection_id=1)
-    if send_status:
-        print("[+] Envío ejecutado correctamente.")
+    print("\n[3/5] Verificación de transmisión con parámetros dinámicos...")
+    # Se pasan los argumentos necesarios para la función 'write' del transporte
+    send_success = dp.send_datapackage({"command": "reboot"}, resource_id=101)
+    if send_success:
+        print("    [OK] Transmisión enviada a la función de escritura.")
 
-    # 6. Prueba de Cambio de Contexto "En Caliente"
-    print("\n[*] Cambiando contexto a Conexión ID: 2 (Prueba de Lock)")
-    dp.set_reception_parameters(connection_id=2)
+    print("\n[4/5] Prueba de actualización de contexto (Hot Swap)...")
+    # Cambiamos el foco del hilo lector al Recurso 102
+    dp.update_reception_parameters(resource_id=102, buffer_limit=4096)
     
-    # Metemos datos en el buffer del ID 2
-    transport.buffers[2].append(b'{"STATUS": "CONNECTED"}' + Datapackage.PACKAGE_DELIMITER)
+    # Inyectamos datos en el nuevo recurso
+    new_payload = {"status": "active", "data": "payload_beta"}
+    new_frame = json.dumps(new_payload).encode("UTF-8") + Datapackage.PACKAGE_DELIMITER
+    transport.resource_buffers[102].append(new_frame)
     
-    received_new = dp.receive_datapackage(timeout=2)
-    print(f"[+] Recibido tras cambio de ID: {received_new}")
+    received_updated = dp.receive_datapackage(timeout=2)
+    if received_updated and received_updated.get("data") == "payload_beta":
+        print(f"    [OK] Contexto actualizado. Datos recibidos del Recurso 102: {received_updated}")
+    else:
+        print("    [FAIL] No se recibieron datos tras la actualización de parámetros.")
 
-    # Finalizar
+    print("\n[5/5] Finalización de procesos...")
     dp.stop()
-    print("\n--- Prueba Finalizada ---")
+    print("=== Test Finalizado con Éxito ===")
 
 if __name__ == "__main__":
-    test_datapackage_context()
+    run_integration_test()
