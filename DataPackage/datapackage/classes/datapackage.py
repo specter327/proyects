@@ -8,7 +8,7 @@ from typing import Optional
 # Classes definition
 class Datapackage:
     # Class properties definition
-    PACKAGE_DELIMITER: bytes = b"\01\02\03\x1\x2\x3"
+    PACKAGE_DELIMITER: bytes = b"\01\02\03\01\01\01"
 
     def __init__(self,
         write_function: callable,
