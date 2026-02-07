@@ -13,7 +13,10 @@ class Datapackage:
 
     def __init__(self,
         write_function: callable,
-        read_function: callable
+        read_function: callable,
+
+        read_arguments: Optional[tuple] = None,
+        read_keyword_arguments: Optional[dict] = None
     ) -> None:
         # Instance properties assignment
         self._write_function = write_function
@@ -23,8 +26,8 @@ class Datapackage:
         self._package_queue: queue.Queue = queue.Queue()
 
         # Data reception
-        self._read_arguments: tuple = ()
-        self._read_keyword_arguments: dict = {}
+        self._read_arguments: tuple = read_arguments if read_arguments else ()
+        self._read_keyword_arguments: dict = read_keyword_arguments if read_keyword_arguments else {}
         self._reception_buffer: bytes = bytes()
 
         # Control
@@ -78,7 +81,7 @@ class Datapackage:
             traceback.print_exc()
 
     # Public methods
-    def set_reception_parameters(self, *args, **kwargs) -> bool:
+    def update_reception_parameters(self, *args, **kwargs) -> bool:
         with self._parameters_lock:
             self._read_arguments = args
             self._read_keyword_arguments = kwargs
