@@ -4,6 +4,7 @@ import time
 import threading
 import queue
 from typing import Optional, Any
+import traceback
 
 # Classes definition
 class Datapackage:
@@ -22,9 +23,9 @@ class Datapackage:
         self._package_queue: queue.Queue = queue.Queue()
 
         # Data reception
-        self._reception_parameters: Any = None
         self._read_arguments: tuple = ()
         self._read_keyword_arguments: dict = {}
+        self._reception_buffer: bytes = bytes()
 
         # Control
         self._running = True
@@ -64,7 +65,7 @@ class Datapackage:
                         self._process_packet(data_package)
 
             except Exception as Error:
-                pass
+                traceback.print_exc()
     
     def _process_packet(self, data_package: bytes) -> bool:
         try:
@@ -74,7 +75,7 @@ class Datapackage:
             # Save the processed package
             self._package_queue.put(datapackage)
         except (json.JSONDecodeError, UnicodeDecodeError):
-            pass
+            traceback.print_exc()
 
     # Public methods
     def set_reception_parameters(self, *args, **kwargs) -> bool:
@@ -91,12 +92,14 @@ class Datapackage:
 
             return self._write_function(full_dataframe, *args, **kwargs)
         except (TypeError, ValueError):
+            traceback.print_exc()
             return False
     
     def receive_datapackage(self, timeout: Optional[int] = None) -> Optional[dict]:
         try:
             return self._package_queue.get(block=True, timeout=timeout)
         except queue.Empty:
+            traceback.print_exc()
             return None
     
     def stop(self) -> bool:
