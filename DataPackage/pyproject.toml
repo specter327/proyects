@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "datapackage-messages"
+version = "0.1.1" 
+description = "Librería de paquetes de datos para mensajes estructurados sobre comunicaciones"
+readme = "README.md"
+authors = [{ name="Specter" }]
+requires-python = ">=3.10"
+
+[tool.setuptools.packages.find]
+include = ["datapackage*"]
+exclude = ["docs*"]
