@@ -1,0 +1,1 @@
+Stark es un proyecto de software de control remoto simple.
