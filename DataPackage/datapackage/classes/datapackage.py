@@ -52,8 +52,6 @@ class Datapackage:
                         break # Stop the reader
 
                     chunk = self._read_function(*self._read_arguments, **self._read_keyword_arguments)
-                    print("[DataPackage] Readed chunk:")
-                    print(chunk)
                 # Verify read result
                 if not chunk:
                     # Wait execution temporizer
