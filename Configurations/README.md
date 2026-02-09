@@ -4,6 +4,14 @@
 
 Donde **Configurations** provee una representacion completa, cada **Setting** presenta un contexto de cada ajuste, y cada **DataValue** aplica validacion estricta de valores. Ademas, se ofrecen funciones de serializacion para la normalizacion, almacenamiento y transporte de datos entre sistemas.
 
+# Instalacion
+
+Para instalar la libreria unicamente ejecuta en un terminal:
+
+```bash
+$ pip install configurations-stc
+```
+
 # Uso
 Su uso es tan simple como:
 1. Importar configuraciones

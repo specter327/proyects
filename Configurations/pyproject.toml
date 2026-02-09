@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "configurations-stc"
-version = "0.1.5" 
+version = "0.1.6" 
 description = "Librería de configuraciones y ajustes con tipos de datos ricos"
 readme = "README.md"
 authors = [{ name="Specter" }]

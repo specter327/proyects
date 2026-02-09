@@ -12,7 +12,8 @@ class Setting:
         system_name: str,
         symbolic_name: str,
         description: str = "",
-        optional: bool = False
+        optional: bool = False,
+        private: bool = False
         # default_value TODO !
     ) -> None:
         # Instance property definition
@@ -21,6 +22,7 @@ class Setting:
         self.description = description
         self.value = value
         self.optional = optional
+        self.private = private
     
     # Public methods
     def to_dict(self) -> dict:
@@ -29,8 +31,9 @@ class Setting:
             "SYSTEM_NAME":self.system_name,
             "SYMBOLIC_NAME":self.symbolic_name,
             "DESCRIPTION":self.description,
-            "VALUE":self.value.to_dict(),
-            "OPTIONAL":self.optional
+            "VALUE":self.value.to_dict() if not self.private else "*****",
+            "OPTIONAL":self.optional,
+            "PRIVATE":self.private
         }
     
     @classmethod
@@ -40,6 +43,7 @@ class Setting:
         symbolic_name = data.get("SYMBOLIC_NAME")
         description = data.get("DESCRIPTION")
         optional = data.get("OPTIONAL", False)
+        private = data.get("PRIVATE", False)
 
         raw_value = data.get("VALUE")
 
@@ -60,7 +64,8 @@ class Setting:
             system_name=system_name,
             symbolic_name=symbolic_name,
             description=description,
-            optional=optional
+            optional=optional,
+            private=private
         )
     
     def to_json(self) -> str:

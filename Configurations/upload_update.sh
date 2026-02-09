@@ -46,7 +46,7 @@ case "$response" in
     [yY][eE][sS]|[yY]|"")
         if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
             git add .
-            git commit -m "Configurations-STC: Automated update v$NEW_VERSION"
+            git commit -m "Configurations-STC: Actualizacion automatica v$NEW_VERSION"
             git push origin main
             
             # Configuracion de etiquetas (tags) de Github
