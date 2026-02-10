@@ -27,14 +27,22 @@ class Setting:
     # Public methods
     def to_dict(self) -> dict:
         "This method serializes the configuration to a dict data structure."
-        return {
+        structure = {
             "SYSTEM_NAME":self.system_name,
             "SYMBOLIC_NAME":self.symbolic_name,
             "DESCRIPTION":self.description,
-            "VALUE":self.value.to_dict() if not self.private else "*****",
+            "VALUE":self.value.to_dict(),
             "OPTIONAL":self.optional,
             "PRIVATE":self.private
         }
+
+        if self.private:
+            private_value = self.value.to_dict()
+            private_value["VALUE"] = "*****"
+
+            structure["VALUE"] = private_value
+    
+        return structure
     
     @classmethod
     def from_dict(cls, data: dict) -> "Setting":
