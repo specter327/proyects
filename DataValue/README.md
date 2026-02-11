@@ -2,6 +2,15 @@
 
 **DataValue** es una libreria de Python ligera pero potente para la especificacion de datos estrictos usando valores simples.
 
+
+# Instalacion
+
+Para instalar la libreria unicamente ejecuta en un terminal:
+
+```bash
+$ pip install datavalue
+```
+
 ## Objetivos
 
 El objetivo de esta libreria es implementar una forma basica y especifica para la descripcion de datos, y su validacion estricta. Ya que en mas de una ocasion, se validan criterios como:

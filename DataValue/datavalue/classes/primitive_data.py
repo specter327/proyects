@@ -3,6 +3,7 @@ import re
 from typing import Type, Optional, Any, Iterable, Union
 from .. import exceptions
 import json
+import base64
 
 # Classes definition
 class PrimitiveData:
@@ -69,10 +70,16 @@ class PrimitiveData:
                     normalized_possible.append({"__class__": item.__name__})
                 else:
                     normalized_possible.append(item)
+        
+        # Process raw data
+        if isinstance(self.value, bytes):
+            raw_value = base64.b64encode(self.value).decode("UTF-8")
+        else:
+            raw_value = self.value
 
-        return {
+        data_structure = {
             "DATA_TYPE": self.data_type.__name__ if hasattr(self.data_type, '__name__') else str(self.data_type),
-            "VALUE": self.value,
+            "VALUE": raw_value,
             "MAXIMUM_LENGTH": self.maximum_length,
             "MINIMUM_LENGTH": self.minimum_length,
             "MAXIMUM_SIZE": self.maximum_size,
@@ -82,6 +89,8 @@ class PrimitiveData:
             "DATA_CLASS": self.data_class,
             "__type__": "PrimitiveData"
         }
+
+        return data_structure
     
     def to_json(self) -> str:
         return json.dumps(self.to_dict(), indent=4)
@@ -110,6 +119,13 @@ class PrimitiveData:
         if real_type is None and type_str != "None":
              raise TypeError(f"Unsupported or unsafe data type: {type_str}")
 
+        value = data.get("VALUE")
+        if real_type in (bytes, bytearray) and isinstance(value, str):
+            value = base64.b64decode(value.encode("UTF-8"))
+
+            if real_type is bytearray:
+                value = bytearray(value)
+        
         # --- NORMALIZACIÓN DE POSSIBLE_VALUES (DESERIALIZACIÓN) ---
         raw_possible = data.get("POSSIBLE_VALUES")
         possible_values = None
@@ -129,7 +145,7 @@ class PrimitiveData:
 
         return cls(
             data_type=real_type,
-            value=data.get("VALUE"),
+            value=value,
             maximum_length=data.get("MAXIMUM_LENGTH"),
             minimum_length=data.get("MINIMUM_LENGTH"),
             maximum_size=data.get("MAXIMUM_SIZE"),
