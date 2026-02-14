@@ -43,7 +43,7 @@ fi
 # 4. Publicación en PyPI
 # Requiere: python3 -m pip install twine
 echo "[*] Publicando en PyPI...";
-if python3 -m twine upload dist/*; then
+if python3 -m twine upload dist/* --verbose; then
     echo "[+] Publicación en PyPI completada."
 else
     echo "[!] Error en la carga a PyPI. Abortando proceso."
