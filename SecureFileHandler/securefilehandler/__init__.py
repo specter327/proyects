@@ -7,8 +7,8 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.backends import default_backend
 from . import handlers
-from handlers import FileHandlerInterface
-from handlers import *
+from .handlers import FileHandlerInterface
+from .handlers import *
 
 # Classes definition
 class SecureFileHandler(FileHandlerInterface):
