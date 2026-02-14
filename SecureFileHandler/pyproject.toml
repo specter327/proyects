@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "securefilehandler-abs"
-version = "0.1.5" 
+version = "0.1.6" 
 description = "Librería de manejo seguro de datos (criptografia) sobre archivos"
 readme = "README.md"
 authors = [{ name="Specter" }]

@@ -21,5 +21,5 @@ class FileHandlerInterface(ABC):
     @abstractmethod
     def read(self) -> bytes: raise NotImplementedError
 
-from localfilehandler import *
-from virtualfilehandler import *
+from .localfilehandler import *
+from .virtualfilehandler import *
