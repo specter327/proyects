@@ -10,7 +10,7 @@ def get_dynamic_port():
     print("[*] Buscando puerto activo del servidor...")
     if sys.argv[1]:
         return int(sys.argv[1])
-
+        
     while not os.path.exists(PORT_FILE):
         time.sleep(0.5)
     

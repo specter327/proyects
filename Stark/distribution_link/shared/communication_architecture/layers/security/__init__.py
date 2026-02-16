@@ -87,7 +87,7 @@ class SecurityLayer(LayerInterface):
     def load_module(self, module: ModuleInterface, configurations: object) -> bool:
         self.loaded_module = module(self)
         self.loaded_module.configure(configurations)
-        self.loaded_module.start()
+        #self.loaded_module.start()
 
         return True
 
@@ -155,6 +155,18 @@ class SecurityLayer(LayerInterface):
                     local_configurations.query_setting("PUBLIC_ENCRYPTION_KEY").value.value = remote_configurations.query_setting("PUBLIC_ENCRYPTION_KEY").value.value
 
                     self.load_module(module_instance, local_configurations)
+
+                elif module_instance.CRYPTOGRAPHIC_MODEL == SecurityModuleInterface.SIMMETRIC_MODEL:
+                    print("[SecurityLayer] Negociando modelo simétrico/transparente...")
+                    # Intercambio simple de configuraciones
+                    datapackages_handler.send_datapackage({"MODULE_CONFIGURATIONS": module_configurations.to_dict()})
+                    
+                    remote_pkg = datapackages_handler.receive_datapackage()
+                    remote_configurations = Configurations.from_dict(remote_pkg.get("MODULE_CONFIGURATIONS"))
+                    
+                    # En modelos simétricos, las configuraciones suelen ser espejadas o compartidas
+                    self.load_module(module_instance, remote_configurations)
+                
             
             elif role == self.LAYER_ROLE_ACTIVE:
                 # Receive the available modules datapackage
@@ -191,6 +203,19 @@ class SecurityLayer(LayerInterface):
                     local_configurations.query_setting("PUBLIC_ENCRYPTION_KEY").value.value = remote_configurations.query_setting("PUBLIC_ENCRYPTION_KEY").value.value
 
                     self.load_module(module_instance, local_configurations)
+
+                elif module_instance.CRYPTOGRAPHIC_MODEL == SecurityModuleInterface.SIMMETRIC_MODEL:
+                    print("[SecurityLayer] Negociando modelo simétrico/transparente...")
+                    datapackages_handler.send_datapackage({"MODULE_CONFIGURATIONS": module_configurations.to_dict()})
+                    
+                    remote_pkg = datapackages_handler.receive_datapackage()
+                    remote_configurations = Configurations.from_dict(remote_pkg.get("MODULE_CONFIGURATIONS"))
+                    
+                    self.load_module(module_instance, remote_configurations)
+
+            if self.loaded_module:
+                self.loaded_module.start()
+
         except:
             traceback.print_exc()
             return False

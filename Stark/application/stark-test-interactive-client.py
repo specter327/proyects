@@ -1,33 +1,28 @@
 import time
 import os
-import subprocess
 import sys
 from shared.communication_architecture import layers
 
 PORT_FILE = ".stark_port"
 
 def get_dynamic_port():
-    """Recupera el puerto desde argumentos o archivo de señalización."""
-    try:
-        if len(sys.argv) > 1:
-            return int(sys.argv[1])
-    except ValueError:
-        pass
-
-    print("[*] Buscando puerto activo en archivo de sistema...")
+    if len(sys.argv) > 1:
+        return int(sys.argv[1])
+        
+    print("[*] Buscando puerto activo en archivo de señalización...")
     while not os.path.exists(PORT_FILE):
         time.sleep(0.5)
     
     with open(PORT_FILE, "r") as f:
         return int(f.read().strip())
 
-def run_interactive_client():
-    print("=== STARK SYSTEM: INTERACTIVE PASSIVE CLIENT ===")
+def run_interactive_console():
+    print("=== STARK SYSTEM: OPERATOR CONSOLE ===")
     
     server_port = get_dynamic_port()
-    print(f"[Link] Estableciendo túnel hacia el puerto: {server_port}")
+    print(f"[Link] Objetivo: 127.0.0.1:{server_port}")
 
-    # Inicialización del Stack de Capas
+    # Inicialización del Stack
     layers_container = layers.LayerContainer()
     layers_container.start()
     
@@ -36,7 +31,7 @@ def run_interactive_client():
     transport.start()
     comm_layer.start()
 
-    # Configuración de Capa 4 (Transporte)
+    # Configuración TCP
     tcp_module = transport.query_module("TRANSPORT_TCP_IP")
     cfg = tcp_module.CONFIGURATIONS.copy()
     cfg.query_setting("REMOTE_ADDRESS").value.value = "127.0.0.1"
@@ -44,62 +39,45 @@ def run_interactive_client():
     
     client_id = transport.connect(tcp_module, cfg)
 
-    if not client_id:
-        print("[!] Error crítico: No se pudo establecer la conexión TCP.")
-        return
+    if client_id:
+        # MANTENEMOS "PASSIVE" PORQUE ES LO QUE TU HANDSHAKE ACEPTA ACTUALMENTE
+        session_uuid = comm_layer.create_session(connection_identifier=client_id, local_role="PASSIVE")
+        
+        if session_uuid:
+            session = comm_layer.sessions_table.get(session_uuid)
+            print("[Link] Túnel seguro establecido. Consola lista.")
+            print("------------------------------------------------")
 
-    # Creación de Sesión en Capa de Aplicación (Modo PASIVO para recibir comandos)
-    session_uuid = comm_layer.create_session(connection_identifier=client_id, local_role="PASSIVE")
-    
-    if session_uuid:
-        session = comm_layer.sessions_table.get(session_uuid)
-        print("[Link] Sesión establecida. Esperando instrucciones del servidor...")
+            try:
+                while True:
+                    # 1. INPUT: El operador toma la iniciativa
+                    command = input("Stark-Shell> ").strip()
+                    
+                    if not command:
+                        continue
 
-        try:
-            while True:
-                # El cliente PASIVO espera a que el ACTIVE (servidor) hable primero
-                datapackage = session.datapackages_handler.receive_datapackage(timeout=None)
-                
-                if not datapackage:
-                    continue
+                    # 2. SEND: Enviamos la orden al Agente (Servidor)
+                    session.datapackages_handler.send_datapackage({"COMMAND": command})
 
-                command = datapackage.get("COMMAND")
-                
-                if command:
-                    # Comando de ruptura
-                    if command.strip().upper() in ["EXIT", "QUIT"]:
+                    if command.upper() in ["EXIT", "QUIT"]:
                         break
 
-                    # Ejecución silenciosa y captura de flujo
-                    proc = subprocess.Popen(
-                        command, 
-                        shell=True, 
-                        stdout=subprocess.PIPE, 
-                        stderr=subprocess.PIPE, 
-                        stdin=subprocess.PIPE
-                    )
-                    stdout, stderr = proc.communicate()
-                    output = stdout.decode() + stderr.decode()
+                    # 3. RECEIVE: Esperamos la salida del comando
+                    # Usamos timeout=None para esperar comandos largos
+                    datapackage = session.datapackages_handler.receive_datapackage(timeout=None)
+                    
+                    if datapackage and "RESULT" in datapackage:
+                        print(datapackage["RESULT"])
+                    else:
+                        print("[!] Trama vacía o sin resultado.")
 
-                    # Si no hay salida (ej: rm file), enviamos confirmación para no dejar al server colgado
-                    if not output:
-                        output = "[*] Command executed (No output)"
-
-                    # Responder al servidor
-                    session.datapackages_handler.send_datapackage({
-                        "RESULT": output
-                    })
-
-        except KeyboardInterrupt:
-            print("\n[!] Conexión cerrada por el usuario.")
-        except Exception as e:
-            print(f"\n[!] Error en el bucle de comunicación: {e}")
+            except KeyboardInterrupt:
+                print("\n[*] Interrupción de usuario.")
+            except Exception as e:
+                print(f"[!] Error crítico en sesión: {e}")
         
-    # Cleanup
-    print("[*] Desconectando capas...")
     transport.disconnect(client_id)
     layers_container.stop()
-    print("=== CLIENTE STARK FINALIZADO ===")
 
 if __name__ == "__main__":
-    run_interactive_client()
+    run_interactive_console()
