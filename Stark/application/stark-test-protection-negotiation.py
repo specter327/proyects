@@ -79,10 +79,14 @@ def run_stark_protection_negotiation_test():
 
     print("[SERVER] Leyendo de la capa de protección...")
     # El módulo debe haber hecho el unprotect internamente
-    received_data = protection.receive(server_id, limit=1024, timeout=None)
+    while True:
+        received_data = protection.receive(server_id, limit=1024, timeout=30)
 
     # 6. VALIDACIÓN
-    print(f"\n[RESULTADO] Datos recibidos: {received_data}")
+        print(f"\n[RESULTADO] Datos recibidos: {received_data}")
+        print(time.time())
+        time.sleep(5)
+
     if received_data == payload:
         print("=== [SUCCESS] Negociación y Transmisión Validadas ===")
     else:
