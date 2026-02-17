@@ -51,12 +51,12 @@ class SessionLayer:
     # Public methods
     def send(self, data: bytes) -> bool:
         # Resend the data throught the layers stack
-        self.security_layer.send(self.connection_identifier, data)
+        self.protection_layer.send(self.connection_identifier, data)
         return True
 
     def receive(self, limit: Optional[int] = None, timeout: Optional[int] = None) -> bytes:
         # Receive data throught the layers stack
-        return self.security_layer.receive(self.connection_identifier, limit, timeout)
+        return self.protection_layer.receive(self.connection_identifier, limit, timeout)
 
     def start(self) -> bool:
         # Create a protection layer instance

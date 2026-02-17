@@ -1,5 +1,6 @@
 # Library import
 from ... import SecurityModuleInterface
+from ......utils.logger import logger
 from typing import Optional
 from configurations import Configurations
 import threading
@@ -19,24 +20,30 @@ class SecurityModule(SecurityModuleInterface):
         self._active = False
         self._read_process: Optional[threading.Thread] = None
         self.layer = layer
+        self.logger = logger(self.MODULE_NAME)
 
     def start(self) -> bool:
         self._protection_layer = self.layer.layers_container.query_layer("PROTECTION")
         self._active = True
-        self._read_process = threading.Thread(
-            target=self._read_routine,
-            daemon=True
-        )
-        self._read_process.start()
+        #self._read_process = threading.Thread(
+        #    target=self._read_routine,
+        #    daemon=True
+        #)
+        #self._read_process.start()
+
+        self.logger.info("Module initializated")
         return True
     
     def stop(self) -> bool:
         self._active = False
+        self.logger.info("Module stopped")
+
         return True
     
     def configure(self, configurations: object) -> bool:
         self.configurations = configurations
         self._set_configurated(configurated=True)
+        self.logger.info("Module configurated")
         return True
     
     def secure(self, data: bytes) -> bytes:
@@ -61,6 +68,9 @@ class SecurityModule(SecurityModuleInterface):
             return False
     
     def read(self, limit: int = None, timeout: int = None) -> bytes:
+        device_identifier = self.layer.layer_settings.query_setting("DEVICE_IDENTIFIER").value.value
+        return self._protection_layer.receive(device_identifier, limit=limit, timeout=timeout)
+    
         start_time = time.time()
         while True:
             with self._lock:
@@ -68,6 +78,8 @@ class SecurityModule(SecurityModuleInterface):
                     end = limit if limit is not None else len(self._clean_buffer)
                     data = bytes(self._clean_buffer[:end])
                     del self._clean_buffer[:end]
+                    self.logger.debug(f"Returned data: {len(data)}")
+
                     return data
             
             if timeout is not None and (time.time() - start_time) > timeout:
@@ -80,14 +92,24 @@ class SecurityModule(SecurityModuleInterface):
         Punta de entrada concurrente: Mueve datos de PROTECTION a SECURITY
         sin procesar bloques fijos.
         """
-        device_identifier = self.layer.layer_settings.query_setting("DEVICE_IDENTIFIER").value.value
+        self.logger.info("Starting receive routine")
         while self._active:
+            device_identifier = self.layer.layer_settings.query_setting("DEVICE_IDENTIFIER").value.value
+            if not device_identifier:
+                print("THERES ANY FUCKING device IDENTIFIER")
+                time.sleep(0.100)
+                continue
+
             try:
                 # Leemos lo que esté disponible, sin forzar 256 bytes
-                data = self._protection_layer.receive(device_identifier, limit=4096, timeout=1) 
+                data = self._protection_layer.receive(device_identifier, limit=1, timeout=1) 
                 if data:
                     with self._lock:
                         # En este módulo, unsecure() no hace nada
+                        self.logger.debug(f"Extended data: {len(data)}")
                         self._clean_buffer.extend(self.unsecure(data))
+                        print("[SecurityModule TRANSPARENT] Extended data:")
+                        print(data)
             except Exception:
                 traceback.print_exc()
+        self.logger.info("Stopping receive routine")

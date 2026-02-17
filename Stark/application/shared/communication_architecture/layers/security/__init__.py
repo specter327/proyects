@@ -1,5 +1,6 @@
 # Library import
 from .. import LayerContainer, LayerInterface, ModuleInterface, ModuleContainer, LAYER_TYPE_SESSION
+from ....utils.logger import logger
 from . import modules
 from abc import ABC, abstractmethod
 from configurations import Configurations, Setting
@@ -62,6 +63,7 @@ class SecurityLayer(LayerInterface):
         self._module_container = ModuleContainer()
         self.loaded_module: Optional[ModuleInterface] = None
         self.layer_settings = LAYER_CONFIGURATIONS
+        self.logger = logger("SECURITY_LAYER")
 
     @property
     def NAME(self) -> str:
@@ -75,24 +77,30 @@ class SecurityLayer(LayerInterface):
 
     def start(self) -> bool:
         self._module_container.load_modules(package=modules.__package__)
+        self.logger.info("Security layer initializated")
         return True
     
     def stop(self) -> bool:
+        self.logger.info("Security layer stopped")
         return True
     
     def configure(self, configurations: object) -> bool:
         self.configurations = configurations
+        self.logger.info("Security layer configurated")
         return True
     
     def load_module(self, module: ModuleInterface, configurations: object) -> bool:
         self.loaded_module = module(self)
         self.loaded_module.configure(configurations)
+        self.logger.info(f"Security module loaded: {module}, with configurations: {configurations}")
         #self.loaded_module.start()
 
         return True
 
     def send(self, device_identifier: int, data: bytes) -> bool:
         print("Enviando datos por la capa de proteccion....")
+        self.logger.info(f"Sending data: {len(data)}, to the connection: {device_identifier}")
+
         if not self.loaded_module: 
             raise RuntimeError("Theres no loaded module to use")
         
@@ -107,7 +115,11 @@ class SecurityLayer(LayerInterface):
             raise RuntimeError("Theres no loaded module to use")
         
         # Extraemos los datos ya "limpios" del buffer del módulo
-        return self.loaded_module.read(limit=limit)
+        data_readed = self.loaded_module.read(limit=limit)
+        self.logger.info(f"Data received: {data_readed}, with length: {len(data_readed)}, from the connection: {device_identifier}")
+        #print("[SecurityLayer] Returned data:")
+        #print(data_readed)
+        return data_readed 
 
     def negotiate(self, role: str, connection_identifier: int) -> Configurations | bool:
         # Get the protection layer
@@ -116,9 +128,15 @@ class SecurityLayer(LayerInterface):
         # Create a datapackage handler
         datapackages_handler = Datapackage(
             write_function=lambda data, **kwargs: protection_layer.send(connection_identifier, data, **kwargs),
-            read_function=lambda limit, timeout: protection_layer.receive(connection_identifier, limit, timeout),
-            read_arguments=(connection_identifier, 1)
+            read_function=lambda **kwargs: protection_layer.receive(**kwargs),
+            read_keyword_arguments={
+                "device_identifier":connection_identifier,
+                "limit":1,
+                "timeout":30
+            }
         )
+
+        self.logger.info(f"Negotiating security layer with role: {role}, with the connection: {connection_identifier}")
 
         try:
             if role == self.LAYER_ROLE_PASSIVE:
@@ -130,6 +148,9 @@ class SecurityLayer(LayerInterface):
                 choice_module = selected_module.get("SELECTED_MODULE")
                 module_instance = self.query_module(choice_module)
 
+                self.logger.info(f"Available modules: {self.query_modules()}")
+                self.logger.info(f"Selected module: {choice_module}")
+
                 print("[Link] Selected module:", choice_module)
 
                 # Generate the module configurations
@@ -137,7 +158,9 @@ class SecurityLayer(LayerInterface):
 
                 print("Generated configurations:")
                 print(module_configurations.to_json())
-
+                self.logger.info("Local configurations generated")
+                self.logger.info(f"Negotiating algorithm model: {module_instance.CRYPTOGRAPHIC_MODEL}"
+                                 )
                 # Configuration exchange
                 # Determine the type of negotiation according to the cryptographic model
                 if module_instance.CRYPTOGRAPHIC_MODEL == SecurityModuleInterface.ASYMMETRIC_MODEL:
@@ -145,9 +168,11 @@ class SecurityLayer(LayerInterface):
 
                     # Send the local configurations (protecting the private key)
                     datapackages_handler.send_datapackage({"MODULE_CONFIGURATIONS":module_configurations.to_dict()})
+                    self.logger.info("Local asymmetric keys sended")
 
                     # Receive the remote configurations
                     remote_configurations = Configurations.from_dict(datapackages_handler.receive_datapackage().get("MODULE_CONFIGURATIONS"))
+                    self.logger.info("Remote asymmetric keys received")
 
                     # Set the local module
                     local_configurations = module_configurations.copy()
@@ -155,27 +180,31 @@ class SecurityLayer(LayerInterface):
                     local_configurations.query_setting("PUBLIC_ENCRYPTION_KEY").value.value = remote_configurations.query_setting("PUBLIC_ENCRYPTION_KEY").value.value
 
                     self.load_module(module_instance, local_configurations)
+                    self.logger.info("Module loaded")
 
                 elif module_instance.CRYPTOGRAPHIC_MODEL == SecurityModuleInterface.SIMMETRIC_MODEL:
                     print("[SecurityLayer] Negociando modelo simétrico/transparente...")
                     # Intercambio simple de configuraciones
                     datapackages_handler.send_datapackage({"MODULE_CONFIGURATIONS": module_configurations.to_dict()})
-                    
+                    self.logger.info("Local symmetric keys sended")
                     remote_pkg = datapackages_handler.receive_datapackage()
                     remote_configurations = Configurations.from_dict(remote_pkg.get("MODULE_CONFIGURATIONS"))
-                    
+                    self.logger.info("Remote symmetric keys received")
+
                     # En modelos simétricos, las configuraciones suelen ser espejadas o compartidas
                     self.load_module(module_instance, remote_configurations)
-                
+                    self.logger.info("Module loaded")
             
             elif role == self.LAYER_ROLE_ACTIVE:
                 # Receive the available modules datapackage
                 available_modules = datapackages_handler.receive_datapackage(timeout=10)
 
                 print("[Nexus] Available modules:", available_modules.get("AVAILABLE_MODULES"))
+                self.logger.info(f"Available modules: {available_modules.get('AVAILABLE_MODULES')}")
 
                 # Select a module
                 module_choice = available_modules["AVAILABLE_MODULES"][0]
+                self.logger.info(f"Selected module: {module_choice}")
 
                 # Send the selected module data package
                 datapackages_handler.send_datapackage({"SELECTED_MODULE":module_choice})
@@ -186,6 +215,7 @@ class SecurityLayer(LayerInterface):
 
                 print("Generated configurations:")
                 print(module_configurations.to_json())
+                self.logger.info(f"Negotating algorithm model: {module_instance.CRYPTOGRAPHIC_MODEL}")
 
                 # Configuration exchange
                 # Determine the type of negotiation according to the cryptographic model
@@ -194,8 +224,10 @@ class SecurityLayer(LayerInterface):
 
                     # Send the local configurations (protecting the private key)
                     datapackages_handler.send_datapackage({"MODULE_CONFIGURATIONS":module_configurations.to_dict()})
+                    self.logger.info("Local asymmetric keys sended")
 
                     remote_configurations = Configurations.from_dict(datapackages_handler.receive_datapackage().get("MODULE_CONFIGURATIONS"))
+                    self.logger.info("Remote asymmetric keys received")
 
                     # Set the local module
                     local_configurations = module_configurations.copy()
@@ -203,18 +235,23 @@ class SecurityLayer(LayerInterface):
                     local_configurations.query_setting("PUBLIC_ENCRYPTION_KEY").value.value = remote_configurations.query_setting("PUBLIC_ENCRYPTION_KEY").value.value
 
                     self.load_module(module_instance, local_configurations)
+                    self.logger.info("Module loaded")
 
                 elif module_instance.CRYPTOGRAPHIC_MODEL == SecurityModuleInterface.SIMMETRIC_MODEL:
                     print("[SecurityLayer] Negociando modelo simétrico/transparente...")
                     datapackages_handler.send_datapackage({"MODULE_CONFIGURATIONS": module_configurations.to_dict()})
-                    
+                    self.logger.info("Local symmetric keys sended")
+
                     remote_pkg = datapackages_handler.receive_datapackage()
                     remote_configurations = Configurations.from_dict(remote_pkg.get("MODULE_CONFIGURATIONS"))
-                    
+                    self.logger.info("Remote symmetric keys received")
+
                     self.load_module(module_instance, remote_configurations)
+                    self.logger.info("Module loaded")
 
             if self.loaded_module:
                 self.loaded_module.start()
+                self.logger.info("Module started")
 
         except:
             traceback.print_exc()

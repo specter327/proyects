@@ -1,5 +1,6 @@
 # Library import
 from ... import ProtectionModuleInterface
+from ......utils.logger import logger
 from datavalue import PrimitiveData, ComplexData
 from configurations import Configurations
 from typing import Tuple
@@ -32,6 +33,7 @@ class ProtectionModule(ProtectionModuleInterface):
         self._active: bool = False
         self.configurated: bool = False
         self._transport_layer = layer.layers_container.query_layer("TRANSPORT")
+        self.logger = logger(self.MODULE_NAME)
 
         # Support routines
         self._read_raw_data_routine_process: threading.Thread = None
@@ -47,18 +49,20 @@ class ProtectionModule(ProtectionModuleInterface):
             daemon=True
         )
         self._read_raw_data_routine_process.start()
+        self.logger.info("Module initializated")
 
         return True
 
     def stop(self) -> bool:
         # Set the status inactive
         self._active = False
-
+        self.logger.info("Module stopped")
         return True
 
     def configure(self, configurations: object) -> bool:
         self.configurations = configurations
         self.configurated = True
+        self.logger.info("Module configurated")
         return True
     
     def write(self, data: bytes) -> bool:
@@ -67,20 +71,31 @@ class ProtectionModule(ProtectionModuleInterface):
         protected_data = self.protect(data)
         
         device_identifier = self.layer.layer_settings.query_setting("DEVICE_IDENTIFIER").value.value
+        #self.logger.info(f"Sending pure data: {len(data)}/protected data: {len(protected_data)}, to the connection: {device_identifier}")
+
         return self._transport_layer.send(device_identifier, protected_data)
 
     def read(self, limit: int = None, timeout: int = None) -> bytes:
+        # 1. Bloqueo para verificar y extraer
         with self._lock:
             if not self._clean_data_buffer:
-                return b""
+                # Si no hay datos, salimos del lock para permitir que el hilo receptor escriba
+                pass 
+            else:
+                end = limit if limit is not None else len(self._clean_data_buffer)
+                data = bytes(self._clean_data_buffer[:end])
+                del self._clean_data_buffer[:end]
+                
+                print("==========")
+                print("[ProtectionLayer] Returned data:")
+                print(data)
+                return data
+
+        # 2. Si llegamos aquí, es porque el buffer estaba vacío
+        # Esperamos fuera del lock para no causar un deadlock
+        time.sleep(0.100)
+        return b""
             
-            end = limit if limit is not None else len(self._clean_data_buffer)
-            data = bytes(self._clean_data_buffer[:end])
-            del self._clean_data_buffer[:end]
-            #print("[ProtectionModule] Readed data through the connection:")
-            #print(data)
-            return data
-    
     def protect(self, data: bytes) -> bytes:
         header = (
             f"POST /api/v1/sync HTTP/1.1\r\n"
@@ -114,6 +129,8 @@ class ProtectionModule(ProtectionModuleInterface):
     def _read_raw_data_routine(self) -> None:
         transport_layer = self.layer.layers_container.query_layer("TRANSPORT")
         
+        self.logger.info("Starting read data routine")
+
         while self._active:
             connection_identifier = self.layer.layer_settings.query_setting("DEVICE_IDENTIFIER").value.value
             if not connection_identifier:
@@ -124,6 +141,7 @@ class ProtectionModule(ProtectionModuleInterface):
             if raw_burst:
                 print("[ProtectionModule HTTP] Readed data from the TransportLayer:")
                 print(raw_burst)
+                self.logger.info(f"Readed data from tne transport layer: {len(raw_burst)}")
 
             if raw_burst:
                 with self._lock:
@@ -136,38 +154,60 @@ class ProtectionModule(ProtectionModuleInterface):
                 time.sleep(0.01)
 
     def _process_buffer(self) -> None:
-        """Extrae el payload HTTP asegurando que esté completo antes de pasarlo arriba."""
+        """
+        Procesa el buffer crudo de forma secuencial y atómica.
+        Extrae únicamente payloads completos basándose en el protocolo HTTP.
+        """
         DELIMITER = b"\r\n\r\n"
         
         with self._lock:
-            # Mientras haya posibilidad de encontrar una cabecera
-            while DELIMITER in self._received_data_buffer:
+            while True:
+                # 1. Buscamos el final de las cabeceras
                 idx = self._received_data_buffer.find(DELIMITER)
-                
-                # Parsear Content-Length para saber cuánto esperar
-                header_part = self._received_data_buffer[:idx].decode("utf-8", errors="ignore")
-                content_length = 0
-                for line in header_part.split("\r\n"):
-                    if "Content-Length:" in line:
-                        try:
+                if idx == -1:
+                    # No hay cabecera completa todavía, esperamos más datos
+                    break 
+
+                # 2. Extraemos y parseamos las cabeceras para buscar el Content-Length
+                try:
+                    header_segment = self._received_data_buffer[:idx].decode("utf-8", errors="ignore")
+                    content_length = -1
+                    
+                    for line in header_segment.split("\r\n"):
+                        if line.lower().startswith("content-length:"):
                             content_length = int(line.split(":")[1].strip())
-                        except: content_length = 0
-                        break
-                
+                            break
+                    
+                    if content_length == -1:
+                        # ERROR DE PROTOCOLO: No hay Content-Length. 
+                        # Purgamos hasta después del delimitador para intentar resincronizar.
+                        del self._received_data_buffer[:idx + len(DELIMITER)]
+                        continue
+
+                except Exception as e:
+                    # Si la cabecera está corrupta, purgamos un poco y reintentamos
+                    del self._received_data_buffer[:idx + 1]
+                    continue
+
+                # 3. Verificamos si el cuerpo (body) ya llegó completo
                 total_packet_size = idx + len(DELIMITER) + content_length
                 
-                # ¿Está el cuerpo completo en el acumulador?
                 if len(self._received_data_buffer) >= total_packet_size:
-                    # Extraer el payload RSA puro (256 bytes)
-                    payload = self._received_data_buffer[idx + len(DELIMITER) : total_packet_size]
+                    # EXTRAER PAYLOAD: Cortamos exactamente lo que dice el Content-Length
+                    start_payload = idx + len(DELIMITER)
+                    payload = self._received_data_buffer[start_payload : total_packet_size]
                     
-                    # Lo movemos al buffer de datos limpios
-                    self._clean_data_buffer.extend(payload)
+                    # 4. Limpieza de seguridad: Si el payload contiene el delimitador de tu capa de comunicación
+                    # al final (ej. \x01\x02...), y eso hace que json.loads falle, debes decidir si
+                    # lo limpias aquí o dejas que la capa superior lo haga. 
+                    # Sugerencia: Limpiar solo espacios sobrantes.
+                    self._clean_data_buffer.extend(payload.strip())
                     
-                    # Eliminamos el paquete procesado del buffer de red
+                    # 5. PURGA ATÓMICA: Eliminamos del buffer crudo SOLO el paquete procesado
                     del self._received_data_buffer[:total_packet_size]
                     
-                    print(f"[ProtectionModule] Payload HTTP reconstruido: {len(payload)} bytes")
+                    self.logger.info(f"Paquete extraído exitosamente: {len(payload)} bytes")
                 else:
-                    # Faltan datos por llegar del transporte, esperamos
+                    # El cuerpo está incompleto. Salimos del bucle y esperamos a la
+                    # siguiente ráfaga (burst) del transporte.
                     break

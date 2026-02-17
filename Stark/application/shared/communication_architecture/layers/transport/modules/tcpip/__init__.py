@@ -1,11 +1,13 @@
 # Library import
 from ... import TransportModuleInterface
+from ......utils.logger import logger
 from configurations import Configurations, Setting
 from datavalue import PrimitiveData, ComplexData
 import socket
 from typing import Optional
 import threading
 import traceback
+import time
 
 # Constants definition
 IPv4Address = PrimitiveData(
@@ -103,6 +105,7 @@ class TransportModule(TransportModuleInterface):
         self._lock = threading.Lock()
 
         self.configurations = self.CONFIGURATIONS
+        self.logger = logger(self.MODULE_NAME)
 
         # Concurrent work
         self._receiver_data_thread: Optional[threading.Thread] = None
@@ -136,28 +139,39 @@ class TransportModule(TransportModuleInterface):
         
         self._active = True
         self._status = self.CONNECTION_STATUS_CLOSED
+        self.logger.info("Module initializated")
+
         return True
     
     def stop(self) -> bool:
         self._active = False
         self.disconnect()
+        self.logger.info("Module finished")
+
         return True
     
     def configure(self, configurations: Configurations) -> bool:
         self.configurations = configurations
+        self.logger.info("Module configurated")
+
         return True
     
     def connect(self) -> bool:
-        if not self._active: return False
+        self.logger.info("Connecting module")
+        if not self._active:
+            self.logger.error("Error connecting: the module is not active") 
+            return False
 
         remote_address = self.configurations.query_setting("REMOTE_ADDRESS").value
         remote_port = self.configurations.query_setting("REMOTE_PORT").value
 
         # Validate the configurations
         if not remote_address.validate(remote_address.value):
+            self.logger.error(f"The specified remote address is invalid: {remote_address.value}")
             raise ValueError(f"The specified remote address is invalid: {remote_address.value}")
     
         if not remote_port.validate(remote_port.value):
+            self.logger.error(f"The specified remote port is invalid: {remote_port.value}")
             raise ValueError(f"The specified remote port is invalid: {remote_port.value}")
         
         # Determine the socket type (IPv4/IPv6)
@@ -166,6 +180,8 @@ class TransportModule(TransportModuleInterface):
         # Create the connection controller
         self._socket = socket.socket(ip_type, socket.SOCK_STREAM) # IPv4/IPv6 - TCP
 
+        self.logger.info(f"Connecting with IP: {ip_type}, with TCP")
+
         # Establish the connection
         try:
             self._socket.connect((remote_address.value, remote_port.value))
@@ -173,7 +189,11 @@ class TransportModule(TransportModuleInterface):
             # Update the current status
             self._status = self.CONNECTION_STATUS_ESTABLISHED
             self._is_connected = True
-        except:
+
+            self.logger.info("Module connected successfully")
+        except Exception as Error:
+            self.logger.error(f"Error on the connection: {Error}")
+
             print("Error en la conexion")
             traceback.print_exc()
             return False
@@ -183,42 +203,58 @@ class TransportModule(TransportModuleInterface):
         return True
     
     def write(self, data: bytes) -> bool:
+        self.logger.info("Sending data to the connection")
         if not self._is_connected or not self._socket:
+            self.logger.error("The module is not connected")
+
             return False
         
         try:
             self._socket.sendall(data)
+            self.logger.info(f"Data sended successfully: {len(data)}")
             return True
         except (socket.error, BrokenPipeError):
+            self.logger.error(f"Error sending the data. Connection lost or error on the socket")
             self._status = self.CONNECTION_STATUS_LOST
             return False
     
     def read(self, limit: int = None, timeout: int = None) -> bytes:
+        #self.logger.info("Reading data from the connection")
+        
         with self._lock:
-            if not self._reception_data_buffer:
-                return b""
-            
-            length = limit if limit is not None else len(self._reception_data_buffer)
-            readed_data = bytes(self._reception_data_buffer[:length])
-            
-            # Delete the readed data
-            del self._reception_data_buffer[:length]
-
-            return readed_data
+            # Si hay datos, los retornamos de inmediato
+            if self._reception_data_buffer:
+                length = limit if limit is not None else len(self._reception_data_buffer)
+                readed_data = bytes(self._reception_data_buffer[:length])
+                del self._reception_data_buffer[:length]
+                self.logger.info(f"Total readed data: {len(readed_data)}")
+                return readed_data
+        
+        # Si llegamos aquí es porque el buffer estaba vacío. 
+        # Dormimos FUERA del lock para permitir que el receptor trabaje.
+        #self.logger.info("No data available, yielding CPU")
+        time.sleep(0.100)
+        return b""
 
     def disconnect(self) -> bool:
+        self.logger.info("Disconnecting module")
         self._status = self.CONNECTION_STATUS_CLOSED
         if self._socket:
             try:
                 self._socket.shutdown(socket.SHUT_RDWR)
                 self._socket.close()
-            except:
+                self.logger.info("Module disconnected successfully")
+            except Exception as Error:
+                self.logger.error(f"Error disconnecting the module: {Error}")
                 pass
         
         return True
     
     def receive_connection(self) -> bool:
-        if not self._active or self._listener_connections_thread: return False
+        self.logger.info("Receiving connection with the module")
+        if not self._active or self._listener_connections_thread:
+            self.logger.error("Error receiving connections: the module is not active or the process listener is not running") 
+            return False
 
         self._listener_connections_thread = threading.Thread(
             target=self._listener_connections_routine,
@@ -237,25 +273,36 @@ class TransportModule(TransportModuleInterface):
         return True
     
     def _receiver_data_routine(self) -> None:
+        self.logger.info("Starting data receiver routine")
+
         while self._is_connected and self._socket:
             try:
                 new_data = self._socket.recv(4096)
-                if not new_data: break
+                if not new_data:
+                    self.logger.error("Any data received. Stopping routine")
+                    break
+
                 with self._lock:
                     self._reception_data_buffer.extend(new_data)
+                    self.logger.info(f"Total new data append: {len(new_data)}")
             except:
                 break
+        
+        self.logger.info("Stopping data receiver routine")
         self._status = self.CONNECTION_STATUS_CLOSED
     
     def _listener_connections_routine(self) -> None:
+        self.logger.info("Starting receiver connections routine")
         local_address = self.configurations.query_setting("LOCAL_ADDRESS").value
         local_port = self.configurations.query_setting("LOCAL_PORT").value
 
         # Validate the data
         if not local_address.validate(local_address.value):
+            self.logger.error(f"The local address: {local_address.value}, is invalid")
             raise ValueError(f"The local address: {local_address.value}, is invalid")
     
         if not local_port.validate(local_port.value):
+            self.logger.error(f"The local port: {local_port.value}, is invalid")
             raise ValueError(f"The local port: {local_port.value}, is invalid")
         
         ip_type = socket.AF_INET6 if ":" in local_address.value else socket.AF_INET
@@ -263,10 +310,13 @@ class TransportModule(TransportModuleInterface):
         # Try to create the server
         server_socket = socket.socket(ip_type, socket.SOCK_STREAM)
 
+        self.logger.info(f"Receiving connections of type: {ip_type}, with TCP")
         # Configure the server
         try:
             server_socket.bind((local_address.value, local_port.value))
-        except:
+            self.logger.info("Successfully binded the server")
+        except Exception as Error:
+            self.logger.error(f"Error binding the server: {Error}")
             return False
         
         server_socket.listen(1)
@@ -274,20 +324,26 @@ class TransportModule(TransportModuleInterface):
 
         # Update the local status
         self._status = self.CONNECTION_STATUS_LISTENING
+        self.logger.info("Starting receive connections process")
 
         while self._active:
             try:
                 new_connection, remote_address = server_socket.accept()
+                self.logger.info(f"Connection received from the remote address: {remote_address}")
             except socket.timeout:
+                self.logger.error(f"Expired timeout on the connection reception")
                 continue
 
             with self._lock:
                 if self._is_connected:
                     new_connection.close()
+                    self.logger.error("Closing connections because the module is already connected")
                     continue
                 
                 # Update the connection received
                 self._socket = new_connection 
+
+                self.logger.info("Establishing the new connection (socket) on the module")
             
                 # Update the connection status
                 self._status = self.CONNECTION_STATUS_ESTABLISHED

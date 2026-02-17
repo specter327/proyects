@@ -1,5 +1,6 @@
 # Library import
 from .. import LayerInterface, ModuleInterface, ModuleContainer, LAYER_TYPE_SESSION
+from ....utils.logger import logger
 from abc import ABC, abstractmethod
 from . import modules
 import threading
@@ -62,6 +63,7 @@ class ProtectionLayer(LayerInterface):
         self._module_container = ModuleContainer()
         self.loaded_module: Optional[ModuleInterface] = None
         self.layer_settings = LAYER_CONFIGURATIONS
+        self.logger = logger("PROTECTION_LAYER")
 
     @property
     def NAME(self) -> str:
@@ -75,25 +77,31 @@ class ProtectionLayer(LayerInterface):
 
     def start(self) -> bool:
         self._module_container.load_modules(package=modules.__package__)
+        self.logger.info("Protection layer initializated")
         return True
     
     def stop(self) -> bool:
+        self.logger.info("Protection layer finished")
         return True
     
     def configure(self, configurations: object) -> bool:
         self.configurations = configurations
+        self.logger.info("Protection layer configurated")
         return True
     
     def load_module(self, module: ModuleInterface, configurations: object) -> bool:
         self.loaded_module = module(self)
         self.loaded_module.configure(configurations)
         self.loaded_module.start()
+        self.logger.info(f"Module loaded: {module}, with configurations: {configurations}, and started")
 
         return True
     
     def send(self, device_identifier: int, data: bytes) -> bool:
         print("Enviando datos por la capa de proteccion....")
+        self.logger.info(f"Sendind data: {len(data)}, to the connection: {device_identifier}")
         if not self.loaded_module: 
+            self.logger.error("Theres no loaded module to use")
             raise RuntimeError("Theres no loaded module to use")
 
         # 1. Aplicamos la transformación (HTTP, Cifrado, etc.)
@@ -104,6 +112,7 @@ class ProtectionLayer(LayerInterface):
 
     def receive(self, device_identifier: int, limit: int, timeout: int) -> bytes:
         #print("Recibiendo datos por la capa de proteccion...")
+        self.logger.info(f"Receiving data from the connection: {device_identifier}, with limit: {limit}, and timeout: {timeout}")
         if not self.loaded_module: 
             return b""
             raise RuntimeError("Theres no loaded module to use")
@@ -111,7 +120,9 @@ class ProtectionLayer(LayerInterface):
         #print("[ProtectionLayer] Reading data from the loaded module...")
 
         # Extraemos los datos ya "limpios" del buffer del módulo
-        return self.loaded_module.read(limit=limit, timeout=timeout)
+        data_readed = self.loaded_module.read(limit=limit, timeout=timeout)
+        self.logger.info(f"Data readed: {data_readed}, with length: {len(data_readed)}")
+        return data_readed
 
     def negotiate(self, role: str, connection_identifier: int) -> Configurations | bool:
         # Get the transport layer
@@ -119,6 +130,7 @@ class ProtectionLayer(LayerInterface):
 
         # Verify if the connection exists (in the transport layer)
         if connection_identifier not in transport_layer.connections_table:
+            self.logger.error(f"Error negotiating protection layer: the specified connection identifier: {connection_identifier}, not exists in the transport layer connections: {list(transport_layer.connections_table.keys())}")
             raise KeyError(f"The specified connection identifier: {connection_identifier}, not exists in the transport layer connections: {list(transport_layer.connections_table.keys())}")
 
         datapackages_handler = Datapackage(
@@ -126,6 +138,8 @@ class ProtectionLayer(LayerInterface):
             read_function=transport_layer.receive,
             read_arguments=(connection_identifier, 1)
         ) 
+
+        self.logger.info(f"Starting negotation with role: {role}, with the connection: {connection_identifier}")
 
         try:
             if role == self.LAYER_ROLE_PASSIVE:
@@ -135,6 +149,9 @@ class ProtectionLayer(LayerInterface):
                 # Receive the module selection
                 selected_module = datapackages_handler.receive_datapackage(timeout=180)
                 choice_module = selected_module.get("SELECTED_MODULE")
+
+                self.logger.info(f"Available modules: {self.query_modules()}")
+                self.logger.info(f"Selected module: {selected_module}")
 
                 print("[Link] Selected module:", choice_module)
 
@@ -152,11 +169,15 @@ class ProtectionLayer(LayerInterface):
                 print("[Link] Personalized settings:")
                 print(personalized_settings)
 
+                self.logger.info("Personalized settings received")
+
                 # Set the local module configurations
                 self.load_module(
                     module=self.query_module(choice_module),
                     configurations=personalized_settings
                 )
+
+                self.logger.info("Module loaded")
 
                 print("[Link] Selected module loaded successfully")
 
@@ -167,9 +188,11 @@ class ProtectionLayer(LayerInterface):
                 available_modules = datapackages_handler.receive_datapackage(timeout=10)
 
                 print("[Nexus] Available modules:", available_modules.get("AVAILABLE_MODULES"))
+                self.logger.info(f"Available modules: {available_modules.get('AVAILABLE_MODULES')}")
 
                 # Select a module
-                module_choice = available_modules["AVAILABLE_MODULES"][0]
+                module_choice = available_modules["AVAILABLE_MODULES"][1]
+                self.logger.info(f"Selected module: {module_choice}")
 
                 # Send the selected module data package
                 selected_module = {"SELECTED_MODULE":module_choice}
@@ -190,18 +213,22 @@ class ProtectionLayer(LayerInterface):
                 # Send the personalized settings
                 datapackages_handler.send_datapackage({"MODULE_CONFIGURATIONS":personalized_settings.to_dict()})
 
+                self.logger.info("Personalized configurations sended")
+
                 # Set the local module configurations
                 self.load_module(
                     module=self.query_module(module_choice),
                     configurations=personalized_settings
                 )
 
+                self.logger.info("Selected module loaded")
+
                 print("[Nexus] Selected module loaded successfully")
 
                 return True
         finally:
-
-            datapackages_handler.stop()            
+            datapackages_handler.stop()    
+            time.sleep(0.500)        
 
 class ProtectionModuleInterface(ModuleInterface, ABC):
     # Class properties definition

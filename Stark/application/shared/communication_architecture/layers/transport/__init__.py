@@ -1,8 +1,10 @@
 # Library import
 from .. import LayerInterface, ModuleInterface, ModuleContainer, LAYER_TYPE_STRUCTURAL
+from ....utils.logger import logger
 from abc import ABC, abstractmethod
 from typing import Optional, List, Dict
 from . import modules # Importamos el paquete para obtener su __package__ name
+import threading
 
 # Classes definition
 class TransportLayer(LayerInterface):
@@ -20,6 +22,8 @@ class TransportLayer(LayerInterface):
         self.configurations: Optional[object] = None
 
         self.connections_table: Dict[int, ModuleInterface] = {}
+        self.work_lock: threading.Lock = threading.Lock()
+        self.logger = logger("TRANSPORT_LAYER")
 
     @property
     def NAME(self) -> str:
@@ -27,9 +31,12 @@ class TransportLayer(LayerInterface):
     
     def start(self) -> bool:
         self._module_container.load_modules(package=modules.__package__)
+        self.logger.info("Transport layer initializated")
+
         return True
 
     def stop(self) -> bool:
+        self.logger.info("Transport layer stopped")
         return True
 
     def query_modules(self) -> List[str]:
@@ -45,6 +52,8 @@ class TransportLayer(LayerInterface):
         return True
 
     def connect(self, module: ModuleInterface, configurations: object) -> str | bool:
+        self.logger.info(f"Transport layer connecting with module: {str(module)}, with configurations: {configurations}")
+
         # Configure the module with the specified static configurations
         module_instance = module(self)
         module_instance.configure(configurations)
@@ -56,19 +65,26 @@ class TransportLayer(LayerInterface):
         connection_result = module_instance.connect()
 
         # Validate results
-        print("Connection result:", connection_result)
-        if not connection_result: return False
+        self.logger.info(f"Connection result: {connection_result}")
+
+        if not connection_result:
+            self.logger.error(f"Connection result: ERROR") 
+            return False
 
         # Generate a unique identification
-        new_identifier = len(self.connections_table.keys()) + 1
+        with self.work_lock:
+            new_identifier = len(self.connections_table.keys()) + 1
 
-        # Regist the new connection
-        self.connections_table[new_identifier] = module_instance
+            # Regist the new connection
+            self.connections_table[new_identifier] = module_instance
+            self.logger.info(f"Connection (connect) registered with the identifier: {new_identifier}")
 
         # Return results
         return new_identifier
 
     def receive_connection(self, module: ModuleInterface, configurations: object) -> str | bool:
+        self.logger.info(f"Transport layer receiving connection with module: {str(module)}, with configurations: {configurations}")
+
         # Create a module instance
         module_instance = module(self)
 
@@ -82,23 +98,28 @@ class TransportLayer(LayerInterface):
         module_instance.receive_connection()
 
         # Create new identifier
-        new_identifier = len(self.connections_table.keys()) + 1
+        with self.work_lock:
+            new_identifier = len(self.connections_table.keys()) + 1
 
-        # Insert the new connection
-        self.connections_table[new_identifier] = module_instance
+            # Insert the new connection
+            self.connections_table[new_identifier] = module_instance
+
+            self.logger.info(f"Connection (receive) registered with the identifier: {new_identifier}")
 
         # Return results
         return new_identifier
-
 
     def disconnect(self, connection_identifier: str) -> bool:
         if not connection_identifier in self.connections_table: raise KeyError(f"The specified device: {connection_identifier}, not exists in the connections table")
 
         # Get the connection controller
+        self.logger.info(f"Disconnecting from connection: {connection_identifier}")
         connection_controller = self.connections_table.get(connection_identifier)
 
         # Execute the close standard operation
-        return connection_controller.disconnect()
+        disconnection_result = connection_controller.disconnect()
+        self.logger.info(f"Disconnection result: {disconnection_result}") 
+        return disconnection_result
 
     def send(self, connection_identifier: str, data: bytes) -> bool:
         if not connection_identifier in self.connections_table: raise KeyError(f"The specified device: {connection_identifier}, not exists in the connections table")
@@ -106,20 +127,29 @@ class TransportLayer(LayerInterface):
         # Get the connection controller
         connection_controller = self.connections_table.get(connection_identifier)
 
+        #self.logger.info(f"Sending data to the connection: {connection_identifier}")
+
         # Execute the standard write operation
-        return connection_controller.write(data)
+        send_result = connection_controller.write(data)
+        #self.logger.info(f"Sending result: {send_result}, to the connection: {connection_identifier}")
+        return send_result
 
     def receive(self, connection_identifier: str, limit: int = None, timeout: int = None) -> bytes:
         if not connection_identifier in self.connections_table: raise KeyError(f"The specified device: {connection_identifier}, not exists in the connection table")
 
         # Get the connection controller
         connection_controller = self.connections_table.get(connection_identifier)
+        #self.logger.info(f"Receiving data from the connection: {connection_identifier}")
 
         # Execute the standard read operation
-        return connection_controller.read(limit=limit, timeout=timeout)
+        receive_result = connection_controller.read(limit=limit, timeout=timeout)
+        self.logger.info(f"Data received: {receive_result}, with length: {len(receive_result)}, from the connection: {connection_identifier}")
+        return receive_result 
 
     def configure(self, configurations: object) -> bool:
         self.configurations = configurations
+        self.logger.info("Transport layer configurated")
+
         return True
     
 
