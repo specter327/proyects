@@ -43,6 +43,12 @@ class LinkBuilder:
             self.distribution_directory
         )
 
+        shutil.copy2(
+            os.path.join(self.root_directory, "application/link/__init__.py"),
+            self.distribution_directory
+        )
+
+
         # Finish process
         print(f"[*] Build complete in: {self.distribution_directory}")
 

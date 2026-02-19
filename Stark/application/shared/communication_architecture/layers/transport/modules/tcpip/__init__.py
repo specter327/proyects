@@ -1,6 +1,7 @@
 # Library import
 from ... import TransportModuleInterface
 from ......utils.logger import logger
+from ......utils.debug import smart_debug
 from configurations import Configurations, Setting
 from datavalue import PrimitiveData, ComplexData
 import socket
@@ -133,6 +134,7 @@ class TransportModule(TransportModuleInterface):
         return self._socket
 
     # Public methods
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def start(self) -> bool:
         if self._active:
             return True
@@ -143,6 +145,7 @@ class TransportModule(TransportModuleInterface):
 
         return True
     
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def stop(self) -> bool:
         self._active = False
         self.disconnect()
@@ -150,12 +153,14 @@ class TransportModule(TransportModuleInterface):
 
         return True
     
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def configure(self, configurations: Configurations) -> bool:
         self.configurations = configurations
         self.logger.info("Module configurated")
 
         return True
     
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def connect(self) -> bool:
         self.logger.info("Connecting module")
         if not self._active:
@@ -202,6 +207,7 @@ class TransportModule(TransportModuleInterface):
         self._start_data_receiver()
         return True
     
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def write(self, data: bytes) -> bool:
         self.logger.info("Sending data to the connection")
         if not self._is_connected or not self._socket:
@@ -218,6 +224,7 @@ class TransportModule(TransportModuleInterface):
             self._status = self.CONNECTION_STATUS_LOST
             return False
     
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def read(self, limit: int = None, timeout: int = None) -> bytes:
         #self.logger.info("Reading data from the connection")
         
@@ -236,6 +243,7 @@ class TransportModule(TransportModuleInterface):
         time.sleep(0.100)
         return b""
 
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def disconnect(self) -> bool:
         self.logger.info("Disconnecting module")
         self._status = self.CONNECTION_STATUS_CLOSED
@@ -250,6 +258,7 @@ class TransportModule(TransportModuleInterface):
         
         return True
     
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def receive_connection(self) -> bool:
         self.logger.info("Receiving connection with the module")
         if not self._active or self._listener_connections_thread:
@@ -279,8 +288,10 @@ class TransportModule(TransportModuleInterface):
             try:
                 new_data = self._socket.recv(4096)
                 if not new_data:
-                    self.logger.error("Any data received. Stopping routine")
-                    break
+                    time.sleep(0.100)
+                    continue
+                    #self.logger.error("Any data received. Stopping routine")
+                    #break
 
                 with self._lock:
                     self._reception_data_buffer.extend(new_data)

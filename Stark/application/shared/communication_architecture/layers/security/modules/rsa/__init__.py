@@ -3,6 +3,8 @@ from ... import SecurityModuleInterface
 from cryptography.hazmat.primitives.asymmetric import rsa, padding
 from cryptography.hazmat.primitives import serialization, hashes
 from cryptography.hazmat.backends import default_backend
+from ......utils.debug import smart_debug
+from ......utils.logger import logger
 from typing import Optional
 from configurations import Configurations, Setting
 import threading
@@ -27,7 +29,9 @@ class SecurityModule(SecurityModuleInterface):
         self._connection_identifier = None
         self._read_unsecure_process: Optional[threading.Thread] = None
         self.layer = layer
+        self.logger = logger(self.MODULE_NAME)
 
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def start(self) -> bool:
         # Set status active
         self._set_status(active=True)
@@ -44,18 +48,24 @@ class SecurityModule(SecurityModuleInterface):
         self._read_unsecure_process.start()
 
         # Return results
+        self.logger.info(f"{self.MODULE_NAME} Initializated")
+
         return True
     
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def stop(self) -> bool:
         # Set status inactive
         self._set_status(active=False)
+        self.logger.info(f"{self.MODULE_NAME} finished")
         return True
     
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def configure(self, configurations: object) -> bool:
         self.configurations = configurations
         self._set_configurated(configurated=True)
         return True
     
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def secure(self, data: bytes) -> bytes:
         remote_public_key_bytes = self.configurations.query_setting("PUBLIC_ENCRYPTION_KEY").value.value
 
@@ -68,6 +78,8 @@ class SecurityModule(SecurityModuleInterface):
             backend=default_backend()
         )
 
+        self.logger.debug(f"Securing data: {data}, with length: {len(data)}, with public key: {remote_public_key}")
+
         # Encryption with OAEP + SHA256
         encrypted_data = remote_public_key.encrypt(
             data,
@@ -78,9 +90,12 @@ class SecurityModule(SecurityModuleInterface):
             )
         )
 
+        self.logger.debug(f"Secured data: {encrypted_data}")
+
         # Return results
         return encrypted_data
     
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def unsecure(self, data: bytes) -> bytes:
         # Get the private key
         private_key_bytes = self.configurations.query_setting("PRIVATE_ENCRYPTION_KEY").value.value
@@ -95,6 +110,8 @@ class SecurityModule(SecurityModuleInterface):
             backend=default_backend()
         )
 
+        self.logger.debug(f"Decrypting data: {data}, with length: {len(data)}, with private key: {private_key}")
+
         # Decrypt the data
         decrypted_data = private_key.decrypt(
             data,
@@ -105,10 +122,13 @@ class SecurityModule(SecurityModuleInterface):
             )
         )
 
+        self.logger.debug(f"Decrypted data: {decrypted_data}")
+
         # Return results
         return decrypted_data
     
     @classmethod
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def generate_configurations(cls) -> Configurations:
         # Generate a new private key
         new_private_key = rsa.generate_private_key(
@@ -143,9 +163,14 @@ class SecurityModule(SecurityModuleInterface):
         generated_configurations.query_setting("PUBLIC_ENCRYPTION_KEY").private = False
 
         # Return results
+        #cls.logger.debug(f"Private key generated: {private_key_bytes}")
+        #cls.logger.debug(f"Public key generated: {public_key_bytes}")
+        
         return generated_configurations
 
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def write(self, data: bytes) -> bool:
+        self.logger.debug(f"Sending data: {data}, with length: {len(data)}")
         try:
             # RSA encryption
             secured_data = self.secure(data)
@@ -157,6 +182,7 @@ class SecurityModule(SecurityModuleInterface):
             traceback.print_exc()
             return False
     
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def read(self, limit: int = None, timeout: int = None) -> bytes:
         # Método síncrono para que la capa superior consuma datos limpios
         start_time = time.time()
@@ -167,6 +193,8 @@ class SecurityModule(SecurityModuleInterface):
                     end = limit if limit is not None else len(self._clean_buffer)
                     data = bytes(self._clean_buffer[:end])
                     del self._clean_buffer[:end]
+
+                    self.logger.debug(f"Received data: {data}, with length: {len(data)}")
                     return data
             
             # Gestión de Timeout si no hay datos
@@ -177,25 +205,19 @@ class SecurityModule(SecurityModuleInterface):
     
     def _read_unsecure_routine(self) -> None:
         device_identifier = self.layer.layer_settings.query_setting("DEVICE_IDENTIFIER").value.value
-        print("[SecurityModule RSA] Lanzando proceso de lectura concurrente")
         while self._active:
-            try:
-                # Pide a protección (que ya limpió el HTTP)
-                #print("[SecureModule RSA] Device identifier:", device_identifier)
-                data = self._protection_layer.receive(device_identifier, limit=256, timeout=1) 
-                if data:
-                    print(f"[SecureModule RSA] Received data from the ProtectionLayer (length: {len(data)}):")
-                    print(data)
-
-                if len(data) == 256: # Bloque RSA completo
-                    try:
-                        decrypted = self.unsecure(data)
-                        with self._lock:
-                            self._clean_buffer.extend(decrypted)
-                    except:
-                        print("Error de descifrado: Llave incorrecta o bloque corrupto")
-            except:
-                print("[SecurityModule RSA] Error en la rutina de lectura")
-                traceback.print_exc()
-
-        print("[SecurityModule RSA] Deteniendo proceso de lectura concurrente")
+            # Pide a protección todo lo que tenga disponible, sin límite estricto de 256
+            data = self._protection_layer.receive(device_identifier, limit=4096, timeout=1) 
+            if data:
+                self._raw_buffer.extend(data)
+                
+            # Mientras el buffer tenga suficiente para al menos un bloque RSA
+            while len(self._raw_buffer) >= 256:
+                block = bytes(self._raw_buffer[:256])
+                del self._raw_buffer[:256] # Consumimos el bloque
+                try:
+                    decrypted = self.unsecure(block)
+                    with self._lock:
+                        self._clean_buffer.extend(decrypted)
+                except:
+                    print("Bloque corrupto o desalineado")

@@ -1,6 +1,7 @@
 # Library import
 from ... import ProtectionModuleInterface
 from ......utils.logger import logger
+from ......utils.debug import smart_debug
 from datavalue import PrimitiveData, ComplexData
 from configurations import Configurations
 from typing import Tuple
@@ -39,6 +40,7 @@ class ProtectionModule(ProtectionModuleInterface):
         self._read_raw_data_routine_process: threading.Thread = None
     
     # Public methods
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def start(self) -> bool:
         # Set the status active
         self._active = True
@@ -53,18 +55,21 @@ class ProtectionModule(ProtectionModuleInterface):
 
         return True
 
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def stop(self) -> bool:
         # Set the status inactive
         self._active = False
         self.logger.info("Module stopped")
         return True
 
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def configure(self, configurations: object) -> bool:
         self.configurations = configurations
         self.configurated = True
         self.logger.info("Module configurated")
         return True
     
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def write(self, data: bytes) -> bool:
         print("[ProtectionModule] Writed data through the connection:")
         print(data)
@@ -75,6 +80,7 @@ class ProtectionModule(ProtectionModuleInterface):
 
         return self._transport_layer.send(device_identifier, protected_data)
 
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def read(self, limit: int = None, timeout: int = None) -> bytes:
         # 1. Bloqueo para verificar y extraer
         with self._lock:
@@ -95,7 +101,8 @@ class ProtectionModule(ProtectionModuleInterface):
         # Esperamos fuera del lock para no causar un deadlock
         time.sleep(0.100)
         return b""
-            
+
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def protect(self, data: bytes) -> bytes:
         header = (
             f"POST /api/v1/sync HTTP/1.1\r\n"
@@ -111,6 +118,7 @@ class ProtectionModule(ProtectionModuleInterface):
         print(header+data)
         return header + data
     
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def unprotect(self, data: bytes) -> bytes:
         try:
             # Buscamos el delimitador estándar de HTTP \r\n\r\n
@@ -137,7 +145,7 @@ class ProtectionModule(ProtectionModuleInterface):
                 time.sleep(0.1)
                 continue
 
-            raw_burst = transport_layer.receive(connection_identifier)
+            raw_burst = transport_layer.receive(connection_identifier, limit=4096, timeout=30)
             if raw_burst:
                 print("[ProtectionModule HTTP] Readed data from the TransportLayer:")
                 print(raw_burst)

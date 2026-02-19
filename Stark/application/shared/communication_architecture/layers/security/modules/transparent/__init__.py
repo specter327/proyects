@@ -1,6 +1,7 @@
 # Library import
 from ... import SecurityModuleInterface
 from ......utils.logger import logger
+from ......utils.debug import smart_debug
 from typing import Optional
 from configurations import Configurations
 import threading
@@ -22,6 +23,7 @@ class SecurityModule(SecurityModuleInterface):
         self.layer = layer
         self.logger = logger(self.MODULE_NAME)
 
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def start(self) -> bool:
         self._protection_layer = self.layer.layers_container.query_layer("PROTECTION")
         self._active = True
@@ -34,40 +36,66 @@ class SecurityModule(SecurityModuleInterface):
         self.logger.info("Module initializated")
         return True
     
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def stop(self) -> bool:
         self._active = False
         self.logger.info("Module stopped")
 
         return True
     
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def configure(self, configurations: object) -> bool:
         self.configurations = configurations
         self._set_configurated(configurated=True)
         self.logger.info("Module configurated")
         return True
     
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def secure(self, data: bytes) -> bytes:
         # Pass-through: Sin cifrado
         return data
     
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def unsecure(self, data: bytes) -> bytes:
         # Pass-through: Sin descifrado
         return data
     
     @classmethod
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def generate_configurations(cls) -> Configurations:
         # Retorna configuraciones base vacías para cumplir el contrato
         return cls.CONFIGURATIONS.copy()
 
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def write(self, data: bytes) -> bool:
+        device_identifier = self.layer.layer_settings.query_setting("DEVICE_IDENTIFIER").value.value
+
         try:
             # Envia los datos directamente a la capa inferior
-            return self._protection_layer.send(device_identifier=None, data=data)
+            return self._protection_layer.send(device_identifier=device_identifier, data=data)
         except:
             traceback.print_exc()
             return False
     
+    @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def read(self, limit: int = None, timeout: int = None) -> bytes:
+    # RASTREO 5: Verificar parámetros de entrada
+        device_identifier = self.layer.layer_settings.query_setting("DEVICE_IDENTIFIER").value.value
+        self.logger.debug(f"Solicitando a Protection: ID={device_identifier}, limit={limit}, timeout={timeout}")
+        
+        # Llamada a la capa inferior
+        data = self._protection_layer.receive(device_identifier, limit=limit, timeout=timeout)
+        
+        # RASTREO 6: Resultado de la capa de protección
+        if len(data) > 0:
+            self.logger.debug(f"¡DATOS OBTENIDOS!: {data}")
+        else:
+            # Esto te dirá si el problema es que la protección no devuelve nada
+            self.logger.debug(f"Protección devolvió vacío (posible timeout)")
+            
+        return data
+    
+    
         device_identifier = self.layer.layer_settings.query_setting("DEVICE_IDENTIFIER").value.value
         return self._protection_layer.receive(device_identifier, limit=limit, timeout=timeout)
     

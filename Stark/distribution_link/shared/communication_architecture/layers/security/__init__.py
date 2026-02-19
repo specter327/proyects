@@ -1,6 +1,7 @@
 # Library import
 from .. import LayerContainer, LayerInterface, ModuleInterface, ModuleContainer, LAYER_TYPE_SESSION
 from ....utils.logger import logger
+from ....utils.debug import smart_debug
 from . import modules
 from abc import ABC, abstractmethod
 from configurations import Configurations, Setting
@@ -69,34 +70,41 @@ class SecurityLayer(LayerInterface):
     def NAME(self) -> str:
         return self.LAYER_NAME
     
+    @smart_debug(element_name="SECURITY_LAYER", include_args=True, include_result=True)
     def query_modules(self) -> List[str]:
         return self._module_container.query_modules()
     
+    @smart_debug(element_name="SECURITY_LAYER", include_args=True, include_result=True)
     def query_module(self, module_name: str) -> ModuleInterface | None:
         return self._module_container.query_module(module_name)
 
+    @smart_debug(element_name="SECURITY_LAYER", include_args=True, include_result=True)
     def start(self) -> bool:
         self._module_container.load_modules(package=modules.__package__)
         self.logger.info("Security layer initializated")
         return True
     
+    @smart_debug(element_name="SECURITY_LAYER", include_args=True, include_result=True)
     def stop(self) -> bool:
         self.logger.info("Security layer stopped")
         return True
     
+    @smart_debug(element_name="SECURITY_LAYER", include_args=True, include_result=True)
     def configure(self, configurations: object) -> bool:
         self.configurations = configurations
         self.logger.info("Security layer configurated")
         return True
     
+    @smart_debug(element_name="SECURITY_LAYER", include_args=True, include_result=True)
     def load_module(self, module: ModuleInterface, configurations: object) -> bool:
         self.loaded_module = module(self)
         self.loaded_module.configure(configurations)
         self.logger.info(f"Security module loaded: {module}, with configurations: {configurations}")
-        #self.loaded_module.start()
+        self.loaded_module.start()
 
         return True
 
+    @smart_debug(element_name="SECURITY_LAYER", include_args=True, include_result=True)
     def send(self, device_identifier: int, data: bytes) -> bool:
         print("Enviando datos por la capa de proteccion....")
         self.logger.info(f"Sending data: {len(data)}, to the connection: {device_identifier}")
@@ -108,155 +116,127 @@ class SecurityLayer(LayerInterface):
 
         return self.loaded_module.write(data)
     
+    @smart_debug(element_name="SECURITY_LAYER", include_args=True, include_result=True)
     def receive(self, device_identifier: int, limit: int, timeout: int) -> bytes:
         #print("Recibiendo datos por la capa de proteccion...")
-        if not self.loaded_module: 
+        if not self.loaded_module:
+            self.logger.warning(f"Theres no module loaded for the connection: {device_identifier}") 
             return b""
             raise RuntimeError("Theres no loaded module to use")
         
         # Extraemos los datos ya "limpios" del buffer del módulo
-        data_readed = self.loaded_module.read(limit=limit)
+        self.logger.info(f"Requesting data to the connection: {device_identifier}, with limit: {limit}, and timeout: {timeout}")
+
+        data_readed = self.loaded_module.read(limit=limit, timeout=timeout)
         self.logger.info(f"Data received: {data_readed}, with length: {len(data_readed)}, from the connection: {device_identifier}")
         #print("[SecurityLayer] Returned data:")
         #print(data_readed)
-        return data_readed 
+        return data_readed
 
-    def negotiate(self, role: str, connection_identifier: int) -> Configurations | bool:
-        # Get the protection layer
+    @smart_debug(element_name="SECURITY_LAYER", include_args=True, include_result=True)
+    def negotiate(self, role: str, connection_identifier: int) -> bool:
         protection_layer = self.layers_container.query_layer("PROTECTION")
+        import time
 
-        # Create a datapackage handler
-        datapackages_handler = Datapackage(
+        # 1. Handler inicial (Fase 1)
+        handler = Datapackage(
             write_function=lambda data, **kwargs: protection_layer.send(connection_identifier, data, **kwargs),
             read_function=lambda **kwargs: protection_layer.receive(**kwargs),
-            read_keyword_arguments={
-                "device_identifier":connection_identifier,
-                "limit":1,
-                "timeout":30
-            }
+            read_keyword_arguments={"device_identifier": connection_identifier, "limit": 1, "timeout": 30}
         )
 
-        self.logger.info(f"Negotiating security layer with role: {role}, with the connection: {connection_identifier}")
-
         try:
-            if role == self.LAYER_ROLE_PASSIVE:
-                # Send the current local available modules
-                datapackages_handler.send_datapackage({"AVAILABLE_MODULES":self.query_modules()})
-
-                # Receive the module selection
-                selected_module = datapackages_handler.receive_datapackage(timeout=180)
-                choice_module = selected_module.get("SELECTED_MODULE")
-                module_instance = self.query_module(choice_module)
-
-                self.logger.info(f"Available modules: {self.query_modules()}")
-                self.logger.info(f"Selected module: {choice_module}")
-
-                print("[Link] Selected module:", choice_module)
-
-                # Generate the module configurations
-                module_configurations = module_instance.generate_configurations()
-
-                print("Generated configurations:")
-                print(module_configurations.to_json())
-                self.logger.info("Local configurations generated")
-                self.logger.info(f"Negotiating algorithm model: {module_instance.CRYPTOGRAPHIC_MODEL}"
-                                 )
-                # Configuration exchange
-                # Determine the type of negotiation according to the cryptographic model
-                if module_instance.CRYPTOGRAPHIC_MODEL == SecurityModuleInterface.ASYMMETRIC_MODEL:
-                    print("[Link] Intercambiando claves asimetricas...")
-
-                    # Send the local configurations (protecting the private key)
-                    datapackages_handler.send_datapackage({"MODULE_CONFIGURATIONS":module_configurations.to_dict()})
-                    self.logger.info("Local asymmetric keys sended")
-
-                    # Receive the remote configurations
-                    remote_configurations = Configurations.from_dict(datapackages_handler.receive_datapackage().get("MODULE_CONFIGURATIONS"))
-                    self.logger.info("Remote asymmetric keys received")
-
-                    # Set the local module
-                    local_configurations = module_configurations.copy()
-                    local_configurations.query_setting("PRIVATE_ENCRYPTION_KEY").value.value = module_configurations.query_setting("PRIVATE_ENCRYPTION_KEY").value.value
-                    local_configurations.query_setting("PUBLIC_ENCRYPTION_KEY").value.value = remote_configurations.query_setting("PUBLIC_ENCRYPTION_KEY").value.value
-
-                    self.load_module(module_instance, local_configurations)
-                    self.logger.info("Module loaded")
-
-                elif module_instance.CRYPTOGRAPHIC_MODEL == SecurityModuleInterface.SIMMETRIC_MODEL:
-                    print("[SecurityLayer] Negociando modelo simétrico/transparente...")
-                    # Intercambio simple de configuraciones
-                    datapackages_handler.send_datapackage({"MODULE_CONFIGURATIONS": module_configurations.to_dict()})
-                    self.logger.info("Local symmetric keys sended")
-                    remote_pkg = datapackages_handler.receive_datapackage()
-                    remote_configurations = Configurations.from_dict(remote_pkg.get("MODULE_CONFIGURATIONS"))
-                    self.logger.info("Remote symmetric keys received")
-
-                    # En modelos simétricos, las configuraciones suelen ser espejadas o compartidas
-                    self.load_module(module_instance, remote_configurations)
-                    self.logger.info("Module loaded")
+            # --- FASE 1: NEGOCIACIÓN ASIMÉTRICA ---
+            self.logger.info("Iniciando Fase 1: Asimétrica")
+            asymmetric_modules = [m for m in self.query_modules() if self.query_module(m).CRYPTOGRAPHIC_MODEL == SecurityModuleInterface.ASYMMETRIC_MODEL]
             
-            elif role == self.LAYER_ROLE_ACTIVE:
-                # Receive the available modules datapackage
-                available_modules = datapackages_handler.receive_datapackage(timeout=10)
+            if role == self.LAYER_ROLE_PASSIVE:
+                handler.send_datapackage({"AVAILABLE_ASYMMETRIC": asymmetric_modules})
+                pkg = handler.receive_datapackage(timeout=30)
+                if not pkg: raise ConnectionError("Timeout Fase 1 (List)")
+                choice = pkg.get("SELECTED_MODULE")
+            else:
+                pkg = handler.receive_datapackage(timeout=30)
+                if not pkg: raise ConnectionError("Timeout Fase 1 (Choice)")
+                remote_asym = pkg.get("AVAILABLE_ASYMMETRIC")
+                choice = remote_asym[0] 
+                handler.send_datapackage({"SELECTED_MODULE": choice})
 
-                print("[Nexus] Available modules:", available_modules.get("AVAILABLE_MODULES"))
-                self.logger.info(f"Available modules: {available_modules.get('AVAILABLE_MODULES')}")
+            asym_module_instance = self.query_module(choice)
+            asym_configs = asym_module_instance.generate_configurations()
+            
+            handler.send_datapackage({"MODULE_CONFIGURATIONS": asym_configs.to_dict()})
+            pkg_configs = handler.receive_datapackage(timeout=30)
+            if not pkg_configs: raise ConnectionError("Timeout Fase 1 (Configs)")
+            remote_asym_configs = Configurations.from_dict(pkg_configs.get("MODULE_CONFIGURATIONS"))
+            
+            # --- CRÍTICO: LIMPIEZA Y CARGA ---
+            handler.stop() 
+            time.sleep(0.5) # Tiempo para que el SO procese el cierre del hilo de lectura anterior
+            
+            local_asym_cfg = asym_configs.copy()
+            local_asym_cfg.query_setting("PRIVATE_ENCRYPTION_KEY").value.value = asym_configs.query_setting("PRIVATE_ENCRYPTION_KEY").value.value
+            local_asym_cfg.query_setting("PUBLIC_ENCRYPTION_KEY").value.value = remote_asym_configs.query_setting("PUBLIC_ENCRYPTION_KEY").value.value
+            
+            self.load_module(asym_module_instance, local_asym_cfg)
+            self.logger.info(f"Módulo RSA cargado. Limpiando buffers...")
 
-                # Select a module
-                module_choice = available_modules["AVAILABLE_MODULES"][0]
-                self.logger.info(f"Selected module: {module_choice}")
+            # --- FASE 2: HANDSHAKE DE ALINEACIÓN (DENTRO DE RSA) ---
+            # Este es el punto que estaba fallando. Creamos un nuevo handler cifrado.
+            secure_handler = Datapackage(
+                write_function=lambda data, **kwargs: self.send(connection_identifier, data),
+                read_function=lambda **kwargs: self.receive(**kwargs),
+                read_keyword_arguments={"device_identifier": connection_identifier, "limit": 4096, "timeout": 30}
+            )
 
-                # Send the selected module data package
-                datapackages_handler.send_datapackage({"SELECTED_MODULE":module_choice})
+            # Sincronización explícita: "READY"
+            if role == self.LAYER_ROLE_PASSIVE:
+                secure_handler.send_datapackage({"SIGNAL": "READY_FOR_SIMMETRIC"})
+                pkg_sig = secure_handler.receive_datapackage(timeout=45)
+                if not pkg_sig or pkg_sig.get("SIGNAL") != "READY_FOR_SIMMETRIC":
+                    raise ConnectionError("Falla de sincronización en canal cifrado")
+            else:
+                pkg_sig = secure_handler.receive_datapackage(timeout=45)
+                if not pkg_sig or pkg_sig.get("SIGNAL") != "READY_FOR_SIMMETRIC":
+                    raise ConnectionError("Falla de sincronización en canal cifrado")
+                secure_handler.send_datapackage({"SIGNAL": "READY_FOR_SIMMETRIC"})
 
-                # Generate the module configurations
-                module_instance = self.query_module(module_choice)
-                module_configurations = module_instance.generate_configurations()
+            # --- FASE 3: NEGOCIACIÓN SIMÉTRICA ---
+            self.logger.info("Iniciando negociación de llave simétrica...")
+            symmetric_modules = [m for m in self.query_modules() if self.query_module(m).CRYPTOGRAPHIC_MODEL == SecurityModuleInterface.SIMMETRIC_MODEL]
 
-                print("Generated configurations:")
-                print(module_configurations.to_json())
-                self.logger.info(f"Negotating algorithm model: {module_instance.CRYPTOGRAPHIC_MODEL}")
+            if role == self.LAYER_ROLE_PASSIVE:
+                secure_handler.send_datapackage({"AVAILABLE_SYMMETRIC": symmetric_modules})
+                pkg = secure_handler.receive_datapackage(timeout=45)
+                sym_choice = pkg.get("SELECTED_MODULE")
+                pkg_sym_configs = secure_handler.receive_datapackage(timeout=45)
+                sym_configs = Configurations.from_dict(pkg_sym_configs.get("MODULE_CONFIGURATIONS"))
+            else:
+                pkg = secure_handler.receive_datapackage(timeout=45)
+                remote_sym = pkg.get("AVAILABLE_SYMMETRIC")
+                sym_choice = remote_sym[0]
+                secure_handler.send_datapackage({"SELECTED_MODULE": sym_choice})
+                sym_module_instance = self.query_module(sym_choice)
+                sym_configs = sym_module_instance.generate_configurations()
+                secure_handler.send_datapackage({"MODULE_CONFIGURATIONS": sym_configs.to_dict()})
 
-                # Configuration exchange
-                # Determine the type of negotiation according to the cryptographic model
-                if module_instance.CRYPTOGRAPHIC_MODEL == SecurityModuleInterface.ASYMMETRIC_MODEL:
-                    print("[Link] Intercambiando claves asimetricas...")
+            # --- FASE 4: PROMOCIÓN ATÓMICA ---
+            secure_handler.stop()
+            if self.loaded_module: self.loaded_module.stop()
+            
+            time.sleep(0.2) # Estabilización final
+            sym_module_class = self.query_module(sym_choice)
+            self.load_module(sym_module_class, sym_configs)
+            
+            self.logger.info("Promoción exitosa a canal simétrico.")
+            return True
 
-                    # Send the local configurations (protecting the private key)
-                    datapackages_handler.send_datapackage({"MODULE_CONFIGURATIONS":module_configurations.to_dict()})
-                    self.logger.info("Local asymmetric keys sended")
-
-                    remote_configurations = Configurations.from_dict(datapackages_handler.receive_datapackage().get("MODULE_CONFIGURATIONS"))
-                    self.logger.info("Remote asymmetric keys received")
-
-                    # Set the local module
-                    local_configurations = module_configurations.copy()
-                    local_configurations.query_setting("PRIVATE_ENCRYPTION_KEY").value.value = module_configurations.query_setting("PRIVATE_ENCRYPTION_KEY").value.value
-                    local_configurations.query_setting("PUBLIC_ENCRYPTION_KEY").value.value = remote_configurations.query_setting("PUBLIC_ENCRYPTION_KEY").value.value
-
-                    self.load_module(module_instance, local_configurations)
-                    self.logger.info("Module loaded")
-
-                elif module_instance.CRYPTOGRAPHIC_MODEL == SecurityModuleInterface.SIMMETRIC_MODEL:
-                    print("[SecurityLayer] Negociando modelo simétrico/transparente...")
-                    datapackages_handler.send_datapackage({"MODULE_CONFIGURATIONS": module_configurations.to_dict()})
-                    self.logger.info("Local symmetric keys sended")
-
-                    remote_pkg = datapackages_handler.receive_datapackage()
-                    remote_configurations = Configurations.from_dict(remote_pkg.get("MODULE_CONFIGURATIONS"))
-                    self.logger.info("Remote symmetric keys received")
-
-                    self.load_module(module_instance, remote_configurations)
-                    self.logger.info("Module loaded")
-
-            if self.loaded_module:
-                self.loaded_module.start()
-                self.logger.info("Module started")
-
-        except:
-            traceback.print_exc()
+        except Exception as e:
+            self.logger.error(f"Error crítico: {e}")
+            if 'handler' in locals(): handler.stop()
+            if 'secure_handler' in locals(): secure_handler.stop()
             return False
-
+        
 class SecurityModuleInterface(ModuleInterface, ABC):
     # Class properties definition
     CONFIGURATIONS: Configurations = Configurations()

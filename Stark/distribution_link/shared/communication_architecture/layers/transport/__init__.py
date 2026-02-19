@@ -1,6 +1,7 @@
 # Library import
 from .. import LayerInterface, ModuleInterface, ModuleContainer, LAYER_TYPE_STRUCTURAL
 from ....utils.logger import logger
+from ....utils.debug import smart_debug
 from abc import ABC, abstractmethod
 from typing import Optional, List, Dict
 from . import modules # Importamos el paquete para obtener su __package__ name
@@ -29,28 +30,34 @@ class TransportLayer(LayerInterface):
     def NAME(self) -> str:
         return self.LAYER_NAME
     
+    @smart_debug(element_name="TRANSPORT_LAYER", include_args=True, include_result=True)
     def start(self) -> bool:
         self._module_container.load_modules(package=modules.__package__)
         self.logger.info("Transport layer initializated")
 
         return True
 
+    @smart_debug(element_name="TRANSPORT_LAYER", include_args=True, include_result=True)
     def stop(self) -> bool:
         self.logger.info("Transport layer stopped")
         return True
 
+    @smart_debug(element_name="TRANSPORT_LAYER", include_args=True, include_result=True)
     def query_modules(self) -> List[str]:
         return self._module_container.query_modules()
     
+    @smart_debug(element_name="TRANSPORT_LAYER", include_args=True, include_result=True)
     def query_module(self, module_name: str) -> ModuleInterface | None:
         return self._module_container.query_module(module_name)
 
+    @smart_debug(element_name="TRANSPORT_LAYER", include_args=True, include_result=True)
     def load_module(self, module: ModuleInterface) -> bool:
         # Verify the module status
         #if not module.configurated: raise RuntimeError(f"The module: {module.MODULE_NAME}, is not configurated. We can`t load it")
         #self.loaded_module = module
         return True
 
+    @smart_debug(element_name="TRANSPORT_LAYER", include_args=True, include_result=True)
     def connect(self, module: ModuleInterface, configurations: object) -> str | bool:
         self.logger.info(f"Transport layer connecting with module: {str(module)}, with configurations: {configurations}")
 
@@ -82,6 +89,7 @@ class TransportLayer(LayerInterface):
         # Return results
         return new_identifier
 
+    @smart_debug(element_name="TRANSPORT_LAYER", include_args=True, include_result=True)
     def receive_connection(self, module: ModuleInterface, configurations: object) -> str | bool:
         self.logger.info(f"Transport layer receiving connection with module: {str(module)}, with configurations: {configurations}")
 
@@ -109,6 +117,7 @@ class TransportLayer(LayerInterface):
         # Return results
         return new_identifier
 
+    @smart_debug(element_name="TRANSPORT_LAYER", include_args=True, include_result=True)
     def disconnect(self, connection_identifier: str) -> bool:
         if not connection_identifier in self.connections_table: raise KeyError(f"The specified device: {connection_identifier}, not exists in the connections table")
 
@@ -121,6 +130,7 @@ class TransportLayer(LayerInterface):
         self.logger.info(f"Disconnection result: {disconnection_result}") 
         return disconnection_result
 
+    @smart_debug(element_name="TRANSPORT_LAYER", include_args=True, include_result=True)
     def send(self, connection_identifier: str, data: bytes) -> bool:
         if not connection_identifier in self.connections_table: raise KeyError(f"The specified device: {connection_identifier}, not exists in the connections table")
 
@@ -134,6 +144,7 @@ class TransportLayer(LayerInterface):
         #self.logger.info(f"Sending result: {send_result}, to the connection: {connection_identifier}")
         return send_result
 
+    @smart_debug(element_name="TRANSPORT_LAYER", include_args=True, include_result=True)
     def receive(self, connection_identifier: str, limit: int = None, timeout: int = None) -> bytes:
         if not connection_identifier in self.connections_table: raise KeyError(f"The specified device: {connection_identifier}, not exists in the connection table")
 
@@ -146,6 +157,7 @@ class TransportLayer(LayerInterface):
         self.logger.info(f"Data received: {receive_result}, with length: {len(receive_result)}, from the connection: {connection_identifier}")
         return receive_result 
 
+    @smart_debug(element_name="TRANSPORT_LAYER", include_args=True, include_result=True)
     def configure(self, configurations: object) -> bool:
         self.configurations = configurations
         self.logger.info("Transport layer configurated")

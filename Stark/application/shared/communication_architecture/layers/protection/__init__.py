@@ -1,6 +1,7 @@
 # Library import
 from .. import LayerInterface, ModuleInterface, ModuleContainer, LAYER_TYPE_SESSION
 from ....utils.logger import logger
+from ....utils.debug import smart_debug
 from abc import ABC, abstractmethod
 from . import modules
 import threading
@@ -69,26 +70,32 @@ class ProtectionLayer(LayerInterface):
     def NAME(self) -> str:
         return self.LAYER_NAME
 
+    @smart_debug(element_name="PROTECTION_LAYER", include_args=True, include_result=True)
     def query_modules(self) -> List[str]:
         return self._module_container.query_modules()
     
+    @smart_debug(element_name="PROTECTION_LAYER", include_args=True, include_result=True)
     def query_module(self, module_name: str) -> ModuleInterface | None:
         return self._module_container.query_module(module_name)
 
+    @smart_debug(element_name="PROTECTION_LAYER", include_args=True, include_result=True)
     def start(self) -> bool:
         self._module_container.load_modules(package=modules.__package__)
         self.logger.info("Protection layer initializated")
         return True
     
+    @smart_debug(element_name="PROTECTION_LAYER", include_args=True, include_result=True)
     def stop(self) -> bool:
         self.logger.info("Protection layer finished")
         return True
     
+    @smart_debug(element_name="PROTECTION_LAYER", include_args=True, include_result=True)
     def configure(self, configurations: object) -> bool:
         self.configurations = configurations
         self.logger.info("Protection layer configurated")
         return True
     
+    @smart_debug(element_name="PROTECTION_LAYER", include_args=True, include_result=True)
     def load_module(self, module: ModuleInterface, configurations: object) -> bool:
         self.loaded_module = module(self)
         self.loaded_module.configure(configurations)
@@ -97,6 +104,7 @@ class ProtectionLayer(LayerInterface):
 
         return True
     
+    @smart_debug(element_name="PROTECTION_LAYER", include_args=True, include_result=True)
     def send(self, device_identifier: int, data: bytes) -> bool:
         print("Enviando datos por la capa de proteccion....")
         self.logger.info(f"Sendind data: {len(data)}, to the connection: {device_identifier}")
@@ -110,6 +118,7 @@ class ProtectionLayer(LayerInterface):
         # 2. Enviamos el paquete resultante mediante el módulo (que ya conoce el transporte)
         return self.loaded_module.write(data)
 
+    @smart_debug(element_name="PROTECTION_LAYER", include_args=True, include_result=True)
     def receive(self, device_identifier: int, limit: int, timeout: int) -> bytes:
         #print("Recibiendo datos por la capa de proteccion...")
         self.logger.info(f"Receiving data from the connection: {device_identifier}, with limit: {limit}, and timeout: {timeout}")
@@ -121,9 +130,12 @@ class ProtectionLayer(LayerInterface):
 
         # Extraemos los datos ya "limpios" del buffer del módulo
         data_readed = self.loaded_module.read(limit=limit, timeout=timeout)
-        self.logger.info(f"Data readed: {data_readed}, with length: {len(data_readed)}")
+        if len(data_readed) != 0:
+            self.logger.info(f"Data readed: {data_readed}, with length: {len(data_readed)}")
+        
         return data_readed
 
+    @smart_debug(element_name="PROTECTION_LAYER", include_args=True, include_result=True)
     def negotiate(self, role: str, connection_identifier: int) -> Configurations | bool:
         # Get the transport layer
         transport_layer = self.layers_container.query_layer("TRANSPORT")

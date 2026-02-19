@@ -34,7 +34,8 @@ class SessionLayer:
     def _set_datapackage_handler(self) -> bool:
         self.datapackages_handler = Datapackage(
             write_function=self.send,
-            read_function=self.receive
+            read_function=self.receive,
+
         )
         return True
 
@@ -83,10 +84,10 @@ class SessionLayer:
         self.security_layer.start()
 
         # Negotiate the security layer
-        self.security_layer.negotiate(
-            role=self.local_role,
-            connection_identifier=self.connection_identifier
-        )
+        #self.security_layer.negotiate(
+        #    role=self.local_role,
+        #    connection_identifier=self.connection_identifier
+        #)
 
         # Inject protection layer
         self._inject_session_layers(self.security_layer)

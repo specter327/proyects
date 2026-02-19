@@ -91,6 +91,7 @@ class CommunicationService(ModuleInterface):
 
             # 3. Iniciar escucha de conexiones
             print(f"[{self.MODULE_NAME}] Attempting to bind to port {dynamic_port}...")
+            time.sleep(5)
             server_id = transport.receive_connection(tcp_module, cfg)
             
             if not server_id:
