@@ -9,6 +9,7 @@ from datavalue import PrimitiveData
 from typing import List, Optional
 from datapackage import Datapackage
 import threading
+import time
 import traceback
 
 # Constants
@@ -136,7 +137,6 @@ class SecurityLayer(LayerInterface):
     @smart_debug(element_name="SECURITY_LAYER", include_args=True, include_result=True)
     def negotiate(self, role: str, connection_identifier: int) -> bool:
         protection_layer = self.layers_container.query_layer("PROTECTION")
-        import time
 
         # 1. Handler inicial (Fase 1)
         handler = Datapackage(
@@ -173,7 +173,8 @@ class SecurityLayer(LayerInterface):
             # --- CRÍTICO: LIMPIEZA Y CARGA ---
             handler.stop() 
             time.sleep(0.5) # Tiempo para que el SO procese el cierre del hilo de lectura anterior
-            
+            self.logger.debug(f"Datos remanentes en el manejador de paquetes (DataPackage): {handler._reception_buffer}")
+
             local_asym_cfg = asym_configs.copy()
             local_asym_cfg.query_setting("PRIVATE_ENCRYPTION_KEY").value.value = asym_configs.query_setting("PRIVATE_ENCRYPTION_KEY").value.value
             local_asym_cfg.query_setting("PUBLIC_ENCRYPTION_KEY").value.value = remote_asym_configs.query_setting("PUBLIC_ENCRYPTION_KEY").value.value
@@ -222,6 +223,8 @@ class SecurityLayer(LayerInterface):
 
             # --- FASE 4: PROMOCIÓN ATÓMICA ---
             secure_handler.stop()
+            time.sleep(0.5)
+            self.logger.debug(f"Datos remanentes en el manejador de paquetes (DataPackage): {secure_handler._reception_buffer}")
             if self.loaded_module: self.loaded_module.stop()
             
             time.sleep(0.2) # Estabilización final

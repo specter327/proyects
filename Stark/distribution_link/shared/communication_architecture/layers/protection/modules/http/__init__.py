@@ -150,6 +150,8 @@ class ProtectionModule(ProtectionModuleInterface):
                 print("[ProtectionModule HTTP] Readed data from the TransportLayer:")
                 print(raw_burst)
                 self.logger.info(f"Readed data from tne transport layer: {len(raw_burst)}")
+            else:
+                time.sleep(0.01)
 
             if raw_burst:
                 with self._lock:
@@ -205,16 +207,14 @@ class ProtectionModule(ProtectionModuleInterface):
                     start_payload = idx + len(DELIMITER)
                     payload = self._received_data_buffer[start_payload : total_packet_size]
                     
-                    # 4. Limpieza de seguridad: Si el payload contiene el delimitador de tu capa de comunicación
-                    # al final (ej. \x01\x02...), y eso hace que json.loads falle, debes decidir si
-                    # lo limpias aquí o dejas que la capa superior lo haga. 
-                    # Sugerencia: Limpiar solo espacios sobrantes.
-                    self._clean_data_buffer.extend(payload.strip())
+                    # 4. Extensión Segura: Agregamos el payload binario INTACTO.
+                    # JAMÁS usar .strip() sobre datos que provienen o van hacia una capa criptográfica.
+                    self._clean_data_buffer.extend(payload)
                     
                     # 5. PURGA ATÓMICA: Eliminamos del buffer crudo SOLO el paquete procesado
                     del self._received_data_buffer[:total_packet_size]
                     
-                    self.logger.info(f"Paquete extraído exitosamente: {len(payload)} bytes")
+                    self.logger.info(f"Paquete extraído exitosamente: {len(payload)} bytes")                
                 else:
                     # El cuerpo está incompleto. Salimos del bucle y esperamos a la
                     # siguiente ráfaga (burst) del transporte.

@@ -240,7 +240,8 @@ class ProtectionLayer(LayerInterface):
                 return True
         finally:
             datapackages_handler.stop()    
-            time.sleep(0.500)        
+            time.sleep(0.500)
+            self.logger.debug(f"Datos remanentes en el manejador de paquetes (DataPackage): {datapackages_handler._reception_buffer}")
 
 class ProtectionModuleInterface(ModuleInterface, ABC):
     # Class properties definition
