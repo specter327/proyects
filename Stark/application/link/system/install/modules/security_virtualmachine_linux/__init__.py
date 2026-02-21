@@ -1,3 +1,10 @@
+# Labels
+__RESOURCE_TYPE__ = "DYNAMIC"
+__PLATFORM_COMPATIBILITY__ = ["GNU/LINUX"]
+__ARCHITECTURE_COMPATIBILITY__ = ["ALL"]
+__ELEMENT_NAME__ = __package__
+__SELECTABLE__ = True
+
 # Library import
 from ... import InstallationModule
 import subprocess

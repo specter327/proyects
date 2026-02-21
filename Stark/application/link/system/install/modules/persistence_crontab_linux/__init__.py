@@ -1,3 +1,32 @@
+# Labels
+__RESOURCE_TYPE__ = "DYNAMIC"
+__PLATFORM_COMPATIBILITY__ = ["GNU/LINUX"]
+__ARCHITECTURE_COMPATIBILITY__ = ["ALL"]
+__SELECTABLE__ = True
+__ELEMENT_NAME__ = __package__
+__CONFIGURABLE__ = True
+__STATIC_CONFIGURATIONS__ = {
+    "EXECUTION_INTERVAL": {
+        "SYSTEM_NAME": "EXECUTION_INTERVAL",
+        "SYMBOLIC_NAME": "Execution interval",
+        "DESCRIPTION": "Specify the interval between executions of the software",
+        "VALUE": {
+            "DATA_TYPE": "int",
+            "VALUE": None,
+            "MAXIMUM_LENGTH": None,
+            "MINIMUM_LENGTH": 0,
+            "MAXIMUM_SIZE": None,
+            "MINIMUM_SIZE": None,
+            "POSSIBLE_VALUES": None,
+            "REGULAR_EXPRESSION": None,
+            "DATA_CLASS": True,
+            "__type__": "PrimitiveData"
+        },
+        "OPTIONAL": False,
+        "PRIVATE": False
+    }
+}
+
 # Library import
 #from .. import InstallModuleInterface
 from ... import InstallationModule

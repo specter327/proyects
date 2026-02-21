@@ -1,3 +1,6 @@
+# Labels
+__RESOURCE_TYPE__ = "STRUCTURAL"
+
 # Library import
 import functools
 import time

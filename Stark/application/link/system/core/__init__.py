@@ -1,3 +1,6 @@
+# Labels
+__RESOURCE_TYPE__ = "STRUCTURAL"
+
 # Library import
 from abc import ABC, abstractmethod
 from .. import ManagerInterface, ModuleInterface

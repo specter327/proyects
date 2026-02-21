@@ -1,3 +1,6 @@
+# Labels
+__RESOURCE_TYPE__ = "STRUCTURAL"
+
 # Library import
 from .. import LayerInterface, ModuleInterface, ModuleContainer, LAYER_TYPE_SESSION
 from ....utils.logger import logger

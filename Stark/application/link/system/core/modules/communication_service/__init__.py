@@ -1,5 +1,10 @@
-# system/core/modules/communication_service/__init__.py
+# Labels
+__RESOURCE_TYPE__ = "DYNAMIC"
+__PLATFORM_COMPATIBILITY__ = ["ALL"]
+__ARCHITECTURE_COMPATIBILITY__ = ["ALL"]
+__SELECTABLE__ = False
 
+# system/core/modules/communication_service/__init__.py
 # Library import
 from system import ModuleInterface
 from shared.communication_architecture import layers

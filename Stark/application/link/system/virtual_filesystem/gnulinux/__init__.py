@@ -1,3 +1,9 @@
+# Labels
+__RESOURCE_TYPE__ = "DYNAMIC"
+__PLATFORM_COMPATIBILITY__ = ["GNU/LINUX"]
+__ARCHITECTURE_COMPATIBILITY__ = ["ALL"]
+__SELECTABLE__ = False
+
 # Library import
 from .. import VirtualFileSystem
 from pathlib import Path

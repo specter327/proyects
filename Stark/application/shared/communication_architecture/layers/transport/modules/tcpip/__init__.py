@@ -1,3 +1,9 @@
+# Labels
+__RESOURCE_TYPE__ = "DYNAMIC"
+__PLATFORM_COMPATIBILITY__ = ["ALL"]
+__ARCHITECTURE_COMPATIBILITY__ = ["ALL"]
+__SELECTABLE__ = True
+
 # Library import
 from ... import TransportModuleInterface
 from ......utils.logger import logger

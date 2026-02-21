@@ -1,3 +1,9 @@
+# Labels
+__RESOURCE_TYPE__ = "DYNAMIC"
+__PLATFORM_COMPATIBILITY__ = ["ALL"]
+__ARCHITECTURE_COMPATIBILITY__ = ["ALL"]
+__SELECTABLE__ = True
+
 # system/core/layers/session/protection/modules/transparent_protection.py
 
 from ... import ProtectionModuleInterface

@@ -1,0 +1,2 @@
+# Labels
+__RESOURCE_TYPE__ = "STRUCTURAL"

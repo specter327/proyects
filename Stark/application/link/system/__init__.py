@@ -1,3 +1,6 @@
+# Labels
+__RESOURCE_TYPE__ = "STRUCTURAL"
+
 # Library import
 from .configurations import ConfigurationsManager
 from .virtual_filesystem import import_virtual_file_system

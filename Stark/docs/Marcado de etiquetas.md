@@ -9,17 +9,19 @@ El mecanismo define las siguientes etiquetas de **archivo**:
     **```"WINDOWS"```**: Indica compatibilidad con el sistema operativo Windows.
     **```"GNU/LINUX"```**: Indica compatibilidad con el sistema operativo GNU/Linux.
     **```"MACOS"```**: Indica compatibilidad con el sistema operativo MacOS.
+    **```ALL```**: Indica compatibilidad con todas las plataformas.
 
 **__ARCHITECTURE_COMPATIBILITY__**: Puede tener uno, varios, o todos los valores (multiplataforma):
     **```"ARM"```**: Indica compatibilidad con procesadores de arquitectura ARM.
     **```"X32"```**: Indica compatibilidad con procesadores de arquitectura de 32 bits.
     **```"X64"```**: Indica compatibilidad con procesadores de arquitectura de 64 bits.
+    **```ALL```**: Indica compatibilidad con todas las arquitecturas.
 
 **__SELECTABLE__**: Indica si el recurso es seleccionable por el usuario durante la fase de construccion del software. Puede tener dos valores:
     **```True```**: Es seleccionable durante la fase de construccion.
     **```False```**: No es seleccionable durante la fase de construccion.
 
-**__ELEMENT__NAME**: Indica el nombre simbolico (representativo) del elemento.
+**__ELEMENT_NAME__**: Indica el nombre simbolico (representativo) del elemento.
 
 **__CONFIGURABLE__**: Indica si el recurso puede ser configurado de manera estatica durante la fase de construccion; estas configuraciones seran empaquetadas y de arranque. Puede tener dos valores:
     **```True```**
