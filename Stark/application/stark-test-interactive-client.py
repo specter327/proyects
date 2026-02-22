@@ -3,6 +3,13 @@ import os
 import sys
 from shared.communication_architecture import layers
 
+# Si el script está en Stark/application/
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+LINK_DIR = os.path.join(BASE_DIR, "link")
+
+if LINK_DIR not in sys.path:
+    sys.path.insert(0, LINK_DIR)
+
 PORT_FILE = ".stark_port"
 
 def get_dynamic_port():

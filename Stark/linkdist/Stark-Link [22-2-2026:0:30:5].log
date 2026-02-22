@@ -1,0 +1,125 @@
+2026-02-22 00:30:05,471 | TRANSPORT_LAYER      | INFO     | Transport layer initializated
+2026-02-22 00:30:10,473 | TRANSPORT_LAYER      | INFO     | Transport layer receiving connection with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x78db6ec88920>
+2026-02-22 00:30:10,475 | TRANSPORT_TCP_IP     | INFO     | Module configurated
+2026-02-22 00:30:10,475 | TRANSPORT_TCP_IP     | INFO     | Module initializated
+2026-02-22 00:30:10,475 | TRANSPORT_TCP_IP     | INFO     | Receiving connection with the module
+2026-02-22 00:30:10,477 | TRANSPORT_TCP_IP     | INFO     | Starting receiver connections routine
+2026-02-22 00:30:10,477 | TRANSPORT_LAYER      | INFO     | Connection (receive) registered with the identifier: 1
+2026-02-22 00:30:10,480 | TRANSPORT_TCP_IP     | INFO     | Receiving connections of type: 2, with TCP
+2026-02-22 00:30:10,481 | TRANSPORT_TCP_IP     | INFO     | Successfully binded the server
+2026-02-22 00:30:10,481 | TRANSPORT_TCP_IP     | INFO     | Starting receive connections process
+2026-02-22 00:30:10,499 | PROTECTION_LAYER     | INFO     | Protection layer initializated
+2026-02-22 00:30:10,501 | PROTECTION_LAYER     | INFO     | Starting negotation with role: ACTIVE, with the connection: 1
+2026-02-22 00:30:10,601 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:10,712 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:10,823 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:10,867 | TRANSPORT_TCP_IP     | INFO     | Connection received from the remote address: ('127.0.0.1', 54216)
+2026-02-22 00:30:10,867 | TRANSPORT_TCP_IP     | INFO     | Establishing the new connection (socket) on the module
+2026-02-22 00:30:10,869 | TRANSPORT_TCP_IP     | INFO     | Starting data receiver routine
+2026-02-22 00:30:10,934 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:11,045 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:11,156 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:11,267 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:11,378 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:11,489 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:11,600 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:11,711 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:11,822 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:11,870 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-22 00:30:11,933 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:12,044 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:12,156 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:12,267 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:12,378 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:12,491 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:12,602 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:12,713 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:12,824 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:12,872 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-22 00:30:12,936 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:13,047 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:13,049 | TRANSPORT_TCP_IP     | INFO     | Connection received from the remote address: ('127.0.0.1', 54226)
+2026-02-22 00:30:13,049 | TRANSPORT_TCP_IP     | ERROR    | Closing connections because the module is already connected
+2026-02-22 00:30:13,158 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:13,269 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:13,380 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:13,492 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:13,604 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:13,715 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:13,826 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:13,937 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:14,048 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:14,050 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-22 00:30:14,159 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:14,270 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:14,382 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:14,493 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:14,605 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:14,716 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:14,827 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:14,939 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:15,050 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:15,051 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-22 00:30:15,161 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:15,272 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:15,384 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:15,495 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:15,607 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:15,718 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:15,829 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:15,940 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:16,052 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:16,052 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-22 00:30:16,164 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:16,275 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:16,386 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:16,497 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:16,608 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:16,719 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:16,830 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:16,942 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:17,053 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:17,054 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-22 00:30:17,164 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:17,275 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:17,386 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:17,498 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:17,609 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:17,720 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:17,831 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:17,942 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:18,053 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:18,055 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-22 00:30:18,165 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:18,276 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:18,387 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:18,498 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:18,610 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:18,721 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:18,832 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:18,943 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:19,054 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:19,056 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-22 00:30:19,165 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:19,276 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:19,388 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:19,499 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:19,610 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:19,721 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:19,833 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:19,944 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:20,055 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:20,058 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-22 00:30:20,166 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:20,279 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:20,390 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:20,504 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-22 00:30:21,018 | PROTECTION_LAYER     | ERROR    | FAIL: negotiate | ERROR: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "/tmp/_MEItmo2FQ/shared/utils/debug.py", line 26, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/_MEItmo2FQ/shared/communication_architecture/layers/protection/__init__.py", line 205, in negotiate
+    print("[Nexus] Available modules:", available_modules.get("AVAILABLE_MODULES"))
+                                        ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'

@@ -5,9 +5,13 @@ import sys
 from constructor import LinkConstructor
 import logging
 import time
+import os
+
+# Constants definition
+LOG_FILE: str = "LinkBuilder-BUILD.log"
 
 # Parameters configuration
-def setup_custom_logger(name: str):
+def setup_custom_logger(name: str, restart: bool = False):
     """Configura el logger global para el ecosistema Stark."""
     formatter = logging.Formatter(
         fmt='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -19,7 +23,11 @@ def setup_custom_logger(name: str):
     console_handler.setFormatter(formatter)
 
     # Handler para archivo (Auditoría)
-    file_handler = logging.FileHandler('linkbuilder_build.log')
+    if os.path.exists(LOG_FILE):
+        if restart:
+            os.remove(LOG_FILE)
+
+    file_handler = logging.FileHandler(LOG_FILE)
     file_handler.setFormatter(formatter)
 
     logger = logging.getLogger(name)
@@ -53,7 +61,7 @@ def configure_arguments():
 
 if __name__ == "__main__":
     # Configure logger
-    logger = setup_custom_logger("LinkBuilder")
+    logger = setup_custom_logger("LinkBuilder", restart=True)
     args = configure_arguments()
     
     source_path = pathlib.Path(args.source)
@@ -69,12 +77,28 @@ if __name__ == "__main__":
     constructor = LinkConstructor(
         platform_objective=args.os,
         architecture_objective=args.arch,
-        application_rootpath=args.source
+        application_rootpath=args.source,
+        preparation_path="build_temp",
+        application_name="Stark-Link",
+        output_path=args.output
     )
     
     # Inicio del proceso de construcción
     if constructor.build():
         print("[+] Proceso de construcción finalizado exitosamente.")
+        logger.info("Build process finished successfully")
+    else:
+        logger.error("There was an error building the software")
+        sys.exit(1)
 
+    logger.info("Starting compiling process")
+    compile_result = constructor.compile()
+
+    if compile_result:
+        logger.info("Compiling process finished successfully")
+    else:
+        logger.error("There was an error compiling the software")
+        sys.exit(1)
+    
     logger.info("Finishing system")
     sys.exit(0)

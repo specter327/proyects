@@ -1,0 +1,18 @@
+2026-02-22 00:18:50,278 | TRANSPORT_LAYER      | INFO     | Transport layer initializated
+2026-02-22 00:18:50,278 | COMMUNICATION_LAYER  | INFO     | Starting Communication layer
+2026-02-22 00:18:50,284 | COMMUNICATION_LAYER  | INFO     | Modules discovered: []
+2026-02-22 00:18:50,285 | TRANSPORT_LAYER      | INFO     | Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x732a5643bd70>
+2026-02-22 00:18:50,285 | TRANSPORT_TCP_IP     | INFO     | Module configurated
+2026-02-22 00:18:50,285 | TRANSPORT_TCP_IP     | INFO     | Module initializated
+2026-02-22 00:18:50,286 | TRANSPORT_TCP_IP     | INFO     | Connecting module
+2026-02-22 00:18:50,287 | TRANSPORT_TCP_IP     | INFO     | Connecting with IP: 2, with TCP
+2026-02-22 00:18:50,287 | TRANSPORT_TCP_IP     | INFO     | Module connected successfully
+2026-02-22 00:18:50,288 | TRANSPORT_TCP_IP     | INFO     | Starting data receiver routine
+2026-02-22 00:18:50,288 | TRANSPORT_LAYER      | INFO     | Connection result: True
+2026-02-22 00:18:50,288 | TRANSPORT_LAYER      | INFO     | Connection (connect) registered with the identifier: 1
+2026-02-22 00:18:50,289 | COMMUNICATION_LAYER  | INFO     | Creating session for connection: 1 with role: PASSIVE
+2026-02-22 00:18:50,289 | COMMUNICATION_LAYER  | ERROR    | Failed to create session for connection 1: name 'SessionLayer' is not defined
+2026-02-22 00:18:50,289 | TRANSPORT_LAYER      | INFO     | Disconnecting from connection: 1
+2026-02-22 00:18:50,289 | TRANSPORT_TCP_IP     | INFO     | Disconnecting module
+2026-02-22 00:18:50,289 | TRANSPORT_TCP_IP     | INFO     | Module disconnected successfully
+2026-02-22 00:18:50,289 | TRANSPORT_LAYER      | INFO     | Disconnection result: True

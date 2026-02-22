@@ -1,0 +1,20 @@
+2026-02-22 00:19:13,815 | TRANSPORT_LAYER      | INFO     | Transport layer initializated
+2026-02-22 00:19:13,816 | COMMUNICATION_LAYER  | INFO     | Starting Communication layer
+2026-02-22 00:19:13,826 | COMMUNICATION_LAYER  | INFO     | Modules discovered: []
+2026-02-22 00:19:13,828 | TRANSPORT_LAYER      | INFO     | Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x75d42f23bfb0>
+2026-02-22 00:19:13,829 | TRANSPORT_TCP_IP     | INFO     | Module configurated
+2026-02-22 00:19:13,829 | TRANSPORT_TCP_IP     | INFO     | Module initializated
+2026-02-22 00:19:13,830 | TRANSPORT_TCP_IP     | INFO     | Connecting module
+2026-02-22 00:19:13,831 | TRANSPORT_TCP_IP     | INFO     | Connecting with IP: 2, with TCP
+2026-02-22 00:19:13,831 | TRANSPORT_TCP_IP     | ERROR    | Error on the connection: [Errno 111] Connection refused
+2026-02-22 00:19:13,833 | TRANSPORT_LAYER      | INFO     | Connection result: False
+2026-02-22 00:19:13,833 | TRANSPORT_LAYER      | ERROR    | Connection result: ERROR
+2026-02-22 00:19:13,834 | TRANSPORT_LAYER      | ERROR    | FAIL: disconnect | ERROR: 'The specified device: False, not exists in the connections table'
+Traceback (most recent call last):
+  File "/home/specter/Escritorio/proyects/Stark/application/shared/utils/debug.py", line 26, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/specter/Escritorio/proyects/Stark/application/shared/communication_architecture/layers/transport/__init__.py", line 125, in disconnect
+    if not connection_identifier in self.connections_table: raise KeyError(f"The specified device: {connection_identifier}, not exists in the connections table")
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'The specified device: False, not exists in the connections table'

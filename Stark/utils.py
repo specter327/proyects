@@ -52,8 +52,11 @@ def is_compatible(metadata: dict, target_os: str, target_arch: str) -> bool:
     return target_os in platforms and target_arch in architectures
     
 def load_file_metadata(file_path: str) -> Dict[str, Any]:
-    """Analiza estáticamente un archivo .py para extraer etiquetas dunder."""
-    metadata = {}
+    """Analiza estáticamente un archivo .py para extraer etiquetas dunder y dependencias."""
+    metadata = {
+        "__DEPENDENCIES_INTERNAL__": [],
+        "__DEPENDENCIES_EXTERNAL__": []
+    }
     path = pathlib.Path(file_path)
 
     if not path.exists() or path.suffix != ".py":
@@ -63,7 +66,8 @@ def load_file_metadata(file_path: str) -> Dict[str, Any]:
         with open(path, "r", encoding="utf-8") as source_file:
             tree = ast.parse(source_file.read())
 
-        for node in tree.body:
+        for node in ast.walk(tree):
+            # 1. Extracción de Metadatos Dunder (Variables __KEY__)
             if isinstance(node, ast.Assign):
                 for target in node.targets:
                     if isinstance(target, ast.Name) and target.id.startswith("__"):
@@ -72,8 +76,41 @@ def load_file_metadata(file_path: str) -> Dict[str, Any]:
                             metadata[target.id] = value
                         except (ValueError, SyntaxError):
                             continue
+
+            # 2. Detección de importaciones globales (import A, B as C)
+            elif isinstance(node, ast.Import):
+                for alias in node.names:
+                    # Almacenamos el nombre base para clasificar luego
+                    metadata["__DEPENDENCIES_EXTERNAL__"].append(alias.name)
+
+            # 3. Detección de importaciones específicas/relativas (from X import Y)
+            elif isinstance(node, ast.ImportFrom):
+                # node.level > 0 indica importación relativa (., .., etc)
+                dep_info = {
+                    "module": node.module,
+                    "level": node.level,
+                    "names": [n.name for n in node.names]
+                }
+                # Guardamos la estructura para que el LinkScanner la resuelva
+                metadata["__DEPENDENCIES_INTERNAL__"].append(dep_info)
                             
     except Exception as e:
-        print(f"[!] Error analizando metadatos en {file_path}: {e}")
+        print(f"[!] Error analizando metadatos y dependencias en {file_path}: {e}")
 
     return metadata
+
+def resolve_fully_qualified_name(current_fqn: str, dep_module: str, level: int) -> str:
+    """Resuelve un import relativo a un FQN absoluto."""
+    if level == 0:
+        return dep_module if dep_module else ""
+    
+    parts = current_fqn.split('.')
+    # En Python, 'from . import x' tiene level=1 y elimina 0 partes del path del paquete,
+    # pero 'from .. import x' (level=2) elimina 1 parte. 
+    # Ajustamos el truncamiento según la lógica de importación de Python:
+    truncated = parts[:-level] 
+    
+    if dep_module:
+        truncated.append(dep_module)
+        
+    return ".".join(truncated)
