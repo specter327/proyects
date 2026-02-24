@@ -1,3 +1,5 @@
+#!/bin/python3
+
 # Library import
 import argparse
 import pathlib

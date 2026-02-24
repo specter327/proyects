@@ -105,7 +105,19 @@ __STATIC_CONFIGURATIONS__ = {
                                                     }
                                                 },
                                                 {
-                                                    "__class__": "int"
+                                                    "__type__": "PrimitiveData",
+                                                    "content": {
+                                                        "DATA_TYPE": "int",
+                                                        "VALUE": None,
+                                                        "MAXIMUM_LENGTH": 65535,
+                                                        "MINIMUM_LENGTH": 1,
+                                                        "MAXIMUM_SIZE": None,
+                                                        "MINIMUM_SIZE": None,
+                                                        "POSSIBLE_VALUES": None,
+                                                        "REGULAR_EXPRESSION": None,
+                                                        "DATA_CLASS": True,
+                                                        "__type__": "PrimitiveData"
+                                                    }
                                                 }
                                             ]
                                         ],
@@ -146,10 +158,12 @@ from ......utils.debug import smart_debug
 from configurations import Configurations, Setting
 from datavalue import PrimitiveData, ComplexData
 from system.configurations import ConfigurationsManager
+from typing import Optional
 import threading
 import time
 
 # Constants definition
+PrimitiveData()
 IPv4AddressSchema = PrimitiveData(
     data_type=str,
     value=None,
@@ -196,11 +210,20 @@ DomainNameSchema = PrimitiveData(
     data_class=True
 )
 
+InternetPortSchema = PrimitiveData(
+    data_type=int,
+    value=None,
+    maximum_length=65535, minimum_length=1,
+    maximum_size=None, minimum_size=None,
+    possible_values=None,
+    data_class=True
+)
+
 AddressSchema = ComplexData(
     data_type=dict,
     value=None,
     maximum_length=None, minimum_length=1,
-    possible_values=(("ADDRESS", "PORT"), (IPv4AddressSchema, IPv6AddressSchema, MACAddressSchema, DomainNameSchema, int)),
+    possible_values=(("ADDRESS", "PORT"), (IPv4AddressSchema, IPv6AddressSchema, MACAddressSchema, DomainNameSchema, InternetPortSchema)),
     data_class=True
 )
 AddressesSchema = ComplexData(
@@ -219,9 +242,17 @@ ServerProfileSchema = ComplexData(
     data_class=True
 )
 
+ServerProfilesSchema = ComplexData(
+    data_type=list,
+    value=None,
+    minimum_length=1,
+    possible_values=(ServerProfileSchema, ),
+    data_class=True
+)
+
 ModuleConfigurations = Configurations()
 ServerProfilesSetting = Setting(
-    value=ServerProfileSchema,
+    value=ServerProfilesSchema,
     system_name="SERVER_PROFILES",
     symbolic_name="Server profiles",
     description="It includes a list of ServerProfile instances, with information to search it to establish a connection",

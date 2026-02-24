@@ -10,6 +10,19 @@ import PyInstaller.__main__
 import os
 import pprint
 
+# Functions definition
+def fill_primitive_data(primitive_data: PrimitiveData) -> PrimitiveData:
+    while True:
+        print(f"Requesting data: {str(primitive_data.data_type)}")
+        print(f"Maximum length: {primitive_data.maximum_length if primitive_data.maximum_length is not None else 'Any'}")
+        print(f"Minimum length: {primitive_data.minimum_length if primitive_data.minimum_length is not None else 'Any'}")
+        print(f"Maximum size: {primitive_data.maximum_size if primitive_data.maximum_size is not None else 'Any'}")
+        print(f"Minimum size: {primitive_data.minimum_size if primitive_data.minimum_size is not None else 'Any'}")
+        print(f"Possible values: {primitive_data.possible_values if primitive_data.possible_values is not None else 'Any'}")
+        print(f"Regular expression: {primitive_data.regular_expression if primitive_data.regular_expression is not None else 'Any'}")
+
+        data = input(prompt=f">>> ")
+
 # Classes definition
 class LinkConstructor:
     def __init__(self,
@@ -102,52 +115,154 @@ class LinkConstructor:
         # 3. Recursión
         for dir_name, dir_node in scanner_node["content"]["subdirectories"].items():
             self._enrich_base_table(dir_node, f"{current_id}.{dir_name}".strip("."))
-            
+
     def _hydrate_configuration(self, rid: str, descriptor: dict) -> Configurations:
-        """
-        Maneja la entrada de usuario para llenar el descriptor de configurations-stc.
-        """
-        config = Configurations.from_dict(descriptor)
-        print(f"Requested configurations by the resource: {rid}")
-
-        for setting_name in config.query_settings():
-            setting = config.query_setting(setting_name)
-            print(f"Setting: {setting_name}")
-            print(f"    Symbolic name: {setting.symbolic_name}")
-            print(f"    Description: {setting.description}")
-            print(f"    Value descriptor:")
-            print(f"        Data type: {setting.value.data_type}")
-            print(f"        Maximum length: {setting.value.maximum_length}")
-            print(f"        Minimum length: {setting.value.minimum_length}")
-            if hasattr(setting.value, "maximum_size"):
-                print(f"        Maximum size: {setting.value.maximum_size}")
+        config_instance = Configurations.from_dict(descriptor)
+        
+        for setting_name in config_instance.query_settings():
+            setting = config_instance.query_setting(setting_name)
             
-            if hasattr(setting.value, "minimum_size"):
-                print(f"        Minimum size: {setting.value.minimum_size}")
-            
-            print(f"        Possible values: {setting.value.possible_values}")
-            print(f"    Is required: {setting.optional}")
+            while True: # Bucle de reintento para el bloque completo
+                try:
+                    captured_value = self.capture_datavalue_structure(
+                        schema=setting.value, 
+                        element_name=setting_name
+                    )
+                    
+                    # Intentamos validar el objeto ComplexData rehidratado con el valor final
+                    # Aquí es donde fallará si eligió 'INTERNET' donde no debía
+                    if setting.value.validate(captured_value):
+                        setting.value.value = captured_value
+                        break # Éxito: pasamos al siguiente setting
+                        
+                except Exception as e:
+                    print(f"\n[!] ESTRUCTURA INVÁLIDA para '{setting_name}': {e}")
+                    print("[*] Reintentando configuración del bloque...")
+                    
+        return config_instance
 
+    def _resolve_schema_identity(self, schema_obj: Any) -> str:
+        """
+        Introspección profunda de esquemas Stark. 
+        Prioriza metadatos de red y nombres de clase sobre tipos base.
+        """
+        # 1. Metadatos explícitos (Atributo 'name' inyectado en la definición del esquema)
+        if hasattr(schema_obj, 'name') and schema_obj.name:
+            return str(schema_obj.name).upper()
+
+        # 2. Análisis de Primitivos (Heurística técnica de red/tipos)
+        if isinstance(schema_obj, PrimitiveData):
+            reg = schema_obj.regular_expression or ""
+            # Identificación por firma de RegEx (Protocolos de red)
+            if "25[0-5]" in reg: return "IPv4_ADDR"
+            if "0-9a-fA-F]{1,4}:" in reg: return "IPv6_ADDR"
+            if "f-aF" in reg or "F-a-f" in reg: return "MAC_ADDR"
+            
+            # Identificación por restricciones de transporte
+            if schema_obj.data_type is int and schema_obj.maximum_length == 65535:
+                return "NETWORK_PORT"
+            
+            return f"VAL_{schema_obj.data_type.__name__.upper()}"
+
+        # 3. Análisis de Complejos (Colecciones y Polimorfismo)
+        if isinstance(schema_obj, ComplexData):
+            base_type = schema_obj.data_type.__name__.upper()
+            
+            # Si es una lista, intentamos resolver QUÉ contiene la lista
+            if schema_obj.data_type in (list, set, tuple) and schema_obj.possible_values:
+                inner_schema = schema_obj.possible_values[0]
+                inner_identity = self._resolve_schema_identity(inner_schema)
+                return f"LIST_OF_{inner_identity}"
+            
+            return f"STRUCT_{base_type}"
+
+        # Fallback a introspección de tipo Python
+        return getattr(schema_obj, 'data_type', type(schema_obj)).__name__.upper()
+
+    def _safe_schema_selection(self, key: str, pool: list) -> Any:
+        """Menú de selección robusto con resolución de identidad polimórfica."""
+        print(f"\n  [>] Seleccione la especificación técnica para '{key}':")
+        for idx, s in enumerate(pool):
+            identity = self._resolve_schema_identity(s)
+            print(f"    {idx}) {identity}")
+
+        while True:
+            try:
+                choice = input(f"    [?] Opción (0-{len(pool)-1}): ").strip()
+                if not choice: continue
+                
+                # Manejo de salida forzada
+                if choice.lower() in ('exit', 'quit', 'abort'):
+                    raise SystemExit("Construcción abortada por el usuario.")
+                
+                idx = int(choice)
+                if 0 <= idx < len(pool): return pool[idx]
+                print(f"    [!] Error: El índice {idx} está fuera de rango.")
+            except ValueError:
+                print("    [!] Error: Ingrese un valor numérico válido.")
+
+    def capture_datavalue_structure(self, schema: Any, element_name: str = "Target") -> Any:
+        """
+        Motor de hidratación recursivo con gestión de flujo y validación de tipos.
+        """
+        if not isinstance(schema, (PrimitiveData, ComplexData)):
+            return schema
+
+        # --- CASO PRIMITIVO ---
+        if isinstance(schema, PrimitiveData):
+            fill_primitive_data(schema)
+            
             while True:
-                value = input("> ")
+                try:
+                    label = self._resolve_schema_identity(schema)
+                    val = input(f"  [INPUT] {element_name} ({label}): ").strip()
+                    
+                    # Manejo de nulos opcionales
+                    if not val and (getattr(schema, 'data_class', None) or schema.minimum_length == 0):
+                        return None
+                    
+                    casted = schema.data_type(val)
+                    if schema.validate(casted): return casted
+                except (ValueError, TypeError) as e:
+                    print(f"    [!] Error de casteo/tipo: {e}")
+                except Exception as e:
+                    print(f"    [!] Validación fallida: {e}")
 
-                print(f"Validating input")
-                if setting.value.data_type == int:
-                    try:
-                        value = int(value)
-                    except TypeError:
-                        print("The data type is not valid")
-                        print("Try again")
+        # --- CASO COMPLEJO ---
+        elif isinstance(schema, ComplexData):
+            # Diccionarios (Mapas de configuración)
+            if schema.data_type is dict:
+                captured = {}
+                keys, values = schema.possible_values[0], schema.possible_values[1]
+                for i, k in enumerate(keys):
+                    # Selección dinámica si hay múltiples validadores para una llave (Polimorfismo)
+                    sub = values[i] if len(values) == len(keys) else self._safe_schema_selection(k, values)
+                    captured[k] = self.capture_datavalue_structure(sub, f"{element_name}.{k}")
+                return captured
+
+            # Listas / Tuplas / Sets
+            elif schema.data_type in (list, tuple, set):
+                captured = []
+                item_schema = schema.possible_values[0]
+                min_l = getattr(schema, 'minimum_length', 0) or 0
+                max_l = getattr(schema, 'maximum_length', None)
+
+                while True:
+                    curr_len = len(captured)
+                    if max_l and curr_len >= max_l:
+                        print(f"  [*] Límite máximo ({max_l}) alcanzado para {element_name}.")
+                        break
+                    
+                    if curr_len >= min_l:
+                        prompt = f"  [?] ¿Añadir elemento a {element_name}? (s/n) [Actual: {curr_len}]: "
+                        if input(prompt).lower().strip() != 's': break
+                    
+                    item_val = self.capture_datavalue_structure(item_schema, f"{element_name}[{curr_len}]")
+                    captured.append(item_val)
                 
-                validation_result = setting.value.validate(value)
-                if validation_result:
-                    print("Validation success")
-                    break
-                else:
-                    print("Error validating value")
-                    print("Try again")
-                
-        return config
+                return schema.data_type(captured)
+
+        return None
 
     def _finalize_dependency_graph(self, resources: Dict[str, Any]):
         """
