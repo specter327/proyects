@@ -10,6 +10,8 @@ class PrimitiveData:
     def __init__(self,
         data_type: Type,
         value: Any,
+        name: Optional[str] = None,
+        description: Optional[str] = None,
         maximum_length: Optional[int] = None, minimum_length: Optional[int] = None,
         maximum_size: Optional[Union[int, float]] = None, minimum_size: Optional[Union[int, float]] = None,
         possible_values: Optional[Iterable] = None,
@@ -20,6 +22,8 @@ class PrimitiveData:
         # Instance properties assignment
         self.data_type = data_type
         self.value = value
+        self.name = name
+        self.description = description
         self.maximum_length = maximum_length; self.minimum_length = minimum_length
         self.maximum_size = maximum_size; self.minimum_size = minimum_size
         self.possible_values = possible_values
@@ -72,7 +76,7 @@ class PrimitiveData:
                     normalized_possible.append(item)
         
         # Process raw data
-        if isinstance(self.value, bytes):
+        if isinstance(self.value, (bytes, bytearray)):
             raw_value = base64.b64encode(self.value).decode("UTF-8")
         else:
             raw_value = self.value
@@ -80,6 +84,8 @@ class PrimitiveData:
         data_structure = {
             "DATA_TYPE": self.data_type.__name__ if hasattr(self.data_type, '__name__') else str(self.data_type),
             "VALUE": raw_value,
+            "NAME":self.name,
+            "DESCRIPTION":self.description,
             "MAXIMUM_LENGTH": self.maximum_length,
             "MINIMUM_LENGTH": self.minimum_length,
             "MAXIMUM_SIZE": self.maximum_size,
@@ -98,7 +104,7 @@ class PrimitiveData:
     @classmethod
     def from_dict(cls, data: dict) -> 'PrimitiveData':
         expected_keys = {
-            "DATA_TYPE", "VALUE", "MAXIMUM_LENGTH", "MINIMUM_LENGTH",
+            "DATA_TYPE", "VALUE", "NAME", "DESCRIPTION", "MAXIMUM_LENGTH", "MINIMUM_LENGTH",
             "MAXIMUM_SIZE", "MINIMUM_SIZE", "POSSIBLE_VALUES",
             "REGULAR_EXPRESSION", "DATA_CLASS", "__type__"
         }
@@ -146,6 +152,8 @@ class PrimitiveData:
         return cls(
             data_type=real_type,
             value=value,
+            name=data.get("NAME"),
+            description=data.get("DESCRIPTION"),
             maximum_length=data.get("MAXIMUM_LENGTH"),
             minimum_length=data.get("MINIMUM_LENGTH"),
             maximum_size=data.get("MAXIMUM_SIZE"),
@@ -221,3 +229,26 @@ class PrimitiveData:
                     raise exceptions.RegularExpressionException(f"The value does not meet the required pattern: {self.regular_expression}")
         
         return True
+
+
+    def cli_capture(self, prompt_context: str = "") -> Any:
+        label = self.name if self.name else f"Data ({self.data_type.__name__})"
+        print(f"{prompt_context}[*] Inserting value for: {label}")
+        if self.description:
+            print(f"{prompt_context}    (Info: {self.description})")
+
+        while True:
+            raw_in = input(f"{prompt_context}[>] Value: ").strip()
+            try:
+                if self.data_type is bool:
+                    val_casted = raw_in.lower() in ('true', '1', 't', 'y', 'yes', 's', 'si')
+                elif self.data_type in (bytes, bytearray):
+                    val_casted = self.data_type(raw_in.encode('utf-8'))
+                else:
+                    val_casted = self.data_type(raw_in)
+
+                self.validate(val_casted)
+                self.value = val_casted
+                return val_casted
+            except Exception as e:
+                print(f"{prompt_context}[!] Invalid: {str(e)}")

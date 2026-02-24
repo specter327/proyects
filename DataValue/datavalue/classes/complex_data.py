@@ -1,5 +1,5 @@
 # Library import
-from typing import Type, Optional, Any, Iterable
+from typing import Type, Optional, Any, Iterable, Dict, Union
 from .. import exceptions
 from .primitive_data import PrimitiveData
 import json
@@ -9,42 +9,39 @@ class ComplexData:
     def __init__(self,
         data_type: Type[list] | Type[tuple] | Type[set] | Type[frozenset] | Type[dict],
         value: Any,
+        name: Optional[str] = None,
+        description: Optional[str] = None,
         maximum_length: Optional[int] = None, minimum_length: Optional[int] = None,
-        possible_values: Optional[Iterable] = None,
+        possible_values: Optional[Union[Iterable, Dict[Any, Any]]] = None,
         
         data_class: Optional[bool] = False
     ) -> None:
         # Instance properties assignment
         self.data_type = data_type
         self.value = value
+        self.name = name
+        self.description = description
         self.maximum_length = maximum_length; self.minimum_length = minimum_length
         self.possible_values = possible_values
         self.data_class = data_class
 
         # Validate constructor parameters
         if self.possible_values:
-            # Base validation: it has to be a collection
-            if not isinstance(self.possible_values, (list, tuple)):
-                raise ValueError(f"The possible values has to be a list/tuple. Received: {type(self.possible_values).__name__}")
-            
-            # Validation to collections (list, tuple, set, frozenset)
-            if self.data_type != dict:
-                if not isinstance(self.possible_values, (list, tuple)):
-                    raise ValueError(f"Possible values for {self.data_type.__name__} must be exactly one list/tuple containing the options.")
-            
-            # Specific validation for dicts
-            else: # self.data_type == dict
-                if len(self.possible_values) not in (1, 2):
-                    raise ValueError("Possible values for dict must be 1 (keys) or 2 (keys, values) list/tuples.")
-                
-                # Validate the first element
-                if not isinstance(self.possible_values[0], (list, tuple)):
-                    raise ValueError("The first element of possible_values for dict must be a list/tuple of keys.")
-                
-                # Validate the second element
-                if len(self.possible_values) == 2 and not isinstance(self.possible_values[1], (list, tuple)):
-                    raise ValueError("The second element of possible_values for dict must be a list/tuple of value validators.")
+            # 1. Caso Diccionario (Mapping Schema)
+            if self.data_type is dict and isinstance(self.possible_values, dict):
+                pass # Es un esquema de mapeo válido
+
+            # 2. Caso Colecciones (list/tuple)
+            elif isinstance(self.possible_values, (list, tuple)):
+                if self.data_type is dict:
+                    if len(self.possible_values) not in (1, 2):
+                        raise ValueError("Possible values for dict must be 1 (keys) or 2 (keys, values) list/tuples.")
+                    if not isinstance(self.possible_values[0], (list, tuple)):
+                        raise ValueError("The first element of possible_values for dict must be a list/tuple of keys.")
+            else:
+                raise ValueError(f"Possible values must be list/tuple or dict. Received: {type(self.possible_values).__name__}")
         
+
         # Execute instance data validation
         if not self.data_class:
             self.validate()
@@ -74,9 +71,32 @@ class ComplexData:
         
         # Return results
         return True
-    
+
     def _validate_dictionary(self, data: Any) -> bool:
-        # Validate keys and (if applies) values
+        # ESCENARIO A: Schema Mapping (possible_values es un dict)
+        if isinstance(self.possible_values, dict):
+            for input_key, input_value in data.items():
+                matched_rule = False
+                for schema_key, value_validators in self.possible_values.items():
+                    # Validamos si la clave de entrada coincide con la regla (soporta Regex o Tipos)
+                    if self._is_match(input_key, schema_key):
+                        matched_rule = True
+                        
+                        # Normalizamos validadores a lista para permitir múltiples opciones por clave
+                        if not isinstance(value_validators, (list, tuple, set, frozenset)):
+                            validators = [value_validators]
+                        else:
+                            validators = value_validators
+                        
+                        if not any(self._is_match(input_value, v) for v in validators):
+                            raise ValueError(f"[ComplexData] Invalid value '{input_value}' for key '{input_key}'")
+                        break # Match encontrado para esta clave, pasar a la siguiente
+                
+                if not matched_rule:
+                    raise ValueError(f"[ComplexData] Key '{input_key}' is not allowed by schema mapping.")
+            return True
+
+        # ESCENARIO B: Validación Posicional/Tradicional
         if not isinstance(self.possible_values, (list, tuple)) or len(self.possible_values) != 2:
             keys_schema = self.possible_values
             values_schema = None
@@ -84,39 +104,49 @@ class ComplexData:
             keys_schema, values_schema = self.possible_values
         
         for key, value in data.items():
-            # Validación de Claves (Debe ser un iterable de opciones)
             if keys_schema:
                 if not any(self._is_match(key, validator) for validator in keys_schema):
                     raise ValueError(f"[ComplexData] Invalid key: {key}")
             
-            # Validación de Valores
             if values_schema:
                 if not any(self._is_match(value, validator) for validator in values_schema):
                     raise ValueError(f"[ComplexData] Invalid value '{value}' for key '{key}'")
 
         return True
-        
+
     @classmethod
     def _serialize_recursive(cls, element: Any) -> Any:
-        # 1. Caso: Instancias de tus clases
+        # 1. Caso: Instancias de validadores propios
         if isinstance(element, (PrimitiveData, ComplexData)):
             return {
                 "__type__": element.__class__.__name__,
                 "content": element.to_dict()
             }
         
-        # 2. Caso: Tipos de datos (clases como str, int, dict)
+        # 2. Caso: Referencias a tipos de clase (int, str, etc.)
         if isinstance(element, type):
             return {"__class__": element.__name__}
         
-        # 3. Caso: Colecciones estándar (recursión profunda)
+        # 3. Caso: Colecciones estándar
         if isinstance(element, (list, tuple, set, frozenset)):
             return [cls._serialize_recursive(i) for i in element]
         
         if isinstance(element, dict):
-            return {str(k): cls._serialize_recursive(v) for k, v in element.items()}
+            new_dict = {}
+            for k, v in element.items():
+                # Serialización de clave: si es compleja, se convierte a JSON string
+                # para mantener la validez del formato JSON.
+                serialized_key = cls._serialize_recursive(k)
+                if isinstance(serialized_key, (dict, list)):
+                    import json
+                    key_repr = json.dumps(serialized_key)
+                else:
+                    key_repr = str(serialized_key)
+                
+                new_dict[key_repr] = cls._serialize_recursive(v)
+            return new_dict
         
-        # 4. Caso: Literales serializables (int, str, float, bool, None)
+        # 4. Caso: Literales
         return element
 
     @classmethod
@@ -124,40 +154,48 @@ class ComplexData:
         SAFE_TYPES = {
             "list": list, "tuple": tuple, "set": set, "frozenset": frozenset, 
             "dict": dict, "str": str, "int": int, "float": float, "bool": bool,
-            "bytes": bytes, "bytearray": bytearray
+            "bytes": bytes, "bytearray": bytearray, "NoneType": type(None)
         }
 
-        # A. Manejo de Diccionarios (Estructuras u Objetos Serializados)
         if isinstance(element, dict):
-            # Caso 1: Es un objeto serializado (PrimitiveData o ComplexData)
+            # CASO A: Es un objeto serializado (PrimitiveData o ComplexData)
             if "__type__" in element:
                 obj_type = element["__type__"]
                 content = element["content"]
-                
                 if obj_type == "PrimitiveData":
                     return PrimitiveData.from_dict(content)
                 elif obj_type == "ComplexData":
                     return cls.from_dict(content)
-                else:
-                    raise ValueError(f"Unknown serialized object type: {obj_type}")
+                raise ValueError(f"Unknown serialized object type: {obj_type}")
 
-            # Caso 2: Es una referencia a un tipo de clase (__class__)
+            # CASO B: Es una referencia a un tipo (__class__)
             if "__class__" in element:
                 type_name = element["__class__"]
                 if type_name in SAFE_TYPES:
                     return SAFE_TYPES[type_name]
                 raise ValueError(f"Type '{type_name}' is not allowed or unknown.")
 
-            # Caso 3: Es un diccionario de datos común (recurse keys & values)
-            return {k: cls._deserialize_recursive(v) for k, v in element.items()}
+            # CASO C: Diccionario de datos (Reconstrucción de claves y valores)
+            decoded_dict = {}
+            for k, v in element.items():
+                processed_key = k
+                # Detectar si la clave es un objeto empaquetado en string
+                if isinstance(k, str) and (k.startswith('{') or k.startswith('[')):
+                    try:
+                        import json
+                        potential_obj = json.loads(k)
+                        if isinstance(potential_obj, (dict, list)):
+                            processed_key = cls._deserialize_recursive(potential_obj)
+                    except:
+                        pass # Si falla, se queda como string literal
+                
+                decoded_dict[processed_key] = cls._deserialize_recursive(v)
+            return decoded_dict
 
-        # B. Manejo de Listas (recurse items)
         if isinstance(element, list):
             return [cls._deserialize_recursive(item) for item in element]
         
-        # C. Literales (retorno directo)
         return element
-
 
     # Public methods
     def to_dict(self) -> dict:
