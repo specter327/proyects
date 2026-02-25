@@ -201,6 +201,8 @@ class ComplexData:
     def to_dict(self) -> dict:
         return {
             "DATA_TYPE":self.data_type.__name__ if hasattr(self.data_type, '__name__') else str(self.data_type),
+            "NAME":self.name,
+            "DESCRIPTION":self.description,
             "VALUE":self._serialize_recursive(self.value),
             "MAXIMUM_LENGTH":self.maximum_length,
             "MINIMUM_LENGTH":self.minimum_length,
@@ -243,6 +245,8 @@ class ComplexData:
 
         return cls(
             data_type=data_type,
+            name=data.get("NAME"),
+            description=data.get("DESCRIPTION"),
             value=data.get("VALUE"), # Asumimos valor literal o serializable simple
             maximum_length=data.get("MAXIMUM_LENGTH"),
             minimum_length=data.get("MINIMUM_LENGTH"),
@@ -296,81 +300,56 @@ class ComplexData:
         return True
 
     def cli_capture(self, prompt_context: str = "") -> Any:
-        """
-        Hydrates the ComplexData instance via CLI interaction.
-        Supports mapping schemas (dict) and collections (list/tuple).
-        """
+        """Punto de entrada para la hidratación de datos desde CLI."""
         if self.data_type is dict:
-            return self._cli_capture_dict(prompt_context)
-        elif self.data_type in (list, tuple, set, frozenset):
-            return self._cli_capture_collection(prompt_context)
-        return None
+            return self._cli_capture_mapping(prompt_context)
+        return self._cli_capture_collection(prompt_context)
 
-    def _cli_capture_dict(self, prompt_context: str) -> dict:
-        captured_dict = {}
-        # Asumimos que possible_values es un diccionario de mapeo
-        if not isinstance(self.possible_values, dict):
-            raise ValueError(f"Mapping schema required for dict capture in {self.name}")
-
-        print(f"\n{prompt_context}[*] Configurando: {self.name or 'Estructura'}")
-        
-        for key, value_pool in self.possible_values.items():
-            # Caso 1: Valor Constante / Auto-inferido
-            # Si el pool es una lista/tupla con un solo elemento primitivo
-            if isinstance(value_pool, (list, tuple)) and len(value_pool) == 1:
-                if not isinstance(value_pool[0], (ComplexData, PrimitiveData, type)):
-                    captured_dict[key] = value_pool[0]
-                    print(f"{prompt_context}    [=] {key}: {value_pool[0]} (Auto-asignado)")
-                    continue
-
-            # Caso 2: El pool contiene validadores (anidamiento)
-            if isinstance(value_pool, (list, tuple)):
-                # Si solo hay un validador posible, vamos directo a él
-                if len(value_pool) == 1:
-                    validator = value_pool[0]
-                else:
-                    # Si hay múltiples tipos de datos posibles para la misma clave
-                    print(f"{prompt_context}    [+] Opciones para '{key}':")
-                    for i, opt in enumerate(value_pool):
-                        name = getattr(opt, 'name', str(opt))
-                        print(f"{prompt_context}        {i}) {name}")
-                    idx = int(input(f"{prompt_context}        > Selección: "))
-                    validator = value_pool[idx]
-                
-                if hasattr(validator, 'cli_capture'):
-                    captured_dict[key] = validator.cli_capture(prompt_context + "    ")
-                else:
-                    # Es un tipo primitivo básico o clase
-                    val = input(f"{prompt_context}    [>] {key}: ")
-                    captured_dict[key] = validator(val) if isinstance(validator, type) else val
+    def _get_user_selection(self, options: list, prompt_context: str, label: str = "Selección") -> Any:
+        """
+        Garantiza una selección válida de índice. 
+        Maneja entradas vacías, no numéricas y fuera de rango.
+        """
+        while True:
+            raw_input = input(f"{prompt_context}        > {label}: ").strip()
             
-            elif isinstance(value_pool, (ComplexData, PrimitiveData)):
-                captured_dict[key] = value_pool.cli_capture(prompt_context + "    ")
-
-        self.value = captured_dict
-        return captured_dict
+            if not raw_input:
+                print(f"{prompt_context}        [!] Error: La entrada no puede estar vacía.")
+                continue
+            
+            if not raw_input.isdigit():
+                print(f"{prompt_context}        [!] Error: Ingrese un número entero válido.")
+                continue
+            
+            idx = int(raw_input)
+            if 0 <= idx < len(options):
+                return options[idx]
+            
+            print(f"{prompt_context}        [!] Error: Índice fuera de rango (0-{len(options)-1}).")
 
     def _cli_capture_collection(self, prompt_context: str) -> list:
         results = []
         print(f"\n{prompt_context}[*] Iniciando colección: {self.name or 'Lista'}")
         
         while True:
-            # Validación de longitud mínima para permitir salida
+            # Control de cardinalidad mínima
             if self.minimum_length is None or len(results) >= self.minimum_length:
                 op = input(f"{prompt_context}    [?] ¿Añadir elemento a {self.name}? [s/N]: ").strip().lower()
-                if op != 's': break
+                if op != 's':
+                    break
 
-            # Selección del esquema para el nuevo elemento
-            if len(self.possible_values) == 1:
-                selected_schema = self.possible_values[0]
+            # Selección de esquema para el nuevo elemento
+            options = list(self.possible_values)
+            if len(options) == 1:
+                selected_schema = options[0]
             else:
                 print(f"{prompt_context}    [+] Tipos disponibles:")
-                for i, schema in enumerate(self.possible_values):
+                for i, schema in enumerate(options):
                     name = getattr(schema, 'name', f"Opción {i}")
                     print(f"{prompt_context}        {i}) {name}")
-                idx = int(input(f"{prompt_context}        > Selección: "))
-                selected_schema = self.possible_values[idx]
+                selected_schema = self._get_user_selection(options, prompt_context)
 
+            # Captura recursiva
             if hasattr(selected_schema, 'cli_capture'):
                 results.append(selected_schema.cli_capture(prompt_context + "    "))
             else:
@@ -378,4 +357,31 @@ class ComplexData:
                 results.append(val)
         
         self.value = self.data_type(results)
-        return self.value
+        return results
+
+    def _cli_capture_mapping(self, prompt_context: str) -> dict:
+        """Captura para esquemas de tipo diccionario (Mapping Schema)."""
+        captured_dict = {}
+        print(f"\n{prompt_context}[*] Configurando: {self.name or 'Objeto'}")
+        
+        # Iteramos sobre las claves definidas en possible_values (dict)
+        for key, schemas in self.possible_values.items():
+            # Si solo hay una opción, se captura o auto-asigna
+            if isinstance(schemas, (list, tuple)) and len(schemas) > 1:
+                print(f"{prompt_context}    [+] Opciones para '{key}':")
+                for i, s in enumerate(schemas):
+                    name = getattr(s, 'name', str(s))
+                    print(f"{prompt_context}        {i}) {name}")
+                selected = self._get_user_selection(list(schemas), prompt_context)
+            else:
+                selected = schemas[0] if isinstance(schemas, (list, tuple)) else schemas
+
+            # Manejo de literales auto-asignados (ej: "INTERNET")
+            if isinstance(selected, str) and not hasattr(selected, 'cli_capture'):
+                print(f"{prompt_context}    [=] {key}: {selected} (Auto-asignado)")
+                captured_dict[key] = selected
+            else:
+                captured_dict[key] = selected.cli_capture(prompt_context + "    ")
+
+        self.value = captured_dict
+        return captured_dict
