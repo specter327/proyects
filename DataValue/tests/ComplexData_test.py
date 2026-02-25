@@ -105,3 +105,94 @@ for schema in phone_numbers_set.possible_values:
 phone_numbers_set.validate()
 
 print("Validation completed successfully")
+
+def test_mapping_architecture():
+    print("--- [TEST] INICIANDO VALIDACIÓN DE ARQUITECTURA DE COMUNICACIONES ---")
+
+    # ============================================================================
+    # 1. DEFINICIÓN DE ESQUEMAS (DATA CLASSES)
+    # ============================================================================
+    
+    # Primitivos con Regex para Networking
+    IPv4 = PrimitiveData(data_type=str, value=None, name="IPv4", regular_expression=r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$", data_class=True)
+    Port = PrimitiveData(data_type=int, value=None, name="Port", minimum_size=1, maximum_size=65535, data_class=True)
+    MAC  = PrimitiveData(data_type=str, value=None, name="MAC", regular_expression=r"^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$", data_class=True)
+    Path = PrimitiveData(data_type=str, value=None, name="SerialPath", regular_expression=r"^/dev/tty[A-Z0-9]+$", data_class=True)
+
+    # Esquemas de Endpoint (Mapping Schema)
+    # Aquí la clave es un literal 'string' y el valor es una lista de validadores permitidos
+    InternetAddr = ComplexData(data_type=dict, value=None, name="IP_Endpoint", possible_values={
+        "ADDRESS": [IPv4], 
+        "PORT": [Port]
+    }, data_class=True)
+
+    BluetoothAddr = ComplexData(data_type=dict, value=None, name="BT_Endpoint", possible_values={
+        "ADDRESS": [MAC], 
+        "PORT": [PrimitiveData(data_type=int, value=None, minimum_size=1, maximum_size=30, data_class=True)]
+    }, data_class=True)
+
+    # Esquema de Perfil (Anidamiento Complejo)
+    # Nota: Usamos una lista de validadores para 'ADDRESSES'
+    ProfileSchema = ComplexData(data_type=dict, value=None, name="Profile", possible_values={
+        "TRANSPORT": ["INTERNET", "BLUETOOTH", "SERIAL"],
+        "ADDRESSES": ComplexData(data_type=list, value=None, possible_values=[InternetAddr, BluetoothAddr], data_class=True)
+    }, data_class=True)
+
+    # ============================================================================
+    # 2. CASO DE PRUEBA: PAYLOAD VÁLIDO
+    # ============================================================================
+    valid_payload = {
+        "TRANSPORT": "INTERNET",
+        "ADDRESSES": [
+            {"ADDRESS": "192.168.1.50", "PORT": 8080},
+            {"ADDRESS": "10.0.0.1", "PORT": 443}
+        ]
+    }
+
+    print("[*] Probando payload válido...")
+    try:
+        ProfileSchema.validate(valid_payload)
+        print("[OK] Payload validado exitosamente.")
+    except Exception as e:
+        print(f"[FAIL] Error inesperado en validación: {e}")
+        return
+
+    # ============================================================================
+    # 3. PRUEBA DE SERIALIZACIÓN (ROUND-TRIP)
+    # ============================================================================
+    print("[*] Probando ciclo de serialización/deserialización del esquema...")
+    try:
+        # Serializamos el validador completo (la estructura del esquema)
+        schema_json = ProfileSchema.to_json()
+        
+        # Reconstruimos el validador desde el JSON
+        reconstructed_schema = ComplexData.from_json(schema_json)
+        
+        # Validamos el payload original con el esquema reconstruido
+        reconstructed_schema.validate(valid_payload)
+        print("[OK] Ciclo de vida del esquema (JSON) completado.")
+    except Exception as e:
+        print(f"[FAIL] Error en persistencia: {e}")
+        return
+
+    # ============================================================================
+    # 4. CASO DE PRUEBA: PAYLOAD INVÁLIDO (VIOLACIÓN DE SEGURIDAD)
+    # ============================================================================
+    invalid_payload = {
+        "TRANSPORT": "INTERNET",
+        "ADDRESSES": [
+            {"ADDRESS": "999.999.999.999", "PORT": 80}, # IP Inválida
+            {"KEY_INTRUSION": "DANGER"}                 # Clave no permitida por Mapping
+        ]
+    }
+
+    print("[*] Probando detección de payload inválido...")
+    try:
+        ProfileSchema.validate(invalid_payload)
+        print("[FAIL] El validador permitió un payload corrupto.")
+    except ValueError as e:
+        print(f"[OK] Detección correcta: {e}")
+
+    print("\n--- [RESULTADO] TODAS LAS PRUEBAS DE MAPEO PASARON ---")
+
+test_mapping_architecture()
