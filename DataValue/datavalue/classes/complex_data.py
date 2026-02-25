@@ -296,131 +296,86 @@ class ComplexData:
         return True
 
     def cli_capture(self, prompt_context: str = "") -> Any:
-        label = self.name if self.name else f"Estructura ({self.data_type.__name__})"
-        print(f"\n{prompt_context}[*] Configurando: {label}")
-        if self.description:
-            print(f"{prompt_context}    (Info: {self.description})")
+        """
+        Hydrates the ComplexData instance via CLI interaction.
+        Supports mapping schemas (dict) and collections (list/tuple).
+        """
+        if self.data_type is dict:
+            return self._cli_capture_dict(prompt_context)
+        elif self.data_type in (list, tuple, set, frozenset):
+            return self._cli_capture_collection(prompt_context)
+        return None
 
-        min_len = self.minimum_length if self.minimum_length is not None else 0
-        max_len = self.maximum_length if self.maximum_length is not None else float('inf')
+    def _cli_capture_dict(self, prompt_context: str) -> dict:
+        captured_dict = {}
+        # Asumimos que possible_values es un diccionario de mapeo
+        if not isinstance(self.possible_values, dict):
+            raise ValueError(f"Mapping schema required for dict capture in {self.name}")
 
-        # Procesamiento de Colecciones Iterables (Listas, Tuplas, Sets)
-        if self.data_type in (list, tuple, set, frozenset):
-            results = []
-            while True:
-                if len(results) >= min_len:
-                    if len(results) >= max_len:
-                        break
-                    op = input(f"{prompt_context}    [?] ¿Añadir elemento a {label}? [s/N]: ").strip().lower()
-                    if op not in ('s', 'si', 'y', 'yes'):
-                        break
-                else:
-                    print(f"{prompt_context}    [-] Elementos requeridos: {len(results)}/{min_len}")
-
-                # Identificar el esquema de los ítems internos
-                item_schema = self.possible_values[0] if self.possible_values else None
-                val = self._capture_from_options([item_schema] if item_schema else [], prompt_context + "    ")
-                results.append(val)
-            
-            final_data = self.data_type(results)
-            self.value = final_data
-            return final_data
-
-        # Procesamiento de Diccionarios (Mapas K:V)
-        elif self.data_type is dict:
-            results = {}
-            
-            # ESCENARIO A: Mapeo por Diccionario (Mapping Schema)
-            if isinstance(self.possible_values, dict):
-                # Iteramos sobre las claves exactas definidas en el esquema
-                for schema_key, value_validators in self.possible_values.items():
-                    # Resolver el nombre visual de la clave
-                    if isinstance(schema_key, str):
-                        key_name = schema_key
-                    elif hasattr(schema_key, 'name') and schema_key.name:
-                        key_name = schema_key.name
-                    else:
-                        key_name = "Clave dinámica"
-                    
-                    print(f"{prompt_context}    --- Configurando '{key_name}' ---")
-                    
-                    # Normalizamos los validadores a lista para el menú de opciones
-                    validators = value_validators if isinstance(value_validators, (list, tuple)) else [value_validators]
-                    val = self._capture_from_options(validators, prompt_context + "    ")
-                    
-                    # Asignación de la clave final
-                    if isinstance(schema_key, str):
-                        results[schema_key] = val
-                    else:
-                        # Si la clave es un PrimitiveData (ej. Regex), solicitamos que la ingrese el usuario
-                        print(f"{prompt_context}    [>] Ingrese el nombre de la clave para este valor:")
-                        custom_key = schema_key.cli_capture(prompt_context + "    ")
-                        results[custom_key] = val
-
-            # ESCENARIO B: Validación Posicional Tradicional
-            elif isinstance(self.possible_values, (list, tuple)) and len(self.possible_values) == 2:
-                keys_schema, values_schema = self.possible_values
-                while True:
-                    if len(results) >= min_len:
-                        if len(results) >= max_len:
-                            break
-                        op = input(f"{prompt_context}    [?] ¿Añadir par Clave-Valor a {label}? [s/N]: ").strip().lower()
-                        if op not in ('s', 'si', 'y', 'yes'):
-                            break
-                    else:
-                        print(f"{prompt_context}    [-] Pares requeridos: {len(results)}/{min_len}")
-
-                    print(f"{prompt_context}    --- Definiendo Clave ---")
-                    key = self._capture_from_options(keys_schema, prompt_context + "    ")
-
-                    print(f"{prompt_context}    --- Definiendo Valor para '{key}' ---")
-                    val = self._capture_from_options(values_schema, prompt_context + "    ")
-
-                    results[key] = val
-            
-            self.value = results
-            return results
-
-    def _capture_from_options(self, options: Iterable, prompt_context: str) -> Any:
-        if not options:
-            return input(f"{prompt_context}[>] Valor Libre (str): ")
-
-        options_list = list(options)
+        print(f"\n{prompt_context}[*] Configurando: {self.name or 'Estructura'}")
         
-        # Inferencia directa si solo hay una opción lógica
-        if len(options_list) == 1:
-            return self._capture_single_option(options_list[0], prompt_context)
+        for key, value_pool in self.possible_values.items():
+            # Caso 1: Valor Constante / Auto-inferido
+            # Si el pool es una lista/tupla con un solo elemento primitivo
+            if isinstance(value_pool, (list, tuple)) and len(value_pool) == 1:
+                if not isinstance(value_pool[0], (ComplexData, PrimitiveData, type)):
+                    captured_dict[key] = value_pool[0]
+                    print(f"{prompt_context}    [=] {key}: {value_pool[0]} (Auto-asignado)")
+                    continue
 
-        # Menú de selección interactiva (Polimorfismo)
-        print(f"{prompt_context}[+] Opciones disponibles:")
-        for i, opt in enumerate(options_list):
-            if isinstance(opt, str):
-                opt_name = opt
-            else:
-                opt_name = getattr(opt, 'name', None) or (opt.__name__ if isinstance(opt, type) else str(opt))
-            print(f"{prompt_context}    {i}) {opt_name}")
+            # Caso 2: El pool contiene validadores (anidamiento)
+            if isinstance(value_pool, (list, tuple)):
+                # Si solo hay un validador posible, vamos directo a él
+                if len(value_pool) == 1:
+                    validator = value_pool[0]
+                else:
+                    # Si hay múltiples tipos de datos posibles para la misma clave
+                    print(f"{prompt_context}    [+] Opciones para '{key}':")
+                    for i, opt in enumerate(value_pool):
+                        name = getattr(opt, 'name', str(opt))
+                        print(f"{prompt_context}        {i}) {name}")
+                    idx = int(input(f"{prompt_context}        > Selección: "))
+                    validator = value_pool[idx]
+                
+                if hasattr(validator, 'cli_capture'):
+                    captured_dict[key] = validator.cli_capture(prompt_context + "    ")
+                else:
+                    # Es un tipo primitivo básico o clase
+                    val = input(f"{prompt_context}    [>] {key}: ")
+                    captured_dict[key] = validator(val) if isinstance(validator, type) else val
             
-        while True:
-            idx = input(f"{prompt_context}    > Selección: ").strip()
-            if idx.isdigit() and 0 <= int(idx) < len(options_list):
-                selected = options_list[int(idx)]
-                # Si se selecciona un string literal (ej: "INTERNET"), se asume como valor constante
-                if isinstance(selected, str):
-                    print(f"{prompt_context}    [=] Valor auto-asignado: {selected}")
-                    return selected
-                return self._capture_single_option(selected, prompt_context)
-            print(f"{prompt_context}    [!] Selección inválida. Ingrese un índice numérico válido.")
+            elif isinstance(value_pool, (ComplexData, PrimitiveData)):
+                captured_dict[key] = value_pool.cli_capture(prompt_context + "    ")
 
-    def _capture_single_option(self, opt: Any, prompt_context: str) -> Any:
-        if isinstance(opt, (PrimitiveData, ComplexData)):
-            return opt.cli_capture(prompt_context)
-        elif isinstance(opt, type):
-            while True:
-                raw_in = input(f"{prompt_context}[>] Valor ({opt.__name__}): ").strip()
-                try:
-                    return opt(raw_in)
-                except ValueError:
-                    print(f"{prompt_context}[!] Formato inválido para tipo {opt.__name__}.")
-        else:
-            print(f"{prompt_context}[=] Valor inferido (Literal): {opt}")
-            return opt
+        self.value = captured_dict
+        return captured_dict
+
+    def _cli_capture_collection(self, prompt_context: str) -> list:
+        results = []
+        print(f"\n{prompt_context}[*] Iniciando colección: {self.name or 'Lista'}")
+        
+        while True:
+            # Validación de longitud mínima para permitir salida
+            if self.minimum_length is None or len(results) >= self.minimum_length:
+                op = input(f"{prompt_context}    [?] ¿Añadir elemento a {self.name}? [s/N]: ").strip().lower()
+                if op != 's': break
+
+            # Selección del esquema para el nuevo elemento
+            if len(self.possible_values) == 1:
+                selected_schema = self.possible_values[0]
+            else:
+                print(f"{prompt_context}    [+] Tipos disponibles:")
+                for i, schema in enumerate(self.possible_values):
+                    name = getattr(schema, 'name', f"Opción {i}")
+                    print(f"{prompt_context}        {i}) {name}")
+                idx = int(input(f"{prompt_context}        > Selección: "))
+                selected_schema = self.possible_values[idx]
+
+            if hasattr(selected_schema, 'cli_capture'):
+                results.append(selected_schema.cli_capture(prompt_context + "    "))
+            else:
+                val = input(f"{prompt_context}    [>] Valor: ")
+                results.append(val)
+        
+        self.value = self.data_type(results)
+        return self.value
