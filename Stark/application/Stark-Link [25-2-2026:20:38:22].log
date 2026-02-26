@@ -1,0 +1,68 @@
+2026-02-25 20:38:22,765 | TRANSPORT_LAYER      | DEBUG    | EXEC: start | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x76351cb54da0>,) | KWARGS: {}
+2026-02-25 20:38:22,768 | TRANSPORT_LAYER      | INFO     | Transport layer initializated
+2026-02-25 20:38:22,768 | TRANSPORT_LAYER      | DEBUG    | END: start | RESULT: True | TIME: 0.0030s
+2026-02-25 20:38:22,769 | COMMUNICATION_LAYER  | DEBUG    | EXEC: start | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x76351ccb6660>,) | KWARGS: {}
+2026-02-25 20:38:22,769 | COMMUNICATION_LAYER  | INFO     | Starting Communication layer
+2026-02-25 20:38:22,815 | COMMUNICATION_LAYER  | DEBUG    | EXEC: query_modules | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x76351ccb6660>,) | KWARGS: {}
+2026-02-25 20:38:22,816 | COMMUNICATION_LAYER  | DEBUG    | END: query_modules | RESULT: ['COMMUNICATION_CLIENT'] | TIME: 0.0004s
+2026-02-25 20:38:22,816 | COMMUNICATION_LAYER  | INFO     | Modules discovered: ['COMMUNICATION_CLIENT']
+2026-02-25 20:38:22,816 | COMMUNICATION_LAYER  | DEBUG    | EXEC: query_modules | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x76351ccb6660>,) | KWARGS: {}
+2026-02-25 20:38:22,816 | COMMUNICATION_LAYER  | DEBUG    | END: query_modules | RESULT: ['COMMUNICATION_CLIENT'] | TIME: 0.0002s
+2026-02-25 20:38:22,816 | COMMUNICATION_LAYER  | DEBUG    | EXEC: query_module | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x76351ccb6660>, 'COMMUNICATION_CLIENT') | KWARGS: {}
+2026-02-25 20:38:22,817 | COMMUNICATION_LAYER  | DEBUG    | END: query_module | RESULT: <class 'shared.communication_architecture.layers.communication.modules.client.CommunicationClient'> | TIME: 0.0002s
+2026-02-25 20:38:22,820 | COMMUNICATION_LAYER  | DEBUG    | EXEC: load_module | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x76351ccb6660>, <class 'shared.communication_architecture.layers.communication.modules.client.CommunicationClient'>, <configurations.classes.configurations.Configurations object at 0x76351ca4a870>) | KWARGS: {}
+2026-02-25 20:38:22,820 | COMMUNICATION_LAYER  | INFO     | Loading communication module: <class 'shared.communication_architecture.layers.communication.modules.client.CommunicationClient'>
+2026-02-25 20:38:22,821 | COMMUNICATION_LAYER  | DEBUG    | EXEC: query_module | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x76351ccb6660>, <class 'shared.communication_architecture.layers.communication.modules.client.CommunicationClient'>) | KWARGS: {}
+2026-02-25 20:38:22,821 | COMMUNICATION_LAYER  | DEBUG    | END: query_module | RESULT: None | TIME: 0.0002s
+2026-02-25 20:38:22,821 | COMMUNICATION_LAYER  | ERROR    | Module <class 'shared.communication_architecture.layers.communication.modules.client.CommunicationClient'> not found in container
+2026-02-25 20:38:22,821 | COMMUNICATION_LAYER  | DEBUG    | END: load_module | RESULT: False | TIME: 0.0011s
+2026-02-25 20:38:22,822 | COMMUNICATION_LAYER  | INFO     | Module: COMMUNICATION_CLIENT, loaded successfully
+2026-02-25 20:38:22,822 | COMMUNICATION_LAYER  | INFO     | Communication layer loaded successfully
+2026-02-25 20:38:22,822 | COMMUNICATION_LAYER  | DEBUG    | END: start | RESULT: True | TIME: 0.0534s
+2026-02-25 20:38:22,822 | TRANSPORT_LAYER      | DEBUG    | EXEC: query_module | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x76351cb54da0>, 'TRANSPORT_TCP_IP') | KWARGS: {}
+2026-02-25 20:38:22,822 | TRANSPORT_LAYER      | DEBUG    | END: query_module | RESULT: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'> | TIME: 0.0002s
+2026-02-25 20:38:22,824 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive_connection | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x76351cb54da0>, <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, <configurations.classes.configurations.Configurations object at 0x76351ca4b500>) | KWARGS: {}
+2026-02-25 20:38:22,824 | TRANSPORT_LAYER      | INFO     | Transport layer receiving connection with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x76351ca4b500>
+2026-02-25 20:38:22,825 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: configure | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x76351cb15700>, <configurations.classes.configurations.Configurations object at 0x76351ca4b500>) | KWARGS: {}
+2026-02-25 20:38:22,825 | TRANSPORT_TCP_IP     | INFO     | Module configurated
+2026-02-25 20:38:22,825 | TRANSPORT_TCP_IP     | DEBUG    | END: configure | RESULT: True | TIME: 0.0003s
+2026-02-25 20:38:22,826 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: start | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x76351cb15700>,) | KWARGS: {}
+2026-02-25 20:38:22,826 | TRANSPORT_TCP_IP     | INFO     | Module initializated
+2026-02-25 20:38:22,826 | TRANSPORT_TCP_IP     | DEBUG    | END: start | RESULT: True | TIME: 0.0002s
+2026-02-25 20:38:22,826 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: receive_connection | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x76351cb15700>,) | KWARGS: {}
+2026-02-25 20:38:22,826 | TRANSPORT_TCP_IP     | INFO     | Receiving connection with the module
+2026-02-25 20:38:22,827 | TRANSPORT_TCP_IP     | INFO     | Starting receiver connections routine
+2026-02-25 20:38:22,827 | TRANSPORT_TCP_IP     | DEBUG    | END: receive_connection | RESULT: True | TIME: 0.0009s
+2026-02-25 20:38:22,828 | TRANSPORT_LAYER      | INFO     | Connection (receive) registered with the identifier: 1
+2026-02-25 20:38:22,829 | TRANSPORT_LAYER      | DEBUG    | END: receive_connection | RESULT: 1 | TIME: 0.0044s
+2026-02-25 20:38:22,828 | TRANSPORT_TCP_IP     | INFO     | Receiving connections of type: 2, with TCP
+2026-02-25 20:38:22,829 | TRANSPORT_TCP_IP     | INFO     | Successfully binded the server
+2026-02-25 20:38:22,829 | TRANSPORT_TCP_IP     | INFO     | Starting receive connections process
+2026-02-25 20:38:23,830 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:24,831 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:25,832 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:26,833 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:27,834 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:28,835 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:29,836 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:30,837 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:31,839 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:32,840 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:33,841 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:34,843 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:35,845 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:36,846 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:37,847 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:38,848 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:39,849 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:40,851 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:41,852 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:42,853 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:43,855 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:44,857 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:45,858 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:46,859 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:47,860 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:48,862 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:49,863 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:50,865 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception

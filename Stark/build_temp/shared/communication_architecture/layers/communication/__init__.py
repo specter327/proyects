@@ -10,7 +10,101 @@ from datapackage import Datapackage
 from typing import Optional, Dict, List
 import uuid
 
-# ... (Definición de SessionLayer se mantiene igual) ...
+# Classes definition
+class SessionLayer:
+    def __init__(self,
+        layers_container: object,
+        connection_identifier: int,
+        local_role: str
+    ) -> None:
+        # Instance properties assignment
+        self.layers_container = layers_container
+        self.connection_identifier = connection_identifier
+        self.transport_layer = self.layers_container.query_layer("TRANSPORT")
+        self.local_role = local_role
+
+        # Instance properties definition
+        self.datapackages_handler: Optional[Datapackage] = None
+
+        self.virtual_layers_container: LayerContainer = LayerContainer()
+        self._protection_layer_class = self.layers_container.query_layer("PROTECTION")
+        self._security_layer_class = self.layers_container.query_layer("SECURITY")
+        self.protection_layer: Optional[LayerInterface] = None
+        self.security_layer: Optional[LayerInterface] = None
+
+        # Inject the structural layers
+        self._inject_structural_layers()
+
+    # Private methods
+    def _set_datapackage_handler(self) -> bool:
+        self.datapackages_handler = Datapackage(
+            write_function=self.send,
+            read_function=self.receive,
+
+        )
+        return True
+
+    def _inject_structural_layers(self) -> bool:
+        self.virtual_layers_container.layers_table["TRANSPORT"] = self.transport_layer
+
+        return True
+
+    def _inject_session_layers(self, layer_instance: LayerInterface) -> bool:
+        self.virtual_layers_container.layers_table[layer_instance.LAYER_NAME] = layer_instance
+        
+        return True
+
+    # Public methods
+    def send(self, data: bytes) -> bool:
+        # Resend the data throught the layers stack
+        self.protection_layer.send(self.connection_identifier, data)
+        return True
+
+    def receive(self, limit: Optional[int] = None, timeout: Optional[int] = None) -> bytes:
+        # Receive data throught the layers stack
+        return self.protection_layer.receive(self.connection_identifier, limit, timeout)
+
+    def start(self) -> bool:
+        # Create a protection layer instance
+        self.protection_layer = self._protection_layer_class(self.virtual_layers_container)
+
+        # Configure the current protection layer
+        self.protection_layer.layer_settings.query_setting("DEVICE_IDENTIFIER").value.value = self.connection_identifier
+        self.protection_layer.start()
+
+        # Negotiate the protection layer
+        self.protection_layer.negotiate(
+            role=self.local_role,
+            connection_identifier=self.connection_identifier
+        )
+
+        # Inject protection layer
+        self._inject_session_layers(self.protection_layer)
+
+        # Create a security layer instance
+        self.security_layer = self._security_layer_class(self.virtual_layers_container)
+
+        # Configure the current security layer
+        self.security_layer.layer_settings.query_setting("DEVICE_IDENTIFIER").value.value = self.connection_identifier
+        self.security_layer.start()
+
+        # Negotiate the security layer
+        #self.security_layer.negotiate(
+        #    role=self.local_role,
+        #    connection_identifier=self.connection_identifier
+        #)
+
+        # Inject protection layer
+        self._inject_session_layers(self.security_layer)
+
+        # Start the datapackage handler
+        self._set_datapackage_handler()
+
+        # Return results
+        return True
+
+    def stop(self) -> bool:
+        pass
 
 class CommunicationLayer(LayerInterface):
     # Class properties definition
@@ -119,6 +213,19 @@ class CommunicationLayer(LayerInterface):
         # Load all available dynamic modules from the package
         self._module_container.load_modules(package=modules.__package__)
         self.logger.info(f"Modules discovered: {self.query_modules()}")
+
+        # Load every module
+        for module_name in self.query_modules():
+            # Get the module instance
+            module_instance = self.query_module(module_name)
+            module_configurations = module_instance.CONFIGURATIONS.copy()
+
+            # Load the module
+            self.load_module(module_instance, module_configurations)
+
+            self.logger.info(f"Module: {module_name}, loaded successfully")
+
+        self.logger.info("Communication layer loaded successfully")
         return True
 
     @smart_debug(element_name="COMMUNICATION_LAYER", include_args=True, include_result=True)

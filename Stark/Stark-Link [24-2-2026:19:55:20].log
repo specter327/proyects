@@ -1,0 +1,13 @@
+2026-02-24 19:55:20,760 | TRANSPORT_LAYER      | INFO     | Transport layer initializated
+2026-02-24 19:55:20,761 | COMMUNICATION_LAYER  | INFO     | Starting Communication layer
+2026-02-24 19:55:20,776 | COMMUNICATION_LAYER  | INFO     | Modules discovered: ['COMMUNICATION_CLIENT']
+2026-02-24 19:55:25,778 | TRANSPORT_LAYER      | INFO     | Transport layer receiving connection with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x7bdabae89dc0>
+2026-02-24 19:55:25,779 | TRANSPORT_TCP_IP     | INFO     | Module configurated
+2026-02-24 19:55:25,779 | TRANSPORT_TCP_IP     | INFO     | Module initializated
+2026-02-24 19:55:25,780 | TRANSPORT_TCP_IP     | INFO     | Receiving connection with the module
+2026-02-24 19:55:25,780 | TRANSPORT_TCP_IP     | INFO     | Starting receiver connections routine
+2026-02-24 19:55:25,781 | TRANSPORT_LAYER      | INFO     | Connection (receive) registered with the identifier: 1
+2026-02-24 19:55:25,782 | TRANSPORT_TCP_IP     | INFO     | Receiving connections of type: 2, with TCP
+2026-02-24 19:55:25,783 | TRANSPORT_TCP_IP     | INFO     | Successfully binded the server
+2026-02-24 19:55:25,783 | COMMUNICATION_LAYER  | INFO     | Creating session for connection: 1 with role: ACTIVE
+2026-02-24 19:55:25,783 | COMMUNICATION_LAYER  | ERROR    | Failed to create session for connection 1: name 'SessionLayer' is not defined

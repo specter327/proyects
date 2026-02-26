@@ -1,0 +1,104 @@
+import time
+import os
+import sys
+import socket
+from shared.communication_architecture import layers
+
+# Configuración de rutas
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+LINK_DIR = os.path.join(BASE_DIR, "link")
+if LINK_DIR not in sys.path:
+    sys.path.insert(0, LINK_DIR)
+
+PORT_FILE = ".stark_port"
+
+def get_free_port():
+    """Busca un puerto efímero disponible en el sistema."""
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.bind(('', 0))
+        return s.getsockname()[1]
+
+def run_listener_console():
+    print("=== STARK SYSTEM: OPERATOR LISTENER CONSOLE ===")
+    
+    # 1. Determinación del puerto y señalización
+    listen_port = 24450 #get_free_port()
+    print(f"[*] Iniciando Listener en: 0.0.0.0:{listen_port}")
+    
+    with open(PORT_FILE, "w") as f:
+        f.write(str(listen_port))
+    print(f"[*] Puerto escrito en {PORT_FILE} para LinkConstructor.")
+
+    # 2. Inicialización del Stack de Capas
+    layers_container = layers.LayerContainer()
+    layers_container.start()
+    
+    transport = layers_container.query_layer("TRANSPORT")
+    comm_layer = layers_container.query_layer("COMMUNICATION")
+    transport.start()
+    comm_layer.start()
+
+    # 3. Configuración del Módulo de Transporte para Escucha
+    # Buscamos el módulo TCP/IP
+    tcp_module_class = transport.query_module("TRANSPORT_TCP_IP")
+    cfg = tcp_module_class.CONFIGURATIONS.copy()
+    
+    # Inyectamos el puerto local para el Bind
+    # Nota: REMOTE_ADDRESS no es necesario en modo recepción
+    cfg.query_setting("LOCAL_ADDRESS").value.value = "127.0.0.1"
+    cfg.query_setting("LOCAL_PORT").value.value = listen_port
+
+    print("[*] Esperando conexión entrante del agente Stark-Link...")
+
+    # 4. Bloqueo hasta recibir conexión
+    # receive_connection() devuelve el connection_id asignado internamente
+    connection_id = transport.receive_connection(tcp_module_class, cfg)
+
+    if connection_id:
+        print(f"[+] Agente conectado. ID de Transporte: {connection_id}")
+        
+        print("[*] Waiting until the transport is connected...")
+        while not transport.connections_table.get(connection_id).is_connected:
+            time.sleep(0.1)
+
+        print("[*] Transport successfully connected")
+
+        # 5. Elevación a Capa de Comunicación (Creación de Sesión)
+        # Definimos el rol local como 'OPERATOR' o 'SERVER'
+        session_uuid = comm_layer.create_session(connection_id, local_role="OPERATOR")
+
+        if session_uuid:
+            session = comm_layer.sessions_table.get(session_uuid)
+            print(f"[Link] Sesión {session_uuid} establecida. Túnel seguro activo.")
+            print("------------------------------------------------")
+
+            try:
+                while True:
+                    command = input("Stark-Shell> ").strip()
+                    if not command: continue
+                    
+                    # Interacción a través del DatapackageHandler de la sesión
+                    session.datapackages_handler.send_datapackage({"COMMAND": command})
+
+                    if command.upper() in ["EXIT", "QUIT"]:
+                        break
+
+                    # Recepción de respuesta asíncrona
+                    response = session.datapackages_handler.receive_datapackage(timeout=None)
+                    if response and "RESULT" in response:
+                        print(response["RESULT"])
+            
+            except KeyboardInterrupt:
+                print("\n[*] Cerrando consola por interrupción.")
+            except Exception as e:
+                print(f"[!] Error en la sesión: {e}")
+        
+        # Limpieza de recursos
+        transport.disconnect(connection_id)
+    
+    layers_container.stop()
+    if os.path.exists(PORT_FILE):
+        os.remove(PORT_FILE)
+
+if __name__ == "__main__":
+    run_listener_console()

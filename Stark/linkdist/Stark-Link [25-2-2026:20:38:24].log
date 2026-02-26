@@ -1,0 +1,519 @@
+2026-02-25 20:38:24,302 | TRANSPORT_LAYER      | DEBUG    | EXEC: start | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>,) | KWARGS: {}
+2026-02-25 20:38:24,321 | TRANSPORT_LAYER      | INFO     | Transport layer initializated
+2026-02-25 20:38:24,322 | TRANSPORT_LAYER      | DEBUG    | END: start | RESULT: True | TIME: 0.0193s
+2026-02-25 20:38:24,322 | COMMUNICATION_LAYER  | DEBUG    | EXEC: start | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x781ecf949f70>,) | KWARGS: {}
+2026-02-25 20:38:24,322 | COMMUNICATION_LAYER  | INFO     | Starting Communication layer
+2026-02-25 20:38:24,335 | COMMUNICATION_LAYER  | DEBUG    | EXEC: query_modules | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x781ecf949f70>,) | KWARGS: {}
+2026-02-25 20:38:24,336 | COMMUNICATION_LAYER  | DEBUG    | END: query_modules | RESULT: ['COMMUNICATION_CLIENT'] | TIME: 0.0003s
+2026-02-25 20:38:24,336 | COMMUNICATION_LAYER  | INFO     | Modules discovered: ['COMMUNICATION_CLIENT']
+2026-02-25 20:38:24,336 | COMMUNICATION_LAYER  | DEBUG    | EXEC: query_modules | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x781ecf949f70>,) | KWARGS: {}
+2026-02-25 20:38:24,336 | COMMUNICATION_LAYER  | DEBUG    | END: query_modules | RESULT: ['COMMUNICATION_CLIENT'] | TIME: 0.0001s
+2026-02-25 20:38:24,336 | COMMUNICATION_LAYER  | DEBUG    | EXEC: query_module | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x781ecf949f70>, 'COMMUNICATION_CLIENT') | KWARGS: {}
+2026-02-25 20:38:24,336 | COMMUNICATION_LAYER  | DEBUG    | END: query_module | RESULT: <class 'shared.communication_architecture.layers.communication.modules.client.CommunicationClient'> | TIME: 0.0001s
+2026-02-25 20:38:24,338 | COMMUNICATION_LAYER  | DEBUG    | EXEC: load_module | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x781ecf949f70>, <class 'shared.communication_architecture.layers.communication.modules.client.CommunicationClient'>, <configurations.classes.configurations.Configurations object at 0x781ecf98a150>) | KWARGS: {}
+2026-02-25 20:38:24,338 | COMMUNICATION_LAYER  | INFO     | Loading communication module: <class 'shared.communication_architecture.layers.communication.modules.client.CommunicationClient'>
+2026-02-25 20:38:24,339 | COMMUNICATION_LAYER  | DEBUG    | EXEC: query_module | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x781ecf949f70>, <class 'shared.communication_architecture.layers.communication.modules.client.CommunicationClient'>) | KWARGS: {}
+2026-02-25 20:38:24,339 | COMMUNICATION_LAYER  | DEBUG    | END: query_module | RESULT: None | TIME: 0.0001s
+2026-02-25 20:38:24,339 | COMMUNICATION_LAYER  | ERROR    | Module <class 'shared.communication_architecture.layers.communication.modules.client.CommunicationClient'> not found in container
+2026-02-25 20:38:24,339 | COMMUNICATION_LAYER  | DEBUG    | END: load_module | RESULT: False | TIME: 0.0008s
+2026-02-25 20:38:24,339 | COMMUNICATION_LAYER  | INFO     | Module: COMMUNICATION_CLIENT, loaded successfully
+2026-02-25 20:38:24,339 | COMMUNICATION_LAYER  | INFO     | Communication layer loaded successfully
+2026-02-25 20:38:24,340 | COMMUNICATION_LAYER  | DEBUG    | END: start | RESULT: True | TIME: 0.0178s
+2026-02-25 20:38:24,340 | TRANSPORT_LAYER      | DEBUG    | EXEC: query_module | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 'TRANSPORT_TCP_IP') | KWARGS: {}
+2026-02-25 20:38:24,340 | TRANSPORT_LAYER      | DEBUG    | END: query_module | RESULT: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'> | TIME: 0.0001s
+2026-02-25 20:38:29,341 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive_connection | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, <configurations.classes.configurations.Configurations object at 0x781ecf98ae40>) | KWARGS: {}
+2026-02-25 20:38:29,342 | TRANSPORT_LAYER      | INFO     | Transport layer receiving connection with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x781ecf98ae40>
+2026-02-25 20:38:29,343 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: configure | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>, <configurations.classes.configurations.Configurations object at 0x781ecf98ae40>) | KWARGS: {}
+2026-02-25 20:38:29,343 | TRANSPORT_TCP_IP     | INFO     | Module configurated
+2026-02-25 20:38:29,343 | TRANSPORT_TCP_IP     | DEBUG    | END: configure | RESULT: True | TIME: 0.0006s
+2026-02-25 20:38:29,343 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: start | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {}
+2026-02-25 20:38:29,343 | TRANSPORT_TCP_IP     | INFO     | Module initializated
+2026-02-25 20:38:29,344 | TRANSPORT_TCP_IP     | DEBUG    | END: start | RESULT: True | TIME: 0.0002s
+2026-02-25 20:38:29,344 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: receive_connection | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {}
+2026-02-25 20:38:29,344 | TRANSPORT_TCP_IP     | INFO     | Receiving connection with the module
+2026-02-25 20:38:29,345 | TRANSPORT_TCP_IP     | INFO     | Starting receiver connections routine
+2026-02-25 20:38:29,345 | TRANSPORT_TCP_IP     | DEBUG    | END: receive_connection | RESULT: True | TIME: 0.0012s
+2026-02-25 20:38:29,347 | TRANSPORT_LAYER      | INFO     | Connection (receive) registered with the identifier: 1
+2026-02-25 20:38:29,347 | TRANSPORT_LAYER      | DEBUG    | END: receive_connection | RESULT: 1 | TIME: 0.0060s
+2026-02-25 20:38:29,348 | COMMUNICATION_LAYER  | DEBUG    | EXEC: create_session | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x781ecf949f70>,) | KWARGS: {'connection_identifier': 1, 'local_role': 'ACTIVE'}
+2026-02-25 20:38:29,348 | COMMUNICATION_LAYER  | INFO     | Creating session for connection: 1 with role: ACTIVE
+2026-02-25 20:38:29,348 | PROTECTION_LAYER     | DEBUG    | EXEC: start | ARGS: (<shared.communication_architecture.layers.protection.ProtectionLayer object at 0x781ecf98b290>,) | KWARGS: {}
+2026-02-25 20:38:29,346 | TRANSPORT_TCP_IP     | INFO     | Receiving connections of type: 2, with TCP
+2026-02-25 20:38:29,353 | TRANSPORT_TCP_IP     | INFO     | Successfully binded the server
+2026-02-25 20:38:29,353 | TRANSPORT_TCP_IP     | INFO     | Starting receive connections process
+2026-02-25 20:38:29,362 | PROTECTION_LAYER     | INFO     | Protection layer initializated
+2026-02-25 20:38:29,363 | PROTECTION_LAYER     | DEBUG    | END: start | RESULT: True | TIME: 0.0143s
+2026-02-25 20:38:29,363 | PROTECTION_LAYER     | DEBUG    | EXEC: negotiate | ARGS: (<shared.communication_architecture.layers.protection.ProtectionLayer object at 0x781ecf98b290>,) | KWARGS: {'role': 'ACTIVE', 'connection_identifier': 1}
+2026-02-25 20:38:29,364 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:29,364 | PROTECTION_LAYER     | INFO     | Starting negotation with role: ACTIVE, with the connection: 1
+2026-02-25 20:38:29,365 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:29,466 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1013s
+2026-02-25 20:38:29,467 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:29,467 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1033s
+2026-02-25 20:38:29,477 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:29,478 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:29,578 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1003s
+2026-02-25 20:38:29,578 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:29,579 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1014s
+2026-02-25 20:38:29,589 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:29,589 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:29,690 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1003s
+2026-02-25 20:38:29,690 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:29,690 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1012s
+2026-02-25 20:38:29,701 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:29,701 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:29,801 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1003s
+2026-02-25 20:38:29,802 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:29,802 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1013s
+2026-02-25 20:38:29,812 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:29,814 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:29,914 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1006s
+2026-02-25 20:38:29,914 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:29,915 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1024s
+2026-02-25 20:38:29,925 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:29,926 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:30,026 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:30,026 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:30,026 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1015s
+2026-02-25 20:38:30,037 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:30,037 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:30,138 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1003s
+2026-02-25 20:38:30,138 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:30,138 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1013s
+2026-02-25 20:38:30,148 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:30,149 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:30,249 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1003s
+2026-02-25 20:38:30,250 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:30,250 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1015s
+2026-02-25 20:38:30,260 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:30,261 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:30,354 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:30,361 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:30,363 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:30,363 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1031s
+2026-02-25 20:38:30,374 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:30,374 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:30,474 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1003s
+2026-02-25 20:38:30,475 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:30,475 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1016s
+2026-02-25 20:38:30,486 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:30,486 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:30,586 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1003s
+2026-02-25 20:38:30,587 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:30,587 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1016s
+2026-02-25 20:38:30,598 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:30,598 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:30,699 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:30,699 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:30,699 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1016s
+2026-02-25 20:38:30,710 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:30,711 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:30,811 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:30,812 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:30,812 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1019s
+2026-02-25 20:38:30,823 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:30,823 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:30,924 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1006s
+2026-02-25 20:38:30,924 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:30,924 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:30,935 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:30,936 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:31,036 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:31,036 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:31,037 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1015s
+2026-02-25 20:38:31,047 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:31,048 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:31,148 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:31,149 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:31,149 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1018s
+2026-02-25 20:38:31,159 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:31,160 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:31,260 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:31,261 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:31,261 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1017s
+2026-02-25 20:38:31,272 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:31,272 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:31,355 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:31,373 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:31,373 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:31,373 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:31,384 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:31,385 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:31,485 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:31,486 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:31,486 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1021s
+2026-02-25 20:38:31,497 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:31,497 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:31,598 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1006s
+2026-02-25 20:38:31,598 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:31,599 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:31,609 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:31,610 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:31,710 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:31,711 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:31,711 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:31,722 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:31,722 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:31,823 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:31,823 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:31,823 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1017s
+2026-02-25 20:38:31,834 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:31,835 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:31,935 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:31,935 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:31,936 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1017s
+2026-02-25 20:38:31,946 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:31,947 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:32,047 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:32,048 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:32,048 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1021s
+2026-02-25 20:38:32,059 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:32,059 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:32,160 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1006s
+2026-02-25 20:38:32,160 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:32,161 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:32,171 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:32,172 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:32,272 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:32,273 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:32,273 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:32,284 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:32,284 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:32,357 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:32,385 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1006s
+2026-02-25 20:38:32,386 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:32,386 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:32,396 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:32,397 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:32,498 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1006s
+2026-02-25 20:38:32,498 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:32,499 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1021s
+2026-02-25 20:38:32,509 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:32,510 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:32,610 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:32,611 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:32,611 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:32,622 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:32,622 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:32,723 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1006s
+2026-02-25 20:38:32,723 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:32,724 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:32,734 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:32,735 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:32,835 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:32,836 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:32,836 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:32,847 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:32,847 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:32,948 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1006s
+2026-02-25 20:38:32,948 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:32,948 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:32,959 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:32,960 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:33,060 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:33,060 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:33,060 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1015s
+2026-02-25 20:38:33,071 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:33,072 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:33,172 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:33,173 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:33,173 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:33,183 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:33,184 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:33,284 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:33,285 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:33,285 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:33,296 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:33,296 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:33,358 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:33,397 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:33,397 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:33,398 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:33,408 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:33,409 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:33,509 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:33,510 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:33,510 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1019s
+2026-02-25 20:38:33,521 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:33,521 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:33,622 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:33,622 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:33,622 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1018s
+2026-02-25 20:38:33,633 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:33,634 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:33,734 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:33,735 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:33,735 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:33,746 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:33,746 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:33,847 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:33,847 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:33,848 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:33,858 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:33,859 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:33,959 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:33,960 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:33,960 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:33,971 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:33,971 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:34,072 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1006s
+2026-02-25 20:38:34,073 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:34,073 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1021s
+2026-02-25 20:38:34,084 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:34,084 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:34,185 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1006s
+2026-02-25 20:38:34,185 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:34,185 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:34,196 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:34,196 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:34,297 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:34,297 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:34,298 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1018s
+2026-02-25 20:38:34,308 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:34,309 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:34,359 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:34,409 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:34,410 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:34,410 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1018s
+2026-02-25 20:38:34,421 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:34,421 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:34,522 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:34,522 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:34,522 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1018s
+2026-02-25 20:38:34,533 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:34,534 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:34,635 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1010s
+2026-02-25 20:38:34,635 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:34,636 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1029s
+2026-02-25 20:38:34,646 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:34,647 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:34,747 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:34,748 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:34,748 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1021s
+2026-02-25 20:38:34,759 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:34,760 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:34,860 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:34,860 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:34,861 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1017s
+2026-02-25 20:38:34,871 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:34,871 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:34,972 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1003s
+2026-02-25 20:38:34,972 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:34,972 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1012s
+2026-02-25 20:38:34,982 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:34,983 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:35,083 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:35,084 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:35,084 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1017s
+2026-02-25 20:38:35,095 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:35,095 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:35,196 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:35,196 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:35,196 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1019s
+2026-02-25 20:38:35,207 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:35,208 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:35,308 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:35,308 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:35,309 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1018s
+2026-02-25 20:38:35,319 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:35,320 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:35,360 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:35,420 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:35,421 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:35,421 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:35,432 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:35,432 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:35,533 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:35,533 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:35,533 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1016s
+2026-02-25 20:38:35,544 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:35,544 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:35,644 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1003s
+2026-02-25 20:38:35,645 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:35,645 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1015s
+2026-02-25 20:38:35,656 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:35,656 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:35,759 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1023s
+2026-02-25 20:38:35,759 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:35,759 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1038s
+2026-02-25 20:38:35,770 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:35,771 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:35,872 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1006s
+2026-02-25 20:38:35,872 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:35,872 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1022s
+2026-02-25 20:38:35,883 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:35,883 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:35,984 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1003s
+2026-02-25 20:38:35,984 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:35,984 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1013s
+2026-02-25 20:38:35,995 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:35,995 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:36,096 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:36,096 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:36,096 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1016s
+2026-02-25 20:38:36,106 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:36,107 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:36,207 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1003s
+2026-02-25 20:38:36,208 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:36,208 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1016s
+2026-02-25 20:38:36,219 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:36,219 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:36,320 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:36,320 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:36,320 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1018s
+2026-02-25 20:38:36,331 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:36,331 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:36,361 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:36,432 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:36,432 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:36,433 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1019s
+2026-02-25 20:38:36,443 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:36,444 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:36,544 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:36,545 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:36,545 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:36,556 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:36,556 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:36,657 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:36,657 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:36,658 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:36,668 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:36,669 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:36,769 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:36,770 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:36,770 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1015s
+2026-02-25 20:38:36,780 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:36,781 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:36,881 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1003s
+2026-02-25 20:38:36,882 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:36,882 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1018s
+2026-02-25 20:38:36,892 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:36,893 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:36,994 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1006s
+2026-02-25 20:38:36,994 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:36,995 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1021s
+2026-02-25 20:38:37,005 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:37,006 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:37,106 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:37,107 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:37,107 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1019s
+2026-02-25 20:38:37,118 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:37,118 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:37,219 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:37,219 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:37,219 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:37,230 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:37,231 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:37,331 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:37,332 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:37,332 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1018s
+2026-02-25 20:38:37,342 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:37,343 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:37,363 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:37,444 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:37,444 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:37,444 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:37,455 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:37,456 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:37,556 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:37,557 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:37,557 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1019s
+2026-02-25 20:38:37,567 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:37,568 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:37,668 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:37,669 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:37,669 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1019s
+2026-02-25 20:38:37,680 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:37,680 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:37,781 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:37,781 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:37,781 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1016s
+2026-02-25 20:38:37,792 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:37,792 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:37,893 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1006s
+2026-02-25 20:38:37,894 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:37,894 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1021s
+2026-02-25 20:38:37,905 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:37,905 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:38,006 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:38,006 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:38,006 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1019s
+2026-02-25 20:38:38,017 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:38,018 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:38,118 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:38,119 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:38,119 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1021s
+2026-02-25 20:38:38,130 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:38,130 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:38,231 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:38,231 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:38,232 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1019s
+2026-02-25 20:38:38,242 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:38,243 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:38,343 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:38,344 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:38,344 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1018s
+2026-02-25 20:38:38,354 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:38,355 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:38,364 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:38,455 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:38,456 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:38,456 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1018s
+2026-02-25 20:38:38,467 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:38,467 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:38,567 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1003s
+2026-02-25 20:38:38,568 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:38,568 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1014s
+2026-02-25 20:38:38,578 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:38,579 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:38,679 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:38,680 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:38,680 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1018s
+2026-02-25 20:38:38,691 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:38,691 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:38,792 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:38,792 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:38,792 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1016s
+2026-02-25 20:38:38,803 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:38,803 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:38,904 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1003s
+2026-02-25 20:38:38,904 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:38,904 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1016s
+2026-02-25 20:38:38,915 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:38,915 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:39,015 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1002s
+2026-02-25 20:38:39,016 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:39,016 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1010s
+2026-02-25 20:38:39,026 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:39,027 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:39,127 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:39,127 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:39,128 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1016s
+2026-02-25 20:38:39,138 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:39,139 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:39,239 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:39,239 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:39,240 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1018s
+2026-02-25 20:38:39,250 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:39,251 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:39,351 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1005s
+2026-02-25 20:38:39,352 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:39,352 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1020s
+2026-02-25 20:38:39,363 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x781ed07f4470>, 1, 1) | KWARGS: {}
+2026-02-25 20:38:39,363 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: read | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x781ecfd800b0>,) | KWARGS: {'limit': 1, 'timeout': None}
+2026-02-25 20:38:39,366 | TRANSPORT_TCP_IP     | ERROR    | Expired timeout on the connection reception
+2026-02-25 20:38:39,464 | TRANSPORT_TCP_IP     | DEBUG    | END: read | RESULT: b'' | TIME: 0.1004s
+2026-02-25 20:38:39,464 | TRANSPORT_LAYER      | INFO     | Data received: b'', with length: 0, from the connection: 1
+2026-02-25 20:38:39,464 | TRANSPORT_LAYER      | DEBUG    | END: receive | RESULT: b'' | TIME: 0.1016s
+2026-02-25 20:38:39,976 | PROTECTION_LAYER     | DEBUG    | Datos remanentes en el manejador de paquetes (DataPackage): b''
+2026-02-25 20:38:39,976 | PROTECTION_LAYER     | ERROR    | FAIL: negotiate | ERROR: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "/tmp/_MEIZKYopH/shared/utils/debug.py", line 26, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/_MEIZKYopH/shared/communication_architecture/layers/protection/__init__.py", line 205, in negotiate
+    print("[Nexus] Available modules:", available_modules.get("AVAILABLE_MODULES"))
+                                        ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+2026-02-25 20:38:39,979 | COMMUNICATION_LAYER  | ERROR    | Failed to create session for connection 1: 'NoneType' object has no attribute 'get'
+2026-02-25 20:38:39,979 | COMMUNICATION_LAYER  | DEBUG    | END: create_session | RESULT: False | TIME: 10.6314s

@@ -480,54 +480,74 @@ class LinkConstructor:
     def selection_stage(self) -> None:
         """Elimina recursos no seleccionados por el usuario"""
         self.logger.info("Starting selection stage")
-                
         to_remove = []
         
         for rid, data in self.software_resources.items():
             metadata = data.get("metadata", {})
-            
-            # 1. Verificar si el recurso es seleccionable
             if not metadata.get("__SELECTABLE__", False):
                 continue
 
-            # 2. Interacción con el usuario para inclusión
             print(f"\n[?] Do you want to include the module: '{rid}'? (s/n): ", end="")
             user_choice = input().lower().strip()
             
             if user_choice != 's':
                 to_remove.append(rid)
                 self.logger.info(f"Module: '{rid}', discarted by the user")
-                continue
+        
+        for rid in to_remove:
+            del self.software_resources[rid]
 
-            # 3. Verificación de configuraciones estáticas
+    def preparation_stage(self) -> None:
+        """Solicita configuraciones de los recursos finales que lo requieran"""
+        self.logger.info("Iniciando etapa de preparación (Hidratación de Configuraciones)")
+        
+        for rid, data in self.software_resources.items():
+            metadata = data.get("metadata", {})
+            
             if metadata.get("__CONFIGURABLE__", False):
-                self.logger.info(f"Configurating resource: {rid}")
                 config_descriptor = metadata.get("__STATIC_CONFIGURATIONS__", {})
                 
                 if not config_descriptor:
-                    self.logger.warning(f"The resource: {rid}, set: __CONFIGURABLE__ but it has no descriptor in: __STATIC_CONFIGURATIONS__")
+                    self.logger.warning(f"Recurso '{rid}' marcado como configurable pero no tiene '__STATIC_CONFIGURATIONS__'.")
                     continue
+                
+                print(f"\n{'='*60}")
+                print(f"[*] CONFIGURANDO RECURSO: {rid}")
+                print(f"{'='*60}")
 
-                # 4. Hidratación y Validación con configurations-stc
                 try:
-                    # Suponiendo que el descriptor ya viene como dict desde el AST
-                    config_obj = self._hydrate_configuration(rid, config_descriptor)
+                    # Instanciar el manejador de configuraciones
+                    config_obj = Configurations.from_dict(config_descriptor)
                     
-                    # Almacenamos el objeto de configuración serializado en los metadatos finales
-                    # para que sea empaquetado por el LinkCompiler
+                    # Iterar sobre cada 'Setting' definido en el recurso
+                    for setting_name in config_obj.query_settings():
+                        setting = config_obj.query_setting(setting_name)
+                        
+                        print(f"\n[+] Configurando parámetro: {setting.symbolic_name}")
+                        if setting.description:
+                            print(f"    Descripción: {setting.description}")
+                        
+                        # Invocamos el motor de captura de DataValue
+                        # Esto lanzará la interfaz interactiva en terminal
+                        captured_value = setting.value.cli_capture(prompt_context="    ")
+                        
+                        # Almacenamos el valor capturado en el Setting
+                        setting.value.value = captured_value
+                    
+                    # Actualizamos la metadata con la configuración ya hidratada
+                    # Esta información será la que se inyecte en el código fuente final
                     data["metadata"]["__PACKAGED_CONFIGURATIONS__"] = config_obj.to_dict()
-                    
+                    self.logger.info(f"Configuración del recurso '{rid}' completada con éxito.")
+
+                except KeyboardInterrupt:
+                    print("\n[!] Configuración abortada por el operador.")
+                    raise SystemExit("Proceso de construcción interrumpido.")
                 except Exception as e:
-                    self.logger.error(f"Error on the configuration of the resource: {rid}: {str(e)}")
-                    # Si falla la configuración crítica, podrías decidir si eliminar el módulo
-        
-        # Limpiar recursos no seleccionados
-        for rid in to_remove:
-            del self.software_resources[rid]
-    
-    def preparation_stage(self) -> None:
-        """Solicita configuraciones de los recursos finales que lo requieran"""
-        pass
+                    self.logger.error(f"Fallo crítico configurando '{rid}': {e}")
+                    # En entornos estrictos, un fallo de configuración debería abortar el build
+                    raise SystemExit(f"Fallo de configuración en {rid}")
+
+        self.logger.info("Etapa de preparación finalizada.")
     
     def build(self):
         """Construye y empaqueta una copia de software"""
