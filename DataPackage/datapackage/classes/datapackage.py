@@ -102,7 +102,7 @@ class Datapackage:
 
             return self._write_function(full_dataframe, *args, **kwargs)
         except (TypeError, ValueError):
-            traceback.print_exc()
+            #traceback.print_exc()
             return False
     
     def receive_datapackage(self, timeout: Optional[int] = None) -> Optional[dict]:
