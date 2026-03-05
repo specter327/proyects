@@ -1,0 +1,106 @@
+2026-03-05 00:53:00,238 | TRANSPORT_LAYER      | DEBUG    | EXEC: start | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x7fc9ce90d1f0>,) | KWARGS: {}
+2026-03-05 00:53:00,264 | TRANSPORT_LAYER      | INFO     | Transport layer initializated
+2026-03-05 00:53:00,264 | TRANSPORT_LAYER      | DEBUG    | END: start | RESULT: True | TIME: 0.0263s
+2026-03-05 00:53:00,265 | COMMUNICATION_LAYER  | DEBUG    | EXEC: start | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x7fc9ce76dbe0>,) | KWARGS: {}
+2026-03-05 00:53:00,265 | COMMUNICATION_LAYER  | INFO     | Starting Communication layer
+2026-03-05 00:53:00,297 | COMMUNICATION_LAYER  | DEBUG    | EXEC: query_modules | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x7fc9ce76dbe0>,) | KWARGS: {}
+2026-03-05 00:53:00,299 | COMMUNICATION_LAYER  | DEBUG    | END: query_modules | RESULT: ['COMMUNICATION_CLIENT'] | TIME: 0.0017s
+2026-03-05 00:53:00,299 | COMMUNICATION_LAYER  | INFO     | Modules discovered: ['COMMUNICATION_CLIENT']
+2026-03-05 00:53:00,301 | COMMUNICATION_LAYER  | DEBUG    | EXEC: query_modules | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x7fc9ce76dbe0>,) | KWARGS: {}
+2026-03-05 00:53:00,302 | COMMUNICATION_LAYER  | DEBUG    | END: query_modules | RESULT: ['COMMUNICATION_CLIENT'] | TIME: 0.0022s
+2026-03-05 00:53:00,302 | COMMUNICATION_LAYER  | DEBUG    | EXEC: query_module | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x7fc9ce76dbe0>, 'COMMUNICATION_CLIENT') | KWARGS: {}
+2026-03-05 00:53:00,302 | COMMUNICATION_LAYER  | DEBUG    | END: query_module | RESULT: <class 'shared.communication_architecture.layers.communication.modules.client.CommunicationClient'> | TIME: 0.0002s
+2026-03-05 00:53:00,308 | COMMUNICATION_LAYER  | DEBUG    | EXEC: load_module | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x7fc9ce76dbe0>, 'COMMUNICATION_CLIENT', <configurations.classes.configurations.Configurations object at 0x7fc9ce7875f0>) | KWARGS: {}
+2026-03-05 00:53:00,309 | COMMUNICATION_LAYER  | INFO     | Loading communication module: COMMUNICATION_CLIENT
+2026-03-05 00:53:00,310 | COMMUNICATION_LAYER  | DEBUG    | EXEC: query_module | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x7fc9ce76dbe0>, 'COMMUNICATION_CLIENT') | KWARGS: {}
+2026-03-05 00:53:00,310 | COMMUNICATION_LAYER  | DEBUG    | END: query_module | RESULT: <class 'shared.communication_architecture.layers.communication.modules.client.CommunicationClient'> | TIME: 0.0004s
+2026-03-05 00:53:00,312 | COMMUNICATION_CLIENT | DEBUG    | EXEC: configure | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7fc9cea12270>, <configurations.classes.configurations.Configurations object at 0x7fc9ce7875f0>) | KWARGS: {}
+2026-03-05 00:53:00,313 | COMMUNICATION_CLIENT | INFO     | Configurating module
+2026-03-05 00:53:00,313 | COMMUNICATION_CLIENT | INFO     | Module configurated successfully
+2026-03-05 00:53:00,313 | COMMUNICATION_CLIENT | DEBUG    | END: configure | RESULT: True | TIME: 0.0019s
+2026-03-05 00:53:00,314 | COMMUNICATION_CLIENT | DEBUG    | EXEC: start | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7fc9cea12270>,) | KWARGS: {}
+2026-03-05 00:53:00,315 | COMMUNICATION_CLIENT | INFO     | Starting module
+2026-03-05 00:53:00,316 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _connection_orchestrator | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7fc9cea12270>,) | KWARGS: {}
+2026-03-05 00:53:00,317 | COMMUNICATION_CLIENT | INFO     | Starting connection orchestrator
+2026-03-05 00:53:00,317 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7fc9cea12270>,) | KWARGS: {}
+2026-03-05 00:53:00,318 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0005s
+2026-03-05 00:53:00,319 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {'SERVER_PROFILES': {'DESCRIPTION': 'It includes a list of ServerProfile instances, with information to search it to establish a connection', 'OPTIONAL': False, 'PRIVATE': False, 'SYMBOLIC_NAME': 'Server profiles', 'SYSTEM_NAME': 'SERVER_PROFILES', 'VALUE': {'DATA_CLASS': True, 'DATA_TYPE': 'list', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': 1, 'NAME': 'Server Collection', 'POSSIBLE_VALUES': [{'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'dict', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': None, 'NAME': 'INTERNET Profile', 'POSSIBLE_VALUES': {'ADDRESSES': {'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'list', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': 1, 'NAME': 'IP List', 'POSSIBLE_VALUES': [{'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'dict', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': None, 'NAME': 'IP Endpoint', 'POSSIBLE_VALUES': {'ADDRESS': [{'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'str', 'DESCRIPTION': 'IPv4 address', 'MAXIMUM_LENGTH': 15, 'MAXIMUM_SIZE': None, 'MINIMUM_LENGTH': 7, 'MINIMUM_SIZE': None, 'NAME': 'IPv4 address', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': '^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$', 'VALUE': '127.0.0.1', '__type__': 'PrimitiveData'}}, {'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'str', 'DESCRIPTION': 'IPv6 address', 'MAXIMUM_LENGTH': 39, 'MAXIMUM_SIZE': None, 'MINIMUM_LENGTH': 2, 'MINIMUM_SIZE': None, 'NAME': 'IPv6 address', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': '^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$', 'VALUE': None, '__type__': 'PrimitiveData'}}, {'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'str', 'DESCRIPTION': 'Domain name', 'MAXIMUM_LENGTH': None, 'MAXIMUM_SIZE': None, 'MINIMUM_LENGTH': None, 'MINIMUM_SIZE': None, 'NAME': 'Domain name', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': '^(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z]{2,}$', 'VALUE': None, '__type__': 'PrimitiveData'}}], 'PORT': [{'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'int', 'DESCRIPTION': 'Internet port on the range from: 1, to: 65,535', 'MAXIMUM_LENGTH': None, 'MAXIMUM_SIZE': 65535, 'MINIMUM_LENGTH': None, 'MINIMUM_SIZE': 1, 'NAME': 'Internet port', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': None, 'VALUE': 24450, '__type__': 'PrimitiveData'}}]}, 'VALUE': {'ADDRESS': '127.0.0.1', 'PORT': 24450}, '__type__': 'ComplexData'}}], 'VALUE': [{'ADDRESS': '127.0.0.1', 'PORT': 24450}], '__type__': 'ComplexData'}}, 'TRANSPORT': ['INTERNET']}, 'VALUE': {'ADDRESSES': [{'ADDRESS': '127.0.0.1', 'PORT': 24450}], 'TRANSPORT': 'INTERNET'}, '__type__': 'ComplexData'}}, {'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'dict', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': None, 'NAME': 'BLUETOOTH Profile', 'POSSIBLE_VALUES': {'ADDRESSES': {'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'list', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': 1, 'NAME': 'BT List', 'POSSIBLE_VALUES': [{'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'dict', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': None, 'NAME': 'BT Endpoint', 'POSSIBLE_VALUES': {'ADDRESS': [{'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'str', 'DESCRIPTION': 'MAC address', 'MAXIMUM_LENGTH': None, 'MAXIMUM_SIZE': 17, 'MINIMUM_LENGTH': None, 'MINIMUM_SIZE': 17, 'NAME': 'MAC address', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': '^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$', 'VALUE': None, '__type__': 'PrimitiveData'}}], 'PORT': [{'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'int', 'DESCRIPTION': 'Internet port on the range from: 1, to: 65,535', 'MAXIMUM_LENGTH': None, 'MAXIMUM_SIZE': 65535, 'MINIMUM_LENGTH': None, 'MINIMUM_SIZE': 1, 'NAME': 'Internet port', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': None, 'VALUE': None, '__type__': 'PrimitiveData'}}]}, 'VALUE': None, '__type__': 'ComplexData'}}], 'VALUE': None, '__type__': 'ComplexData'}}, 'TRANSPORT': ['BLUETOOTH']}, 'VALUE': None, '__type__': 'ComplexData'}}], 'VALUE': [{'ADDRESSES': [{'ADDRESS': '127.0.0.1', 'PORT': 24450}], 'TRANSPORT': 'INTERNET'}], '__type__': 'ComplexData'}}}
+2026-03-05 00:53:00,319 | COMMUNICATION_CLIENT | INFO     | Module successfully started
+2026-03-05 00:53:00,321 | COMMUNICATION_CLIENT | DEBUG    | END: start | RESULT: True | TIME: 0.0071s
+2026-03-05 00:53:00,321 | COMMUNICATION_LAYER  | INFO     | Module COMMUNICATION_CLIENT loaded and started successfully
+2026-03-05 00:53:00,320 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7fc9cf5b3d70>
+2026-03-05 00:53:00,321 | COMMUNICATION_LAYER  | DEBUG    | END: load_module | RESULT: True | TIME: 0.0137s
+2026-03-05 00:53:00,324 | COMMUNICATION_CLIENT | DEBUG    | Current settings: ['SERVER_PROFILES']
+2026-03-05 00:53:00,324 | COMMUNICATION_CLIENT | DEBUG    | Server profiles: <configurations.classes.setting.Setting object at 0x7fc9ce787170>
+2026-03-05 00:53:00,325 | COMMUNICATION_LAYER  | INFO     | Module: COMMUNICATION_CLIENT, loaded successfully
+2026-03-05 00:53:00,325 | COMMUNICATION_CLIENT | DEBUG    | Server profile: {'ADDRESSES': [{'ADDRESS': '127.0.0.1', 'PORT': 24450}], 'TRANSPORT': 'INTERNET'}
+2026-03-05 00:53:00,325 | COMMUNICATION_LAYER  | INFO     | Communication layer loaded successfully
+2026-03-05 00:53:00,325 | COMMUNICATION_CLIENT | DEBUG    | Endpoint: {'ADDRESS': '127.0.0.1', 'PORT': 24450}
+2026-03-05 00:53:00,326 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _session_exists_for_endpoint | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7fc9cea12270>, '127.0.0.1', 24450) | KWARGS: {}
+2026-03-05 00:53:00,326 | COMMUNICATION_CLIENT | DEBUG    | END: _session_exists_for_endpoint | RESULT: False | TIME: 0.0004s
+2026-03-05 00:53:00,326 | COMMUNICATION_CLIENT | DEBUG    | Requesting connection with address: 127.0.0.1, and port: 24450
+2026-03-05 00:53:00,327 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _establish_transport_connection | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7fc9cea12270>, 'INTERNET', '127.0.0.1', 24450) | KWARGS: {}
+2026-03-05 00:53:00,327 | COMMUNICATION_CLIENT | DEBUG    | Establishing a transport connection with transport type: INTERNET, to address: 127.0.0.1:24450
+2026-03-05 00:53:00,327 | TRANSPORT_LAYER      | DEBUG    | EXEC: query_modules | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x7fc9ce90d1f0>,) | KWARGS: {}
+2026-03-05 00:53:00,327 | TRANSPORT_LAYER      | DEBUG    | END: query_modules | RESULT: ['TRANSPORT_TCP_IP'] | TIME: 0.0003s
+2026-03-05 00:53:00,328 | COMMUNICATION_CLIENT | DEBUG    | Current available transport modules: ['TRANSPORT_TCP_IP']
+2026-03-05 00:53:00,328 | TRANSPORT_LAYER      | DEBUG    | EXEC: query_module | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x7fc9ce90d1f0>, 'TRANSPORT_TCP_IP') | KWARGS: {}
+2026-03-05 00:53:00,328 | TRANSPORT_LAYER      | DEBUG    | END: query_module | RESULT: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'> | TIME: 0.0002s
+2026-03-05 00:53:00,328 | COMMUNICATION_CLIENT | DEBUG    | Module class: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>
+2026-03-05 00:53:00,328 | COMMUNICATION_CLIENT | DEBUG    | Transport module: TRANSPORT_TCP_IP | Transport type: INTERNET
+2026-03-05 00:53:00,328 | TRANSPORT_LAYER      | DEBUG    | EXEC: query_module | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x7fc9ce90d1f0>, 'TRANSPORT_TCP_IP') | KWARGS: {}
+2026-03-05 00:53:00,329 | TRANSPORT_LAYER      | DEBUG    | END: query_module | RESULT: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'> | TIME: 0.0004s
+2026-03-05 00:53:00,330 | TRANSPORT_LAYER      | DEBUG    | EXEC: connect | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x7fc9ce90d1f0>, <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, <configurations.classes.configurations.Configurations object at 0x7fc9ce786720>) | KWARGS: {}
+2026-03-05 00:53:00,331 | COMMUNICATION_LAYER  | DEBUG    | END: start | RESULT: True | TIME: 0.0663s
+2026-03-05 00:53:00,331 | TRANSPORT_LAYER      | INFO     | Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x7fc9ce786720>
+2026-03-05 00:53:00,331 | CONTROL_LAYER        | DEBUG    | EXEC: start | ARGS: (<shared.communication_architecture.layers.control.ControlLayer object at 0x7fc9ce76d9a0>,) | KWARGS: {}
+2026-03-05 00:53:00,332 | CONTROL_LAYER        | INFO     | Starting Control layer
+2026-03-05 00:53:00,332 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: configure | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x7fc9ce8d5820>, <configurations.classes.configurations.Configurations object at 0x7fc9ce786720>) | KWARGS: {}
+2026-03-05 00:53:00,332 | TRANSPORT_TCP_IP     | INFO     | Module configurated
+2026-03-05 00:53:00,333 | TRANSPORT_TCP_IP     | DEBUG    | END: configure | RESULT: True | TIME: 0.0005s
+2026-03-05 00:53:00,333 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: start | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x7fc9ce8d5820>,) | KWARGS: {}
+2026-03-05 00:53:00,333 | TRANSPORT_TCP_IP     | INFO     | Module initializated
+2026-03-05 00:53:00,333 | TRANSPORT_TCP_IP     | DEBUG    | END: start | RESULT: True | TIME: 0.0003s
+2026-03-05 00:53:00,333 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: connect | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x7fc9ce8d5820>,) | KWARGS: {}
+2026-03-05 00:53:00,333 | TRANSPORT_TCP_IP     | INFO     | Connecting module
+2026-03-05 00:53:00,335 | CONTROL_LAYER        | INFO     | Loading control modules
+2026-03-05 00:53:00,335 | TRANSPORT_TCP_IP     | INFO     | Connecting with IP: 2, with TCP
+2026-03-05 00:53:00,336 | CONTROL_LAYER        | DEBUG    | EXEC: load_modules | ARGS: (<shared.communication_architecture.layers.control.ControlLayer object at 0x7fc9ce76d9a0>,) | KWARGS: {}
+2026-03-05 00:53:00,336 | CONTROL_LAYER        | INFO     | Loading available modules
+2026-03-05 00:53:00,336 | TRANSPORT_TCP_IP     | ERROR    | Error on the connection: [Errno 111] Connection refused
+2026-03-05 00:53:00,353 | TRANSPORT_TCP_IP     | DEBUG    | END: connect | RESULT: False | TIME: 0.0201s
+2026-03-05 00:53:00,355 | TRANSPORT_LAYER      | INFO     | Connection result: False
+2026-03-05 00:53:00,355 | CONTROL_LAYER        | DEBUG    | EXEC: query_modules | ARGS: (<shared.communication_architecture.layers.control.ControlLayer object at 0x7fc9ce76d9a0>,) | KWARGS: {}
+2026-03-05 00:53:00,355 | TRANSPORT_LAYER      | ERROR    | Connection result: ERROR
+2026-03-05 00:53:00,355 | CONTROL_LAYER        | DEBUG    | END: query_modules | RESULT: ['SYSTEM_SHELL_PASSIVE'] | TIME: 0.0005s
+2026-03-05 00:53:00,356 | TRANSPORT_LAYER      | DEBUG    | END: connect | RESULT: False | TIME: 0.0254s
+2026-03-05 00:53:00,356 | COMMUNICATION_CLIENT | DEBUG    | END: _establish_transport_connection | RESULT: False | TIME: 0.0297s
+2026-03-05 00:53:00,357 | COMMUNICATION_CLIENT | DEBUG    | Connection result: False
+2026-03-05 00:53:00,358 | CONTROL_LAYER        | DEBUG    | EXEC: query_modules | ARGS: (<shared.communication_architecture.layers.control.ControlLayer object at 0x7fc9ce76d9a0>,) | KWARGS: {}
+2026-03-05 00:53:00,358 | CONTROL_LAYER        | DEBUG    | END: query_modules | RESULT: ['SYSTEM_SHELL_PASSIVE'] | TIME: 0.0007s
+2026-03-05 00:53:00,359 | CONTROL_LAYER        | INFO     | Instanciating module: SYSTEM_SHELL_PASSIVE
+2026-03-05 00:53:00,359 | CONTROL_LAYER        | DEBUG    | EXEC: query_module | ARGS: (<shared.communication_architecture.layers.control.ControlLayer object at 0x7fc9ce76d9a0>, 'SYSTEM_SHELL_PASSIVE') | KWARGS: {}
+2026-03-05 00:53:00,360 | CONTROL_LAYER        | DEBUG    | END: query_module | RESULT: <class 'shared.communication_architecture.layers.control.modules.shell_passive.ShellPassive'> | TIME: 0.0002s
+2026-03-05 00:53:00,360 | CONTROL_LAYER        | DEBUG    | EXEC: load_module | ARGS: (<shared.communication_architecture.layers.control.ControlLayer object at 0x7fc9ce76d9a0>, 'SYSTEM_SHELL_PASSIVE', <configurations.classes.configurations.Configurations object at 0x7fc9ce79d0d0>) | KWARGS: {}
+2026-03-05 00:53:00,360 | CONTROL_LAYER        | INFO     | Loading communication module: SYSTEM_SHELL_PASSIVE
+2026-03-05 00:53:00,360 | CONTROL_LAYER        | DEBUG    | EXEC: query_module | ARGS: (<shared.communication_architecture.layers.control.ControlLayer object at 0x7fc9ce76d9a0>, 'SYSTEM_SHELL_PASSIVE') | KWARGS: {}
+2026-03-05 00:53:00,361 | CONTROL_LAYER        | DEBUG    | END: query_module | RESULT: <class 'shared.communication_architecture.layers.control.modules.shell_passive.ShellPassive'> | TIME: 0.0002s
+2026-03-05 00:53:00,362 | SYSTEM_SHELL_PASSIVE | DEBUG    | EXEC: configure | ARGS: (<shared.communication_architecture.layers.control.modules.shell_passive.ShellPassive object at 0x7fc9ce79d100>, <configurations.classes.configurations.Configurations object at 0x7fc9ce79d0d0>) | KWARGS: {}
+2026-03-05 00:53:00,363 | CONTROL_SYSTEM_SHELL_PASSIVE | INFO     | Module configured successfully.
+2026-03-05 00:53:00,363 | SYSTEM_SHELL_PASSIVE | DEBUG    | END: configure | RESULT: True | TIME: 0.0006s
+2026-03-05 00:53:00,363 | SYSTEM_SHELL_PASSIVE | DEBUG    | EXEC: start | ARGS: (<shared.communication_architecture.layers.control.modules.shell_passive.ShellPassive object at 0x7fc9ce79d100>,) | KWARGS: {}
+2026-03-05 00:53:00,363 | CONTROL_SYSTEM_SHELL_PASSIVE | INFO     | Starting SHELL_PASSIVE module...
+2026-03-05 00:53:00,364 | SYSTEM_SHELL_PASSIVE | DEBUG    | EXEC: _listener_loop | ARGS: (<shared.communication_architecture.layers.control.modules.shell_passive.ShellPassive object at 0x7fc9ce79d100>,) | KWARGS: {}
+2026-03-05 00:53:00,364 | CONTROL_SYSTEM_SHELL_PASSIVE | INFO     | Module started successfully.
+2026-03-05 00:53:00,364 | CONTROL_SYSTEM_SHELL_PASSIVE | INFO     | Passive Shell listener started.
+2026-03-05 00:53:00,365 | SYSTEM_SHELL_PASSIVE | DEBUG    | END: start | RESULT: True | TIME: 0.0016s
+2026-03-05 00:53:00,365 | CONTROL_LAYER        | INFO     | Module SYSTEM_SHELL_PASSIVE loaded and started successfully
+2026-03-05 00:53:00,365 | CONTROL_LAYER        | DEBUG    | END: load_module | RESULT: True | TIME: 0.0053s
+2026-03-05 00:53:00,366 | CONTROL_LAYER        | INFO     | Module: SYSTEM_SHELL_PASSIVE, loaded successfully
+2026-03-05 00:53:00,366 | CONTROL_LAYER        | INFO     | Modules loaded successfully
+2026-03-05 00:53:00,366 | CONTROL_LAYER        | DEBUG    | END: load_modules | RESULT: True | TIME: 0.0303s
+2026-03-05 00:53:00,366 | CONTROL_LAYER        | INFO     | Control modules loaded
+2026-03-05 00:53:00,366 | CONTROL_LAYER        | INFO     | Control layer initializated successfully
+2026-03-05 00:53:00,367 | CONTROL_LAYER        | DEBUG    | END: start | RESULT: True | TIME: 0.0355s
+2026-03-05 00:53:00,367 | TRANSPORT_LAYER      | DEBUG    | EXEC: query_module | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x7fc9ce90d1f0>, 'TRANSPORT_TCP_IP') | KWARGS: {}
+2026-03-05 00:53:00,368 | TRANSPORT_LAYER      | DEBUG    | END: query_module | RESULT: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'> | TIME: 0.0005s

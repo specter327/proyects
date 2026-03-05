@@ -4,6 +4,7 @@ __RESOURCE_TYPE__ = "STRUCTURAL"
 # Library import
 import sys
 import os
+from configurations import Configurations, Setting
 
 # Constants definition
 ConfigurationsTable = {   'shared.communication_architecture.layers.communication.modules.client': {   'SERVER_PROFILES': {   'DESCRIPTION': 'It '
@@ -71,7 +72,7 @@ ConfigurationsTable = {   'shared.communication_architecture.layers.communicatio
                                                                                                                                                                                                                                                                                                                                  'address',
                                                                                                                                                                                                                                                                                                                          'POSSIBLE_VALUES': None,
                                                                                                                                                                                                                                                                                                                          'REGULAR_EXPRESSION': '^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$',
-                                                                                                                                                                                                                                                                                                                         'VALUE': '192.168.0.1',
+                                                                                                                                                                                                                                                                                                                         'VALUE': '127.0.0.1',
                                                                                                                                                                                                                                                                                                                          '__type__': 'PrimitiveData'}},
                                                                                                                                                                                                                                                                                                       {   '__type__': 'PrimitiveData',
                                                                                                                                                                                                                                                                                                           'content': {   'DATA_CLASS': True,
@@ -125,14 +126,14 @@ ConfigurationsTable = {   'shared.communication_architecture.layers.communicatio
                                                                                                                                                                                                                                                                                                                       'REGULAR_EXPRESSION': None,
                                                                                                                                                                                                                                                                                                                       'VALUE': 24450,
                                                                                                                                                                                                                                                                                                                       '__type__': 'PrimitiveData'}}]},
-                                                                                                                                                                                                                                                                'VALUE': {   'ADDRESS': '192.168.0.1',
+                                                                                                                                                                                                                                                                'VALUE': {   'ADDRESS': '127.0.0.1',
                                                                                                                                                                                                                                                                              'PORT': 24450},
                                                                                                                                                                                                                                                                 '__type__': 'ComplexData'}}],
-                                                                                                                                                                                                                      'VALUE': [   {   'ADDRESS': '192.168.0.1',
+                                                                                                                                                                                                                      'VALUE': [   {   'ADDRESS': '127.0.0.1',
                                                                                                                                                                                                                                        'PORT': 24450}],
                                                                                                                                                                                                                       '__type__': 'ComplexData'}},
                                                                                                                                                                                       'TRANSPORT': [   'INTERNET']},
-                                                                                                                                                               'VALUE': {   'ADDRESSES': [   {   'ADDRESS': '192.168.0.1',
+                                                                                                                                                               'VALUE': {   'ADDRESSES': [   {   'ADDRESS': '127.0.0.1',
                                                                                                                                                                                                  'PORT': 24450}],
                                                                                                                                                                             'TRANSPORT': 'INTERNET'},
                                                                                                                                                                '__type__': 'ComplexData'}},
@@ -204,7 +205,7 @@ ConfigurationsTable = {   'shared.communication_architecture.layers.communicatio
                                                                                                                                                                                       'TRANSPORT': [   'BLUETOOTH']},
                                                                                                                                                                'VALUE': None,
                                                                                                                                                                '__type__': 'ComplexData'}}],
-                                                                                                                     'VALUE': [   {   'ADDRESSES': [   {   'ADDRESS': '192.168.0.1',
+                                                                                                                     'VALUE': [   {   'ADDRESSES': [   {   'ADDRESS': '127.0.0.1',
                                                                                                                                                            'PORT': 24450}],
                                                                                                                                       'TRANSPORT': 'INTERNET'}],
                                                                                                                      '__type__': 'ComplexData'}}},
@@ -227,7 +228,7 @@ ConfigurationsTable = {   'shared.communication_architecture.layers.communicatio
                                                                                                    'NAME': None,
                                                                                                    'POSSIBLE_VALUES': None,
                                                                                                    'REGULAR_EXPRESSION': None,
-                                                                                                   'VALUE': 100,
+                                                                                                   'VALUE': 200,
                                                                                                    '__type__': 'PrimitiveData'}}}}
     
 # Classes definition

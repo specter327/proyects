@@ -251,7 +251,8 @@ from ......utils.debug import smart_debug
 from configurations import Configurations, Setting
 from datavalue import PrimitiveData, ComplexData
 from system.configurations import ConfigurationsManager
-from typing import Optional
+from typing import Optional, Dict
+from ... import CommunicationModule
 import threading
 import time
 
@@ -405,12 +406,14 @@ ModuleConfigurations.add_setting(ServerProfilesSetting)
 print(ModuleConfigurations.to_json())
 
 # Classes definition
-class CommunicationClient(ModuleInterface):
+class CommunicationClient(CommunicationModule):
+    print("Este modulo se esta ejecutando!!")
     MODULE_NAME = "COMMUNICATION_CLIENT"
     CONFIGURATIONS: Configurations = ModuleConfigurations
 
     def __init__(self, layer) -> None:
         super().__init__(layer)
+        print("INSTANTIATING COMMUNICATION_CLIENT")
         self.logger = logger(self.MODULE_NAME)
         # self.layer referencia a CommunicationLayer
         self._transport_layer = self.layer.layers_container.query_layer("TRANSPORT")
@@ -429,7 +432,7 @@ class CommunicationClient(ModuleInterface):
         """Rutina de alto nivel: Conectar -> Negociar Sesión -> Mantener."""
         self.logger.info("Starting connection orchestrator")
 
-        while self._active:
+        while self.active:
             # 1. Limpieza de sesiones huérfanas
             self._maintain_sessions()
 
@@ -438,16 +441,26 @@ class CommunicationClient(ModuleInterface):
             resource_id = "shared.communication_architecture.layers.communication.modules.client"
             config_data = self._config_manager.query_configuration(resource_id)
             self.logger.debug(f"Configurations query result: {config_data}")
-            profiles = config_data.get("SERVER_PROFILES", {}).get("VALUE", [])
+            config_instance = Configurations.from_dict(config_data)
+            self.logger.debug(f"Configuration instance: {config_instance}")
 
-            for profile in profiles:
+            #profiles = config_data.get("SERVER_PROFILES", {}).get("VALUE", [])
+            self.logger.debug(f"Current settings: {config_instance.query_settings()}")
+            if not config_data:
+                time.sleep(0.10)
+                continue
+
+            profiles = config_instance.query_setting("SERVER_PROFILES")
+            self.logger.debug(f"Server profiles: {profiles}")
+
+            for profile in profiles.value.value:
                 self.logger.debug(f"Server profile: {profile}")
                 transport_type = profile.get("TRANSPORT")
                 endpoints = profile.get("ADDRESSES", [])
 
                 for endpoint in endpoints:
                     self.logger.debug(f"Endpoint: {endpoint}")
-                    if not self._active: break
+                    if not self.active: break
                     
                     addr, port = endpoint.get("ADDRESS"), endpoint.get("PORT")
 
@@ -463,7 +476,7 @@ class CommunicationClient(ModuleInterface):
                     if conn_id:
                         # 4. Elevación a Capa de Comunicación (Creación de Sesión)
                         # El local_role se define como 'CLIENT' para este módulo
-                        session_id = self.layer.create_session(conn_id, local_role="CLIENT")
+                        session_id = self.layer.create_session(conn_id, local_role="PASSIVE")
                         self.logger.debug(f"Session identifier: {session_id}")
 
                         if session_id:
@@ -478,17 +491,20 @@ class CommunicationClient(ModuleInterface):
 
         self.logger.info("Stopping connection orchestrator")
 
-
     @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def _establish_transport_connection(self, transport_type: str, addr: str, port: int) -> Optional[int]:
         """Interactúa con TransportLayer para obtener un connection_id."""
         # Buscar módulo de transporte compatible (TCP_IP, etc)
-        self.logger.debug(f"Establishing a transport connection")
+        self.logger.debug(f"Establishing a transport connection with transport type: {transport_type}, to address: {addr}:{port}")
         available = self._transport_layer.query_modules()
+        self.logger.debug(f"Current available transport modules: {available}")
         target_mod_name = None
         
         for name in available:
             mod_class = self._transport_layer.query_module(name)
+            self.logger.debug(f"Module class: {mod_class}")
+            self.logger.debug(f"Transport module: {name} | Transport type: {getattr(mod_class, 'TRANSPORT_TYPE', 'Unexisting transport type')}")
+
             if getattr(mod_class, "TRANSPORT_TYPE", None) == transport_type:
                 target_mod_name = name
                 break
@@ -506,7 +522,7 @@ class CommunicationClient(ModuleInterface):
         conn_configs.query_setting("REMOTE_PORT").value.value = port
 
         # Solicitar conexión a la capa de transporte
-        return self._transport_layer.connect(target_mod_name, conn_configs)
+        return self._transport_layer.connect(transport_class, conn_configs)
 
     @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def _maintain_sessions(self) -> None:
@@ -540,8 +556,9 @@ class CommunicationClient(ModuleInterface):
     # Public methods
     @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def start(self) -> bool:
+        print(f"[{self.MODULE_NAME}] Starting module...")
         self.logger.info("Starting module")
-        self._set_active(active=True)
+        self._set_status(active=True)
 
         self._connection_orchestrator = threading.Thread(
             target=self._connection_orchestrator,
@@ -555,7 +572,7 @@ class CommunicationClient(ModuleInterface):
     @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def stop(self) -> bool:
         self.logger.info("Stopping module")
-        self._set_active(active=False)
+        self._set_status(active=False)
 
         self.logger.info("Module stopped successfully")
         return True

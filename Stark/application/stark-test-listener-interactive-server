@@ -65,7 +65,7 @@ def run_listener_console():
 
         # 5. Elevación a Capa de Comunicación (Creación de Sesión)
         # Definimos el rol local como 'OPERATOR' o 'SERVER'
-        session_uuid = comm_layer.create_session(connection_id, local_role="OPERATOR")
+        session_uuid = comm_layer.create_session(connection_id, local_role="ACTIVE")
 
         if session_uuid:
             session = comm_layer.sessions_table.get(session_uuid)

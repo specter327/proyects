@@ -27,7 +27,7 @@ class LayerInterface(ABC):
     @property
     def NAME(self) -> str:
         return self.LAYER_NAME
-    
+
     def __init__(self, layers_container: "LayerContainer") -> None:
         # Instance properties definition
         self.layers_container = layers_container
@@ -270,12 +270,19 @@ class ModuleContainer:
                 match_class: object = None
 
                 for name, element in inspect.getmembers(module):
+                    #print(f"Element: {element} | Name: {name}")
                     if inspect.isclass(element):
-                        # Verify if the class object heredate from the ModuleInterface
-                        if issubclass(element, ModuleInterface) and element is not object and element is not ModuleInterface:
-                            match_content = True
-                            match_class = element
-                            break # Stop process
+                        # 1. Validar jerarquía básica
+                        if issubclass(element, ModuleInterface) and element is not ModuleInterface:
+                            
+                            # 2. Validar que la clase fue definida EN ESTE módulo (evitar importaciones)
+                            if element.__module__ == module.__name__:
+                                
+                                # 3. Validar que no sea una clase abstracta (ABC)
+                                if not inspect.isabstract(element):
+                                    match_content = True
+                                    match_class = element
+                                    break # Stop process
 
                 if match_content:
                     # Save the module

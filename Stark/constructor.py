@@ -450,6 +450,8 @@ class LinkConstructor:
 
         for rid, data in self.software_resources.items():
             metadata = data.get("metadata", {})
+            self.logger.info(f"Resource identifier: {rid}")
+            self.logger.debug(f"Resource metadata: {metadata}")
             res_type = metadata.get("__RESOURCE_TYPE__", "DYNAMIC")
             
             # 1. Los recursos estructurales son agnósticos y se mantienen siempre.
@@ -460,7 +462,7 @@ class LinkConstructor:
             platforms = metadata.get("__PLATFORM_COMPATIBILITY__", [])
             if self.platform_objective not in platforms and "ALL" not in platforms:
                 to_remove.append(rid)
-                self.logger.debug(f"Discarted by platform incompatibility: {rid}")
+                self.logger.debug(f"Discarted by platform incompatibility: {rid}. Supported platforms: {platforms}")
                 continue
                 
             # 3. Validación de Arquitectura

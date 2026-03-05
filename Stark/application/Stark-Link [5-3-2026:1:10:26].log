@@ -1,0 +1,450 @@
+2026-03-05 01:10:26,263 | TRANSPORT_LAYER      | DEBUG    | EXEC: start | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x7b8cd57c1580>,) | KWARGS: {}
+2026-03-05 01:10:26,267 | TRANSPORT_LAYER      | INFO     | Transport layer initializated
+2026-03-05 01:10:26,267 | TRANSPORT_LAYER      | DEBUG    | END: start | RESULT: True | TIME: 0.0039s
+2026-03-05 01:10:26,268 | COMMUNICATION_LAYER  | DEBUG    | EXEC: start | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x7b8cd54278c0>,) | KWARGS: {}
+2026-03-05 01:10:26,268 | COMMUNICATION_LAYER  | INFO     | Starting Communication layer
+2026-03-05 01:10:26,276 | COMMUNICATION_LAYER  | DEBUG    | EXEC: query_modules | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x7b8cd54278c0>,) | KWARGS: {}
+2026-03-05 01:10:26,276 | COMMUNICATION_LAYER  | DEBUG    | END: query_modules | RESULT: ['COMMUNICATION_CLIENT'] | TIME: 0.0003s
+2026-03-05 01:10:26,276 | COMMUNICATION_LAYER  | INFO     | Modules discovered: ['COMMUNICATION_CLIENT']
+2026-03-05 01:10:26,276 | COMMUNICATION_LAYER  | DEBUG    | EXEC: query_modules | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x7b8cd54278c0>,) | KWARGS: {}
+2026-03-05 01:10:26,276 | COMMUNICATION_LAYER  | DEBUG    | END: query_modules | RESULT: ['COMMUNICATION_CLIENT'] | TIME: 0.0001s
+2026-03-05 01:10:26,276 | COMMUNICATION_LAYER  | DEBUG    | EXEC: query_module | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x7b8cd54278c0>, 'COMMUNICATION_CLIENT') | KWARGS: {}
+2026-03-05 01:10:26,277 | COMMUNICATION_LAYER  | DEBUG    | END: query_module | RESULT: <class 'shared.communication_architecture.layers.communication.modules.client.CommunicationClient'> | TIME: 0.0001s
+2026-03-05 01:10:26,279 | COMMUNICATION_LAYER  | DEBUG    | EXEC: load_module | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x7b8cd54278c0>, 'COMMUNICATION_CLIENT', <configurations.classes.configurations.Configurations object at 0x7b8cd544f020>) | KWARGS: {}
+2026-03-05 01:10:26,279 | COMMUNICATION_LAYER  | INFO     | Loading communication module: COMMUNICATION_CLIENT
+2026-03-05 01:10:26,279 | COMMUNICATION_LAYER  | DEBUG    | EXEC: query_module | ARGS: (<shared.communication_architecture.layers.communication.CommunicationLayer object at 0x7b8cd54278c0>, 'COMMUNICATION_CLIENT') | KWARGS: {}
+2026-03-05 01:10:26,279 | COMMUNICATION_LAYER  | DEBUG    | END: query_module | RESULT: <class 'shared.communication_architecture.layers.communication.modules.client.CommunicationClient'> | TIME: 0.0001s
+2026-03-05 01:10:26,280 | COMMUNICATION_CLIENT | DEBUG    | EXEC: configure | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>, <configurations.classes.configurations.Configurations object at 0x7b8cd544f020>) | KWARGS: {}
+2026-03-05 01:10:26,280 | COMMUNICATION_CLIENT | INFO     | Configurating module
+2026-03-05 01:10:26,280 | COMMUNICATION_CLIENT | INFO     | Module configurated successfully
+2026-03-05 01:10:26,280 | COMMUNICATION_CLIENT | DEBUG    | END: configure | RESULT: True | TIME: 0.0004s
+2026-03-05 01:10:26,280 | COMMUNICATION_CLIENT | DEBUG    | EXEC: start | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:26,280 | COMMUNICATION_CLIENT | INFO     | Starting module
+2026-03-05 01:10:26,281 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _connection_orchestrator | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:26,282 | COMMUNICATION_CLIENT | INFO     | Starting connection orchestrator
+2026-03-05 01:10:26,282 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:26,282 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0002s
+2026-03-05 01:10:26,282 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:26,282 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:26,282 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:26,281 | COMMUNICATION_CLIENT | INFO     | Module successfully started
+2026-03-05 01:10:26,283 | COMMUNICATION_CLIENT | DEBUG    | END: start | RESULT: True | TIME: 0.0025s
+2026-03-05 01:10:26,283 | COMMUNICATION_LAYER  | INFO     | Module COMMUNICATION_CLIENT loaded and started successfully
+2026-03-05 01:10:26,283 | COMMUNICATION_LAYER  | DEBUG    | END: load_module | RESULT: True | TIME: 0.0042s
+2026-03-05 01:10:26,283 | COMMUNICATION_LAYER  | INFO     | Module: COMMUNICATION_CLIENT, loaded successfully
+2026-03-05 01:10:26,283 | COMMUNICATION_LAYER  | INFO     | Communication layer loaded successfully
+2026-03-05 01:10:26,283 | COMMUNICATION_LAYER  | DEBUG    | END: start | RESULT: True | TIME: 0.0157s
+2026-03-05 01:10:26,283 | CONTROL_LAYER        | DEBUG    | EXEC: start | ARGS: (<shared.communication_architecture.layers.control.ControlLayer object at 0x7b8cd5415f10>,) | KWARGS: {}
+2026-03-05 01:10:26,284 | CONTROL_LAYER        | INFO     | Starting Control layer
+2026-03-05 01:10:26,284 | CONTROL_LAYER        | INFO     | Loading control modules
+2026-03-05 01:10:26,284 | CONTROL_LAYER        | DEBUG    | EXEC: load_modules | ARGS: (<shared.communication_architecture.layers.control.ControlLayer object at 0x7b8cd5415f10>,) | KWARGS: {}
+2026-03-05 01:10:26,284 | CONTROL_LAYER        | INFO     | Loading available modules
+2026-03-05 01:10:26,299 | CONTROL_LAYER        | DEBUG    | EXEC: query_modules | ARGS: (<shared.communication_architecture.layers.control.ControlLayer object at 0x7b8cd5415f10>,) | KWARGS: {}
+2026-03-05 01:10:26,300 | CONTROL_LAYER        | DEBUG    | END: query_modules | RESULT: ['SYSTEM_SHELL_PASSIVE', 'SYSTEM_SHELL_ACTIVE'] | TIME: 0.0003s
+2026-03-05 01:10:26,300 | CONTROL_LAYER        | DEBUG    | EXEC: query_modules | ARGS: (<shared.communication_architecture.layers.control.ControlLayer object at 0x7b8cd5415f10>,) | KWARGS: {}
+2026-03-05 01:10:26,300 | CONTROL_LAYER        | DEBUG    | END: query_modules | RESULT: ['SYSTEM_SHELL_PASSIVE', 'SYSTEM_SHELL_ACTIVE'] | TIME: 0.0001s
+2026-03-05 01:10:26,300 | CONTROL_LAYER        | INFO     | Instanciating module: SYSTEM_SHELL_PASSIVE
+2026-03-05 01:10:26,300 | CONTROL_LAYER        | DEBUG    | EXEC: query_module | ARGS: (<shared.communication_architecture.layers.control.ControlLayer object at 0x7b8cd5415f10>, 'SYSTEM_SHELL_PASSIVE') | KWARGS: {}
+2026-03-05 01:10:26,300 | CONTROL_LAYER        | DEBUG    | END: query_module | RESULT: <class 'shared.communication_architecture.layers.control.modules.shell_passive.ShellPassive'> | TIME: 0.0001s
+2026-03-05 01:10:26,301 | CONTROL_LAYER        | DEBUG    | EXEC: load_module | ARGS: (<shared.communication_architecture.layers.control.ControlLayer object at 0x7b8cd5415f10>, 'SYSTEM_SHELL_PASSIVE', <configurations.classes.configurations.Configurations object at 0x7b8cd54a09e0>) | KWARGS: {}
+2026-03-05 01:10:26,301 | CONTROL_LAYER        | INFO     | Loading communication module: SYSTEM_SHELL_PASSIVE
+2026-03-05 01:10:26,301 | CONTROL_LAYER        | DEBUG    | EXEC: query_module | ARGS: (<shared.communication_architecture.layers.control.ControlLayer object at 0x7b8cd5415f10>, 'SYSTEM_SHELL_PASSIVE') | KWARGS: {}
+2026-03-05 01:10:26,301 | CONTROL_LAYER        | DEBUG    | END: query_module | RESULT: <class 'shared.communication_architecture.layers.control.modules.shell_passive.ShellPassive'> | TIME: 0.0001s
+2026-03-05 01:10:26,302 | SYSTEM_SHELL_PASSIVE | DEBUG    | EXEC: configure | ARGS: (<shared.communication_architecture.layers.control.modules.shell_passive.ShellPassive object at 0x7b8cd54a0a10>, <configurations.classes.configurations.Configurations object at 0x7b8cd54a09e0>) | KWARGS: {}
+2026-03-05 01:10:26,302 | CONTROL_SYSTEM_SHELL_PASSIVE | INFO     | Module configured successfully.
+2026-03-05 01:10:26,302 | SYSTEM_SHELL_PASSIVE | DEBUG    | END: configure | RESULT: True | TIME: 0.0004s
+2026-03-05 01:10:26,303 | SYSTEM_SHELL_PASSIVE | DEBUG    | EXEC: start | ARGS: (<shared.communication_architecture.layers.control.modules.shell_passive.ShellPassive object at 0x7b8cd54a0a10>,) | KWARGS: {}
+2026-03-05 01:10:26,303 | CONTROL_SYSTEM_SHELL_PASSIVE | INFO     | Starting SHELL_PASSIVE module...
+2026-03-05 01:10:26,304 | SYSTEM_SHELL_PASSIVE | DEBUG    | EXEC: _listener_loop | ARGS: (<shared.communication_architecture.layers.control.modules.shell_passive.ShellPassive object at 0x7b8cd54a0a10>,) | KWARGS: {}
+2026-03-05 01:10:26,304 | CONTROL_SYSTEM_SHELL_PASSIVE | INFO     | Module started successfully.
+2026-03-05 01:10:26,306 | CONTROL_SYSTEM_SHELL_PASSIVE | INFO     | Passive Shell listener started.
+2026-03-05 01:10:26,305 | SYSTEM_SHELL_PASSIVE | DEBUG    | END: start | RESULT: True | TIME: 0.0022s
+2026-03-05 01:10:26,306 | CONTROL_LAYER        | INFO     | Module SYSTEM_SHELL_PASSIVE loaded and started successfully
+2026-03-05 01:10:26,307 | CONTROL_LAYER        | DEBUG    | END: load_module | RESULT: True | TIME: 0.0058s
+2026-03-05 01:10:26,307 | CONTROL_LAYER        | INFO     | Module: SYSTEM_SHELL_PASSIVE, loaded successfully
+2026-03-05 01:10:26,307 | CONTROL_LAYER        | INFO     | Instanciating module: SYSTEM_SHELL_ACTIVE
+2026-03-05 01:10:26,307 | CONTROL_LAYER        | DEBUG    | EXEC: query_module | ARGS: (<shared.communication_architecture.layers.control.ControlLayer object at 0x7b8cd5415f10>, 'SYSTEM_SHELL_ACTIVE') | KWARGS: {}
+2026-03-05 01:10:26,307 | CONTROL_LAYER        | DEBUG    | END: query_module | RESULT: <class 'shared.communication_architecture.layers.control.modules.shell_active.ShellActive'> | TIME: 0.0001s
+2026-03-05 01:10:26,307 | CONTROL_LAYER        | DEBUG    | EXEC: load_module | ARGS: (<shared.communication_architecture.layers.control.ControlLayer object at 0x7b8cd5415f10>, 'SYSTEM_SHELL_ACTIVE', <configurations.classes.configurations.Configurations object at 0x7b8cd54a12e0>) | KWARGS: {}
+2026-03-05 01:10:26,307 | CONTROL_LAYER        | INFO     | Loading communication module: SYSTEM_SHELL_ACTIVE
+2026-03-05 01:10:26,307 | CONTROL_LAYER        | DEBUG    | EXEC: query_module | ARGS: (<shared.communication_architecture.layers.control.ControlLayer object at 0x7b8cd5415f10>, 'SYSTEM_SHELL_ACTIVE') | KWARGS: {}
+2026-03-05 01:10:26,308 | CONTROL_LAYER        | DEBUG    | END: query_module | RESULT: <class 'shared.communication_architecture.layers.control.modules.shell_active.ShellActive'> | TIME: 0.0001s
+2026-03-05 01:10:26,308 | SYSTEM_SHELL_ACTIVE  | DEBUG    | EXEC: start | ARGS: (<shared.communication_architecture.layers.control.modules.shell_active.ShellActive object at 0x7b8cd54a1310>,) | KWARGS: {}
+2026-03-05 01:10:26,308 | CONTROL_SYSTEM_SHELL_ACTIVE_ACTIVE | INFO     | Starting SHELL_ACTIVE module (Operator Mode)...
+2026-03-05 01:10:26,310 | SYSTEM_SHELL_ACTIVE  | DEBUG    | END: start | RESULT: True | TIME: 0.0014s
+2026-03-05 01:10:26,310 | CONTROL_LAYER        | INFO     | Module SYSTEM_SHELL_ACTIVE loaded and started successfully
+2026-03-05 01:10:26,310 | CONTROL_LAYER        | DEBUG    | END: load_module | RESULT: True | TIME: 0.0031s
+2026-03-05 01:10:26,310 | CONTROL_LAYER        | INFO     | Module: SYSTEM_SHELL_ACTIVE, loaded successfully
+2026-03-05 01:10:26,311 | CONTROL_LAYER        | INFO     | Modules loaded successfully
+2026-03-05 01:10:26,311 | CONTROL_LAYER        | DEBUG    | END: load_modules | RESULT: True | TIME: 0.0269s
+2026-03-05 01:10:26,311 | CONTROL_LAYER        | INFO     | Control modules loaded
+2026-03-05 01:10:26,311 | CONTROL_LAYER        | INFO     | Control layer initializated successfully
+2026-03-05 01:10:26,311 | CONTROL_LAYER        | DEBUG    | END: start | RESULT: True | TIME: 0.0279s
+2026-03-05 01:10:26,312 | TRANSPORT_LAYER      | DEBUG    | EXEC: query_module | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x7b8cd57c1580>, 'TRANSPORT_TCP_IP') | KWARGS: {}
+2026-03-05 01:10:26,312 | TRANSPORT_LAYER      | DEBUG    | END: query_module | RESULT: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'> | TIME: 0.0003s
+2026-03-05 01:10:26,313 | TRANSPORT_LAYER      | DEBUG    | EXEC: receive_connection | ARGS: (<shared.communication_architecture.layers.transport.TransportLayer object at 0x7b8cd57c1580>, <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, <configurations.classes.configurations.Configurations object at 0x7b8cd54a1e80>) | KWARGS: {}
+2026-03-05 01:10:26,314 | TRANSPORT_LAYER      | INFO     | Transport layer receiving connection with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x7b8cd54a1e80>
+2026-03-05 01:10:26,314 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: configure | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x7b8cd5732180>, <configurations.classes.configurations.Configurations object at 0x7b8cd54a1e80>) | KWARGS: {}
+2026-03-05 01:10:26,314 | TRANSPORT_TCP_IP     | INFO     | Module configurated
+2026-03-05 01:10:26,314 | TRANSPORT_TCP_IP     | DEBUG    | END: configure | RESULT: True | TIME: 0.0004s
+2026-03-05 01:10:26,315 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: start | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x7b8cd5732180>,) | KWARGS: {}
+2026-03-05 01:10:26,315 | TRANSPORT_TCP_IP     | INFO     | Module initializated
+2026-03-05 01:10:26,315 | TRANSPORT_TCP_IP     | DEBUG    | END: start | RESULT: True | TIME: 0.0002s
+2026-03-05 01:10:26,315 | TRANSPORT_TCP_IP     | DEBUG    | EXEC: receive_connection | ARGS: (<shared.communication_architecture.layers.transport.modules.tcpip.TransportModule object at 0x7b8cd5732180>,) | KWARGS: {}
+2026-03-05 01:10:26,315 | TRANSPORT_TCP_IP     | INFO     | Receiving connection with the module
+2026-03-05 01:10:26,316 | TRANSPORT_TCP_IP     | INFO     | Starting receiver connections routine
+2026-03-05 01:10:26,316 | TRANSPORT_TCP_IP     | DEBUG    | END: receive_connection | RESULT: True | TIME: 0.0013s
+2026-03-05 01:10:26,319 | TRANSPORT_LAYER      | INFO     | Connection (receive) registered with the identifier: 1
+2026-03-05 01:10:26,319 | TRANSPORT_TCP_IP     | INFO     | Receiving connections of type: 2, with TCP
+2026-03-05 01:10:26,320 | TRANSPORT_TCP_IP     | ERROR    | Error binding the server: [Errno 98] Address already in use
+2026-03-05 01:10:26,319 | TRANSPORT_LAYER      | DEBUG    | END: receive_connection | RESULT: 1 | TIME: 0.0055s
+2026-03-05 01:10:26,383 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:26,383 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0004s
+2026-03-05 01:10:26,383 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:26,383 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:26,383 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:26,484 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:26,484 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0005s
+2026-03-05 01:10:26,484 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:26,485 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:26,485 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:26,585 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:26,586 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0005s
+2026-03-05 01:10:26,586 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:26,586 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:26,586 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:26,686 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:26,687 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0006s
+2026-03-05 01:10:26,687 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:26,687 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:26,688 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:26,788 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:26,790 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0013s
+2026-03-05 01:10:26,790 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:26,790 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:26,790 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:26,890 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:26,891 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0005s
+2026-03-05 01:10:26,891 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:26,891 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:26,891 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:26,992 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:26,992 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0005s
+2026-03-05 01:10:26,992 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:26,993 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:26,993 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:27,093 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:27,094 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0006s
+2026-03-05 01:10:27,094 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:27,094 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:27,094 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:27,195 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:27,195 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0005s
+2026-03-05 01:10:27,195 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:27,196 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:27,196 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:27,296 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:27,297 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0005s
+2026-03-05 01:10:27,297 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:27,297 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:27,297 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:27,398 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:27,399 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0006s
+2026-03-05 01:10:27,399 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:27,399 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:27,399 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:27,500 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:27,500 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0006s
+2026-03-05 01:10:27,500 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:27,501 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:27,501 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:27,601 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:27,601 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0004s
+2026-03-05 01:10:27,601 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:27,602 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:27,602 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:27,702 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:27,702 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0003s
+2026-03-05 01:10:27,702 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:27,702 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:27,703 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:27,803 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:27,803 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0003s
+2026-03-05 01:10:27,803 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:27,803 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:27,803 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:27,904 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:27,904 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0003s
+2026-03-05 01:10:27,904 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:27,904 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:27,904 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:28,005 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:28,005 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0003s
+2026-03-05 01:10:28,005 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:28,005 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:28,005 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:28,105 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:28,106 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0004s
+2026-03-05 01:10:28,106 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:28,106 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:28,106 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:28,206 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:28,207 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0004s
+2026-03-05 01:10:28,207 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:28,207 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:28,207 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:28,307 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:28,308 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0005s
+2026-03-05 01:10:28,308 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:28,308 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:28,308 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:28,409 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:28,409 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0006s
+2026-03-05 01:10:28,409 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:28,409 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:28,410 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:28,510 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:28,511 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0006s
+2026-03-05 01:10:28,511 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:28,511 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:28,511 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:28,613 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:28,613 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0006s
+2026-03-05 01:10:28,614 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:28,614 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:28,614 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:28,715 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:28,716 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0011s
+2026-03-05 01:10:28,716 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:28,716 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:28,717 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:28,817 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:28,818 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0004s
+2026-03-05 01:10:28,818 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:28,818 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:28,818 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:28,918 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:28,919 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0006s
+2026-03-05 01:10:28,919 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:28,919 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:28,919 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:29,020 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:29,020 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0005s
+2026-03-05 01:10:29,021 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:29,021 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:29,021 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:29,121 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:29,122 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0006s
+2026-03-05 01:10:29,122 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:29,122 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:29,122 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:29,223 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:29,223 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0004s
+2026-03-05 01:10:29,224 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:29,224 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:29,224 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:29,325 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:29,325 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0007s
+2026-03-05 01:10:29,325 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:29,326 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:29,326 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:29,426 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:29,427 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0004s
+2026-03-05 01:10:29,427 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:29,427 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:29,427 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:29,527 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:29,528 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0006s
+2026-03-05 01:10:29,528 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:29,528 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:29,529 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:29,629 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:29,629 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0003s
+2026-03-05 01:10:29,629 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:29,629 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:29,630 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:29,730 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:29,730 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0005s
+2026-03-05 01:10:29,730 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:29,731 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:29,731 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:29,831 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:29,832 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0004s
+2026-03-05 01:10:29,832 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:29,832 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:29,832 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:29,932 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:29,933 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0006s
+2026-03-05 01:10:29,933 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:29,933 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:29,934 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:30,034 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:30,034 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0003s
+2026-03-05 01:10:30,034 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:30,034 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:30,035 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:30,135 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:30,135 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0005s
+2026-03-05 01:10:30,135 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:30,136 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:30,136 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:30,236 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:30,237 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0007s
+2026-03-05 01:10:30,237 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:30,237 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:30,237 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:30,338 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:30,338 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0006s
+2026-03-05 01:10:30,339 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:30,339 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:30,339 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:30,439 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:30,440 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0005s
+2026-03-05 01:10:30,440 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:30,440 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:30,440 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:30,541 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:30,541 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0004s
+2026-03-05 01:10:30,541 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:30,541 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:30,541 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:30,642 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:30,642 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0006s
+2026-03-05 01:10:30,643 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:30,643 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:30,643 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:30,744 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:30,744 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0006s
+2026-03-05 01:10:30,744 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:30,744 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:30,744 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:30,845 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:30,845 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0004s
+2026-03-05 01:10:30,845 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:30,845 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:30,845 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:30,946 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:30,946 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0006s
+2026-03-05 01:10:30,947 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:30,947 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:30,947 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:31,047 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:31,048 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0005s
+2026-03-05 01:10:31,048 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:31,048 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:31,048 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:31,148 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:31,149 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0004s
+2026-03-05 01:10:31,149 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:31,149 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:31,149 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:31,250 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:31,250 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0004s
+2026-03-05 01:10:31,250 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:31,250 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:31,250 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:31,351 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:31,351 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0006s
+2026-03-05 01:10:31,351 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:31,351 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:31,351 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:31,452 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:31,452 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0005s
+2026-03-05 01:10:31,452 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:31,453 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:31,453 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:31,553 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:31,554 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0006s
+2026-03-05 01:10:31,554 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:31,554 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:31,554 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:31,655 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:31,655 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0003s
+2026-03-05 01:10:31,655 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:31,655 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:31,655 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:31,756 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:31,756 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0004s
+2026-03-05 01:10:31,756 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:31,756 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:31,756 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:31,857 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:31,857 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0003s
+2026-03-05 01:10:31,858 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:31,858 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:31,858 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:31,958 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:31,958 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0004s
+2026-03-05 01:10:31,959 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:31,959 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:31,959 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:32,059 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:32,059 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0004s
+2026-03-05 01:10:32,059 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:32,060 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:32,060 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:32,160 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:32,161 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0006s
+2026-03-05 01:10:32,161 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:32,161 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:32,162 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:32,262 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:32,263 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0006s
+2026-03-05 01:10:32,263 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:32,263 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:32,263 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:32,364 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:32,364 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0004s
+2026-03-05 01:10:32,364 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:32,364 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:32,364 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:32,465 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:32,465 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0004s
+2026-03-05 01:10:32,465 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:32,465 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:32,465 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:32,566 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:32,566 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0004s
+2026-03-05 01:10:32,566 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:32,566 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:32,566 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:32,667 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:32,667 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0005s
+2026-03-05 01:10:32,667 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:32,667 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:32,668 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:32,768 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:32,768 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0005s
+2026-03-05 01:10:32,769 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:32,769 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:32,769 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:32,870 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:32,870 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0005s
+2026-03-05 01:10:32,870 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:32,870 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:32,871 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:32,971 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:32,971 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0004s
+2026-03-05 01:10:32,971 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:32,972 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:32,972 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:33,072 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:33,072 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0003s
+2026-03-05 01:10:33,073 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:33,073 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd54a2270>
+2026-03-05 01:10:33,073 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:33,173 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:33,174 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0005s
+2026-03-05 01:10:33,174 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:33,174 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:33,174 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:33,275 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:33,275 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0004s
+2026-03-05 01:10:33,275 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:33,275 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd61fc6b0>
+2026-03-05 01:10:33,275 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []
+2026-03-05 01:10:33,376 | COMMUNICATION_CLIENT | DEBUG    | EXEC: _maintain_sessions | ARGS: (<shared.communication_architecture.layers.communication.modules.client.CommunicationClient object at 0x7b8cd5414d70>,) | KWARGS: {}
+2026-03-05 01:10:33,376 | COMMUNICATION_CLIENT | DEBUG    | END: _maintain_sessions | RESULT: None | TIME: 0.0005s
+2026-03-05 01:10:33,376 | COMMUNICATION_CLIENT | DEBUG    | Configurations query result: {}
+2026-03-05 01:10:33,376 | COMMUNICATION_CLIENT | DEBUG    | Configuration instance: <configurations.classes.configurations.Configurations object at 0x7b8cd5416060>
+2026-03-05 01:10:33,377 | COMMUNICATION_CLIENT | DEBUG    | Current settings: []

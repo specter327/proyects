@@ -81,8 +81,10 @@ class CommunicationService(ModuleInterface):
             self.layers_container.start()
             transport = self.layers_container.query_layer("TRANSPORT")
             comm_layer = self.layers_container.query_layer("COMMUNICATION")
+            control_layer = self.layers_container.query_layer("CONTROL")
             transport.start()
             comm_layer.start()
+            control_layer.start()
 
             # 2. Configuración de transporte (TCP/IP Listener)
             tcp_module = transport.query_module("TRANSPORT_TCP_IP")

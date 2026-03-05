@@ -1,3 +1,4 @@
+#!/bin/python3
 # Labels
 __RESOURCE_TYPE__ = "STRUCTURAL"
 

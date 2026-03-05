@@ -4,6 +4,7 @@ __RESOURCE_TYPE__ = "STRUCTURAL"
 # Library import
 import sys
 import os
+from configurations import Configurations, Setting
 
 # Constants definition
 ConfigurationsTable = {}
