@@ -75,6 +75,7 @@ class Datapackage:
                         return None # Stop the reader
 
             except Exception as Error:
+                pass
                 #traceback.print_exc()
     
     def _process_packet(self, data_package: bytes) -> bool:
@@ -86,6 +87,7 @@ class Datapackage:
             self._package_queue.put(datapackage)
         except (json.JSONDecodeError, UnicodeDecodeError):
             #traceback.print_exc()
+            pass
 
     # Public methods
     def update_reception_parameters(self, *args, **kwargs) -> bool:
