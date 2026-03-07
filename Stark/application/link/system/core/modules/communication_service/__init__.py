@@ -41,6 +41,9 @@ class CommunicationService(ModuleInterface):
         print(f"[{self.MODULE_NAME}] Agent mode started. Waiting for operator...")
         
         while self.running:
+            #time.sleep(30)
+            #continue
+
             try:
                 # 1. Bloqueo en recepción de comando (PASSIVE ROLE)
                 datapackage = session.datapackages_handler.receive_datapackage(timeout=None)
@@ -75,7 +78,9 @@ class CommunicationService(ModuleInterface):
 
     def start(self) -> bool:
         print(f"[{self.MODULE_NAME}] Initializing Passive Server infrastructure...")
-        
+        #print(f"[{self.MODULE_NAME}] Skipping module...")
+        #return True
+
         try:
             # 1. Levantar infraestructura de capas
             self.layers_container.start()
@@ -85,6 +90,10 @@ class CommunicationService(ModuleInterface):
             transport.start()
             comm_layer.start()
             control_layer.start()
+
+            print(f"[{self.MODULE_NAME}] Layers initializated")
+            print(f"[{self.MODULE_NAME}] Skipping module...")
+            return True
 
             # 2. Configuración de transporte (TCP/IP Listener)
             tcp_module = transport.query_module("TRANSPORT_TCP_IP")

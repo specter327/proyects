@@ -135,6 +135,7 @@ class TransportLayer(LayerInterface):
 
     @smart_debug(element_name="TRANSPORT_LAYER", include_args=True, include_result=True)
     def send(self, connection_identifier: str, data: bytes) -> bool:
+        print(f"[{self.LAYER_NAME}] Sending data: {data[0:10]}...{data[-1:-10]}, to connection: {connection_identifier}")
         if not connection_identifier in self.connections_table: raise KeyError(f"The specified device: {connection_identifier}, not exists in the connections table")
 
         # Get the connection controller

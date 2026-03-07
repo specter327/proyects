@@ -428,7 +428,7 @@ class CommunicationClient(CommunicationModule):
 
     # Private methods
     @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
-    def _connection_orchestrator(self) -> None:
+    def _connection_orchestrator_routine(self) -> None:
         """Rutina de alto nivel: Conectar -> Negociar Sesión -> Mantener."""
         self.logger.info("Starting connection orchestrator")
 
@@ -560,11 +560,11 @@ class CommunicationClient(CommunicationModule):
         self.logger.info("Starting module")
         self._set_status(active=True)
 
-        self._connection_orchestrator = threading.Thread(
-            target=self._connection_orchestrator,
-            daemon=False
+        self._orchestrator_thread = threading.Thread(
+            target=self._connection_orchestrator_routine,
+            daemon=True
         )
-        self._connection_orchestrator.start()
+        self._orchestrator_thread.start()
 
         self.logger.info("Module successfully started")
         return True

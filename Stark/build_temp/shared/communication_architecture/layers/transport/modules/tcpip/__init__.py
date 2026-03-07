@@ -217,17 +217,28 @@ class TransportModule(TransportModuleInterface):
     @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
     def write(self, data: bytes) -> bool:
         self.logger.info("Sending data to the connection")
-        if not self._is_connected or not self._socket:
-            self.logger.error("The module is not connected")
-
+        if not self._socket:
+            print(f"[TRANSPORT_LAYER-{self.MODULE_NAME}] Error sending data: the socket is not available: {self._socket}")
             return False
+
+        if not self._is_connected:
+            print(f"[TRANSPORT_LAYER-{self.MODULE_NAME}] WARNING: The module connection status is: {self._is_connected}")
+            pass
+
+        #if not self._is_connected or not self._socket:
+        #    self.logger.error("The module is not connected")
+        #    print(f"[TRANSPORT_LAYER-{self.MODULE_NAME}] Error sending data: the module is not connected")
+        #
+        #    return False
         
         try:
             self._socket.sendall(data)
+            print(f"[TRANSPORT_LAYER-{self.MODULE_NAME}] Sended data: {data[0:10]}...{data[-1:-10]}")
             self.logger.info(f"Data sended successfully: {len(data)}")
             return True
         except (socket.error, BrokenPipeError):
             self.logger.error(f"Error sending the data. Connection lost or error on the socket")
+            print(f"[TRANSPORT_LAYER-{self.MODULE_NAME}] Error sending data: Connection lost or error on the socket")
             self._status = self.CONNECTION_STATUS_LOST
             return False
     
@@ -242,6 +253,7 @@ class TransportModule(TransportModuleInterface):
                 readed_data = bytes(self._reception_data_buffer[:length])
                 del self._reception_data_buffer[:length]
                 self.logger.info(f"Total readed data: {len(readed_data)}")
+                print(f"[TRANSPORT_LAYER-{self.MODULE_NAME}] Data readed and returned to the high level interface: {readed_data[0:10]}...{readed_data[-1:-10]}")
                 return readed_data
         
         # Si llegamos aquí es porque el buffer estaba vacío. 
@@ -295,15 +307,19 @@ class TransportModule(TransportModuleInterface):
             try:
                 new_data = self._socket.recv(4096)
                 if not new_data:
-                    time.sleep(0.100)
-                    continue
-                    #self.logger.error("Any data received. Stopping routine")
-                    #break
+                    #time.sleep(0.100)
+                    #continue
+                    print(f"[TRANSPORT_LAYER-{self.MODULE_NAME}] Any data received. Stopping reading routine")
+                    self.logger.error("Any data received. Stopping routine")
+                    self._is_connected = False
+                    break
 
                 with self._lock:
                     self._reception_data_buffer.extend(new_data)
+                    print(f"[TRANSPORT_LAYER-{self.MODULE_NAME}] Received new data: {new_data}")
                     self.logger.info(f"Total new data append: {len(new_data)}")
             except:
+                traceback.print_exc()
                 break
         
         self.logger.info("Stopping data receiver routine")

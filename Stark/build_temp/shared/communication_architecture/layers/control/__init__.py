@@ -61,9 +61,12 @@ class ControlLayer(LayerInterface):
 			if configurations:
 				module_instance.configure(configurations)
 				print(f"Module configurated: {module_name}")
-			module_instance.start()
-			print(f"Module started: {module_name}")
-
+			start_result = module_instance.start()
+			if start_result:
+				print(f"Module started: {module_name}")
+			else:
+				print(f"Module not started: {module_name}")
+			
 			self.loaded_modules[module_name] = module_instance
 			self.logger.info(f"Module {module_name} loaded and started successfully")
 			return True

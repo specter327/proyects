@@ -84,12 +84,20 @@ class SessionLayer:
     @smart_debug(element_name=LAYER_NAME, include_args=True, include_result=True)
     def receive(self, limit: Optional[int] = None, timeout: Optional[int] = None) -> bytes:
         self.logger.debug(f"Receiving data from session with limit: {limit}, and timeout: {timeout}")
+        data = self.protection_layer.receive(self.connection_identifier, limit, timeout)
+        if data:
+            print(f"[{self.LAYER_NAME}-{self.connection_identifier}-{self.local_role}] Received data: {data}")
+
         # Receive data throught the layers stack
-        return self.protection_layer.receive(self.connection_identifier, limit, timeout)
+        return data
 
     @smart_debug(element_name=LAYER_NAME, include_args=True, include_result=True)
     def receive_datapackage(self, timeout: Optional[int] = None) -> dict:
-        return self.datapackages_handler.receive_datapackage(timeout=timeout)
+        datapackage = self.datapackages_handler.receive_datapackage(timeout=timeout)
+        if datapackage:
+            print(f"[{self.LAYER_NAME}-{self.connection_identifier}-{self.local_role}] Received datapackage: {datapackage}")
+            
+        return datapackage
 
     def start(self) -> bool:
         self.logger.info("Starting session layer")
@@ -174,11 +182,13 @@ class CommunicationLayer(LayerInterface):
     @smart_debug(element_name="COMMUNICATION_LAYER")
     def _session_dispatcher(self, session_identifier: str) -> None:
         """Rutina concurrente por sesión para demultiplexación de paquetes."""
+        print(f"[{self.LAYER_NAME}] Session dispatcher started for session: {session_identifier}")
         self.logger.info(f"Dispatcher started for session: {session_identifier}")
 
         with self._lock:
             session = self.sessions_table.get(session_identifier)
         
+        print(f"[{self.LAYER_NAME}] Session: {session}")
         while session and session_identifier in self.sessions_table:
             try:
                 package = session.receive_datapackage(timeout=10.0)
@@ -209,10 +219,15 @@ class CommunicationLayer(LayerInterface):
 
             except Exception as e:
                 # Usamos continue en lugar de break para no matar el hilo ante un paquete corrupto
+                print("Exception on the dispatcher:")
+                print(e)
+
                 if session_identifier in self.sessions_table:
                     self.logger.error(f"Error in dispatcher {session_identifier}: {str(e)}")
                 continue
 
+
+        print(f"[{self.LAYER_NAME}] Stopping session dispatcher for session: {session_identifier}")
         self.logger.info(f"Stopping dispatcher for session: {session_identifier}")
         return None
 
@@ -286,6 +301,11 @@ class CommunicationLayer(LayerInterface):
         #    return False
 
         try:
+            print(f"[{self.LAYER_NAME}] Sending datapackage:")
+            print("===========")
+            print(datapackage)
+            print("==========")
+
             self.logger.debug(f"Sending datapackage through the session")
             return session.datapackages_handler.send_datapackage(datapackage)
         except Exception as e:

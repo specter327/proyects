@@ -18,6 +18,7 @@ class ProtectionModule(ProtectionModuleInterface):
         self._active: bool = False
         self._lock = threading.Lock()
         self._clean_data_buffer = bytearray()
+        self.layer = layer
         self._transport_layer = layer.layers_container.query_layer("TRANSPORT")
         self._reader_thread: threading.Thread = None
 
@@ -38,7 +39,10 @@ class ProtectionModule(ProtectionModuleInterface):
     def write(self, data: bytes) -> bool:
         # En modo transparente, no hay transformación (protect)
         device_id = self.layer.layer_settings.query_setting("DEVICE_IDENTIFIER").value.value
-        return self._transport_layer.send(device_id, data)
+        print(f"[PROTECTION_LAYER-{self.MODULE_NAME}] Sending data: {data[0:10]}...{data[-1:-10]}, with device ID: {device_id}")
+        send_result = self._transport_layer.send(device_id, data)
+        print(f"[PROTECTION_LAYER-{self.MODULE_NAME}] Send result: {send_result}")
+        return send_result
 
     def read(self, limit: int = None, timeout: int = None) -> bytes:
         with self._lock:
@@ -48,6 +52,7 @@ class ProtectionModule(ProtectionModuleInterface):
             end = limit if limit is not None else len(self._clean_data_buffer)
             data = bytes(self._clean_data_buffer[:end])
             del self._clean_data_buffer[:end]
+            print(f"[PROTECTION_LAYER-{self.MODULE_NAME}] Receiving data and returning to the high level interface: {data[0:10]}...{data[-1:-10]}")
             return data
 
     def protect(self, data: bytes) -> bytes:
@@ -68,6 +73,7 @@ class ProtectionModule(ProtectionModuleInterface):
                 
                 if raw_data:
                     with self._lock:
+                        print(f"[{self.layer.LAYER_NAME}-{self.MODULE_NAME}] Received new data (extend buffer): {raw_data}")
                         self._clean_data_buffer.extend(raw_data)
                 else:
                     # Evitar saturación de CPU si no hay datos

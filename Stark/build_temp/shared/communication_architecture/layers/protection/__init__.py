@@ -118,6 +118,7 @@ class ProtectionLayer(LayerInterface):
         # 1. Aplicamos la transformación (HTTP, Cifrado, etc.)
         #protected_data = self.loaded_module.protect(data)
         
+        print(f"[{self.LAYER_NAME}] Sending data: {data}, thougth the module: {self.loaded_module.MODULE_NAME}...")
         # 2. Enviamos el paquete resultante mediante el módulo (que ya conoce el transporte)
         return self.loaded_module.write(data)
 
@@ -134,6 +135,7 @@ class ProtectionLayer(LayerInterface):
         # Extraemos los datos ya "limpios" del buffer del módulo
         data_readed = self.loaded_module.read(limit=limit, timeout=timeout)
         if len(data_readed) != 0:
+            print(f"[{self.LAYER_NAME}] Received data: {data_readed}, thougth the module: {self.loaded_module.MODULE_NAME}...")
             self.logger.info(f"Data readed: {data_readed}, with length: {len(data_readed)}")
         
         return data_readed
@@ -206,7 +208,7 @@ class ProtectionLayer(LayerInterface):
                 self.logger.info(f"Available modules: {available_modules.get('AVAILABLE_MODULES')}")
 
                 # Select a module
-                module_choice = available_modules["AVAILABLE_MODULES"][1]
+                module_choice = available_modules["AVAILABLE_MODULES"][0]
                 self.logger.info(f"Selected module: {module_choice}")
 
                 # Send the selected module data package

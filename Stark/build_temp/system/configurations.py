@@ -228,7 +228,7 @@ ConfigurationsTable = {   'shared.communication_architecture.layers.communicatio
                                                                                                    'NAME': None,
                                                                                                    'POSSIBLE_VALUES': None,
                                                                                                    'REGULAR_EXPRESSION': None,
-                                                                                                   'VALUE': 200,
+                                                                                                   'VALUE': 100,
                                                                                                    '__type__': 'PrimitiveData'}}}}
     
 # Classes definition
