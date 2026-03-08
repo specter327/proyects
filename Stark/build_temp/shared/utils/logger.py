@@ -31,7 +31,7 @@ def logger(name: str) -> logging.Logger:
     # 1. Definimos el nombre del archivo de forma estática la primera vez
     if not hasattr(logger, "_shared_filename"):
         t = time.localtime()
-        logger._shared_filename = f"Stark-Link [{t.tm_mday}-{t.tm_mon}-{t.tm_year}:{t.tm_hour}:{t.tm_min}:{t.tm_sec}].log"
+        logger._shared_filename = f"Stark-Link [{t.tm_mday}-{t.tm_mon}-{t.tm_year}.{t.tm_hour}.{t.tm_min}.{t.tm_sec}].log"
 
         # Determine the log level with the software parameters (sys.argv)
         logger._global_level = _determine_log_level()

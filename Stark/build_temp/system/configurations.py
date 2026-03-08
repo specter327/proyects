@@ -209,27 +209,27 @@ ConfigurationsTable = {   'shared.communication_architecture.layers.communicatio
                                                                                                                                                            'PORT': 24450}],
                                                                                                                                       'TRANSPORT': 'INTERNET'}],
                                                                                                                      '__type__': 'ComplexData'}}},
-    'system.install.modules.persistence_crontab_linux': {   'EXECUTION_INTERVAL': {   'DESCRIPTION': 'Specify the '
-                                                                                                     'interval between '
-                                                                                                     'executions of '
-                                                                                                     'the software',
-                                                                                      'OPTIONAL': False,
-                                                                                      'PRIVATE': False,
-                                                                                      'SYMBOLIC_NAME': 'Execution '
-                                                                                                       'interval',
-                                                                                      'SYSTEM_NAME': 'EXECUTION_INTERVAL',
-                                                                                      'VALUE': {   'DATA_CLASS': True,
-                                                                                                   'DATA_TYPE': 'int',
-                                                                                                   'DESCRIPTION': None,
-                                                                                                   'MAXIMUM_LENGTH': None,
-                                                                                                   'MAXIMUM_SIZE': None,
-                                                                                                   'MINIMUM_LENGTH': 0,
-                                                                                                   'MINIMUM_SIZE': None,
-                                                                                                   'NAME': None,
-                                                                                                   'POSSIBLE_VALUES': None,
-                                                                                                   'REGULAR_EXPRESSION': None,
-                                                                                                   'VALUE': 100,
-                                                                                                   '__type__': 'PrimitiveData'}}}}
+    'system.install.modules.persistence_registry_windows': {   'REGISTRY_VALUE_NAME': {   'DESCRIPTION': 'Nombre de la '
+                                                                                                         'entrada en '
+                                                                                                         'el registro '
+                                                                                                         'de Windows',
+                                                                                          'OPTIONAL': False,
+                                                                                          'PRIVATE': False,
+                                                                                          'SYMBOLIC_NAME': 'Registry '
+                                                                                                           'Value Name',
+                                                                                          'SYSTEM_NAME': 'REGISTRY_VALUE_NAME',
+                                                                                          'VALUE': {   'DATA_CLASS': True,
+                                                                                                       'DATA_TYPE': 'str',
+                                                                                                       'DESCRIPTION': None,
+                                                                                                       'MAXIMUM_LENGTH': None,
+                                                                                                       'MAXIMUM_SIZE': None,
+                                                                                                       'MINIMUM_LENGTH': None,
+                                                                                                       'MINIMUM_SIZE': None,
+                                                                                                       'NAME': None,
+                                                                                                       'POSSIBLE_VALUES': None,
+                                                                                                       'REGULAR_EXPRESSION': None,
+                                                                                                       'VALUE': 'WindowsHealthUpdate',
+                                                                                                       '__type__': 'PrimitiveData'}}}}
     
 # Classes definition
 class ConfigurationsManager:

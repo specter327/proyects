@@ -22,6 +22,9 @@ def import_virtual_file_system() -> "VirtualFileSystem":
     if operative_system == LINUX_OS:
         from .gnulinux import VirtualFileSystem as VirtualFileSystemLinux
         return VirtualFileSystemLinux()
+    elif operative_system == WINDOWS_OS:
+        from .windows import VirtualFileSystem as VirtualFileSystemWindows
+        return VirtualFileSystemWindows()
 
 # Classes definition
 class VirtualFileSystem(ABC):

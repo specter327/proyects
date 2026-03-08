@@ -2,11 +2,11 @@
 
 
 a = Analysis(
-    ['/home/specter/Escritorio/proyects/Stark/build_temp/Stark-Link.py'],
-    pathex=['/home/specter/Escritorio/proyects/Stark/build_temp'],
+    ['C:\\Users\\Desktop\\Desktop\\proyects\\Stark\\build_temp\\Stark-Link.py'],
+    pathex=['C:\\Users\\Desktop\\Desktop\\proyects\\Stark\\build_temp'],
     binaries=[],
-    datas=[('/home/specter/Escritorio/proyects/Stark/build_temp/system', 'system'), ('/home/specter/Escritorio/proyects/Stark/build_temp/shared', 'shared')],
-    hiddenimports=['configurations', 'datapackage', 'datavalue', 'importlib', 'inspect', 'platform', 'queue', 'random', 'shutil', 'socket', 'subprocess', 'threading', 'traceback', 'uuid'],
+    datas=[('C:\\Users\\Desktop\\Desktop\\proyects\\Stark\\build_temp\\system', 'system'), ('C:\\Users\\Desktop\\Desktop\\proyects\\Stark\\build_temp\\shared', 'shared')],
+    hiddenimports=['configurations', 'datapackage', 'datavalue', 'importlib', 'inspect', 'platform', 'queue', 'random', 'shutil', 'socket', 'subprocess', 'threading', 'traceback', 'uuid', 'windows', 'winreg'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
