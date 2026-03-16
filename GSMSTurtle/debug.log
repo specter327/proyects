@@ -1,0 +1,587 @@
+Traceback (most recent call last):
+  File "/home/specter/.local/lib/python3.12/site-packages/serial/serialposix.py", line 567, in read
+    os.read(self.pipe_abort_read_r, 1000)
+OSError: [Errno 9] Bad file descriptor
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/specter/Escritorio/proyects/GSMSTurtle/src/controllers/transport_layers/ATEngine.py", line 144, in _read_routine
+    character_readed = self.transport_layer.read(amount=1)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/specter/Escritorio/proyects/GSMSTurtle/src/controllers/transport_layers/serial.py", line 59, in read
+    data = self._connection_controller.read(amount)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/specter/.local/lib/python3.12/site-packages/serial/serialposix.py", line 581, in read
+    raise SerialException('read failed: {}'.format(e))
+serial.serialutil.SerialException: read failed: [Errno 9] Bad file descriptor
+Starting event handler routine...
+[EVENT_HANDLERS] Subscribing: SIM_REMOVED To the function: <bound method EventHandlers._on_sim_removed_event of <src.system.application_system.events.EventHandlers object at 0x7483ee353800>>
+[EVENT_HANDLERS] Subscribing: MESSAGE_RECEIVED To the function: <bound method EventHandlers._on_message_received of <src.system.application_system.events.EventHandlers object at 0x7483ee353800>>
+System ports:
+New module: ControllerDescriptor(name='SIM800C', description='This module implements a controller for the GSM/GPRS device of model: SIM800C', version='1', controller=<class 'src.controllers.SIM800C.controller.Controller'>, STANDARD_ATTRIBUTES=('NAME', 'DESCRIPTION', 'VERSION'))
+New controllers loaded: [ControllerDescriptor(name='SIM800C', description='This module implements a controller for the GSM/GPRS device of model: SIM800C', version='1', controller=<class 'src.controllers.SIM800C.controller.Controller'>, STANDARD_ATTRIBUTES=('NAME', 'DESCRIPTION', 'VERSION'))]
+[SystemPort(name='/dev/ttyS31', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS30', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS29', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS28', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS27', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS26', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS25', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS24', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS23', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS22', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS21', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS20', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS19', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS18', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS17', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS16', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS15', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS14', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS13', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS12', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS11', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS10', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS9', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS8', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS7', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS6', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS5', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS4', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS3', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS2', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS1', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyS0', description='n/a', hwid='n/a', vid=None, pid=None, serial_number=None, manufacturer=None, product=None), SystemPort(name='/dev/ttyUSB1', description='USB2.0-Serial', hwid='USB VID:PID=1A86:7523 LOCATION=1-1', vid=6790, pid=29987, serial_number=None, manufacturer=None, product='USB2.0-Serial')]
+Writted:
+b'AT+CGMM\r\n'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'S'
+Data readed:
+b'I'
+Data readed:
+b'M'
+Data readed:
+b'C'
+Data readed:
+b'O'
+Data readed:
+b'M'
+Data readed:
+b'_'
+Data readed:
+b'S'
+Data readed:
+b'I'
+Data readed:
+b'M'
+Data readed:
+b'8'
+Data readed:
+b'0'
+Data readed:
+b'0'
+Data readed:
+b'C'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'O'
+Data readed:
+b'K'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+New line: b'SIMCOM_SIM800C'
+New line: b'OK'
+ATEngine: Readlines buffer: [b'SIMCOM_SIM800C', b'OK']
+All entries: 2
+Line number: 0
+ATEngine: New Readlines buffer: [b'SIMCOM_SIM800C', b'OK']
+Line number: 1
+ATEngine: New Readlines buffer: [b'SIMCOM_SIM800C', b'OK']
+New response: [b'SIMCOM_SIM800C', b'OK']
+New structured response: {0: Response()}
+Timestamp: 1769752731.1812432
+Content: [b'SIMCOM_SIM800C', b'OK']
+Response:
+[b'SIMCOM_SIM800C', b'OK']
+b'SIMCOM_SIM800C\r\nOK'
+[ATEngine] There was an error reading a character on the read routine: (<class 'serial.serialutil.SerialException'>, <traceback object at 0x7483ee3f4b00>)
+Compatible devices:
+{SystemPort(name='/dev/ttyUSB1', description='USB2.0-Serial', hwid='USB VID:PID=1A86:7523 LOCATION=1-1', vid=6790, pid=29987, serial_number=None, manufacturer=None, product='USB2.0-Serial'): ControllerDescriptor(name='SIM800C', description='This module implements a controller for the GSM/GPRS device of model: SIM800C', version='1', controller=<class 'src.controllers.SIM800C.controller.Controller'>, STANDARD_ATTRIBUTES=('NAME', 'DESCRIPTION', 'VERSION'))}
+Compatible device: SystemPort(name='/dev/ttyUSB1', description='USB2.0-Serial', hwid='USB VID:PID=1A86:7523 LOCATION=1-1', vid=6790, pid=29987, serial_number=None, manufacturer=None, product='USB2.0-Serial')
+Setting:
+{
+    "SYSTEM_NAME": "COMMUNICATION_PORT",
+    "SYMBOLIC_NAME": "Communication Device Port",
+    "DESCRIPTION": "This setting specifies the device communication port",
+    "VALUE": "",
+    "OPTIONAL": false
+}
+Setting:
+{
+    "SYSTEM_NAME": "BAUDRATE",
+    "SYMBOLIC_NAME": "Baud Rate",
+    "DESCRIPTION": "This setting specifies the baud rate to communicate with the device",
+    "VALUE": "0",
+    "OPTIONAL": false
+}
+Writted:
+b'AT+CSDT=0\r\n'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'O'
+Data readed:
+b'K'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+New line: b'OK'
+ATEngine: Readlines buffer: [b'OK']
+All entries: 1
+Line number: 0
+ATEngine: New Readlines buffer: [b'OK']
+New response: [b'OK']
+New structured response: {0: Response()}
+Timestamp: 1769752732.841884
+Content: [b'OK']
+Writted:
+b'ATE0\r\n'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'O'
+Data readed:
+b'K'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+New line: b'OK'
+ATEngine: Readlines buffer: [b'OK']
+All entries: 1
+Line number: 0
+ATEngine: New Readlines buffer: [b'OK']
+New response: [b'OK']
+New structured response: {0: Response(), 1: Response()}
+Timestamp: 1769752733.8525453
+Content: [b'OK']
+Writted:
+b'AT+CMEE=1\r\n'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'O'
+Data readed:
+b'K'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+New line: b'OK'
+ATEngine: Readlines buffer: [b'OK']
+All entries: 1
+Line number: 0
+ATEngine: New Readlines buffer: [b'OK']
+New response: [b'OK']
+New structured response: {0: Response(), 1: Response(), 2: Response()}
+Timestamp: 1769752734.3579159
+Content: [b'OK']
+Writted:
+b'AT+CNMI=2,1,0,0,0\r\n'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'O'
+Data readed:
+b'K'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+New line: b'OK'
+ATEngine: Readlines buffer: [b'OK']
+All entries: 1
+Line number: 0
+ATEngine: New Readlines buffer: [b'OK']
+New response: [b'OK']
+New structured response: {0: Response(), 1: Response(), 2: Response(), 3: Response()}
+Timestamp: 1769752735.3685503
+Content: [b'OK']
+Writted:
+b'AT+CPMS="SM","SM","SM"\r\n'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'+'
+Data readed:
+b'C'
+Data readed:
+b'P'
+Data readed:
+b'M'
+Data readed:
+b'S'
+Data readed:
+b':'
+Data readed:
+b' '
+Data readed:
+b'3'
+Data readed:
+b'0'
+Data readed:
+b','
+Data readed:
+b'3'
+Data readed:
+b'0'
+Data readed:
+b','
+Data readed:
+b'3'
+Data readed:
+b'0'
+Data readed:
+b','
+Data readed:
+b'3'
+Data readed:
+b'0'
+Data readed:
+b','
+Data readed:
+b'3'
+Data readed:
+b'0'
+Data readed:
+b','
+Data readed:
+b'3'
+Data readed:
+b'0'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'O'
+Data readed:
+b'K'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+New line: b'+CPMS: 30,30,30,30,30,30'
+New line: b'OK'
+ATEngine: Readlines buffer: [b'+CPMS: 30,30,30,30,30,30', b'OK']
+All entries: 2
+Line number: 0
+ATEngine: New Readlines buffer: [b'+CPMS: 30,30,30,30,30,30', b'OK']
+Line number: 1
+ATEngine: New Readlines buffer: [b'+CPMS: 30,30,30,30,30,30', b'OK']
+New response: [b'+CPMS: 30,30,30,30,30,30', b'OK']
+New structured response: {0: Response(), 1: Response(), 2: Response(), 3: Response(), 4: Response()}
+Timestamp: 1769752735.8740332
+Content: [b'+CPMS: 30,30,30,30,30,30', b'OK']
+Starting standard events processing routine...
+Writted:
+b'AT+GSN\r\n'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'8'
+Data readed:
+b'6'
+Data readed:
+b'5'
+Data readed:
+b'5'
+Data readed:
+b'3'
+Data readed:
+b'2'
+Data readed:
+b'0'
+Data readed:
+b'4'
+Data readed:
+b'0'
+Data readed:
+b'3'
+Data readed:
+b'4'
+Data readed:
+b'6'
+Data readed:
+b'7'
+Data readed:
+b'8'
+Data readed:
+b'1'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'O'
+Data readed:
+b'K'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+New line: b'865532040346781'
+New line: b'OK'
+ATEngine: Readlines buffer: [b'865532040346781', b'OK']
+All entries: 2
+Line number: 0
+ATEngine: New Readlines buffer: [b'865532040346781', b'OK']
+Line number: 1
+ATEngine: New Readlines buffer: [b'865532040346781', b'OK']
+New response: [b'865532040346781', b'OK']
+New structured response: {0: Response(), 1: Response(), 2: Response(), 3: Response(), 4: Response(), 5: Response()}
+Timestamp: 1769752736.8846927
+Content: [b'865532040346781', b'OK']
+Code: b'865532040346781'
+Writted:
+b'AT+CSQ\r\n'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'+'
+Data readed:
+b'C'
+Data readed:
+b'S'
+Data readed:
+b'Q'
+Data readed:
+b':'
+Data readed:
+b' '
+Data readed:
+b'2'
+Data readed:
+b'6'
+Data readed:
+b','
+Data readed:
+b'0'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'O'
+Data readed:
+b'K'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Controlled devices:
+{'865532040346781': {'DEVICE_CONTROLLER': <src.controllers.SIM800C.controller.Controller object at 0x7483ee4bca10>, 'SYSTEM_PORT': SystemPort(name='/dev/ttyUSB1', description='USB2.0-Serial', hwid='USB VID:PID=1A86:7523 LOCATION=1-1', vid=6790, pid=29987, serial_number=None, manufacturer=None, product='USB2.0-Serial'), 'CONTROLLER_MODULE': ControllerDescriptor(name='SIM800C', description='This module implements a controller for the GSM/GPRS device of model: SIM800C', version='1', controller=<class 'src.controllers.SIM800C.controller.Controller'>, STANDARD_ATTRIBUTES=('NAME', 'DESCRIPTION', 'VERSION')), 'INFORMATION_PROFILE': {}}}
+Sending SMS message...
+New line: b'+CSQ: 26,0'
+New line: b'OK'
+ATEngine: Readlines buffer: [b'+CSQ: 26,0', b'OK']
+All entries: 2
+Line number: 0
+ATEngine: New Readlines buffer: [b'+CSQ: 26,0', b'OK']
+Line number: 1
+ATEngine: New Readlines buffer: [b'+CSQ: 26,0', b'OK']
+New response: [b'+CSQ: 26,0', b'OK']
+New structured response: {0: Response(), 1: Response(), 2: Response(), 3: Response(), 4: Response(), 5: Response(), 6: Response()}
+Timestamp: 1769752737.8957925
+Content: [b'+CSQ: 26,0', b'OK']
+NEW DATA:
+{'TECHNOLOGY': 'GSM', 'RSSI_RAW': 26, 'RSSI_DBM': -61, 'BER': 0, 'RSRP': None, 'RSRQ': None, 'SINR': None, 'SIGNAL_QUALITY': 83, 'TIMESTAMP': 1769752737.9278052}
+Writted:
+b'AT+CCID\r\n'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'8'
+Data readed:
+b'9'
+Data readed:
+b'5'
+Data readed:
+b'2'
+Data readed:
+b'0'
+Data readed:
+b'2'
+Data readed:
+b'0'
+Data readed:
+b'9'
+Data readed:
+b'2'
+Data readed:
+b'5'
+Data readed:
+b'2'
+Data readed:
+b'6'
+Data readed:
+b'3'
+Data readed:
+b'0'
+Data readed:
+b'3'
+Data readed:
+b'7'
+Data readed:
+b'0'
+Data readed:
+b'0'
+Data readed:
+b'2'
+Data readed:
+b'f'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'O'
+Data readed:
+b'K'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+New line: b'8952020925263037002f'
+New line: b'OK'
+ATEngine: Readlines buffer: [b'8952020925263037002f', b'OK']
+All entries: 2
+Line number: 0
+ATEngine: New Readlines buffer: [b'8952020925263037002f', b'OK']
+Line number: 1
+ATEngine: New Readlines buffer: [b'8952020925263037002f', b'OK']
+New response: [b'8952020925263037002f', b'OK']
+New structured response: {0: Response(), 1: Response(), 2: Response(), 3: Response(), 4: Response(), 5: Response(), 6: Response(), 7: Response()}
+Timestamp: 1769752738.4012907
+Content: [b'8952020925263037002f', b'OK']
+[SIM800C: Query CCID] Response: [b'8952020925263037002f', b'OK']
+CCID: 8952020925263037002f
+Writted:
+b'AT+GSN\r\n'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'8'
+Data readed:
+b'6'
+Data readed:
+b'5'
+Data readed:
+b'5'
+Data readed:
+b'3'
+Data readed:
+b'2'
+Data readed:
+b'0'
+Data readed:
+b'4'
+Data readed:
+b'0'
+Data readed:
+b'3'
+Data readed:
+b'4'
+Data readed:
+b'6'
+Data readed:
+b'7'
+Data readed:
+b'8'
+Data readed:
+b'1'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'O'
+Data readed:
+b'K'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Registered SIM card identification (CCID): 8952020925263037002f
+New line: b'865532040346781'
+New line: b'OK'
+ATEngine: Readlines buffer: [b'865532040346781', b'OK']
+All entries: 2
+Line number: 0
+ATEngine: New Readlines buffer: [b'865532040346781', b'OK']
+Line number: 1
+ATEngine: New Readlines buffer: [b'865532040346781', b'OK']
+New response: [b'865532040346781', b'OK']
+New structured response: {0: Response(), 1: Response(), 2: Response(), 3: Response(), 4: Response(), 5: Response(), 6: Response(), 7: Response(), 8: Response()}
+Timestamp: 1769752739.412128
+Content: [b'865532040346781', b'OK']
+Code: b'865532040346781'
+NEW DATA:
+{'IMEI': '865532040346781', 'STATUS_CODE': 0}
+Setting the device on text mode (SMS)...
+Writted:
+b'AT+CMGF=1\r\n'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'O'
+Data readed:
+b'K'
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+New line: b'OK'
+ATEngine: Readlines buffer: [b'OK']
+All entries: 1
+Line number: 0
+ATEngine: New Readlines buffer: [b'OK']
+New response: [b'OK']
+New structured response: {0: Response(), 1: Response(), 2: Response(), 3: Response(), 4: Response(), 5: Response(), 6: Response(), 7: Response(), 8: Response(), 9: Response()}
+Timestamp: 1769752739.9175785
+Content: [b'OK']
+Result: [b'OK']
+[LOG] Sending AT Command: AT+CMGS="+525624545382"...
+Writted:
+b'AT+CMGS="+525624545382"\r\n'
+Command send successfully
+Data readed:
+b'\r'
+Data readed:
+b'\n'
+Data readed:
+b'>'

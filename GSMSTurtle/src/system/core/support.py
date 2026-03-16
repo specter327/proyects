@@ -55,7 +55,7 @@ def _handle_standard_events(core) -> None:
         
         # For every device in the controlled devices
         for device_identifier, device_profile in devices_controlled:
-            print("[CORE] Controlled device:", device_identifier)
+            #print("[CORE] Controlled device:", device_identifier)
             # Get the device controller
             controller = device_profile.get("DEVICE_CONTROLLER")
 

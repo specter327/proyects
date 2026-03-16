@@ -70,7 +70,7 @@ class MessagesDatabase(Database):
                 return self._execute_write(operation, parameters)
             except Exception as e:
                 # En depuración, podrías querer ver el error de integridad (UNIQUE ID)
-                # print(f"[MessagesDatabase] Error en registro: {e}")
+                print(f"[MessagesDatabase] Error en registro: {e}")
                 return False
     
     def get_message(self, index: int) -> Optional[Dict[str, Any]]:

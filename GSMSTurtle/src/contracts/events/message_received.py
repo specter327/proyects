@@ -1,6 +1,6 @@
 # Library import
 from . import DeviceEventInterface
-from ..data_classes.primitive_data import PrimitiveData
+from datavalue import PrimitiveData
 from typing import Any
 
 # Classes definition
@@ -12,8 +12,31 @@ class MessageReceivedEvent(DeviceEventInterface):
         "MMS",
         "RCS"
     )
-    MESSAGE_TYPE: str = ""
-    SIM_INDEX: int = -1
+
+    def __init__(self, *args,**kwargs) -> None:
+        # Class hereditance
+        super().__init__(*args, **kwargs)
+
+        # Instance properties assignment
+        self.message_type = PrimitiveData(
+            data_type=str,
+            value=None,
+            maximum_length=None, minimum_length=None,
+            maximum_size=None, minimum_size=None,
+            possible_values=self.MESSAGE_TYPES,
+            regular_expression=None,
+            data_class=True
+        )
+
+        self.sim_index = PrimitiveData(
+            data_type=int,
+            value=None,
+            maximum_length=None, minimum_length=None,
+            maximum_size=None, minimum_size=None,
+            possible_values=None,
+            regular_expression=None,
+            data_class=True
+        )
 
     # Public methods
     @property

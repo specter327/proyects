@@ -28,7 +28,9 @@ from .properties.query_imei import Property as QueryIMEIImplementation
 from .properties.query_ccid import Property as QueryCCIDImplementation
 
 from ...contracts.events.sim_removed import SIMRemovedEvent
+from ...contracts.events.message_received import MessageReceivedEvent
 from .events.sim_removed import Event as SIMRemovedEventImplementation
+from .events.message_received import Event as MessageReceivedEventImplementation
 
 import time
 
@@ -39,39 +41,38 @@ def _capture_standard_events(controller: "Controller") -> None:
 
     #time.sleep(30)
     while controller.connection_status:
-        # For every standard event supported by this device...
-        for standard_event, event_implementation in controller.standard_events.items():
-            # Capture the current raw events identifiers
-            raw_events_identifiers = tuple(controller.ATEngine.events.keys())
+        # Query the current existent raw events
+        raw_events_identifiers = tuple(controller.ATEngine.events.keys())
 
-            # For every raw event...
-            for event_identifier in raw_events_identifiers:
-                # Get the raw event
-                raw_event = controller.ATEngine.events.get(event_identifier)
+        # Process every raw event
+        for raw_event_identifier in raw_events_identifiers:
+            # Get the raw event
+            raw_event = controller.ATEngine.events.get(raw_event_identifier, None)
 
-                # Verify the event status
-                if not raw_event or raw_event.status_seen:
-                    print("Skipping event:", raw_event.content, "|", raw_event.timestamp)
-                    continue
-                
-                # Mark the seen event
-                raw_event.mark_seen()
+            # Verify the query result
+            if not raw_event or raw_event.status_seen:
+                print("Skipping raw event:", raw_event.timestamp, "-", raw_event.content)
+                continue
 
-                # Apply the event detector on the raw event
-                # Create a event detector class
-                event_detector = event_implementation(
+            # Process every standard event implementation
+            for standard_event, event_implementation in controller.standard_events.items():
+                # Create a detector instance
+                event_instance = event_implementation(
                     device_identifier=NAME,
                     event=raw_event
                 )
 
-                if event_detector.identify(raw_event):
-                    print(f"[{NAME}] EVENT DETECTED: {event_detector.NAME}")
-
-                    # Save the standard event detected
-                    controller._append_event(standard_event, event_detector)
-
-            # Execution temporizer
-            time.sleep(0.1)
+                # Execute the event identification
+                if event_instance.identify(raw_event):
+                    print(f"[{NAME}] EVENT MATCH: {standard_event.NAME}")
+                    if event_instance.prepare():
+                        controller._append_event(standard_event, event_instance)
+            
+            # Mark the raw event as seen
+            try:
+                raw_event.mark_seen()
+            except:
+                pass
 
         # Execution temporizer
         time.sleep(1)
@@ -97,7 +98,8 @@ class Controller(DeviceControllerInterface):
             DeleteSMS:DeleteSMSImplementation
         }
         self.standard_events: Dict[object, object] = {
-            SIMRemovedEvent:SIMRemovedEventImplementation
+            SIMRemovedEvent:SIMRemovedEventImplementation,
+            MessageReceivedEvent:MessageReceivedEventImplementation
         }
         self.ATEngine: Optional[ATEngine] = None
         self.transport_layer: Optional[TransportLayer] = None
@@ -219,6 +221,10 @@ class Controller(DeviceControllerInterface):
         # AT+CNMI=2,1,0,0,0; Notificacion de mensajes entrantes
         self.ATEngine.send_at_command("AT+CNMI=2,1,0,0,0")
         response = self.ATEngine.read_at_response()
+
+        # AT+CPMS="SM","SM","SM" Para asegurar que el almacenamiento preferido sea la tarjeta SIM
+        #self.ATEngine.send_at_command('AT+CPMS="SM","SM","SM"')
+        #response = self.ATEngine.read_at_response()
 
         # Return results
         return True

@@ -1,6 +1,7 @@
 # Library import
 from .databases.classes import devices, sim_cards, messages
 from ...contracts.properties.query_ccid import QueryCCID
+from ...contracts.data_classes.message import Message
 from ...contracts.operations.send_sms import SendSMS, SendSMSOperationParameters, SendSMSOperationResults
 from .databases import resources as DatabasesResources
 from .events import EventHandlers
@@ -248,17 +249,23 @@ class ApplicationSystem:
 
         # Regist the message sended
         if operation_results.send_result:
-            raw_identifier = f"{device_identifier}{destinatary}{message}{time.time()}"
-            unique_identifier = hashlib.sha256(raw_identifier.encode("UTF-8")).hexdigest()[:16]
-
             # Log in the database
+            new_message = Message(
+                message=message,
+                timestamp=int(time.time()),
+                type=Message.TYPE_SENT,
+                sender=destinatary
+            )
+
+            unique_identifier = new_message.generate_uid()
+
             self.MessagesDatabase.regist_message(
                 unique_id=unique_identifier,
                 imei=device_identifier,
                 ccid=current_sim_card_identification.ccid.content,
-                content=message,
-                message_type="SENT",
-                status="PENDING",
+                content=new_message.content.content,
+                message_type=new_message.type.content,
+                status="SENT",
                 destinatary=destinatary
             )
 

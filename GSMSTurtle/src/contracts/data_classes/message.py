@@ -91,8 +91,10 @@ class Message:
     
     # Public methods
     def generate_uid(self) -> str:
-        signature = f"{self.sender.content}|{self.metadata.network_timestamp}|{self.content.content}"
-        return hashlib.sha256(signature.encode('UTF-8')).hexdigest()
+        time_reference = self.metadata.network_timestamp if self.metadata and self.metadata.network_timestamp else self.timestamp.content
+
+        signature = f"{self.type.content}|{self.sender.content}|{time_reference}|{self.content.content}"
+        return hashlib.sha256(signature.encode('UTF-8')).hexdigest()[:16] # Mantenemos los 16 caracteres 
     
     def to_dict(self) -> dict:
         return {

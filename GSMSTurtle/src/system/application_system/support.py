@@ -7,6 +7,8 @@ from ...contracts.operations.delete_sms import DeleteSMS, DeleteSMSOperationPara
 # Functions definition
 def _receive_sms(application: object, device_identifier: str) -> None:
     while application.is_active:
+        continue
+
         # Verify the device connection status
         print("Controlador de dispositivo:")
         print(application.controlled_devices.get(device_identifier))
@@ -29,6 +31,8 @@ def _receive_sms(application: object, device_identifier: str) -> None:
 
 def _update_device_information(application: object, device_identifier: str) -> None:
     while application.is_active:
+        continue
+    
         # Verify the device connection status
         if not application.controlled_devices.get(device_identifier).get("DEVICE_CONTROLLER").connection_status:
             print("Device disconnected detected...")

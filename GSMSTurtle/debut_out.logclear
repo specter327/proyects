@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/home/specter/Escritorio/proyects/GSMSTurtle/main_probe.py", line 232, in <module>
+    run_application_test()
+  File "/home/specter/Escritorio/proyects/GSMSTurtle/main_probe.py", line 63, in run_application_test
+    while True: time.sleep(10)
+                ^^^^^^^^^^^^^^
+KeyboardInterrupt
+Fatal Python error: _enter_buffered_busy: could not acquire lock for <ascii(self) failed> at interpreter shutdown, possibly due to daemon threads
+Python runtime state: finalizing (tstate=0x0000000000ba5748)
+KeyboardInterrupt
+
+Current thread 0x000079c3b3bc7080 (most recent call first):
+  <no Python frame>
