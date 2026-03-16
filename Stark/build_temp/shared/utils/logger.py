@@ -24,27 +24,26 @@ def _determine_log_level() -> int:
             return LOG_LEVELS[arg]
     return logging.INFO
 
+# Classes definition
+class LocalFileHandler(logging.FileHandler):
+    def emit(self, record):
+        super().emit(record)
+        self.flush()
+
 # Functions definition
-def logger(name: str) -> logging.Logger:
-    logger_obj = logging.getLogger(name)
-    
-    # 1. Definimos el nombre del archivo de forma estática la primera vez
-    if not hasattr(logger, "_shared_filename"):
-        t = time.localtime()
-        logger._shared_filename = f"Stark-Link [{t.tm_mday}-{t.tm_mon}-{t.tm_year}.{t.tm_hour}.{t.tm_min}.{t.tm_sec}].log"
+def logger(name: str):
+    log = logging.getLogger(name)
 
-        # Determine the log level with the software parameters (sys.argv)
-        logger._global_level = _determine_log_level()
+    if not log.handlers:
+        log.setLevel(logging.DEBUG)
 
-    if not logger_obj.handlers:
-        logger_obj.setLevel(logger._global_level)
-        
-        # 2. Todos los módulos usan el mismo nombre almacenado en la función
-        handler = logging.FileHandler(logger._shared_filename, encoding="UTF-8")
-        formatter = logging.Formatter('%(asctime)s | %(name)-20s | %(levelname)-8s | %(message)s')
+        file = open(F"S-LINK.log", "a", buffering=1, encoding="UTF-8")
+        handler = logging.StreamHandler(file)
+        formatter = logging.Formatter(
+            "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+        )
         handler.setFormatter(formatter)
-        
-        logger_obj.addHandler(handler)
-        logger_obj.propagate = False
-        
-    return logger_obj
+
+        log.addHandler(handler)
+
+    return log

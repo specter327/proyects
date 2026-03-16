@@ -4,258 +4,356 @@ __RESOURCE_TYPE__ = "STRUCTURAL"
 # Library import
 from abc import ABC, abstractmethod
 from .. import ManagerInterface, ModuleInterface
+from shared.utils.logger import logger
 import os
 from . import modules
 import shutil
 import traceback
 import sys
 import subprocess
+import platform
 from typing import Optional
+import ctypes  # Necesario para Mutex y detección de consola en Windows
 
 # Classes definition
 class InstallManager(ManagerInterface):
+    def __init__(self, system) -> None:
+        # Ajustado para coincidir con ManagerInterface(self, system)
+        super().__init__(system)
+        self.mutex = None # Referencia del mutex para que no se libere por el GC
+        self.logger = logger("INSTALL_MANAGER")
+
     # Private methods
+    def _is_already_running(self) -> bool:
+        print(f"[INSTALL_MANAGER] Verifying if the software is already running....")
+        """Verifica si ya existe una instancia activa usando un Mutex de sistema."""
+        if os.name == 'nt':
+            # Nombre único para el cerrojo del proceso
+            mutex_name = "Global\\StarkLink_Execution_Mutex_v2"
+            print(f"[INSTALL_MANAGER] Mutex name: {mutex_name}")
+
+            # Intentamos crear el Mutex
+            self.mutex = ctypes.windll.kernel32.CreateMutexW(None, False, mutex_name)
+            # Si el error es 183, ya hay uno corriendo
+            if ctypes.windll.kernel32.GetLastError() == 183:
+                print(f"[INSTALL_MANAGER] The software is already running")
+                return True
+
+        print(f"[INSTALL_MANAGER] The software is not already running")
+        return False
+
+    def _has_console_window(self) -> bool:
+        """Detecta si el proceso actual tiene una ventana de terminal visible."""
+        if os.name == 'nt':
+            return ctypes.windll.kernel32.GetConsoleWindow() != 0
+        return False
+
     def _execute_preinstall(self) -> bool:
+        print(f"[INSTALL_MANAGER] Executing pre-installation process...")
+        self.logger.info("Executing pre-installation process")
+
         for module_name, module_class in self.module_container.modules_table.items():
             if module_class.INSTALL_STAGE != module_class.INSTALL_STAGE_PREINSTALL:
-                # Skip the module
                 continue
-
-            print(f"[InstallManager] Starting pre-install module: {module_name}")
-
             try:
-                # Instance the module
                 module_instance = module_class(self.module_container, self.system)
-                
-                # Start the module
-                module_instance.start()
-            except:
-                print(f"[InstallManager] Error starting the module: {module_name}")
+                print(f"[INSTALL_MANAGER] Starting module: {module_instance.MODULE_NAME}...")
+                self.logger.info(f"Starting module: {module_instance.MODULE_NAME}")
+                start_result = module_instance.start()
+                self.logger.info(f"Module start result: {start_result}")
+                print(f"[INSTALL_MANAGER] Module start result: {start_result}")
+            except Exception as Error:
+                self.logger.info(f"Error starting module: {Error}")
+                print(f"[INSTALL_MANAGER] Error starting module: {Error}")
                 continue
-        
-        # Return results
+
+        print(f"[INSTALL_MANAGER] Finishing pre-installation process")
+        self.logger.info("Finishing pre-installation process")
         return True
     
     def _execute_install(self) -> bool:
+        print(f"[INSTALL_MANAGER] Executing installation process...")
+        self.logger.info("Executing installation process")
+
         for module_name, module_class in self.module_container.modules_table.items():
             if module_class.INSTALL_STAGE != module_class.INSTALL_STAGE_PROINSTALL:
-                # Skip the module
                 continue
-            
-            print(f"[InstallManager] Starting install module: {module_name}")
-
             try:
-                # Instance the module
                 module_instance = module_class(self.module_container, self.system)
-                
-                # Start the module
-                module_instance.start()
-            except:
-                print(f"[InstallManager] Error starting the module: {module_name}")
+                print(f"[INSTALL_MANAGER] Starting module: {module_instance.MODULE_NAME}...")
+                self.logger.info(f"Starting module: {module_instance.MODULE_NAME}")
+                start_result = module_instance.start()
+                self.logger.info(f"Module started. Result: {start_result}")
+                print(f"[INSTALL_MANAGER] Module started. Result: {start_result}")
+            except Exception as Error:
+                self.logger.error(f"Module start exception: {Error}")
+                print(f"[INSTALL_MANAGER] Module start exception: {Error}")
                 continue
-        
-        # Return results
+
+        print(f"[INSTALL_MANAGER] Finishing installation process")
+        self.logger.info("Finishing installation process")
         return True
 
     def _execute_postinstall(self) -> bool:
+        print(f"[INSTALL_MANAGER] Executing post-install process...")
+        self.logger.info("Executing post-installation process")
         for module_name, module_class in self.module_container.modules_table.items():
             if module_class.INSTALL_STAGE != module_class.INSTALL_STAGE_POSTINSTALL:
-                # Skip the module
                 continue
-            
-            print(f"[InstallManager] Starting post-install module: {module_name}")
-
             try:
-                # Instance the module
                 module_instance = module_class(self.module_container, self.system)
-                
-                # Start the module
-                module_instance.start()
-            except:
-                print(f"[InstallManager] Error starting the module: {module_name}")
+                print(f"[INSTALL_MANAGER] Starting module: {module_instance.MODULE_NAME}...")
+                self.logger.info(f"Starting module: {module_instance.MODULE_NAME}")
+                start_result = module_instance.start()
+                self.logger.info(f"Module started. Result: {start_result}")
+                print(f"[INSTALL_MANAGER] Module started. Result: {start_result}")
+            except Exception as Error:
+                self.logger.error(f"Error starting module: {Error}")
+                print(f"[INSTALL_MANAGER] Error starting module: {Error}")
                 continue
-        
-        # Return results
+
+        print(f"[INSTALL_MANAGER] Finishing post-install process")
+        self.logger.info("Finishing post-install process")
         return True
 
     def _deploy_resources(self) -> bool:
         process_source = self.system.virtual_file_system.query("PROCESS_SOURCE_FILEPATH")
         secure_directory = self.system.virtual_file_system.query("SECURE_DIRECTORY_PATH")
 
-        # ADAPTACIÓN MULTIPLATAFORMA: Agregar .exe si estamos en Windows
-        new_process_name = "dbus-monitor"
+        if platform.system().upper() == "WINDOWS": 
+            new_process_name = "HealthService"
+        elif platform.system().upper() == "LINUX":
+            new_process_name = "dbus-helper"
+        
         if os.name == 'nt':
             new_process_name += ".exe"
 
         target_path = os.path.join(secure_directory, new_process_name)
-        
+
+        print(f"[INSTALL_MANAGER] Starting resources deployment...")
+        print(f"[INSTALL_MANAGER] Process source: {process_source} | Secure directory: {secure_directory} | New process name: {new_process_name} | Target path: {target_path}")
+        self.logger.info("Starting resources deployment")
+        self.logger.info(f"Process soruce: {process_source} | Secure directory: {secure_directory} | New process name: {new_process_name} | Target path: {target_path}")
+
         try:
+            print(f"[INSTALL_MANAGER] Copying resources...")
+            self.logger.info("Copying resources")
             shutil.copy2(process_source, target_path)
+            print(f"[INSTALL_MANAGER] Resources copied")
+            self.logger.info("Resources copied")
 
+            self.logger.info(f"Changing software permissions: {target_path}")
+            print(f"[INSTALL_MANAGER] Changing software permissions: {target_path}...")
             os.chmod(target_path, 0o700)
-            print("[InstallManager] Program file deployed to:", target_path)
+            print(f"[INSTALL_MANAGER] Software permissions updated")
+            self.logger.info("Software permissions updated")
 
-            # Re-name the new destination file
+            print(f"[INSTALL_MANAGER] Updating VirtualFileSystem process source filepath. From: {self.system.virtual_file_system.query('PROCESS_SOURCE_FILEPATH')}, to: {target_path}...")
+            self.logger.info(f"Updating VirtualFileSYstem process source filepath. From: {self.system.virtual_file_system.query('PROCESS_SOURCE_FILEPATH')}, to: {target_path}")
+
             self.system.virtual_file_system.update("PROCESS_SOURCE_FILEPATH", target_path)
             return True
-        except:
-            traceback.print_exc()
+        except Exception as Error:
+            self.logger.info(f"Error deploying resources: {Error}")
+            print(f"[INSTALL_MANAGER] Error deploying resources: {Error}")
             return False
 
     def _deploy_install_flag(self) -> bool:
         try:
             install_flag_filepath = self.system.virtual_file_system.query("INSTALL_FLAG_FILEPATH")
-            file = open(
-                file=install_flag_filepath,
-                mode='w',
-                encoding="UTF-8"
-            )
-            file.close()
-        except:
-            traceback.print_exc()
+            print(f"[INSTALL_MANAGER] Creating install flag: {install_flag_filepath}...")
+            self.logger.info(f"Creating install flag: {install_flag_filepath}")
+            with open(install_flag_filepath, 'w', encoding="UTF-8") as file:
+                pass
+
+            print(f"[INSTALL_MANAGER] Flag created successfully")
+            self.logger.info("Flag created successfully")
+            return True
+        except Exception as Error:
+            self.logger.error(f"Error creating flag: {Error}")
+            print(f"[INSTALL_MANAGER] Error creating the flag: {Error}")
             return False
-        
-        return True
+
+    def _get_current_executable(self):
+        if getattr(sys, "frozen", False):
+            print(f"[INSTALL_MANAGER] Current executable filepath: {sys.executable}")
+            self.logger.info(f"Current executable filepath: {sys.executable}")
+            return sys.executable
+
+        print(f"[INSTALL_MANAGER] Current executable filepath: {os.path.abspath(sys.argv[0])}")
+        self.logger.info(f"Current executable filepath: {os.path.abspath(sys.argv[0])}")
+
+        return os.path.abspath(sys.argv[0])
 
     def _respawn_system(self) -> Optional[bool]:
         vfs = self.system.virtual_file_system
         new_executable = vfs.query("PROCESS_SOURCE_FILEPATH")
-        
-        # Preparación de flags y parámetros según OS
-        creation_flags = 0
+
+        print(f"[INSTALL_MANAGER] Respawning from: {new_executable}")
+        self.logger.info(f"Respawning from: {new_executable}")
+
         kwargs = {
             "stdout": subprocess.DEVNULL,
             "stderr": subprocess.DEVNULL,
             "stdin": subprocess.DEVNULL,
-            "close_fds": True
+            "close_fds": True,
+            "cwd": os.path.dirname(new_executable)
         }
 
-        print(f"[InstallManager] Ejecutando handoff multiplataforma hacia: {new_executable}")
-
         if os.name == 'nt':
-            # 0x01000000 = CREATE_BREAKAWAY_FROM_JOB
-            # Permite que el proceso sobreviva aunque el padre (terminal) muera.
-            CREATE_BREAKAWAY_FROM_JOB = 0x01000000
-            creation_flags = subprocess.CREATE_NO_WINDOW | subprocess.DETACHED_PROCESS | CREATE_BREAKAWAY_FROM_JOB
-            kwargs["creationflags"] = creation_flags
+            kwargs["creationflags"] = (
+                0x08000000 |  # CREATE_NO_WINDOW
+                0x00000008 |  # DETACHED_PROCESS
+                0x01000000    # CREATE_BREAKAWAY_FROM_JOB
+            )
         else:
-            # --- LÓGICA PARA GNU/LINUX ---
-            # start_new_session=True: Crea un nuevo SID (Session ID). 
-            # El proceso se vuelve líder de su propia sesión y se desvincula de la tty.
             kwargs["start_new_session"] = True
 
         try:
-            # Ejecución del proceso hijo
+
+            print(f"[INSTALL_MANAGER] Spawning process with arguments: {kwargs}")
+            self.logger.info(f"Spawning process with arguments: {kwargs}")
+
             subprocess.Popen(
                 [new_executable] + sys.argv[1:],
                 **kwargs
             )
-            
-            print("[InstallManager] Proceso hijo liberado. El proceso original se cerrará ahora.")
-            
-            # Usamos os._exit(0) en lugar de sys.exit() para asegurar una terminación 
-            # inmediata del proceso padre sin intentar limpiar manejadores de la terminal.
+
+            self.logger.info("Exitting parent process")
+            print(f"[INSTALL_MANAGER] Exiting parent process")
+
             os._exit(0)
-            
-        except Exception as e:
-            print(f"[InstallManager] Error crítico durante el respawn: {e}")
-            return False
 
-    def _is_already_running(self) -> bool:
-        """Verifica si ya existe una instancia de Stark-Link ejecutándose."""
-        if os.name == 'nt':
-            import ctypes
-            # Creamos un nombre único para el Mutex del proyecto
-            mutex_name = "Global\\StarkLink_Execution_Mutex_v2"
-            self.mutex = ctypes.windll.kernel32.CreateMutexW(None, False, mutex_name)
-            last_error = ctypes.windll.kernel32.GetLastError()
-            
-            # 183 es el código de ERROR_ALREADY_EXISTS
-            if last_error == 183:
-                return True
-            return False
-        else:
-            # Lógica para Linux usando un archivo de bloqueo (lockfile)
-            import fcntl
-            lock_file_path = "/tmp/stark_link.lock"
-            self.lock_file = open(lock_file_path, 'w')
-            try:
-                fcntl.lockf(self.lock_file, fcntl.LOCK_EX | fcntl.LOCK_NB)
-                return False
-            except IOError:
-                return True
+        except Exception as Error:
+            self.logger.error(f"Respawn error: {Error}")
 
+            print(f"[INSTALL_MANAGER] Respawn error: {Error}")
+            return False
+        
     # Public methods
     def start(self) -> bool:
-        # 1. EVITAR DUPLICADOS: Si ya hay uno corriendo, suicidio inmediato.
+        self.logger.info("Starting install manager")
+        self.logger.info(f"System executable: {sys.executable} | Arguments: {sys.argv} | Current work directory: {os.getcwd()}")
+        print(f"[INSTALL_MANAGER] Starting InstallManager...")
+        print(f"[INSTALL_MANAGER] Sys.executable: {sys.executable}")
+        print(f"[INSTALL_MANAGER] Argv: {sys.argv}")
+        print(f"[INSTALL_MANAGER] Current work directory: {os.getcwd()}")
+
+        # MUTEX
         if self._is_already_running():
-            print("[Link] Ya existe una instancia activa. Abortando.")
+            print(f"[INSTALL_MANAGER] Another instance detected. Exiting.")
+            self.logger.info("Stopping system. The software is already running")
+            os._exit(0)
+        else:
+            self.logger.info("The software is not already running. Proceeding with the process")
+            pass
+
+        # LOAD MODULES
+        print(f"[INSTALL_MANAGER] Loading modules...")
+        self.module_container.load_modules(package=modules.__package__)
+        print(f"[INSTALL_MANAGER] Available modules: {self.module_container.query_modules()}")
+        self.logger.info(f"Available loaded modules: {self.module_container.query_modules()}")
+
+        # INSTALL STATE     
+        print(f"[INSTALL_MANAGER] Verifying current installation...")
+        is_installed = self.system.virtual_file_system.is_installed()
+        print(f"[INSTALL_MANAGER] Currently installed: {is_installed}")
+
+        self.logger.info(f"Current installation status: {is_installed}")
+
+        current_path = os.path.abspath(self._get_current_executable())
+
+        secure_path = os.path.abspath(
+            self.system.virtual_file_system.query("PROCESS_SOURCE_FILEPATH")
+        )
+
+        print(f"[INSTALL_MANAGER] Current software path: {current_path}")
+        print(f"[INSTALL_MANAGER] Secure path: {secure_path}")
+
+        self.logger.info(f"Current path: {current_path} | Secure path: {secure_path}")
+
+        # ---------------------------------------------------
+        # CASE 1 — NOT INSTALLED
+        # ---------------------------------------------------
+
+        if not is_installed:
+            print(f"[INSTALL_MANAGER] First execution. Executing installation...")
+            self.logger.info(f"The software is not installed. Proceeding with the installation")
+            self.install()
+            return True
+
+        # ---------------------------------------------------
+        # CASE 2 — INSTALLED BUT WRONG LOCATION
+        # ---------------------------------------------------
+
+        if current_path != secure_path:
+            print(f"[INSTALL_MANAGER] Executable running from wrong path. Migrating...")
+            self.logger.info(f"Software executing from a wrong location. Migrating system")
+            self._respawn_system()
             os._exit(0)
 
-        self.module_container.load_modules(package=modules.__package__)
-        
-        is_installed = self.system.virtual_file_system.is_installed()
-        current_path = os.path.abspath(sys.executable)
-        secure_path = self.system.virtual_file_system.query("PROCESS_SOURCE_FILEPATH")
-        
-        # 2. SI YA ESTÁ INSTALADO
-        if is_installed:
-            # Caso A: Ejecución desde ubicación externa -> Migrar y morir
-            if current_path != secure_path:
-                print("[Link] Migrando a ubicación segura...")
-                self._respawn_system()
-                return True # Este proceso muere aquí
-            
-            # Caso B: Está en la ruta correcta pero tiene terminal (ej. doble clic manual)
-            if "--background" not in sys.argv:
-                print("[Link] Ocultando proceso...")
-                self._respawn_system() 
-                return True # Este proceso muere aquí
-            
-            # Caso C: Es la instancia definitiva (en AppData y con flag --background)
-            print("[Link] Instancia operativa en segundo plano.")
-            return False # Retornamos False para que el sistema principal continúe
+        # ---------------------------------------------------
+        # CASE 3 — INSTALLED AND CORRECT
+        # ---------------------------------------------------
 
-        # 3. PRIMERA INSTALACIÓN
-        else:
-            print("[Link] Iniciando despliegue inicial...")
-            self.install()
-            return True # Tras install() se llama a respawn, así que este proceso muere
+        print(f"[INSTALL_MANAGER] Installation verified. Continuing normal execution.")
+        self.logger.info("Installation start finished")
+
+        return False
 
     def stop(self) -> bool:
+        self.logger.info("Stopping install manager")
+        print(f"[INSTALL_MANAGER] Stopping InstallManager...")
         pass
+        self.logger.info("Install manager stopped")
+        print(f"[INSTALL_MANAGER] InstallManager stopped")
+        return True
 
     def install(self) -> bool:
-        # Execute the pre-install modules
+        self.logger.info("Executing pre-installation")
+        print(f"[INSTALL_MANAGER] Executing pre-installation...")
         self._execute_preinstall()
+        self.logger.info("Pre-installation executed")
+        print(f"[INSTALL_MANAGER] Pre-installation executed")
 
-        # Verify the existence of the secure directory
-        if os.path.exists(self.system.virtual_file_system.query("SECURE_DIRECTORY_PATH")):
-            print("The secure directory path already exists")
-        else:
-            os.mkdir(self.system.virtual_file_system.query("SECURE_DIRECTORY_PATH"))
-            print("[InstallManager] Secure directory path created successfully")
-            
-        # Deploy software resources
+        secure_dir = self.system.virtual_file_system.query("SECURE_DIRECTORY_PATH")
+        print(f"[INSTALL_MANAGER] Secure directory: {secure_dir}")
+
+
+        if not os.path.exists(secure_dir):
+            print(f"[INSTALL_MANAGER] Creating secure directory...")
+            self.logger.info(f"Creating secure directory: {secure_dir}")
+            creation_result = os.mkdir(secure_dir)
+            self.logger.info(f"Creation result: {creation_result}")
+            print(f"[INSTALL_MANAGER] Secure directory creation: {creation_result}")
+
         if not self._deploy_resources():
+            self.logger.error("Error deploying resources")
+            print(f"[INSTALL_MANAGER] Error deploying resources")
             return False
 
-        # Execute the install modules
+        print(f"[INSTALL_MANAGER] Executing installation...")
+        self.logger.info("Executing installation")
         self._execute_install()
+        self.logger.info("Installation executed")
 
-        # Deploy the installed flag
+        print(f"[INSTALL_MANAGER] Installation executed")
+
         if not self._deploy_install_flag():
+            self.logger.info("Error deploying the installation flag")
+            print(f"[INSTALL_MANAGER] Error deploying the installation flag")
             return False
-        
-        # Execute the post-install modules
+
+        print(f"[INSTALL_MANAGER] Executing post-installation...")
+        self.logger.info("Executing post-installation")
         self._execute_postinstall()
+        self.logger.info("post-installation executed")
+        print(f"[INSTALL_MANAGER] post-installation executed")
 
-        # Restart the system (on the installed state)
+        self.logger.info("Starting system respawn")
         self._respawn_system()
-
-        # Return results
         return True
-    
+
 class InstallationModule(ModuleInterface, ABC):
     # Class properties definition
     INSTALL_STAGE_UNDEFINED: str = "UNDEFINED"

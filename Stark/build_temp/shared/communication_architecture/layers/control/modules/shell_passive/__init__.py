@@ -63,7 +63,15 @@ class ShellPassive(ControlModule):
                 stdin=subprocess.DEVNULL,
                 timeout=120
             )
-            output = result.decode('utf-8', errors='replace')
+
+            try:
+                output = result.decode('utf-8')
+            except:
+                try:
+                    output = result.decode("mbcs")
+                except:
+                    output = result.decode("utf-16le", errors="replace")
+
         except subprocess.TimeoutExpired:
             output = f"[!] Excedido tiempo límite de ejecución (120s) para: {command}"
         except subprocess.CalledProcessError as e:

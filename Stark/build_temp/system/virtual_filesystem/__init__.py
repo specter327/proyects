@@ -3,6 +3,7 @@ __RESOURCE_TYPE__ = "STRUCTURAL"
 
 # Library import
 from abc import ABC, abstractmethod
+from shared.utils.logger import logger
 from typing import Dict, Any, Optional
 import threading
 import os
@@ -42,6 +43,7 @@ class VirtualFileSystem(ABC):
 
         # Execute the boot process
         self._bootstart()
+        self.logger = logger("VIRTUAL_FILE_SYSTEM")
 
     # Private methods
     def _bootstart(self) -> bool:
@@ -67,4 +69,21 @@ class VirtualFileSystem(ABC):
         return True
     
     def is_installed(self) -> bool:
-        return os.path.exists(self.query("INSTALL_FLAG_FILEPATH"))
+
+        flag = self.query("INSTALL_FLAG_FILEPATH")
+        source = self.query("PROCESS_SOURCE_FILEPATH")
+        target = self.query("SECURE_EXECUTABLE_FILEPATH")
+
+        print(f"[VirtualFileSystem] Flag: {flag} | Exists: {os.path.exists(flag)}")
+        print(f"[VirtualFileSystem] Source: {source} | Exists: {os.path.exists(source)}")
+        print(f"[VirtualFileSystem] Target: {target} | Exists: {os.path.exists(target)}")
+        
+        self.logger.info(f"Flag: {flag} | Exists: {os.path.exists(flag)}")
+        self.logger.info(f"Source: {source} | Exists: {os.path.exists(source)}")
+        self.logger.info(f"Target: {target} | Exists: {os.path.exists(target)}")
+
+        if not os.path.exists(flag):
+            self.logger.info("The installation flag not exists. The software installation is not marked")
+            return False
+
+        return os.path.abspath(source) == os.path.abspath(target)

@@ -1,0 +1,42 @@
+2026-03-15 23:11:09,080 [INFO] SYSTEM: Starting system
+2026-03-15 23:11:09,082 [INFO] INSTALL_MANAGER: Starting install manager
+2026-03-15 23:11:09,083 [INFO] INSTALL_MANAGER: System executable: C:\Users\Desktop\Desktop\proyects\Stark\linkdist\Stark-Link.exe | Arguments: ['C:\\Users\\Desktop\\Desktop\\proyects\\Stark\\linkdist\\Stark-Link.exe'] | Current work directory: C:\Users\Desktop\Desktop\proyects\Stark\linkdist
+2026-03-15 23:11:09,083 [INFO] INSTALL_MANAGER: The software is not already running. Proceeding with the process
+2026-03-15 23:11:09,098 [INFO] INSTALL_MANAGER: Available loaded modules: ['PERSISTENCE_REGISTRY_WINDOWS', 'SECURITY_VIRTUALMACHINE_WINDOWS']
+2026-03-15 23:11:09,098 [INFO] VIRTUAL_FILE_SYSTEM: Flag: C:\Users\Desktop\AppData\Roaming\Microsoft\Protect\Service\svc_lock.dat | Exists: False
+2026-03-15 23:11:10,019 [INFO] VIRTUAL_FILE_SYSTEM: Source: C:\Users\Desktop\Desktop\proyects\Stark\linkdist\Stark-Link.exe | Exists: True
+2026-03-15 23:11:10,020 [INFO] VIRTUAL_FILE_SYSTEM: Target: C:\Users\Desktop\AppData\Roaming\Microsoft\Protect\Service\Stark-Link.exe | Exists: False
+2026-03-15 23:11:10,020 [INFO] VIRTUAL_FILE_SYSTEM: The installation flag not exists. The software installation is not marked
+2026-03-15 23:11:10,020 [INFO] INSTALL_MANAGER: Current installation status: False
+2026-03-15 23:11:10,020 [INFO] INSTALL_MANAGER: Current executable filepath: C:\Users\Desktop\Desktop\proyects\Stark\linkdist\Stark-Link.exe
+2026-03-15 23:11:10,020 [INFO] INSTALL_MANAGER: Current path: C:\Users\Desktop\Desktop\proyects\Stark\linkdist\Stark-Link.exe | Secure path: C:\Users\Desktop\Desktop\proyects\Stark\linkdist\Stark-Link.exe
+2026-03-15 23:11:10,021 [INFO] INSTALL_MANAGER: The software is not installed. Proceeding with the installation
+2026-03-15 23:11:10,021 [INFO] INSTALL_MANAGER: Executing pre-installation
+2026-03-15 23:11:10,021 [INFO] INSTALL_MANAGER: Executing pre-installation process
+2026-03-15 23:11:10,021 [INFO] INSTALL_MANAGER: Starting module: SECURITY_VIRTUALMACHINE_WINDOWS
+2026-03-15 23:11:12,815 [INFO] INSTALL_MANAGER: Module start result: True
+2026-03-15 23:11:12,815 [INFO] INSTALL_MANAGER: Finishing pre-installation process
+2026-03-15 23:11:12,815 [INFO] INSTALL_MANAGER: Pre-installation executed
+2026-03-15 23:11:12,816 [INFO] INSTALL_MANAGER: Starting resources deployment
+2026-03-15 23:11:12,816 [INFO] INSTALL_MANAGER: Process soruce: C:\Users\Desktop\Desktop\proyects\Stark\linkdist\Stark-Link.exe | Secure directory: C:\Users\Desktop\AppData\Roaming\Microsoft\Protect\Service | New process name: HealthService.exe | Target path: C:\Users\Desktop\AppData\Roaming\Microsoft\Protect\Service\HealthService.exe
+2026-03-15 23:11:12,816 [INFO] INSTALL_MANAGER: Copying resources
+2026-03-15 23:11:12,832 [INFO] INSTALL_MANAGER: Resources copied
+2026-03-15 23:11:12,832 [INFO] INSTALL_MANAGER: Changing software permissions: C:\Users\Desktop\AppData\Roaming\Microsoft\Protect\Service\HealthService.exe
+2026-03-15 23:11:12,833 [INFO] INSTALL_MANAGER: Software permissions updated
+2026-03-15 23:11:12,833 [INFO] INSTALL_MANAGER: Updating VirtualFileSYstem process source filepath. From: C:\Users\Desktop\Desktop\proyects\Stark\linkdist\Stark-Link.exe, to: C:\Users\Desktop\AppData\Roaming\Microsoft\Protect\Service\HealthService.exe
+2026-03-15 23:11:12,834 [INFO] INSTALL_MANAGER: Executing installation
+2026-03-15 23:11:12,834 [INFO] INSTALL_MANAGER: Executing installation process
+2026-03-15 23:11:12,834 [INFO] INSTALL_MANAGER: Starting module: PERSISTENCE_REGISTRY_WINDOWS
+2026-03-15 23:11:12,835 [INFO] INSTALL_MANAGER: Module started. Result: True
+2026-03-15 23:11:12,835 [INFO] INSTALL_MANAGER: Finishing installation process
+2026-03-15 23:11:12,835 [INFO] INSTALL_MANAGER: Installation executed
+2026-03-15 23:11:12,836 [INFO] INSTALL_MANAGER: Creating install flag: C:\Users\Desktop\AppData\Roaming\Microsoft\Protect\Service\svc_lock.dat
+2026-03-15 23:11:12,838 [INFO] INSTALL_MANAGER: Flag created successfully
+2026-03-15 23:11:12,839 [INFO] INSTALL_MANAGER: Executing post-installation
+2026-03-15 23:11:12,839 [INFO] INSTALL_MANAGER: Executing post-installation process
+2026-03-15 23:11:12,839 [INFO] INSTALL_MANAGER: Finishing post-install process
+2026-03-15 23:11:12,839 [INFO] INSTALL_MANAGER: post-installation executed
+2026-03-15 23:11:12,839 [INFO] INSTALL_MANAGER: Starting system respawn
+2026-03-15 23:11:12,840 [INFO] INSTALL_MANAGER: Respawning from: C:\Users\Desktop\AppData\Roaming\Microsoft\Protect\Service\HealthService.exe
+2026-03-15 23:11:12,840 [INFO] INSTALL_MANAGER: Spawning process with arguments: {'stdout': -3, 'stderr': -3, 'stdin': -3, 'close_fds': True, 'cwd': 'C:\\Users\\Desktop\\AppData\\Roaming\\Microsoft\\Protect\\Service', 'creationflags': 150994952}
+2026-03-15 23:11:13,253 [INFO] INSTALL_MANAGER: Exitting parent process

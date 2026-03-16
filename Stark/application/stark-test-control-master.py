@@ -33,6 +33,20 @@ def run_nexus_orchestrator():
     
     # 3. Setup del Listener de Red
     listen_port = 24450
+    use_port = input("Port to listen:\n>>> ")
+
+    if not use_port:
+        listen_port = 24450
+        print("Using default port:", listen_port)
+    else:
+        try:
+            listen_port = int(use_port)
+            print("Using port:", listen_port)
+        except Exception as Error:
+            print("Error using port:", use_port)
+            print(Error)
+            sys.exit(1)
+    
     transport.start()
     comm_layer.start()
     control_layer.start()

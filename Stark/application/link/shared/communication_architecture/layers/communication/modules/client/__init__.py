@@ -431,6 +431,12 @@ class CommunicationClient(CommunicationModule):
     def _connection_orchestrator_routine(self) -> None:
         """Rutina de alto nivel: Conectar -> Negociar Sesión -> Mantener."""
         self.logger.info("Starting connection orchestrator")
+        resource_id = "shared.communication_architecture.layers.communication.modules.client"
+        config_data = self._config_manager.query_configuration(resource_id)
+        config_instance = Configurations.from_dict(config_data)
+
+        self.logger.info(f"Querying configurations from: {resource_id}")
+        self.logger.info(f"Configurations data: {config_data}")
 
         while self.active:
             # 1. Limpieza de sesiones huérfanas
@@ -438,20 +444,20 @@ class CommunicationClient(CommunicationModule):
 
             # 2. Obtener configuración inyectada por LinkBuilder
             # Usamos el FQN para precisar el recurso en la tabla
-            resource_id = "shared.communication_architecture.layers.communication.modules.client"
-            config_data = self._config_manager.query_configuration(resource_id)
-            self.logger.debug(f"Configurations query result: {config_data}")
-            config_instance = Configurations.from_dict(config_data)
-            self.logger.debug(f"Configuration instance: {config_instance}")
+            #resource_id = "shared.communication_architecture.layers.communication.modules.client"
+            #config_data = self._config_manager.query_configuration(resource_id)
+            #self.logger.debug(f"Configurations query result: {config_data}")
+            #config_instance = Configurations.from_dict(config_data)
+            #self.logger.debug(f"Configuration instance: {config_instance}")
 
             #profiles = config_data.get("SERVER_PROFILES", {}).get("VALUE", [])
-            self.logger.debug(f"Current settings: {config_instance.query_settings()}")
+            #self.logger.debug(f"Current settings: {config_instance.query_settings()}")
             if not config_data:
                 time.sleep(0.10)
                 continue
 
             profiles = config_instance.query_setting("SERVER_PROFILES")
-            self.logger.debug(f"Server profiles: {profiles}")
+            #self.logger.debug(f"Server profiles: {profiles}")
 
             for profile in profiles.value.value:
                 self.logger.debug(f"Server profile: {profile}")
@@ -470,7 +476,10 @@ class CommunicationClient(CommunicationModule):
 
                     # 3. Intento de conexión en Capa de Transporte
                     self.logger.debug(f"Requesting connection with address: {addr}, and port: {port}")
+                    self.logger.info(f"Requesting connection with address: {addr}:{port}")
+
                     conn_id = self._establish_transport_connection(transport_type, addr, port)
+                    self.logger.info(f"Connection result: {conn_id}")
                     self.logger.debug(f"Connection result: {conn_id}")
 
                     if conn_id:
@@ -482,12 +491,14 @@ class CommunicationClient(CommunicationModule):
                         if session_id:
                             with self._lock:
                                 self._active_sessions[conn_id] = session_id
-                            self.logger.info(f"Established Session {session_id} for Connection {conn_id}")
+
+                            #self.logger.info(f"New session established. Session ID: {session_id}")
+                            self.logger.info(f"New established session: {session_id}, for connection: {conn_id}")
                         else:
                             # Si la sesión falla, cerramos el transporte para evitar leaks
                             self._transport_layer.disconnect(conn_id)
 
-            time.sleep(20)
+            time.sleep(0.1)
 
         self.logger.info("Stopping connection orchestrator")
 
@@ -525,17 +536,24 @@ class CommunicationClient(CommunicationModule):
         return self._transport_layer.connect(transport_class, conn_configs)
 
     @smart_debug(element_name=MODULE_NAME, include_args=True, include_result=True)
-    def _maintain_sessions(self) -> None:
-        """Verifica si las conexiones de transporte siguen vivas."""
+    def _maintain_sessions(self):
         with self._lock:
             to_remove = []
+
             for conn_id, session_id in self._active_sessions.items():
-                # Consultar a la TransportLayer si el ID sigue activo
-                if conn_id not in self._transport_layer.connections_table:
-                    self.logger.warning(f"Connection {conn_id} lost. Invalidating session {session_id}.")
+
+                conn_mod = self._transport_layer.connections_table.get(conn_id)
+
+                if not conn_mod or not conn_mod.is_connected:
+
+                    self.logger.warning(
+                        f"Connection {conn_id} lost. Invalidating session {session_id}."
+                    )
+
                     self.layer.stop_session(session_id)
+
                     to_remove.append(conn_id)
-            
+
             for cid in to_remove:
                 del self._active_sessions[cid]
 

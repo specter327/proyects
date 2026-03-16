@@ -7,8 +7,16 @@ import time
 import logging
 from typing import Callable, Any
 from .logger import logger
+import os
+import sys
 
 # Functions definition
+def get_current_executable():
+    if getattr(sys, "frozen", False):
+        return sys.executable
+
+    return os.path.abspath(sys.argv[0])
+
 def smart_debug(element_name: str, include_args: bool = True, include_result: bool = True):
     def decorator(func: Callable):
         @functools.wraps(func)

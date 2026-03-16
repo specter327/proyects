@@ -9,6 +9,8 @@ import shutil
 import PyInstaller.__main__
 import os
 import pprint
+import time
+import secrets
 
 # Functions definition
 def fill_primitive_data(primitive_data: PrimitiveData) -> PrimitiveData:
@@ -46,6 +48,11 @@ class LinkConstructor:
         self.software_resources: Dict[str, Any] = {} # Final table
         self.application_scanner = LinkScanner(self.application_rootpath)
         self.logger = logging.getLogger("LinkBuilder")
+        self.windows_logo_filepath: str = f"{self.application_rootpath}/WindowsHealthLogo.ico"
+        self.company_name: str = "Microsoft Corporation" if self.platform_objective == "WINDOWS" else "Community"
+        self.product_name: str = "Health service"
+        self.file_description: str = "Health Monitor"
+        self.encryption_key: str = secrets.token_hex(32)
     
     # Private methods
     def _verify_dependencies_integrity(self) -> bool:
@@ -414,6 +421,36 @@ class LinkConstructor:
 
         return True
 
+    def generate_windows_version_file(self):
+
+        version_file = self.preparation_path / "version.txt"
+
+        version_text = f"""VSVersionInfo(ffi=FixedFileInfo(filevers=(1,0,0,0),prodvers=(1,0,0,0),mask=0x3f,flags=0x0,OS=0x40004,fileType=0x1,subtype=0x0,date=(0,0)),
+kids=[
+StringFileInfo(
+[
+StringTable(
+'040904B0',
+[
+StringStruct('CompanyName', '{self.company_name}'),
+StringStruct('FileDescription', '{self.file_description}'),
+StringStruct('FileVersion', '1.0.0.0'),
+StringStruct('InternalName', '{self.application_name}'),
+StringStruct('OriginalFilename', '{self.application_name}.exe'),
+StringStruct('ProductName', '{self.product_name}'),
+StringStruct('ProductVersion', '1.0.0.0')
+]
+)
+]
+),
+VarFileInfo([VarStruct('Translation', [1033, 1200])])
+]
+)"""
+
+        version_file.write_text(version_text, encoding="utf-8")
+
+        return version_file
+
     # Public methods
     def recognize_resources(self) -> None:
         """Identifica y perfila los recursos almacenándolos en la tabla base"""
@@ -610,7 +647,9 @@ class LinkConstructor:
         pyi_args = [
             str(entry_script),
             '--onefile',
+            '--noconsole',
             '--name', self.application_name,
+            '--icon', str(self.windows_logo_filepath),  # ← ICONO AQUI
             '--distpath', str(pathlib.Path(self.output_path).resolve()),
             '--workpath', str(self.preparation_path / "pyi_work"),
             '--specpath', str(self.preparation_path),
@@ -618,11 +657,18 @@ class LinkConstructor:
             '--noconfirm',
             '--clean',
             '--log-level', 'WARN',
-            # FORZAMOS la inclusión de las carpetas de módulos como DATA
-            # Formato: "origen{sep}destino_dentro_del_binario"
+            #"--collect-all",
             '--add-data', f"{self.preparation_path / 'system'}{sep}system",
             '--add-data', f"{self.preparation_path / 'shared'}{sep}shared",
+            #"--key", self.encryption_key #! ELIMINADO !# No soportado por versiones de PyInstaller superiores a la version: 6.0
         ]
+
+        if self.platform_objective == "WINDOWS":
+            version_file = self.generate_windows_version_file()
+            pyi_args.extend(["--version-file", str(version_file)])
+
+        # Argument log
+        self.logger.info(f"Compilating software with parameters: {pyi_args}")
 
         # Filtrado de Hidden Imports (Solo dependencias reales de terceros)
         internal_roots = ['shared', 'system', 'core', 'install', 'virtual_filesystem', 'gnulinux']

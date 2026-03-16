@@ -8,6 +8,7 @@ __SELECTABLE__ = False
 # Library import
 from system import ModuleInterface
 from shared.communication_architecture import layers
+from shared.utils.logger import logger
 import subprocess
 import threading
 import time
@@ -32,6 +33,7 @@ class CommunicationService(ModuleInterface):
         self.layers_container = layers.LayerContainer()
         self.running: bool = False
         self.worker_thread: Optional[threading.Thread] = None
+        self.logger = logger("COMMUNICATION_SERVICE")
     
     # Private methods
     def _command_loop(self, session) -> None:
@@ -78,11 +80,14 @@ class CommunicationService(ModuleInterface):
 
     def start(self) -> bool:
         print(f"[{self.MODULE_NAME}] Initializing Passive Server infrastructure...")
+        self.logger.info("Starting service")
         #print(f"[{self.MODULE_NAME}] Skipping module...")
         #return True
 
         try:
             # 1. Levantar infraestructura de capas
+            self.logger.info("Starting communication architecture layers")
+
             self.layers_container.start()
             transport = self.layers_container.query_layer("TRANSPORT")
             comm_layer = self.layers_container.query_layer("COMMUNICATION")
@@ -144,6 +149,7 @@ class CommunicationService(ModuleInterface):
         return False
 
     def stop(self) -> bool:
+        self.logger.info("Stopping communication service")
         self.running = False
         if self.worker_thread:
             self.worker_thread.join()
@@ -153,6 +159,7 @@ class CommunicationService(ModuleInterface):
             
         self.layers_container.stop()
         print(f"[{self.MODULE_NAME}] Server stopped.")
+        self.logger.info("Communication service stopped")
         return True
 
     def configure(self, configurations) -> bool:
@@ -160,6 +167,8 @@ class CommunicationService(ModuleInterface):
         Implementación obligatoria del contrato de ModuleInterface.
         Evita que la clase sea marcada como abstracta.
         """
+        self.logger.info("Configurating communication service")
         self.configurations = configurations
         self._set_configurated(True)
+        self.logger.info("Communication service configurated")
         return True

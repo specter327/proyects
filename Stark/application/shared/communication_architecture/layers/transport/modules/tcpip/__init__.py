@@ -191,6 +191,8 @@ class TransportModule(TransportModuleInterface):
 
         # Create the connection controller
         self._socket = socket.socket(ip_type, socket.SOCK_STREAM) # IPv4/IPv6 - TCP
+        self._socket.settimeout(3)
+        self._socket.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
 
         self.logger.info(f"Connecting with IP: {ip_type}, with TCP")
 
@@ -209,6 +211,8 @@ class TransportModule(TransportModuleInterface):
             print("Error en la conexion")
             traceback.print_exc()
             return False
+        finally:
+            self._socket.settimeout(None)
         
         # Launch the support routines
         self._start_data_receiver()
@@ -233,7 +237,7 @@ class TransportModule(TransportModuleInterface):
         
         try:
             self._socket.sendall(data)
-            print(f"[TRANSPORT_LAYER-{self.MODULE_NAME}] Sended data: {data[0:10]}...{data[-1:-10]}")
+            print(f"[TRANSPORT_LAYER-{self.MODULE_NAME}] Sended data: {data[0:10]}...{data[-10:]}")
             self.logger.info(f"Data sended successfully: {len(data)}")
             return True
         except (socket.error, BrokenPipeError):
@@ -253,7 +257,7 @@ class TransportModule(TransportModuleInterface):
                 readed_data = bytes(self._reception_data_buffer[:length])
                 del self._reception_data_buffer[:length]
                 self.logger.info(f"Total readed data: {len(readed_data)}")
-                print(f"[TRANSPORT_LAYER-{self.MODULE_NAME}] Data readed and returned to the high level interface: {readed_data[0:10]}...{readed_data[-1:-10]}")
+                print(f"[TRANSPORT_LAYER-{self.MODULE_NAME}] Data readed and returned to the high level interface: {readed_data[0:10]}...{readed_data[-10:]}")
                 return readed_data
         
         # Si llegamos aquí es porque el buffer estaba vacío. 
@@ -311,6 +315,7 @@ class TransportModule(TransportModuleInterface):
                     #continue
                     print(f"[TRANSPORT_LAYER-{self.MODULE_NAME}] Any data received. Stopping reading routine")
                     self.logger.error("Any data received. Stopping routine")
+                    self.disconnect()
                     self._is_connected = False
                     break
 
@@ -347,6 +352,7 @@ class TransportModule(TransportModuleInterface):
         self.logger.info(f"Receiving connections of type: {ip_type}, with TCP")
         # Configure the server
         try:
+            server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             server_socket.bind((local_address.value, local_port.value))
             self.logger.info("Successfully binded the server")
         except Exception as Error:

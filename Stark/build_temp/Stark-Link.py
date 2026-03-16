@@ -9,6 +9,9 @@ import sys
 # Configure the module resolution path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+# Change the initial work directory
+os.chdir(os.path.dirname(sys.executable))
+
 # Start the application
 import system
 

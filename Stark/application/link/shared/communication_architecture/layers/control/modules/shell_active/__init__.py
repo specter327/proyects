@@ -96,9 +96,12 @@ class ShellActive(ControlModule):
 
                         print(f"[{self.CONTROL_NAME}-{self.MODULE_NAME}] Origin package ID: {packet_id}. Received package ID: {response.get('PACKET_ID')} (Are the same?: {packet_id==response.get('PACKET_ID')})")
 
-                if response and response.get("PACKET_ID") == packet_id:
+                if response:
+                    return response.get("RESULT", "ANY_CONTENT")
+                
+                #if response and response.get("PACKET_ID") == packet_id:
                     #print(f"[{self.CONTROL_NAME}-{self.MODULE_NAME}] Response received without content")
-                    return response.get("RESULT", "[!] Respuesta recibida sin contenido.")
+                #    return response.get("RESULT", "[!] Respuesta recibida sin contenido.")
                 
             except queue.Empty:
                 continue

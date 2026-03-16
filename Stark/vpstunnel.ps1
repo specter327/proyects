@@ -1,0 +1,1 @@
+ssh -N -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -R 8080:localhost:8080 danielp_mcontact@136.115.31.152

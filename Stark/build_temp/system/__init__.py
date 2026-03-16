@@ -4,6 +4,7 @@ __RESOURCE_TYPE__ = "STRUCTURAL"
 # Library import
 from .configurations import ConfigurationsManager
 from .virtual_filesystem import import_virtual_file_system
+from shared.utils.logger import logger
 from abc import ABC, abstractmethod
 from configurations import Configurations
 from typing import Dict, List, Tuple
@@ -25,10 +26,12 @@ class System:
         self.virtual_file_system = import_virtual_file_system()
         self.install_manager = InstallManager(self)
         self.core_manager = CoreManager(self)
+        self.logger = logger("SYSTEM")
         
     # Public methods
     def start(self) -> bool:
         # Start the virtual file system
+        self.logger.info("Starting system")
         self.virtual_file_system.start()
 
         # Start the install manager
@@ -38,15 +41,22 @@ class System:
         self.execute()
 
         # Return results
+        self.logger.info("Finishing system start")
         return True
 
     def execute(self) -> bool:
+        self.logger.info("Starting system execution")
         self.core_manager.start()
         
-        pass
+        self.stop()
+        self.logger.info("Finishing system execution")
+        return True
 
     def stop(self) -> bool:
+        self.logger.info("Starting system stop")
         pass
+        self.logger.info("Finishing system stop")
+        return True
 
 class ManagerInterface(ABC):
     def __init__(self,
