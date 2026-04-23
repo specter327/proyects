@@ -30,3 +30,8 @@ El mecanismo define las siguientes etiquetas de **archivo**:
 **__STATIC_CONFIGURATIONS__**: Indica las configuraciones del elemento utilizando un descriptor de configuraciones estandar (**configurations-stc**), y se serializa con un diccionario (```dict```)
 
 **__REQUIRES__**: Indica los elementos requeridos por el elemento actual.
+
+**__SUPPORTED_ROLES__**: Indica los roles soportados por el elemento actual. Soporta los siguientes valores:
+    **ACTIVE**: Representa un rol activo (Maestro - Nexus)
+    **PASSIVE**: Representa un rol pasivo (Esclavo - Link)
+    **ALL**: Cubre todos los roles existentes. Indica compatibilidad total

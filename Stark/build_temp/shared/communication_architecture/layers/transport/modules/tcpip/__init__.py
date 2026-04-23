@@ -192,6 +192,7 @@ class TransportModule(TransportModuleInterface):
         # Create the connection controller
         self._socket = socket.socket(ip_type, socket.SOCK_STREAM) # IPv4/IPv6 - TCP
         self._socket.settimeout(3)
+        self._socket.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
 
         self.logger.info(f"Connecting with IP: {ip_type}, with TCP")
 

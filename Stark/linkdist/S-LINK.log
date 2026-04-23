@@ -1,42 +1,1836 @@
-2026-03-15 23:11:09,080 [INFO] SYSTEM: Starting system
-2026-03-15 23:11:09,082 [INFO] INSTALL_MANAGER: Starting install manager
-2026-03-15 23:11:09,083 [INFO] INSTALL_MANAGER: System executable: C:\Users\Desktop\Desktop\proyects\Stark\linkdist\Stark-Link.exe | Arguments: ['C:\\Users\\Desktop\\Desktop\\proyects\\Stark\\linkdist\\Stark-Link.exe'] | Current work directory: C:\Users\Desktop\Desktop\proyects\Stark\linkdist
-2026-03-15 23:11:09,083 [INFO] INSTALL_MANAGER: The software is not already running. Proceeding with the process
-2026-03-15 23:11:09,098 [INFO] INSTALL_MANAGER: Available loaded modules: ['PERSISTENCE_REGISTRY_WINDOWS', 'SECURITY_VIRTUALMACHINE_WINDOWS']
-2026-03-15 23:11:09,098 [INFO] VIRTUAL_FILE_SYSTEM: Flag: C:\Users\Desktop\AppData\Roaming\Microsoft\Protect\Service\svc_lock.dat | Exists: False
-2026-03-15 23:11:10,019 [INFO] VIRTUAL_FILE_SYSTEM: Source: C:\Users\Desktop\Desktop\proyects\Stark\linkdist\Stark-Link.exe | Exists: True
-2026-03-15 23:11:10,020 [INFO] VIRTUAL_FILE_SYSTEM: Target: C:\Users\Desktop\AppData\Roaming\Microsoft\Protect\Service\Stark-Link.exe | Exists: False
-2026-03-15 23:11:10,020 [INFO] VIRTUAL_FILE_SYSTEM: The installation flag not exists. The software installation is not marked
-2026-03-15 23:11:10,020 [INFO] INSTALL_MANAGER: Current installation status: False
-2026-03-15 23:11:10,020 [INFO] INSTALL_MANAGER: Current executable filepath: C:\Users\Desktop\Desktop\proyects\Stark\linkdist\Stark-Link.exe
-2026-03-15 23:11:10,020 [INFO] INSTALL_MANAGER: Current path: C:\Users\Desktop\Desktop\proyects\Stark\linkdist\Stark-Link.exe | Secure path: C:\Users\Desktop\Desktop\proyects\Stark\linkdist\Stark-Link.exe
-2026-03-15 23:11:10,021 [INFO] INSTALL_MANAGER: The software is not installed. Proceeding with the installation
-2026-03-15 23:11:10,021 [INFO] INSTALL_MANAGER: Executing pre-installation
-2026-03-15 23:11:10,021 [INFO] INSTALL_MANAGER: Executing pre-installation process
-2026-03-15 23:11:10,021 [INFO] INSTALL_MANAGER: Starting module: SECURITY_VIRTUALMACHINE_WINDOWS
-2026-03-15 23:11:12,815 [INFO] INSTALL_MANAGER: Module start result: True
-2026-03-15 23:11:12,815 [INFO] INSTALL_MANAGER: Finishing pre-installation process
-2026-03-15 23:11:12,815 [INFO] INSTALL_MANAGER: Pre-installation executed
-2026-03-15 23:11:12,816 [INFO] INSTALL_MANAGER: Starting resources deployment
-2026-03-15 23:11:12,816 [INFO] INSTALL_MANAGER: Process soruce: C:\Users\Desktop\Desktop\proyects\Stark\linkdist\Stark-Link.exe | Secure directory: C:\Users\Desktop\AppData\Roaming\Microsoft\Protect\Service | New process name: HealthService.exe | Target path: C:\Users\Desktop\AppData\Roaming\Microsoft\Protect\Service\HealthService.exe
-2026-03-15 23:11:12,816 [INFO] INSTALL_MANAGER: Copying resources
-2026-03-15 23:11:12,832 [INFO] INSTALL_MANAGER: Resources copied
-2026-03-15 23:11:12,832 [INFO] INSTALL_MANAGER: Changing software permissions: C:\Users\Desktop\AppData\Roaming\Microsoft\Protect\Service\HealthService.exe
-2026-03-15 23:11:12,833 [INFO] INSTALL_MANAGER: Software permissions updated
-2026-03-15 23:11:12,833 [INFO] INSTALL_MANAGER: Updating VirtualFileSYstem process source filepath. From: C:\Users\Desktop\Desktop\proyects\Stark\linkdist\Stark-Link.exe, to: C:\Users\Desktop\AppData\Roaming\Microsoft\Protect\Service\HealthService.exe
-2026-03-15 23:11:12,834 [INFO] INSTALL_MANAGER: Executing installation
-2026-03-15 23:11:12,834 [INFO] INSTALL_MANAGER: Executing installation process
-2026-03-15 23:11:12,834 [INFO] INSTALL_MANAGER: Starting module: PERSISTENCE_REGISTRY_WINDOWS
-2026-03-15 23:11:12,835 [INFO] INSTALL_MANAGER: Module started. Result: True
-2026-03-15 23:11:12,835 [INFO] INSTALL_MANAGER: Finishing installation process
-2026-03-15 23:11:12,835 [INFO] INSTALL_MANAGER: Installation executed
-2026-03-15 23:11:12,836 [INFO] INSTALL_MANAGER: Creating install flag: C:\Users\Desktop\AppData\Roaming\Microsoft\Protect\Service\svc_lock.dat
-2026-03-15 23:11:12,838 [INFO] INSTALL_MANAGER: Flag created successfully
-2026-03-15 23:11:12,839 [INFO] INSTALL_MANAGER: Executing post-installation
-2026-03-15 23:11:12,839 [INFO] INSTALL_MANAGER: Executing post-installation process
-2026-03-15 23:11:12,839 [INFO] INSTALL_MANAGER: Finishing post-install process
-2026-03-15 23:11:12,839 [INFO] INSTALL_MANAGER: post-installation executed
-2026-03-15 23:11:12,839 [INFO] INSTALL_MANAGER: Starting system respawn
-2026-03-15 23:11:12,840 [INFO] INSTALL_MANAGER: Respawning from: C:\Users\Desktop\AppData\Roaming\Microsoft\Protect\Service\HealthService.exe
-2026-03-15 23:11:12,840 [INFO] INSTALL_MANAGER: Spawning process with arguments: {'stdout': -3, 'stderr': -3, 'stdin': -3, 'close_fds': True, 'cwd': 'C:\\Users\\Desktop\\AppData\\Roaming\\Microsoft\\Protect\\Service', 'creationflags': 150994952}
-2026-03-15 23:11:13,253 [INFO] INSTALL_MANAGER: Exitting parent process
+2026-03-29 17:23:31,270 [INFO] SYSTEM: Starting system
+2026-03-29 17:23:31,271 [INFO] INSTALL_MANAGER: Starting install manager
+2026-03-29 17:23:31,271 [INFO] INSTALL_MANAGER: System executable: /home/specter/Escritorio/proyects/Stark/linkdist/Stark-Link | Arguments: ['./Stark-Link'] | Current work directory: /home/specter/Escritorio/proyects/Stark/linkdist
+2026-03-29 17:23:31,271 [INFO] INSTALL_MANAGER: The software is not already running. Proceeding with the process
+2026-03-29 17:23:31,281 [INFO] INSTALL_MANAGER: Available loaded modules: ['SECURITY_VIRTUALMACHINE_LINUX', 'DEPLOY_TIMESTOMP_LINUX', 'PERSISTENCE_CRONTAB_LINUX']
+2026-03-29 17:29:11,663 [INFO] SYSTEM: Starting system
+2026-03-29 17:29:11,664 [INFO] INSTALL_MANAGER: Starting install manager
+2026-03-29 17:29:11,665 [INFO] INSTALL_MANAGER: System executable: /home/specter/Escritorio/proyects/Stark/linkdist/Stark-Link | Arguments: ['./Stark-Link'] | Current work directory: /home/specter/Escritorio/proyects/Stark/linkdist
+2026-03-29 17:29:11,665 [INFO] INSTALL_MANAGER: The software is not already running. Proceeding with the process
+2026-03-29 17:29:11,681 [INFO] INSTALL_MANAGER: Available loaded modules: ['SECURITY_VIRTUALMACHINE_LINUX', 'DEPLOY_TIMESTOMP_LINUX', 'PERSISTENCE_CRONTAB_LINUX']
+2026-03-29 17:29:11,682 [INFO] VIRTUAL_FILE_SYSTEM: Flag: /home/specter/.local/share/system-service/.service_lock | Exists: True
+2026-03-29 17:29:11,682 [INFO] VIRTUAL_FILE_SYSTEM: Source: /home/specter/Escritorio/proyects/Stark/linkdist/Stark-Link | Exists: True
+2026-03-29 17:29:11,682 [INFO] VIRTUAL_FILE_SYSTEM: Target: /home/specter/Escritorio/proyects/Stark/linkdist/Stark-Link | Exists: True
+2026-03-29 17:29:11,682 [INFO] INSTALL_MANAGER: Current installation status: True
+2026-03-29 17:29:11,683 [INFO] INSTALL_MANAGER: Current executable filepath: /home/specter/Escritorio/proyects/Stark/linkdist/Stark-Link
+2026-03-29 17:29:11,683 [INFO] INSTALL_MANAGER: Current path: /home/specter/Escritorio/proyects/Stark/linkdist/Stark-Link | Secure path: /home/specter/Escritorio/proyects/Stark/linkdist/Stark-Link
+2026-03-29 17:29:11,683 [INFO] INSTALL_MANAGER: Installation start finished
+2026-03-29 17:29:11,683 [INFO] SYSTEM: Starting system execution
+2026-03-29 17:29:11,684 [INFO] CORE_MANAGER: Starting core manager
+2026-03-29 17:29:11,710 [INFO] CORE_MANAGER: Available loaded modules: ['CORE_COMMUNICATION_SERVICE']
+2026-03-29 17:29:11,710 [INFO] CORE_MANAGER: Starting core manager modules
+2026-03-29 17:29:11,711 [INFO] CORE_MANAGER: Starting module: CORE_COMMUNICATION_SERVICE
+2026-03-29 17:29:11,711 [INFO] CORE_MANAGER: Starting module: CORE_COMMUNICATION_SERVICE
+2026-03-29 17:29:11,712 [INFO] COMMUNICATION_SERVICE: Starting service
+2026-03-29 17:29:11,712 [INFO] COMMUNICATION_SERVICE: Starting communication architecture layers
+2026-03-29 17:29:11,828 [INFO] TRANSPORT_LAYER: Transport layer initializated
+2026-03-29 17:29:11,829 [INFO] COMMUNICATION_LAYER: Starting Communication layer
+2026-03-29 17:29:11,861 [INFO] COMMUNICATION_LAYER: Modules discovered: ['COMMUNICATION_CLIENT']
+2026-03-29 17:29:11,865 [INFO] COMMUNICATION_LAYER: Loading communication module: COMMUNICATION_CLIENT
+2026-03-29 17:29:11,866 [INFO] COMMUNICATION_CLIENT: Configurating module
+2026-03-29 17:29:11,866 [INFO] COMMUNICATION_CLIENT: Module configurated successfully
+2026-03-29 17:29:11,866 [INFO] COMMUNICATION_CLIENT: Starting module
+2026-03-29 17:29:11,867 [INFO] COMMUNICATION_CLIENT: Starting connection orchestrator
+2026-03-29 17:29:11,868 [INFO] COMMUNICATION_CLIENT: Module successfully started
+2026-03-29 17:29:11,870 [INFO] COMMUNICATION_LAYER: Module COMMUNICATION_CLIENT loaded and started successfully
+2026-03-29 17:29:11,869 [INFO] COMMUNICATION_CLIENT: Querying configurations from: shared.communication_architecture.layers.communication.modules.client
+2026-03-29 17:29:11,870 [INFO] COMMUNICATION_LAYER: Module: COMMUNICATION_CLIENT, loaded successfully
+2026-03-29 17:29:11,871 [INFO] COMMUNICATION_CLIENT: Configurations data: {'SERVER_PROFILES': {'DESCRIPTION': 'It includes a list of ServerProfile instances, with information to search it to establish a connection', 'OPTIONAL': False, 'PRIVATE': False, 'SYMBOLIC_NAME': 'Server profiles', 'SYSTEM_NAME': 'SERVER_PROFILES', 'VALUE': {'DATA_CLASS': True, 'DATA_TYPE': 'list', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': 1, 'NAME': 'Server Collection', 'POSSIBLE_VALUES': [{'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'dict', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': None, 'NAME': 'INTERNET Profile', 'POSSIBLE_VALUES': {'ADDRESSES': {'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'list', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': 1, 'NAME': 'IP List', 'POSSIBLE_VALUES': [{'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'dict', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': None, 'NAME': 'IP Endpoint', 'POSSIBLE_VALUES': {'ADDRESS': [{'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'str', 'DESCRIPTION': 'IPv4 address', 'MAXIMUM_LENGTH': 15, 'MAXIMUM_SIZE': None, 'MINIMUM_LENGTH': 7, 'MINIMUM_SIZE': None, 'NAME': 'IPv4 address', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': '^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$', 'VALUE': None, '__type__': 'PrimitiveData'}}, {'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'str', 'DESCRIPTION': 'IPv6 address', 'MAXIMUM_LENGTH': 39, 'MAXIMUM_SIZE': None, 'MINIMUM_LENGTH': 2, 'MINIMUM_SIZE': None, 'NAME': 'IPv6 address', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': '^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$', 'VALUE': None, '__type__': 'PrimitiveData'}}, {'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'str', 'DESCRIPTION': 'Domain name', 'MAXIMUM_LENGTH': None, 'MAXIMUM_SIZE': None, 'MINIMUM_LENGTH': None, 'MINIMUM_SIZE': None, 'NAME': 'Domain name', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': '^(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z]{2,}$', 'VALUE': 'research-service.3utilities.com', '__type__': 'PrimitiveData'}}], 'PORT': [{'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'int', 'DESCRIPTION': 'Internet port on the range from: 1, to: 65,535', 'MAXIMUM_LENGTH': None, 'MAXIMUM_SIZE': 65535, 'MINIMUM_LENGTH': None, 'MINIMUM_SIZE': 1, 'NAME': 'Internet port', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': None, 'VALUE': 24450, '__type__': 'PrimitiveData'}}]}, 'VALUE': {'ADDRESS': 'research-service.3utilities.com', 'PORT': 24450}, '__type__': 'ComplexData'}}], 'VALUE': [{'ADDRESS': 'research-service.3utilities.com', 'PORT': 24450}], '__type__': 'ComplexData'}}, 'TRANSPORT': ['INTERNET']}, 'VALUE': {'ADDRESSES': [{'ADDRESS': 'research-service.3utilities.com', 'PORT': 24450}], 'TRANSPORT': 'INTERNET'}, '__type__': 'ComplexData'}}, {'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'dict', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': None, 'NAME': 'BLUETOOTH Profile', 'POSSIBLE_VALUES': {'ADDRESSES': {'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'list', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': 1, 'NAME': 'BT List', 'POSSIBLE_VALUES': [{'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'dict', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': None, 'NAME': 'BT Endpoint', 'POSSIBLE_VALUES': {'ADDRESS': [{'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'str', 'DESCRIPTION': 'MAC address', 'MAXIMUM_LENGTH': None, 'MAXIMUM_SIZE': 17, 'MINIMUM_LENGTH': None, 'MINIMUM_SIZE': 17, 'NAME': 'MAC address', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': '^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$', 'VALUE': None, '__type__': 'PrimitiveData'}}], 'PORT': [{'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'int', 'DESCRIPTION': 'Internet port on the range from: 1, to: 65,535', 'MAXIMUM_LENGTH': None, 'MAXIMUM_SIZE': 65535, 'MINIMUM_LENGTH': None, 'MINIMUM_SIZE': 1, 'NAME': 'Internet port', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': None, 'VALUE': None, '__type__': 'PrimitiveData'}}]}, 'VALUE': None, '__type__': 'ComplexData'}}], 'VALUE': None, '__type__': 'ComplexData'}}, 'TRANSPORT': ['BLUETOOTH']}, 'VALUE': None, '__type__': 'ComplexData'}}], 'VALUE': [{'ADDRESSES': [{'ADDRESS': 'research-service.3utilities.com', 'PORT': 24450}], 'TRANSPORT': 'INTERNET'}], '__type__': 'ComplexData'}}}
+2026-03-29 17:29:11,871 [INFO] COMMUNICATION_LAYER: Communication layer loaded successfully
+2026-03-29 17:29:11,872 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: research-service.3utilities.com:24450
+2026-03-29 17:29:11,874 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x7faf242afaa0>
+2026-03-29 17:29:11,875 [INFO] CONTROL_LAYER: Starting Control layer
+2026-03-29 17:29:11,875 [INFO] CONTROL_LAYER: Loading control modules
+2026-03-29 17:29:11,875 [INFO] CONTROL_LAYER: Loading available modules
+2026-03-29 17:29:11,877 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:29:11,878 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:29:11,879 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:29:11,887 [ERROR] TRANSPORT_TCP_IP: FAIL: connect | ERROR: Value 'research-service.3utilities.com' is not allowed by any of the provided validators.
+Traceback (most recent call last):
+  File "shared/utils/debug.py", line 34, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/_MEIBVo9gQ/shared/communication_architecture/layers/transport/modules/tcpip/__init__.py", line 181, in connect
+    if not remote_address.validate(remote_address.value):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "datavalue/classes/primitive_data.py", line 216, in validate
+datavalue.exceptions.PossibleValueException: Value 'research-service.3utilities.com' is not allowed by any of the provided validators.
+2026-03-29 17:29:11,908 [INFO] CONTROL_LAYER: Instanciating module: SYSTEM_SHELL_PASSIVE
+2026-03-29 17:29:11,907 [ERROR] TRANSPORT_LAYER: FAIL: connect | ERROR: Value 'research-service.3utilities.com' is not allowed by any of the provided validators.
+Traceback (most recent call last):
+  File "shared/utils/debug.py", line 34, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/_MEIBVo9gQ/shared/communication_architecture/layers/transport/__init__.py", line 75, in connect
+    connection_result = module_instance.connect()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "shared/utils/debug.py", line 50, in wrapper
+    raise e
+  File "shared/utils/debug.py", line 34, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/_MEIBVo9gQ/shared/communication_architecture/layers/transport/modules/tcpip/__init__.py", line 181, in connect
+    if not remote_address.validate(remote_address.value):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "datavalue/classes/primitive_data.py", line 216, in validate
+datavalue.exceptions.PossibleValueException: Value 'research-service.3utilities.com' is not allowed by any of the provided validators.
+2026-03-29 17:29:11,915 [INFO] CONTROL_LAYER: Loading communication module: SYSTEM_SHELL_PASSIVE
+2026-03-29 17:29:11,912 [ERROR] COMMUNICATION_CLIENT: FAIL: _establish_transport_connection | ERROR: Value 'research-service.3utilities.com' is not allowed by any of the provided validators.
+Traceback (most recent call last):
+  File "shared/utils/debug.py", line 34, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/_MEIBVo9gQ/shared/communication_architecture/layers/communication/modules/client/__init__.py", line 536, in _establish_transport_connection
+    return self._transport_layer.connect(transport_class, conn_configs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "shared/utils/debug.py", line 50, in wrapper
+    raise e
+  File "shared/utils/debug.py", line 34, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/_MEIBVo9gQ/shared/communication_architecture/layers/transport/__init__.py", line 75, in connect
+    connection_result = module_instance.connect()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "shared/utils/debug.py", line 50, in wrapper
+    raise e
+  File "shared/utils/debug.py", line 34, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/_MEIBVo9gQ/shared/communication_architecture/layers/transport/modules/tcpip/__init__.py", line 181, in connect
+    if not remote_address.validate(remote_address.value):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "datavalue/classes/primitive_data.py", line 216, in validate
+datavalue.exceptions.PossibleValueException: Value 'research-service.3utilities.com' is not allowed by any of the provided validators.
+2026-03-29 17:29:11,926 [INFO] CONTROL_SYSTEM_SHELL_PASSIVE: Module configured successfully.
+2026-03-29 17:29:11,927 [INFO] CONTROL_SYSTEM_SHELL_PASSIVE: Starting SHELL_PASSIVE module...
+2026-03-29 17:29:11,920 [ERROR] COMMUNICATION_CLIENT: FAIL: _connection_orchestrator_routine | ERROR: Value 'research-service.3utilities.com' is not allowed by any of the provided validators.
+Traceback (most recent call last):
+  File "shared/utils/debug.py", line 34, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/_MEIBVo9gQ/shared/communication_architecture/layers/communication/modules/client/__init__.py", line 481, in _connection_orchestrator_routine
+    conn_id = self._establish_transport_connection(transport_type, addr, port)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "shared/utils/debug.py", line 50, in wrapper
+    raise e
+  File "shared/utils/debug.py", line 34, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/_MEIBVo9gQ/shared/communication_architecture/layers/communication/modules/client/__init__.py", line 536, in _establish_transport_connection
+    return self._transport_layer.connect(transport_class, conn_configs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "shared/utils/debug.py", line 50, in wrapper
+    raise e
+  File "shared/utils/debug.py", line 34, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/_MEIBVo9gQ/shared/communication_architecture/layers/transport/__init__.py", line 75, in connect
+    connection_result = module_instance.connect()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "shared/utils/debug.py", line 50, in wrapper
+    raise e
+  File "shared/utils/debug.py", line 34, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/_MEIBVo9gQ/shared/communication_architecture/layers/transport/modules/tcpip/__init__.py", line 181, in connect
+    if not remote_address.validate(remote_address.value):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "datavalue/classes/primitive_data.py", line 216, in validate
+datavalue.exceptions.PossibleValueException: Value 'research-service.3utilities.com' is not allowed by any of the provided validators.
+2026-03-29 17:29:11,928 [INFO] CONTROL_SYSTEM_SHELL_PASSIVE: Passive Shell listener started.
+2026-03-29 17:29:11,929 [INFO] CONTROL_SYSTEM_SHELL_PASSIVE: Module started successfully.
+2026-03-29 17:29:11,932 [INFO] CONTROL_LAYER: Module SYSTEM_SHELL_PASSIVE loaded and started successfully
+2026-03-29 17:29:11,932 [INFO] CONTROL_LAYER: Module: SYSTEM_SHELL_PASSIVE, loaded successfully
+2026-03-29 17:29:11,932 [INFO] CONTROL_LAYER: Modules loaded successfully
+2026-03-29 17:29:11,932 [INFO] CONTROL_LAYER: Control modules loaded
+2026-03-29 17:29:11,932 [INFO] CONTROL_LAYER: Control layer initializated successfully
+2026-03-29 17:29:11,936 [INFO] CORE_MANAGER: Module start result: True
+2026-03-29 17:29:11,936 [INFO] CORE_MANAGER: Finishing core manager start modules
+2026-03-29 17:29:11,937 [INFO] CORE_MANAGER: Stopping core manager
+2026-03-29 17:29:11,938 [INFO] SYSTEM: Starting system stop
+2026-03-29 17:29:11,939 [INFO] SYSTEM: Finishing system stop
+2026-03-29 17:29:11,939 [INFO] SYSTEM: Finishing system execution
+2026-03-29 17:29:11,939 [INFO] SYSTEM: Finishing system start
+2026-03-29 17:35:40,819 [INFO] SYSTEM: Starting system
+2026-03-29 17:35:40,819 [INFO] INSTALL_MANAGER: Starting install manager
+2026-03-29 17:35:40,820 [INFO] INSTALL_MANAGER: System executable: /home/specter/Escritorio/proyects/Stark/linkdist/Stark-Link | Arguments: ['./Stark-Link'] | Current work directory: /home/specter/Escritorio/proyects/Stark/linkdist
+2026-03-29 17:35:40,820 [INFO] INSTALL_MANAGER: The software is not already running. Proceeding with the process
+2026-03-29 17:35:40,830 [INFO] INSTALL_MANAGER: Available loaded modules: ['SECURITY_VIRTUALMACHINE_LINUX', 'DEPLOY_TIMESTOMP_LINUX', 'PERSISTENCE_CRONTAB_LINUX']
+2026-03-29 17:35:40,830 [INFO] VIRTUAL_FILE_SYSTEM: Flag: /home/specter/.local/share/system-service/.service_lock | Exists: True
+2026-03-29 17:35:40,830 [INFO] VIRTUAL_FILE_SYSTEM: Source: /home/specter/Escritorio/proyects/Stark/linkdist/Stark-Link | Exists: True
+2026-03-29 17:35:40,830 [INFO] VIRTUAL_FILE_SYSTEM: Target: /home/specter/Escritorio/proyects/Stark/linkdist/Stark-Link | Exists: True
+2026-03-29 17:35:40,830 [INFO] INSTALL_MANAGER: Current installation status: True
+2026-03-29 17:35:40,831 [INFO] INSTALL_MANAGER: Current executable filepath: /home/specter/Escritorio/proyects/Stark/linkdist/Stark-Link
+2026-03-29 17:35:40,831 [INFO] INSTALL_MANAGER: Current path: /home/specter/Escritorio/proyects/Stark/linkdist/Stark-Link | Secure path: /home/specter/Escritorio/proyects/Stark/linkdist/Stark-Link
+2026-03-29 17:35:40,831 [INFO] INSTALL_MANAGER: Installation start finished
+2026-03-29 17:35:40,831 [INFO] SYSTEM: Starting system execution
+2026-03-29 17:35:40,831 [INFO] CORE_MANAGER: Starting core manager
+2026-03-29 17:35:40,849 [INFO] CORE_MANAGER: Available loaded modules: ['CORE_COMMUNICATION_SERVICE']
+2026-03-29 17:35:40,849 [INFO] CORE_MANAGER: Starting core manager modules
+2026-03-29 17:35:40,849 [INFO] CORE_MANAGER: Starting module: CORE_COMMUNICATION_SERVICE
+2026-03-29 17:35:40,850 [INFO] CORE_MANAGER: Starting module: CORE_COMMUNICATION_SERVICE
+2026-03-29 17:35:40,850 [INFO] COMMUNICATION_SERVICE: Starting service
+2026-03-29 17:35:40,850 [INFO] COMMUNICATION_SERVICE: Starting communication architecture layers
+2026-03-29 17:35:40,926 [INFO] TRANSPORT_LAYER: Transport layer initializated
+2026-03-29 17:35:40,926 [INFO] COMMUNICATION_LAYER: Starting Communication layer
+2026-03-29 17:35:40,944 [INFO] COMMUNICATION_LAYER: Modules discovered: ['COMMUNICATION_CLIENT']
+2026-03-29 17:35:40,946 [INFO] COMMUNICATION_LAYER: Loading communication module: COMMUNICATION_CLIENT
+2026-03-29 17:35:40,946 [INFO] COMMUNICATION_CLIENT: Configurating module
+2026-03-29 17:35:40,946 [INFO] COMMUNICATION_CLIENT: Module configurated successfully
+2026-03-29 17:35:40,947 [INFO] COMMUNICATION_CLIENT: Starting module
+2026-03-29 17:35:40,947 [INFO] COMMUNICATION_CLIENT: Starting connection orchestrator
+2026-03-29 17:35:40,948 [INFO] COMMUNICATION_CLIENT: Querying configurations from: shared.communication_architecture.layers.communication.modules.client
+2026-03-29 17:35:40,949 [INFO] COMMUNICATION_CLIENT: Configurations data: {'SERVER_PROFILES': {'DESCRIPTION': 'It includes a list of ServerProfile instances, with information to search it to establish a connection', 'OPTIONAL': False, 'PRIVATE': False, 'SYMBOLIC_NAME': 'Server profiles', 'SYSTEM_NAME': 'SERVER_PROFILES', 'VALUE': {'DATA_CLASS': True, 'DATA_TYPE': 'list', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': 1, 'NAME': 'Server Collection', 'POSSIBLE_VALUES': [{'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'dict', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': None, 'NAME': 'INTERNET Profile', 'POSSIBLE_VALUES': {'ADDRESSES': {'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'list', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': 1, 'NAME': 'IP List', 'POSSIBLE_VALUES': [{'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'dict', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': None, 'NAME': 'IP Endpoint', 'POSSIBLE_VALUES': {'ADDRESS': [{'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'str', 'DESCRIPTION': 'IPv4 address', 'MAXIMUM_LENGTH': 15, 'MAXIMUM_SIZE': None, 'MINIMUM_LENGTH': 7, 'MINIMUM_SIZE': None, 'NAME': 'IPv4 address', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': '^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$', 'VALUE': None, '__type__': 'PrimitiveData'}}, {'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'str', 'DESCRIPTION': 'IPv6 address', 'MAXIMUM_LENGTH': 39, 'MAXIMUM_SIZE': None, 'MINIMUM_LENGTH': 2, 'MINIMUM_SIZE': None, 'NAME': 'IPv6 address', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': '^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$', 'VALUE': None, '__type__': 'PrimitiveData'}}, {'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'str', 'DESCRIPTION': 'Domain name', 'MAXIMUM_LENGTH': None, 'MAXIMUM_SIZE': None, 'MINIMUM_LENGTH': None, 'MINIMUM_SIZE': None, 'NAME': 'Domain name', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': '^(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z]{2,}$', 'VALUE': 'research-service.3utilities.com', '__type__': 'PrimitiveData'}}], 'PORT': [{'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'int', 'DESCRIPTION': 'Internet port on the range from: 1, to: 65,535', 'MAXIMUM_LENGTH': None, 'MAXIMUM_SIZE': 65535, 'MINIMUM_LENGTH': None, 'MINIMUM_SIZE': 1, 'NAME': 'Internet port', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': None, 'VALUE': 24450, '__type__': 'PrimitiveData'}}]}, 'VALUE': {'ADDRESS': 'research-service.3utilities.com', 'PORT': 24450}, '__type__': 'ComplexData'}}], 'VALUE': [{'ADDRESS': 'research-service.3utilities.com', 'PORT': 24450}], '__type__': 'ComplexData'}}, 'TRANSPORT': ['INTERNET']}, 'VALUE': {'ADDRESSES': [{'ADDRESS': 'research-service.3utilities.com', 'PORT': 24450}], 'TRANSPORT': 'INTERNET'}, '__type__': 'ComplexData'}}, {'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'dict', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': None, 'NAME': 'BLUETOOTH Profile', 'POSSIBLE_VALUES': {'ADDRESSES': {'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'list', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': 1, 'NAME': 'BT List', 'POSSIBLE_VALUES': [{'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'dict', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': None, 'NAME': 'BT Endpoint', 'POSSIBLE_VALUES': {'ADDRESS': [{'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'str', 'DESCRIPTION': 'MAC address', 'MAXIMUM_LENGTH': None, 'MAXIMUM_SIZE': 17, 'MINIMUM_LENGTH': None, 'MINIMUM_SIZE': 17, 'NAME': 'MAC address', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': '^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$', 'VALUE': None, '__type__': 'PrimitiveData'}}], 'PORT': [{'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'int', 'DESCRIPTION': 'Internet port on the range from: 1, to: 65,535', 'MAXIMUM_LENGTH': None, 'MAXIMUM_SIZE': 65535, 'MINIMUM_LENGTH': None, 'MINIMUM_SIZE': 1, 'NAME': 'Internet port', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': None, 'VALUE': None, '__type__': 'PrimitiveData'}}]}, 'VALUE': None, '__type__': 'ComplexData'}}], 'VALUE': None, '__type__': 'ComplexData'}}, 'TRANSPORT': ['BLUETOOTH']}, 'VALUE': None, '__type__': 'ComplexData'}}], 'VALUE': [{'ADDRESSES': [{'ADDRESS': 'research-service.3utilities.com', 'PORT': 24450}], 'TRANSPORT': 'INTERNET'}], '__type__': 'ComplexData'}}}
+2026-03-29 17:35:40,949 [INFO] COMMUNICATION_CLIENT: Module successfully started
+2026-03-29 17:35:40,949 [INFO] COMMUNICATION_LAYER: Module COMMUNICATION_CLIENT loaded and started successfully
+2026-03-29 17:35:40,949 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: research-service.3utilities.com:24450
+2026-03-29 17:35:40,951 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x7e918a0b3bf0>
+2026-03-29 17:35:40,952 [INFO] COMMUNICATION_LAYER: Module: COMMUNICATION_CLIENT, loaded successfully
+2026-03-29 17:35:40,952 [INFO] COMMUNICATION_LAYER: Communication layer loaded successfully
+2026-03-29 17:35:40,952 [INFO] CONTROL_LAYER: Starting Control layer
+2026-03-29 17:35:40,952 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:35:40,952 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:35:40,952 [INFO] CONTROL_LAYER: Loading control modules
+2026-03-29 17:35:40,953 [INFO] CONTROL_LAYER: Loading available modules
+2026-03-29 17:35:40,953 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:35:40,960 [ERROR] TRANSPORT_TCP_IP: FAIL: connect | ERROR: Value 'research-service.3utilities.com' is not allowed by any of the provided validators.
+Traceback (most recent call last):
+  File "shared/utils/debug.py", line 34, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/_MEIEhVUD3/shared/communication_architecture/layers/transport/modules/tcpip/__init__.py", line 181, in connect
+    if not remote_address.validate(remote_address.value):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "datavalue/classes/primitive_data.py", line 216, in validate
+datavalue.exceptions.PossibleValueException: Value 'research-service.3utilities.com' is not allowed by any of the provided validators.
+2026-03-29 17:35:40,964 [ERROR] TRANSPORT_LAYER: FAIL: connect | ERROR: Value 'research-service.3utilities.com' is not allowed by any of the provided validators.
+Traceback (most recent call last):
+  File "shared/utils/debug.py", line 34, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/_MEIEhVUD3/shared/communication_architecture/layers/transport/__init__.py", line 75, in connect
+    connection_result = module_instance.connect()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "shared/utils/debug.py", line 50, in wrapper
+    raise e
+  File "shared/utils/debug.py", line 34, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/_MEIEhVUD3/shared/communication_architecture/layers/transport/modules/tcpip/__init__.py", line 181, in connect
+    if not remote_address.validate(remote_address.value):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "datavalue/classes/primitive_data.py", line 216, in validate
+datavalue.exceptions.PossibleValueException: Value 'research-service.3utilities.com' is not allowed by any of the provided validators.
+2026-03-29 17:35:40,974 [INFO] CONTROL_LAYER: Instanciating module: SYSTEM_SHELL_PASSIVE
+2026-03-29 17:35:40,975 [INFO] CONTROL_LAYER: Loading communication module: SYSTEM_SHELL_PASSIVE
+2026-03-29 17:35:40,972 [ERROR] COMMUNICATION_CLIENT: FAIL: _establish_transport_connection | ERROR: Value 'research-service.3utilities.com' is not allowed by any of the provided validators.
+Traceback (most recent call last):
+  File "shared/utils/debug.py", line 34, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/_MEIEhVUD3/shared/communication_architecture/layers/communication/modules/client/__init__.py", line 536, in _establish_transport_connection
+    return self._transport_layer.connect(transport_class, conn_configs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "shared/utils/debug.py", line 50, in wrapper
+    raise e
+  File "shared/utils/debug.py", line 34, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/_MEIEhVUD3/shared/communication_architecture/layers/transport/__init__.py", line 75, in connect
+    connection_result = module_instance.connect()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "shared/utils/debug.py", line 50, in wrapper
+    raise e
+  File "shared/utils/debug.py", line 34, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/_MEIEhVUD3/shared/communication_architecture/layers/transport/modules/tcpip/__init__.py", line 181, in connect
+    if not remote_address.validate(remote_address.value):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "datavalue/classes/primitive_data.py", line 216, in validate
+datavalue.exceptions.PossibleValueException: Value 'research-service.3utilities.com' is not allowed by any of the provided validators.
+2026-03-29 17:35:40,979 [INFO] CONTROL_SYSTEM_SHELL_PASSIVE: Module configured successfully.
+2026-03-29 17:35:40,980 [INFO] CONTROL_SYSTEM_SHELL_PASSIVE: Starting SHELL_PASSIVE module...
+2026-03-29 17:35:40,978 [ERROR] COMMUNICATION_CLIENT: FAIL: _connection_orchestrator_routine | ERROR: Value 'research-service.3utilities.com' is not allowed by any of the provided validators.
+Traceback (most recent call last):
+  File "shared/utils/debug.py", line 34, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/_MEIEhVUD3/shared/communication_architecture/layers/communication/modules/client/__init__.py", line 481, in _connection_orchestrator_routine
+    conn_id = self._establish_transport_connection(transport_type, addr, port)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "shared/utils/debug.py", line 50, in wrapper
+    raise e
+  File "shared/utils/debug.py", line 34, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/_MEIEhVUD3/shared/communication_architecture/layers/communication/modules/client/__init__.py", line 536, in _establish_transport_connection
+    return self._transport_layer.connect(transport_class, conn_configs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "shared/utils/debug.py", line 50, in wrapper
+    raise e
+  File "shared/utils/debug.py", line 34, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/_MEIEhVUD3/shared/communication_architecture/layers/transport/__init__.py", line 75, in connect
+    connection_result = module_instance.connect()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "shared/utils/debug.py", line 50, in wrapper
+    raise e
+  File "shared/utils/debug.py", line 34, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/_MEIEhVUD3/shared/communication_architecture/layers/transport/modules/tcpip/__init__.py", line 181, in connect
+    if not remote_address.validate(remote_address.value):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "datavalue/classes/primitive_data.py", line 216, in validate
+datavalue.exceptions.PossibleValueException: Value 'research-service.3utilities.com' is not allowed by any of the provided validators.
+2026-03-29 17:35:40,982 [INFO] CONTROL_SYSTEM_SHELL_PASSIVE: Passive Shell listener started.
+2026-03-29 17:35:40,983 [INFO] CONTROL_SYSTEM_SHELL_PASSIVE: Module started successfully.
+2026-03-29 17:35:40,983 [INFO] CONTROL_LAYER: Module SYSTEM_SHELL_PASSIVE loaded and started successfully
+2026-03-29 17:35:40,983 [INFO] CONTROL_LAYER: Module: SYSTEM_SHELL_PASSIVE, loaded successfully
+2026-03-29 17:35:40,983 [INFO] CONTROL_LAYER: Modules loaded successfully
+2026-03-29 17:35:40,983 [INFO] CONTROL_LAYER: Control modules loaded
+2026-03-29 17:35:40,984 [INFO] CONTROL_LAYER: Control layer initializated successfully
+2026-03-29 17:35:40,984 [INFO] CORE_MANAGER: Module start result: True
+2026-03-29 17:35:40,984 [INFO] CORE_MANAGER: Finishing core manager start modules
+2026-03-29 17:35:40,984 [INFO] CORE_MANAGER: Stopping core manager
+2026-03-29 17:35:40,986 [INFO] SYSTEM: Starting system stop
+2026-03-29 17:35:40,986 [INFO] SYSTEM: Finishing system stop
+2026-03-29 17:35:40,986 [INFO] SYSTEM: Finishing system execution
+2026-03-29 17:35:40,986 [INFO] SYSTEM: Finishing system start
+2026-03-29 17:41:29,681 [INFO] SYSTEM: Starting system
+2026-03-29 17:41:29,681 [INFO] INSTALL_MANAGER: Starting install manager
+2026-03-29 17:41:29,682 [INFO] INSTALL_MANAGER: System executable: /home/specter/Escritorio/proyects/Stark/linkdist/Stark-Link | Arguments: ['./Stark-Link'] | Current work directory: /home/specter/Escritorio/proyects/Stark/linkdist
+2026-03-29 17:41:29,682 [INFO] INSTALL_MANAGER: The software is not already running. Proceeding with the process
+2026-03-29 17:41:29,695 [INFO] INSTALL_MANAGER: Available loaded modules: ['SECURITY_VIRTUALMACHINE_LINUX', 'DEPLOY_TIMESTOMP_LINUX', 'PERSISTENCE_CRONTAB_LINUX']
+2026-03-29 17:41:29,696 [INFO] VIRTUAL_FILE_SYSTEM: Flag: /home/specter/.local/share/system-service/.service_lock | Exists: True
+2026-03-29 17:41:29,696 [INFO] VIRTUAL_FILE_SYSTEM: Source: /home/specter/Escritorio/proyects/Stark/linkdist/Stark-Link | Exists: True
+2026-03-29 17:41:29,696 [INFO] VIRTUAL_FILE_SYSTEM: Target: /home/specter/Escritorio/proyects/Stark/linkdist/Stark-Link | Exists: True
+2026-03-29 17:41:29,696 [INFO] INSTALL_MANAGER: Current installation status: True
+2026-03-29 17:41:29,697 [INFO] INSTALL_MANAGER: Current executable filepath: /home/specter/Escritorio/proyects/Stark/linkdist/Stark-Link
+2026-03-29 17:41:29,697 [INFO] INSTALL_MANAGER: Current path: /home/specter/Escritorio/proyects/Stark/linkdist/Stark-Link | Secure path: /home/specter/Escritorio/proyects/Stark/linkdist/Stark-Link
+2026-03-29 17:41:29,697 [INFO] INSTALL_MANAGER: Installation start finished
+2026-03-29 17:41:29,697 [INFO] SYSTEM: Starting system execution
+2026-03-29 17:41:29,697 [INFO] CORE_MANAGER: Starting core manager
+2026-03-29 17:41:29,719 [INFO] CORE_MANAGER: Available loaded modules: ['CORE_COMMUNICATION_SERVICE']
+2026-03-29 17:41:29,719 [INFO] CORE_MANAGER: Starting core manager modules
+2026-03-29 17:41:29,719 [INFO] CORE_MANAGER: Starting module: CORE_COMMUNICATION_SERVICE
+2026-03-29 17:41:29,720 [INFO] CORE_MANAGER: Starting module: CORE_COMMUNICATION_SERVICE
+2026-03-29 17:41:29,720 [INFO] COMMUNICATION_SERVICE: Starting service
+2026-03-29 17:41:29,720 [INFO] COMMUNICATION_SERVICE: Starting communication architecture layers
+2026-03-29 17:41:29,829 [INFO] TRANSPORT_LAYER: Transport layer initializated
+2026-03-29 17:41:29,830 [INFO] COMMUNICATION_LAYER: Starting Communication layer
+2026-03-29 17:41:29,852 [INFO] COMMUNICATION_LAYER: Modules discovered: ['COMMUNICATION_CLIENT']
+2026-03-29 17:41:29,855 [INFO] COMMUNICATION_LAYER: Loading communication module: COMMUNICATION_CLIENT
+2026-03-29 17:41:29,856 [INFO] COMMUNICATION_CLIENT: Configurating module
+2026-03-29 17:41:29,856 [INFO] COMMUNICATION_CLIENT: Module configurated successfully
+2026-03-29 17:41:29,856 [INFO] COMMUNICATION_CLIENT: Starting module
+2026-03-29 17:41:29,857 [INFO] COMMUNICATION_CLIENT: Starting connection orchestrator
+2026-03-29 17:41:29,857 [INFO] COMMUNICATION_CLIENT: Module successfully started
+2026-03-29 17:41:29,859 [INFO] COMMUNICATION_LAYER: Module COMMUNICATION_CLIENT loaded and started successfully
+2026-03-29 17:41:29,859 [INFO] COMMUNICATION_CLIENT: Querying configurations from: shared.communication_architecture.layers.communication.modules.client
+2026-03-29 17:41:29,860 [INFO] COMMUNICATION_LAYER: Module: COMMUNICATION_CLIENT, loaded successfully
+2026-03-29 17:41:29,860 [INFO] COMMUNICATION_CLIENT: Configurations data: {'SERVER_PROFILES': {'DESCRIPTION': 'It includes a list of ServerProfile instances, with information to search it to establish a connection', 'OPTIONAL': False, 'PRIVATE': False, 'SYMBOLIC_NAME': 'Server profiles', 'SYSTEM_NAME': 'SERVER_PROFILES', 'VALUE': {'DATA_CLASS': True, 'DATA_TYPE': 'list', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': 1, 'NAME': 'Server Collection', 'POSSIBLE_VALUES': [{'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'dict', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': None, 'NAME': 'INTERNET Profile', 'POSSIBLE_VALUES': {'ADDRESSES': {'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'list', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': 1, 'NAME': 'IP List', 'POSSIBLE_VALUES': [{'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'dict', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': None, 'NAME': 'IP Endpoint', 'POSSIBLE_VALUES': {'ADDRESS': [{'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'str', 'DESCRIPTION': 'IPv4 address', 'MAXIMUM_LENGTH': 15, 'MAXIMUM_SIZE': None, 'MINIMUM_LENGTH': 7, 'MINIMUM_SIZE': None, 'NAME': 'IPv4 address', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': '^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$', 'VALUE': '127.0.0.1', '__type__': 'PrimitiveData'}}, {'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'str', 'DESCRIPTION': 'IPv6 address', 'MAXIMUM_LENGTH': 39, 'MAXIMUM_SIZE': None, 'MINIMUM_LENGTH': 2, 'MINIMUM_SIZE': None, 'NAME': 'IPv6 address', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': '^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$', 'VALUE': None, '__type__': 'PrimitiveData'}}, {'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'str', 'DESCRIPTION': 'Domain name', 'MAXIMUM_LENGTH': None, 'MAXIMUM_SIZE': None, 'MINIMUM_LENGTH': None, 'MINIMUM_SIZE': None, 'NAME': 'Domain name', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': '^(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z]{2,}$', 'VALUE': None, '__type__': 'PrimitiveData'}}], 'PORT': [{'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'int', 'DESCRIPTION': 'Internet port on the range from: 1, to: 65,535', 'MAXIMUM_LENGTH': None, 'MAXIMUM_SIZE': 65535, 'MINIMUM_LENGTH': None, 'MINIMUM_SIZE': 1, 'NAME': 'Internet port', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': None, 'VALUE': 24450, '__type__': 'PrimitiveData'}}]}, 'VALUE': {'ADDRESS': '127.0.0.1', 'PORT': 24450}, '__type__': 'ComplexData'}}], 'VALUE': [{'ADDRESS': '127.0.0.1', 'PORT': 24450}], '__type__': 'ComplexData'}}, 'TRANSPORT': ['INTERNET']}, 'VALUE': {'ADDRESSES': [{'ADDRESS': '127.0.0.1', 'PORT': 24450}], 'TRANSPORT': 'INTERNET'}, '__type__': 'ComplexData'}}, {'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'dict', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': None, 'NAME': 'BLUETOOTH Profile', 'POSSIBLE_VALUES': {'ADDRESSES': {'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'list', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': 1, 'NAME': 'BT List', 'POSSIBLE_VALUES': [{'__type__': 'ComplexData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'dict', 'DESCRIPTION': None, 'MAXIMUM_LENGTH': None, 'MINIMUM_LENGTH': None, 'NAME': 'BT Endpoint', 'POSSIBLE_VALUES': {'ADDRESS': [{'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'str', 'DESCRIPTION': 'MAC address', 'MAXIMUM_LENGTH': None, 'MAXIMUM_SIZE': 17, 'MINIMUM_LENGTH': None, 'MINIMUM_SIZE': 17, 'NAME': 'MAC address', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': '^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$', 'VALUE': None, '__type__': 'PrimitiveData'}}], 'PORT': [{'__type__': 'PrimitiveData', 'content': {'DATA_CLASS': True, 'DATA_TYPE': 'int', 'DESCRIPTION': 'Internet port on the range from: 1, to: 65,535', 'MAXIMUM_LENGTH': None, 'MAXIMUM_SIZE': 65535, 'MINIMUM_LENGTH': None, 'MINIMUM_SIZE': 1, 'NAME': 'Internet port', 'POSSIBLE_VALUES': None, 'REGULAR_EXPRESSION': None, 'VALUE': None, '__type__': 'PrimitiveData'}}]}, 'VALUE': None, '__type__': 'ComplexData'}}], 'VALUE': None, '__type__': 'ComplexData'}}, 'TRANSPORT': ['BLUETOOTH']}, 'VALUE': None, '__type__': 'ComplexData'}}], 'VALUE': [{'ADDRESSES': [{'ADDRESS': '127.0.0.1', 'PORT': 24450}], 'TRANSPORT': 'INTERNET'}], '__type__': 'ComplexData'}}}
+2026-03-29 17:41:29,860 [INFO] COMMUNICATION_LAYER: Communication layer loaded successfully
+2026-03-29 17:41:29,861 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:29,861 [INFO] CONTROL_LAYER: Starting Control layer
+2026-03-29 17:41:29,863 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990afb30>
+2026-03-29 17:41:29,863 [INFO] CONTROL_LAYER: Loading control modules
+2026-03-29 17:41:29,864 [INFO] CONTROL_LAYER: Loading available modules
+2026-03-29 17:41:29,864 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:29,864 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:29,865 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:29,867 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:29,875 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:29,876 [INFO] CONTROL_LAYER: Instanciating module: SYSTEM_SHELL_PASSIVE
+2026-03-29 17:41:29,876 [INFO] CONTROL_LAYER: Loading communication module: SYSTEM_SHELL_PASSIVE
+2026-03-29 17:41:29,879 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:29,880 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:29,881 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:29,881 [INFO] CONTROL_SYSTEM_SHELL_PASSIVE: Module configured successfully.
+2026-03-29 17:41:29,881 [INFO] CONTROL_SYSTEM_SHELL_PASSIVE: Starting SHELL_PASSIVE module...
+2026-03-29 17:41:29,882 [INFO] CONTROL_SYSTEM_SHELL_PASSIVE: Passive Shell listener started.
+2026-03-29 17:41:29,882 [INFO] CONTROL_SYSTEM_SHELL_PASSIVE: Module started successfully.
+2026-03-29 17:41:29,883 [INFO] CONTROL_LAYER: Module SYSTEM_SHELL_PASSIVE loaded and started successfully
+2026-03-29 17:41:29,883 [INFO] CONTROL_LAYER: Module: SYSTEM_SHELL_PASSIVE, loaded successfully
+2026-03-29 17:41:29,883 [INFO] CONTROL_LAYER: Modules loaded successfully
+2026-03-29 17:41:29,883 [INFO] CONTROL_LAYER: Control modules loaded
+2026-03-29 17:41:29,883 [INFO] CONTROL_LAYER: Control layer initializated successfully
+2026-03-29 17:41:29,884 [INFO] CORE_MANAGER: Module start result: True
+2026-03-29 17:41:29,884 [INFO] CORE_MANAGER: Finishing core manager start modules
+2026-03-29 17:41:29,884 [INFO] CORE_MANAGER: Stopping core manager
+2026-03-29 17:41:29,884 [INFO] SYSTEM: Starting system stop
+2026-03-29 17:41:29,884 [INFO] SYSTEM: Finishing system stop
+2026-03-29 17:41:29,884 [INFO] SYSTEM: Finishing system execution
+2026-03-29 17:41:29,884 [INFO] SYSTEM: Finishing system start
+2026-03-29 17:41:29,982 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:29,983 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dd2e0>
+2026-03-29 17:41:29,986 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:29,987 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:29,987 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:29,988 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:29,988 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:29,990 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:29,990 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:29,991 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:30,092 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:30,093 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dd370>
+2026-03-29 17:41:30,093 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:30,093 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:30,093 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:30,094 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:30,094 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:30,095 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:30,095 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:30,096 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:30,196 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:30,197 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dd8b0>
+2026-03-29 17:41:30,198 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:30,198 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:30,198 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:30,198 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:30,198 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:30,200 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:30,200 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:30,200 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:30,301 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:30,302 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990ddd90>
+2026-03-29 17:41:30,302 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:30,303 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:30,303 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:30,303 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:30,303 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:30,304 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:30,305 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:30,305 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:30,405 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:30,407 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990de210>
+2026-03-29 17:41:30,407 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:30,407 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:30,407 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:30,408 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:30,408 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:30,410 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:30,410 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:30,410 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:30,511 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:30,513 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990adcd0>
+2026-03-29 17:41:30,513 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:30,513 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:30,513 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:30,514 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:30,514 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:30,515 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:30,515 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:30,516 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:30,616 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:30,618 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990adf70>
+2026-03-29 17:41:30,618 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:30,618 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:30,618 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:30,618 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:30,619 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:30,620 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:30,620 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:30,621 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:30,721 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:30,723 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990de3c0>
+2026-03-29 17:41:30,723 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:30,723 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:30,723 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:30,724 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:30,724 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:30,725 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:30,725 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:30,726 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:30,826 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:30,827 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990de810>
+2026-03-29 17:41:30,827 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:30,828 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:30,828 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:30,828 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:30,828 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:30,829 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:30,829 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:30,830 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:30,930 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:30,932 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dde20>
+2026-03-29 17:41:30,932 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:30,933 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:30,933 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:30,933 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:30,934 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:30,935 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:30,936 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:30,936 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:31,036 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:31,038 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dd970>
+2026-03-29 17:41:31,041 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:31,041 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:31,042 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:31,042 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:31,042 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:31,044 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:31,044 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:31,045 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:31,146 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:31,147 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dd400>
+2026-03-29 17:41:31,147 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:31,148 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:31,148 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:31,148 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:31,149 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:31,150 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:31,151 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:31,151 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:31,252 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:31,254 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dcd70>
+2026-03-29 17:41:31,254 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:31,255 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:31,255 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:31,255 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:31,257 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:31,258 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:31,258 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:31,259 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:31,359 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:31,361 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dc230>
+2026-03-29 17:41:31,361 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:31,362 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:31,362 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:31,362 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:31,362 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:31,364 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:31,364 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:31,364 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:31,465 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:31,466 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990de180>
+2026-03-29 17:41:31,467 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:31,467 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:31,467 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:31,467 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:31,468 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:31,469 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:31,469 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:31,469 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:31,570 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:31,571 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990deba0>
+2026-03-29 17:41:31,572 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:31,572 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:31,572 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:31,572 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:31,573 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:31,574 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:31,574 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:31,575 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:31,675 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:31,677 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990def90>
+2026-03-29 17:41:31,677 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:31,678 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:31,678 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:31,678 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:31,678 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:31,680 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:31,680 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:31,680 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:31,781 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:31,782 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bea20>
+2026-03-29 17:41:31,783 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:31,784 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:31,784 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:31,784 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:31,785 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:31,789 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:31,789 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:31,790 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:31,891 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:31,893 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bc5f0>
+2026-03-29 17:41:31,893 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:31,893 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:31,893 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:31,894 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:31,894 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:31,895 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:31,895 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:31,898 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:31,999 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:32,000 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bc620>
+2026-03-29 17:41:32,001 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:32,001 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:32,001 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:32,001 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:32,001 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:32,005 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:32,005 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:32,005 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:32,106 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:32,107 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bcad0>
+2026-03-29 17:41:32,107 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:32,107 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:32,108 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:32,108 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:32,108 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:32,109 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:32,109 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:32,110 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:32,210 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:32,211 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bcf50>
+2026-03-29 17:41:32,212 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:32,212 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:32,212 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:32,212 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:32,212 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:32,213 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:32,214 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:32,214 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:32,314 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:32,316 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bd3d0>
+2026-03-29 17:41:32,316 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:32,316 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:32,316 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:32,317 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:32,317 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:32,318 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:32,318 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:32,318 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:32,419 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:32,420 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bd850>
+2026-03-29 17:41:32,420 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:32,421 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:32,421 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:32,421 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:32,421 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:32,423 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:32,423 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:32,423 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:32,524 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:32,525 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bdd30>
+2026-03-29 17:41:32,525 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:32,525 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:32,526 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:32,526 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:32,526 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:32,527 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:32,528 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:32,528 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:32,628 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:32,630 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dee10>
+2026-03-29 17:41:32,630 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:32,630 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:32,630 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:32,630 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:32,631 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:32,632 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:32,632 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:32,632 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:32,733 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:32,734 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990def60>
+2026-03-29 17:41:32,734 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:32,734 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:32,734 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:32,735 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:32,735 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:32,736 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:32,736 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:32,736 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:32,837 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:32,838 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dec30>
+2026-03-29 17:41:32,839 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:32,839 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:32,839 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:32,839 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:32,840 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:32,841 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:32,841 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:32,841 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:32,942 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:32,943 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990de540>
+2026-03-29 17:41:32,943 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:32,944 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:32,944 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:32,944 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:32,944 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:32,945 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:32,945 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:32,946 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:33,046 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:33,047 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dc3e0>
+2026-03-29 17:41:33,048 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:33,048 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:33,048 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:33,048 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:33,048 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:33,049 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:33,050 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:33,050 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:33,150 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:33,152 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dce30>
+2026-03-29 17:41:33,152 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:33,152 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:33,152 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:33,152 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:33,153 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:33,154 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:33,154 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:33,154 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:33,255 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:33,256 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dd5b0>
+2026-03-29 17:41:33,256 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:33,256 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:33,257 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:33,257 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:33,257 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:33,258 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:33,258 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:33,259 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:33,359 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:33,360 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dd1f0>
+2026-03-29 17:41:33,361 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:33,361 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:33,361 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:33,361 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:33,361 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:33,362 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:33,363 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:33,363 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:33,463 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:33,465 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dd790>
+2026-03-29 17:41:33,465 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:33,465 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:33,465 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:33,465 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:33,466 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:33,467 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:33,467 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:33,467 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:33,568 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:33,569 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990ae570>
+2026-03-29 17:41:33,569 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:33,569 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:33,569 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:33,570 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:33,570 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:33,571 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:33,571 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:33,572 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:33,672 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:33,673 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990ad730>
+2026-03-29 17:41:33,674 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:33,674 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:33,674 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:33,674 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:33,674 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:33,678 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:33,678 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:33,678 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:33,779 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:33,780 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990ae390>
+2026-03-29 17:41:33,781 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:33,781 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:33,781 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:33,781 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:33,781 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:33,783 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:33,783 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:33,783 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:33,884 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:33,885 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990be120>
+2026-03-29 17:41:33,885 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:33,885 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:33,886 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:33,886 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:33,886 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:33,887 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:33,887 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:33,888 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:33,988 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:33,990 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bddc0>
+2026-03-29 17:41:33,990 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:33,990 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:33,990 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:33,991 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:33,991 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:33,992 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:33,992 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:33,993 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:34,093 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:34,094 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bde50>
+2026-03-29 17:41:34,095 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:34,095 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:34,095 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:34,095 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:34,095 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:34,096 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:34,097 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:34,097 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:34,197 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:34,199 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bda60>
+2026-03-29 17:41:34,199 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:34,199 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:34,199 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:34,200 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:34,200 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:34,201 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:34,201 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:34,201 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:34,302 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:34,303 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bd5b0>
+2026-03-29 17:41:34,303 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:34,304 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:34,304 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:34,304 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:34,304 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:34,305 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:34,305 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:34,306 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:34,406 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:34,408 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bd130>
+2026-03-29 17:41:34,408 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:34,408 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:34,408 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:34,408 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:34,408 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:34,409 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:34,410 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:34,410 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:34,511 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:34,512 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bccb0>
+2026-03-29 17:41:34,512 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:34,512 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:34,512 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:34,513 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:34,513 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:34,514 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:34,514 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:34,514 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:34,615 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:34,616 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bc800>
+2026-03-29 17:41:34,617 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:34,617 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:34,617 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:34,617 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:34,617 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:34,618 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:34,619 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:34,619 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:34,719 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:34,721 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990be150>
+2026-03-29 17:41:34,721 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:34,721 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:34,721 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:34,722 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:34,722 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:34,723 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:34,723 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:34,724 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:34,824 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:34,826 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bee40>
+2026-03-29 17:41:34,826 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:34,826 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:34,826 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:34,826 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:34,827 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:34,828 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:34,828 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:34,828 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:34,929 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:34,930 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bf230>
+2026-03-29 17:41:34,931 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:34,931 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:34,931 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:34,931 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:34,932 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:34,932 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:34,933 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:34,933 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:35,034 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:35,035 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990adfa0>
+2026-03-29 17:41:35,035 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:35,035 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:35,035 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:35,036 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:35,036 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:35,038 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:35,038 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:35,038 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:35,139 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:35,140 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990adca0>
+2026-03-29 17:41:35,140 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:35,140 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:35,140 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:35,141 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:35,141 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:35,142 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:35,142 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:35,143 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:35,243 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:35,245 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990ddcd0>
+2026-03-29 17:41:35,245 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:35,246 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:35,246 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:35,246 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:35,246 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:35,247 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:35,248 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:35,248 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:35,349 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:35,351 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990de7e0>
+2026-03-29 17:41:35,351 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:35,351 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:35,352 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:35,352 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:35,352 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:35,355 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:35,355 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:35,356 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:35,457 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:35,459 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990de0c0>
+2026-03-29 17:41:35,459 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:35,459 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:35,459 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:35,459 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:35,460 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:35,462 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:35,462 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:35,462 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:35,563 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:35,565 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990ddc10>
+2026-03-29 17:41:35,565 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:35,565 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:35,565 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:35,565 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:35,565 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:35,566 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:35,567 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:35,567 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:35,667 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:35,669 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dd760>
+2026-03-29 17:41:35,669 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:35,669 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:35,669 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:35,669 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:35,670 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:35,671 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:35,671 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:35,671 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:35,772 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:35,773 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dcf20>
+2026-03-29 17:41:35,774 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:35,774 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:35,774 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:35,774 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:35,774 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:35,776 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:35,776 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:35,776 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:35,877 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:35,878 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dc410>
+2026-03-29 17:41:35,878 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:35,878 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:35,879 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:35,879 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:35,879 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:35,880 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:35,880 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:35,881 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:35,981 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:35,982 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dc530>
+2026-03-29 17:41:35,983 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:35,983 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:35,983 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:35,983 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:35,983 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:35,984 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:35,985 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:35,985 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:36,085 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:36,087 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990de9c0>
+2026-03-29 17:41:36,087 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:36,087 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:36,087 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:36,088 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:36,088 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:36,089 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:36,089 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:36,089 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:36,190 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:36,191 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990def00>
+2026-03-29 17:41:36,191 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:36,191 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:36,192 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:36,192 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:36,192 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:36,193 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:36,194 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:36,194 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:36,294 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:36,296 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bf650>
+2026-03-29 17:41:36,296 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:36,296 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:36,296 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:36,297 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:36,297 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:36,298 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:36,298 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:36,299 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:36,399 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:36,401 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bf2c0>
+2026-03-29 17:41:36,401 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:36,401 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:36,401 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:36,401 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:36,402 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:36,403 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:36,403 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:36,403 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:36,504 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:36,505 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bf350>
+2026-03-29 17:41:36,505 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:36,506 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:36,506 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:36,506 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:36,506 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:36,507 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:36,507 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:36,508 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:36,608 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:36,610 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990be0c0>
+2026-03-29 17:41:36,610 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:36,611 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:36,611 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:36,611 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:36,612 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:36,613 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:36,613 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:36,613 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:36,714 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:36,715 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bec00>
+2026-03-29 17:41:36,716 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:36,716 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:36,716 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:36,716 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:36,716 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:36,717 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:36,718 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:36,718 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:36,818 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:36,820 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bc3b0>
+2026-03-29 17:41:36,820 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:36,821 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:36,821 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:36,821 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:36,822 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:36,823 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:36,823 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:36,824 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:36,924 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:36,926 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bf7a0>
+2026-03-29 17:41:36,926 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:36,926 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:36,926 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:36,927 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:36,927 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:36,928 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:36,928 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:36,928 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:37,029 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:37,030 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bc530>
+2026-03-29 17:41:37,031 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:37,031 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:37,031 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:37,031 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:37,031 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:37,032 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:37,033 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:37,033 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:37,133 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:37,135 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bc9e0>
+2026-03-29 17:41:37,135 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:37,135 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:37,135 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:37,135 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:37,136 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:37,137 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:37,137 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:37,137 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:37,238 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:37,239 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bce60>
+2026-03-29 17:41:37,239 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:37,240 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:37,240 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:37,240 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:37,240 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:37,241 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:37,241 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:37,242 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:37,342 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:37,343 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bd940>
+2026-03-29 17:41:37,344 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:37,344 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:37,344 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:37,344 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:37,345 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:37,346 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:37,346 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:37,348 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:37,448 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:37,450 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990ded80>
+2026-03-29 17:41:37,450 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:37,450 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:37,450 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:37,450 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:37,451 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:37,452 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:37,452 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:37,452 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:37,553 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:37,556 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990df020>
+2026-03-29 17:41:37,559 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:37,560 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:37,560 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:37,561 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:37,561 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:37,562 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:37,562 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:37,563 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:37,663 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:37,665 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dee10>
+2026-03-29 17:41:37,665 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:37,665 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:37,665 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:37,665 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:37,666 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:37,667 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:37,667 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:37,667 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:37,768 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:37,769 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990def60>
+2026-03-29 17:41:37,769 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:37,769 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:37,770 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:37,770 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:37,770 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:37,771 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:37,771 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:37,772 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:37,872 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:37,873 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dec30>
+2026-03-29 17:41:37,874 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:37,874 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:37,874 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:37,874 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:37,875 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:37,876 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:37,876 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:37,876 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:37,977 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:37,978 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990de540>
+2026-03-29 17:41:37,979 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:37,979 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:37,979 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:37,979 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:37,980 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:37,981 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:37,981 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:37,982 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:38,083 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:38,084 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dc3e0>
+2026-03-29 17:41:38,084 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:38,084 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:38,085 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:38,085 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:38,085 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:38,086 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:38,086 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:38,087 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:38,188 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:38,189 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dce30>
+2026-03-29 17:41:38,190 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:38,190 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:38,190 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:38,190 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:38,190 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:38,191 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:38,191 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:38,192 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:38,292 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:38,294 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dd5b0>
+2026-03-29 17:41:38,294 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:38,294 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:38,294 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:38,294 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:38,294 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:38,295 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:38,296 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:38,296 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:38,396 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:38,398 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990ad640>
+2026-03-29 17:41:38,398 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:38,398 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:38,398 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:38,398 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:38,399 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:38,400 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:38,400 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:38,400 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:38,501 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:38,502 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990adca0>
+2026-03-29 17:41:38,502 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:38,502 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:38,503 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:38,503 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:38,503 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:38,504 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:38,505 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:38,506 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:38,606 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:38,608 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990afaa0>
+2026-03-29 17:41:38,608 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:38,608 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:38,608 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:38,609 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:38,609 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:38,610 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:38,610 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:38,611 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:38,712 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:38,713 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990be240>
+2026-03-29 17:41:38,713 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:38,714 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:38,714 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:38,714 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:38,715 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:38,716 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:38,716 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:38,716 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:38,817 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:38,818 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bdd90>
+2026-03-29 17:41:38,818 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:38,818 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:38,818 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:38,819 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:38,819 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:38,820 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:38,820 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:38,820 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:38,921 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:38,922 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bde80>
+2026-03-29 17:41:38,922 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:38,923 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:38,923 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:38,923 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:38,923 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:38,924 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:38,925 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:38,925 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:39,025 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:39,027 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bdd30>
+2026-03-29 17:41:39,027 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:39,027 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:39,027 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:39,028 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:39,028 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:39,029 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:39,029 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:39,029 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:39,130 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:39,131 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bdca0>
+2026-03-29 17:41:39,132 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:39,132 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:39,132 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:39,132 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:39,132 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:39,134 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:39,134 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:39,134 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:39,235 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:39,236 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bd820>
+2026-03-29 17:41:39,237 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:39,237 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:39,237 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:39,238 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:39,238 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:39,239 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:39,239 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:39,240 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:39,340 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:39,342 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bd3a0>
+2026-03-29 17:41:39,342 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:39,342 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:39,342 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:39,342 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:39,343 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:39,344 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:39,344 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:39,344 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:39,445 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:39,447 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bcf20>
+2026-03-29 17:41:39,447 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:39,447 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:39,447 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:39,447 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:39,447 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:39,448 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:39,449 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:39,449 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:39,550 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:39,551 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bcaa0>
+2026-03-29 17:41:39,551 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:39,551 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:39,551 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:39,552 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:39,552 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:39,553 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:39,553 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:39,554 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:39,654 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:39,656 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bc3e0>
+2026-03-29 17:41:39,656 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:39,656 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:39,656 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:39,656 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:39,657 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:39,658 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:39,658 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:39,658 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:39,758 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:39,760 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bef00>
+2026-03-29 17:41:39,760 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:39,760 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:39,760 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:39,760 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:39,761 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:39,762 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:39,762 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:39,763 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:39,863 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:39,865 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990ae240>
+2026-03-29 17:41:39,865 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:39,865 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:39,866 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:39,866 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:39,866 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:39,867 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:39,867 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:39,868 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:39,968 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:39,969 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990af890>
+2026-03-29 17:41:39,970 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:39,970 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:39,970 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:39,970 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:39,971 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:39,972 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:39,972 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:39,972 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:40,073 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:40,074 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990ddfa0>
+2026-03-29 17:41:40,074 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:40,075 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:40,075 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:40,075 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:40,075 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:40,076 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:40,077 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:40,077 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:40,177 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:40,179 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990de6c0>
+2026-03-29 17:41:40,179 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:40,179 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:40,180 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:40,180 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:40,180 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:40,181 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:40,181 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:40,182 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:40,282 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:40,284 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990de6f0>
+2026-03-29 17:41:40,284 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:40,284 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:40,284 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:40,284 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:40,285 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:40,286 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:40,286 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:40,286 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:40,387 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:40,388 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990de7b0>
+2026-03-29 17:41:40,388 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:40,389 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:40,389 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:40,389 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:40,389 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:40,390 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:40,392 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:40,392 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:40,493 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:40,494 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990de1b0>
+2026-03-29 17:41:40,494 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:40,494 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:40,495 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:40,495 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:40,495 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:40,496 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:40,496 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:40,497 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:40,597 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:40,598 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990ddd00>
+2026-03-29 17:41:40,599 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:40,599 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:40,599 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:40,599 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:40,599 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:40,600 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:40,601 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:40,601 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:40,701 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:40,703 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dd850>
+2026-03-29 17:41:40,703 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:40,703 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:40,703 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:40,704 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:40,704 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:40,705 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:40,705 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:40,705 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:40,806 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:40,807 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dd2b0>
+2026-03-29 17:41:40,807 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:40,808 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:40,808 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:40,808 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:40,808 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:40,809 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:40,809 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:40,810 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:40,910 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:40,912 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dee70>
+2026-03-29 17:41:40,912 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:40,912 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:40,912 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:40,912 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:40,913 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:40,913 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:40,914 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:40,914 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:41,015 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:41,016 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990ddc70>
+2026-03-29 17:41:41,017 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:41,017 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:41,017 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:41,017 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:41,017 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:41,019 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:41,019 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:41,019 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:41,120 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:41,121 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bfa40>
+2026-03-29 17:41:41,122 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:41,122 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:41,122 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:41,122 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:41,122 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:41,123 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:41,124 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:41,124 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:41,225 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:41,226 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bf290>
+2026-03-29 17:41:41,226 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:41,226 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:41,226 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:41,227 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:41,227 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:41,228 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:41,228 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:41,228 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:41,329 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:41,330 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bf380>
+2026-03-29 17:41:41,331 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:41,331 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:41,331 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:41,331 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:41,331 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:41,332 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:41,333 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:41,333 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:41,433 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:41,435 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bf230>
+2026-03-29 17:41:41,435 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:41,435 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:41,435 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:41,436 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:41,436 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:41,437 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:41,438 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:41,438 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:41,539 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:41,540 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bf1a0>
+2026-03-29 17:41:41,540 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:41,540 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:41,540 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:41,541 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:41,541 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:41,542 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:41,542 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:41,542 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:41,643 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:41,644 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bee10>
+2026-03-29 17:41:41,645 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:41,645 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:41,645 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:41,645 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:41,645 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:41,646 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:41,647 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:41,647 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:41,747 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:41,749 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bc470>
+2026-03-29 17:41:41,749 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:41,749 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:41,749 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:41,750 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:41,750 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:41,751 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:41,751 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:41,752 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:41,852 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:41,854 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bc710>
+2026-03-29 17:41:41,854 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:41,855 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:41,855 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:41,855 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:41,855 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:41,856 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:41,857 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:41,857 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:41,958 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:41,959 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bcbf0>
+2026-03-29 17:41:41,959 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:41,959 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:41,959 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:41,960 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:41,960 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:41,961 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:41,961 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:41,961 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:42,062 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:42,064 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bd070>
+2026-03-29 17:41:42,064 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:42,064 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:42,064 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:42,064 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:42,065 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:42,066 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:42,066 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:42,066 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:42,167 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:42,168 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990be2a0>
+2026-03-29 17:41:42,168 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:42,168 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:42,168 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:42,169 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:42,169 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:42,170 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:42,171 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:42,171 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:42,272 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:42,273 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dee40>
+2026-03-29 17:41:42,273 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:42,273 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:42,273 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:42,274 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:42,274 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:42,275 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:42,275 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:42,275 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:42,376 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:42,377 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dfd10>
+2026-03-29 17:41:42,378 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:42,378 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:42,378 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:42,378 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:42,378 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:42,379 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:42,380 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:42,380 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:42,481 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:42,482 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990debd0>
+2026-03-29 17:41:42,482 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:42,482 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:42,483 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:42,483 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:42,483 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:42,484 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:42,484 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:42,485 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:42,585 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:42,587 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990de780>
+2026-03-29 17:41:42,587 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:42,587 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:42,588 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:42,588 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:42,588 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:42,589 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:42,590 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:42,590 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:42,691 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:42,692 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dc590>
+2026-03-29 17:41:42,692 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:42,692 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:42,693 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:42,693 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:42,693 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:42,694 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:42,695 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:42,695 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:42,795 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:42,797 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dd0a0>
+2026-03-29 17:41:42,797 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:42,798 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:42,798 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:42,798 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:42,798 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:42,800 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:42,800 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:42,800 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:42,901 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:42,903 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dd5e0>
+2026-03-29 17:41:42,903 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:42,903 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:42,903 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:42,903 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:42,904 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:42,905 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:42,905 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:42,905 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:43,006 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:43,008 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dd220>
+2026-03-29 17:41:43,009 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:43,009 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:43,009 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:43,009 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:43,010 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:43,011 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:43,011 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:43,012 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:43,112 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:43,114 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dd7c0>
+2026-03-29 17:41:43,115 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:43,115 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:43,115 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:43,115 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:43,116 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:43,117 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:43,117 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:43,118 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:43,218 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:43,220 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990ad2b0>
+2026-03-29 17:41:43,220 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:43,224 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:43,224 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:43,224 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:43,229 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:43,234 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:43,235 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:43,235 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:43,336 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:43,337 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990af890>
+2026-03-29 17:41:43,338 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:43,338 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:43,338 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:43,338 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:43,339 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:43,340 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:43,340 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:43,340 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:43,441 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:43,443 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990af7a0>
+2026-03-29 17:41:43,443 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:43,443 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:43,444 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:43,444 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:43,444 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:43,446 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:43,446 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:43,446 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:43,547 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:43,548 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bf590>
+2026-03-29 17:41:43,549 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:43,549 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:43,549 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:43,549 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:43,550 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:43,551 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:43,551 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:43,552 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:43,652 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:43,654 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bddc0>
+2026-03-29 17:41:43,654 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:43,654 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:43,654 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:43,655 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:43,655 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:43,657 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:43,658 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:43,659 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:43,760 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:43,761 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bdeb0>
+2026-03-29 17:41:43,761 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:43,761 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:43,762 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:43,762 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:43,762 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:43,765 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:43,765 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:43,766 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:43,866 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:43,868 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bd940>
+2026-03-29 17:41:43,869 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:43,869 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:43,869 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:43,869 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:43,871 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:43,872 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:43,873 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:43,873 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:43,974 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:43,976 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bdb20>
+2026-03-29 17:41:43,976 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:43,976 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:43,976 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:43,976 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:43,977 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:43,978 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:43,978 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:43,978 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:44,079 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:44,080 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bd520>
+2026-03-29 17:41:44,080 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:44,080 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:44,080 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:44,081 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:44,081 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:44,082 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:44,082 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:44,082 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:44,183 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:44,184 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bd0a0>
+2026-03-29 17:41:44,184 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:44,185 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:44,185 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:44,185 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:44,185 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:44,186 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:44,186 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:44,187 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:44,287 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:44,288 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bcc20>
+2026-03-29 17:41:44,289 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:44,289 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:44,289 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:44,289 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:44,289 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:44,290 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:44,290 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:44,291 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:44,391 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:44,393 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bc770>
+2026-03-29 17:41:44,393 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:44,393 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:44,393 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:44,394 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:44,394 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:44,395 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:44,395 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:44,396 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:44,496 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:44,497 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990bc2f0>
+2026-03-29 17:41:44,498 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:44,498 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:44,498 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:44,498 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:44,498 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:44,499 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:44,500 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:44,500 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:44,600 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:44,602 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990be330>
+2026-03-29 17:41:44,602 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:44,602 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:44,602 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:44,602 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:44,603 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:44,604 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:44,604 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:44,604 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:44,705 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:44,706 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990ad880>
+2026-03-29 17:41:44,706 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:44,707 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:44,707 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:44,707 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:44,707 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:44,708 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:44,708 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:44,709 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:44,809 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:44,810 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990adfa0>
+2026-03-29 17:41:44,811 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:44,811 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:44,811 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:44,811 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:44,811 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:44,812 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:44,812 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:44,813 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:44,913 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:44,915 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dd820>
+2026-03-29 17:41:44,915 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:44,915 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:44,915 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:44,915 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:44,916 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:44,917 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:44,917 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:44,918 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:45,018 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:45,020 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990de720>
+2026-03-29 17:41:45,020 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:45,020 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:45,020 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:45,020 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:45,021 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:45,022 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:45,022 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:45,022 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:45,123 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:45,124 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dc3e0>
+2026-03-29 17:41:45,125 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:45,125 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:45,125 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:45,125 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:45,126 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:45,127 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:45,127 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:45,127 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:45,228 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:45,229 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990de540>
+2026-03-29 17:41:45,229 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:45,229 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:45,230 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:45,230 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:45,230 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:45,231 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:45,231 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:45,231 [INFO] COMMUNICATION_CLIENT: Connection result: False
+2026-03-29 17:41:45,332 [INFO] COMMUNICATION_CLIENT: Requesting connection with address: 127.0.0.1:24450
+2026-03-29 17:41:45,333 [INFO] TRANSPORT_LAYER: Transport layer connecting with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x72ec990dec30>
+2026-03-29 17:41:45,334 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-29 17:41:45,334 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-29 17:41:45,334 [INFO] TRANSPORT_TCP_IP: Connecting module
+2026-03-29 17:41:45,334 [INFO] TRANSPORT_TCP_IP: Connecting with IP: 2, with TCP
+2026-03-29 17:41:45,335 [ERROR] TRANSPORT_TCP_IP: Error on the connection: [Errno 111] Connection refused
+2026-03-29 17:41:45,336 [INFO] TRANSPORT_LAYER: Connection result: False
+2026-03-29 17:41:45,336 [ERROR] TRANSPORT_LAYER: Connection result: ERROR
+2026-03-29 17:41:45,337 [INFO] COMMUNICATION_CLIENT: Connection result: False

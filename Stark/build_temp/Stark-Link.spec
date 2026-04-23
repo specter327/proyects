@@ -2,11 +2,11 @@
 
 
 a = Analysis(
-    ['C:\\Users\\Desktop\\Desktop\\proyects\\Stark\\build_temp\\Stark-Link.py'],
-    pathex=['C:\\Users\\Desktop\\Desktop\\proyects\\Stark\\build_temp'],
+    ['/home/specter/Escritorio/proyects/Stark/build_temp/Stark-Link.py'],
+    pathex=['/home/specter/Escritorio/proyects/Stark/build_temp'],
     binaries=[],
-    datas=[('C:\\Users\\Desktop\\Desktop\\proyects\\Stark\\build_temp\\system', 'system'), ('C:\\Users\\Desktop\\Desktop\\proyects\\Stark\\build_temp\\shared', 'shared')],
-    hiddenimports=['configurations', 'ctypes', 'datapackage', 'datavalue', 'importlib', 'inspect', 'platform', 'queue', 'random', 'shutil', 'socket', 'subprocess', 'threading', 'traceback', 'uuid', 'windows', 'winreg'],
+    datas=[('/home/specter/Escritorio/proyects/Stark/build_temp/system', 'system'), ('/home/specter/Escritorio/proyects/Stark/build_temp/shared', 'shared')],
+    hiddenimports=['configurations', 'ctypes', 'datapackage', 'datavalue', 'importlib', 'inspect', 'platform', 'queue', 'random', 'shutil', 'socket', 'subprocess', 'threading', 'traceback', 'uuid', 'windows'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -35,6 +35,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    version='C:\\Users\\Desktop\\Desktop\\proyects\\Stark\\build_temp\\version.txt',
-    icon=['C:\\Users\\Desktop\\Desktop\\proyects\\Stark\\application\\link\\WindowsHealthLogo.ico'],
+    icon=['/home/specter/Escritorio/proyects/Stark/application/link/WindowsHealthLogo.ico'],
 )

@@ -74,6 +74,7 @@ class VirtualFileSystem(ABC):
         source = self.query("PROCESS_SOURCE_FILEPATH")
         target = self.query("SECURE_EXECUTABLE_FILEPATH")
 
+        print(f"Flag: {flag} | Source: {source} | Target: {target}")
         print(f"[VirtualFileSystem] Flag: {flag} | Exists: {os.path.exists(flag)}")
         print(f"[VirtualFileSystem] Source: {source} | Exists: {os.path.exists(source)}")
         print(f"[VirtualFileSystem] Target: {target} | Exists: {os.path.exists(target)}")

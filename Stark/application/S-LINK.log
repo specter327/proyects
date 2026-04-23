@@ -1,0 +1,1169 @@
+2026-03-16 02:15:11,164 [INFO] TRANSPORT_LAYER: Transport layer initializated
+2026-03-16 02:15:11,165 [INFO] COMMUNICATION_LAYER: Starting Communication layer
+2026-03-16 02:15:11,676 [INFO] COMMUNICATION_LAYER: Modules discovered: ['COMMUNICATION_CLIENT']
+2026-03-16 02:15:11,678 [INFO] COMMUNICATION_LAYER: Loading communication module: COMMUNICATION_CLIENT
+2026-03-16 02:15:11,679 [INFO] COMMUNICATION_CLIENT: Configurating module
+2026-03-16 02:15:11,679 [INFO] COMMUNICATION_CLIENT: Module configurated successfully
+2026-03-16 02:15:11,679 [INFO] COMMUNICATION_CLIENT: Starting module
+2026-03-16 02:15:11,680 [INFO] COMMUNICATION_CLIENT: Starting connection orchestrator
+2026-03-16 02:15:11,680 [INFO] COMMUNICATION_CLIENT: Module successfully started
+2026-03-16 02:15:11,680 [INFO] COMMUNICATION_LAYER: Module COMMUNICATION_CLIENT loaded and started successfully
+2026-03-16 02:15:11,680 [INFO] COMMUNICATION_CLIENT: Querying configurations from: shared.communication_architecture.layers.communication.modules.client
+2026-03-16 02:15:11,680 [INFO] COMMUNICATION_LAYER: Module: COMMUNICATION_CLIENT, loaded successfully
+2026-03-16 02:15:11,681 [INFO] COMMUNICATION_LAYER: Communication layer loaded successfully
+2026-03-16 02:15:11,681 [INFO] COMMUNICATION_CLIENT: Configurations data: {}
+2026-03-16 02:15:11,681 [INFO] CONTROL_LAYER: Starting Control layer
+2026-03-16 02:15:11,681 [INFO] CONTROL_LAYER: Loading control modules
+2026-03-16 02:15:11,681 [INFO] CONTROL_LAYER: Loading available modules
+2026-03-16 02:15:12,010 [INFO] CONTROL_LAYER: Instanciating module: SYSTEM_SHELL_PASSIVE
+2026-03-16 02:15:12,011 [INFO] CONTROL_LAYER: Loading communication module: SYSTEM_SHELL_PASSIVE
+2026-03-16 02:15:12,012 [INFO] CONTROL_SYSTEM_SHELL_PASSIVE: Module configured successfully.
+2026-03-16 02:15:12,012 [INFO] CONTROL_SYSTEM_SHELL_PASSIVE: Starting SHELL_PASSIVE module...
+2026-03-16 02:15:12,013 [INFO] CONTROL_SYSTEM_SHELL_PASSIVE: Passive Shell listener started.
+2026-03-16 02:15:12,013 [INFO] CONTROL_SYSTEM_SHELL_PASSIVE: Module started successfully.
+2026-03-16 02:15:12,013 [INFO] CONTROL_LAYER: Module SYSTEM_SHELL_PASSIVE loaded and started successfully
+2026-03-16 02:15:12,013 [INFO] CONTROL_LAYER: Module: SYSTEM_SHELL_PASSIVE, loaded successfully
+2026-03-16 02:15:12,013 [INFO] CONTROL_LAYER: Instanciating module: SYSTEM_SHELL_ACTIVE
+2026-03-16 02:15:12,014 [INFO] CONTROL_LAYER: Loading communication module: SYSTEM_SHELL_ACTIVE
+2026-03-16 02:15:12,014 [INFO] CONTROL_SYSTEM_SHELL_ACTIVE_ACTIVE: Starting SHELL_ACTIVE module (Operator Mode)...
+2026-03-16 02:15:12,015 [INFO] CONTROL_LAYER: Module SYSTEM_SHELL_ACTIVE loaded and started successfully
+2026-03-16 02:15:12,015 [INFO] CONTROL_LAYER: Module: SYSTEM_SHELL_ACTIVE, loaded successfully
+2026-03-16 02:15:12,015 [INFO] CONTROL_LAYER: Modules loaded successfully
+2026-03-16 02:15:12,015 [INFO] CONTROL_LAYER: Control modules loaded
+2026-03-16 02:15:12,015 [INFO] CONTROL_LAYER: Control layer initializated successfully
+2026-03-16 02:15:12,016 [INFO] TRANSPORT_LAYER: Transport layer receiving connection with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x7b7f953bea80>
+2026-03-16 02:15:12,017 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-16 02:15:12,017 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-16 02:15:12,017 [INFO] TRANSPORT_TCP_IP: Receiving connection with the module
+2026-03-16 02:15:12,018 [INFO] TRANSPORT_TCP_IP: Starting receiver connections routine
+2026-03-16 02:15:12,018 [INFO] TRANSPORT_LAYER: Connection (receive) registered with the identifier: 1
+2026-03-16 02:15:12,019 [INFO] TRANSPORT_TCP_IP: Receiving connections of type: 2, with TCP
+2026-03-16 02:15:12,020 [INFO] TRANSPORT_TCP_IP: Successfully binded the server
+2026-03-16 02:15:12,020 [INFO] TRANSPORT_TCP_IP: Starting receive connections process
+2026-03-16 02:15:13,021 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:14,022 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:15,024 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:16,025 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:17,025 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:18,027 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:19,029 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:20,030 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:21,032 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:22,034 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:23,035 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:24,037 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:25,039 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:26,040 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:27,042 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:28,043 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:29,045 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:30,046 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:31,047 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:32,049 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:33,051 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:34,053 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:35,055 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:36,056 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:37,058 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:38,060 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:39,062 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:40,063 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:41,065 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:42,067 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:43,068 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:44,070 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:45,072 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:46,074 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:47,074 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:48,076 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:49,078 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:50,080 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:51,082 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:52,083 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:53,085 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:54,087 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:55,088 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:56,090 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:57,092 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:58,093 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:15:59,095 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:00,096 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:01,098 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:02,099 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:03,101 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:04,103 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:05,104 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:06,104 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:07,106 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:08,107 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:09,107 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:10,108 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:11,109 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:12,110 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:13,111 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:14,112 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:15,113 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:15,896 [INFO] TRANSPORT_TCP_IP: Connection received from the remote address: ('127.0.0.1', 60822)
+2026-03-16 02:16:15,896 [INFO] TRANSPORT_TCP_IP: Establishing the new connection (socket) on the module
+2026-03-16 02:16:15,896 [INFO] TRANSPORT_TCP_IP: Starting data receiver routine
+2026-03-16 02:16:15,942 [INFO] TRANSPORT_TCP_IP: Total new data append: 455
+2026-03-16 02:16:15,946 [INFO] COMMUNICATION_LAYER: Creating session for connection: 1 with role: ACTIVE
+2026-03-16 02:16:15,947 [INFO] SESSION_LAYER: Starting session layer
+2026-03-16 02:16:15,947 [INFO] SESSION_LAYER: Instanciating Protection Layer
+2026-03-16 02:16:15,947 [INFO] SESSION_LAYER: Configurating Protection Layer
+2026-03-16 02:16:15,947 [INFO] SESSION_LAYER: Starting Protection Layer
+2026-03-16 02:16:16,034 [INFO] PROTECTION_LAYER: Protection layer initializated
+2026-03-16 02:16:16,035 [INFO] SESSION_LAYER: Negotiating Protection Layer
+2026-03-16 02:16:16,036 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,037 [INFO] PROTECTION_LAYER: Starting negotation with role: ACTIVE, with the connection: 1
+2026-03-16 02:16:16,038 [INFO] TRANSPORT_LAYER: Data received: b'G', with length: 1, from the connection: 1
+2026-03-16 02:16:16,039 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,039 [INFO] TRANSPORT_LAYER: Data received: b'E', with length: 1, from the connection: 1
+2026-03-16 02:16:16,039 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,040 [INFO] TRANSPORT_LAYER: Data received: b'T', with length: 1, from the connection: 1
+2026-03-16 02:16:16,040 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,040 [INFO] TRANSPORT_LAYER: Data received: b' ', with length: 1, from the connection: 1
+2026-03-16 02:16:16,041 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,041 [INFO] TRANSPORT_LAYER: Data received: b'/', with length: 1, from the connection: 1
+2026-03-16 02:16:16,041 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,042 [INFO] TRANSPORT_LAYER: Data received: b' ', with length: 1, from the connection: 1
+2026-03-16 02:16:16,042 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,042 [INFO] TRANSPORT_LAYER: Data received: b'H', with length: 1, from the connection: 1
+2026-03-16 02:16:16,042 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,043 [INFO] TRANSPORT_LAYER: Data received: b'T', with length: 1, from the connection: 1
+2026-03-16 02:16:16,043 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,043 [INFO] TRANSPORT_LAYER: Data received: b'T', with length: 1, from the connection: 1
+2026-03-16 02:16:16,043 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,043 [INFO] TRANSPORT_LAYER: Data received: b'P', with length: 1, from the connection: 1
+2026-03-16 02:16:16,044 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,044 [INFO] TRANSPORT_LAYER: Data received: b'/', with length: 1, from the connection: 1
+2026-03-16 02:16:16,044 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,045 [INFO] TRANSPORT_LAYER: Data received: b'1', with length: 1, from the connection: 1
+2026-03-16 02:16:16,045 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,045 [INFO] TRANSPORT_LAYER: Data received: b'.', with length: 1, from the connection: 1
+2026-03-16 02:16:16,046 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,046 [INFO] TRANSPORT_LAYER: Data received: b'1', with length: 1, from the connection: 1
+2026-03-16 02:16:16,046 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,047 [INFO] TRANSPORT_LAYER: Data received: b'\r', with length: 1, from the connection: 1
+2026-03-16 02:16:16,048 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,048 [INFO] TRANSPORT_LAYER: Data received: b'\n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,048 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,048 [INFO] TRANSPORT_LAYER: Data received: b'H', with length: 1, from the connection: 1
+2026-03-16 02:16:16,049 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,049 [INFO] TRANSPORT_LAYER: Data received: b'o', with length: 1, from the connection: 1
+2026-03-16 02:16:16,050 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,050 [INFO] TRANSPORT_LAYER: Data received: b's', with length: 1, from the connection: 1
+2026-03-16 02:16:16,051 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,051 [INFO] TRANSPORT_LAYER: Data received: b't', with length: 1, from the connection: 1
+2026-03-16 02:16:16,051 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,052 [INFO] TRANSPORT_LAYER: Data received: b':', with length: 1, from the connection: 1
+2026-03-16 02:16:16,052 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,052 [INFO] TRANSPORT_LAYER: Data received: b' ', with length: 1, from the connection: 1
+2026-03-16 02:16:16,053 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,053 [INFO] TRANSPORT_LAYER: Data received: b'r', with length: 1, from the connection: 1
+2026-03-16 02:16:16,053 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,054 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,054 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,054 [INFO] TRANSPORT_LAYER: Data received: b's', with length: 1, from the connection: 1
+2026-03-16 02:16:16,055 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,055 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,055 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,055 [INFO] TRANSPORT_LAYER: Data received: b'a', with length: 1, from the connection: 1
+2026-03-16 02:16:16,056 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,056 [INFO] TRANSPORT_LAYER: Data received: b'r', with length: 1, from the connection: 1
+2026-03-16 02:16:16,056 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,056 [INFO] TRANSPORT_LAYER: Data received: b'c', with length: 1, from the connection: 1
+2026-03-16 02:16:16,057 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,057 [INFO] TRANSPORT_LAYER: Data received: b'h', with length: 1, from the connection: 1
+2026-03-16 02:16:16,057 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,058 [INFO] TRANSPORT_LAYER: Data received: b'-', with length: 1, from the connection: 1
+2026-03-16 02:16:16,058 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,058 [INFO] TRANSPORT_LAYER: Data received: b's', with length: 1, from the connection: 1
+2026-03-16 02:16:16,059 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,059 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,059 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,059 [INFO] TRANSPORT_LAYER: Data received: b'r', with length: 1, from the connection: 1
+2026-03-16 02:16:16,060 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,060 [INFO] TRANSPORT_LAYER: Data received: b'v', with length: 1, from the connection: 1
+2026-03-16 02:16:16,060 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,061 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,061 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,062 [INFO] TRANSPORT_LAYER: Data received: b'c', with length: 1, from the connection: 1
+2026-03-16 02:16:16,062 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,062 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,063 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,063 [INFO] TRANSPORT_LAYER: Data received: b'.', with length: 1, from the connection: 1
+2026-03-16 02:16:16,063 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,064 [INFO] TRANSPORT_LAYER: Data received: b'3', with length: 1, from the connection: 1
+2026-03-16 02:16:16,065 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,065 [INFO] TRANSPORT_LAYER: Data received: b'u', with length: 1, from the connection: 1
+2026-03-16 02:16:16,066 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,067 [INFO] TRANSPORT_LAYER: Data received: b't', with length: 1, from the connection: 1
+2026-03-16 02:16:16,067 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,068 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,068 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,069 [INFO] TRANSPORT_LAYER: Data received: b'l', with length: 1, from the connection: 1
+2026-03-16 02:16:16,070 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,070 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,071 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,072 [INFO] TRANSPORT_LAYER: Data received: b't', with length: 1, from the connection: 1
+2026-03-16 02:16:16,072 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,074 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,074 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,074 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,075 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,077 [INFO] TRANSPORT_LAYER: Data received: b's', with length: 1, from the connection: 1
+2026-03-16 02:16:16,077 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,079 [INFO] TRANSPORT_LAYER: Data received: b'.', with length: 1, from the connection: 1
+2026-03-16 02:16:16,080 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,080 [INFO] TRANSPORT_LAYER: Data received: b'c', with length: 1, from the connection: 1
+2026-03-16 02:16:16,080 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,080 [INFO] TRANSPORT_LAYER: Data received: b'o', with length: 1, from the connection: 1
+2026-03-16 02:16:16,081 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,081 [INFO] TRANSPORT_LAYER: Data received: b'm', with length: 1, from the connection: 1
+2026-03-16 02:16:16,081 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,081 [INFO] TRANSPORT_LAYER: Data received: b'\r', with length: 1, from the connection: 1
+2026-03-16 02:16:16,083 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,083 [INFO] TRANSPORT_LAYER: Data received: b'\n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,083 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,084 [INFO] TRANSPORT_LAYER: Data received: b'C', with length: 1, from the connection: 1
+2026-03-16 02:16:16,084 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,084 [INFO] TRANSPORT_LAYER: Data received: b'o', with length: 1, from the connection: 1
+2026-03-16 02:16:16,084 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,085 [INFO] TRANSPORT_LAYER: Data received: b'n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,086 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,086 [INFO] TRANSPORT_LAYER: Data received: b'n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,087 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,087 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,087 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,088 [INFO] TRANSPORT_LAYER: Data received: b'c', with length: 1, from the connection: 1
+2026-03-16 02:16:16,088 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,088 [INFO] TRANSPORT_LAYER: Data received: b't', with length: 1, from the connection: 1
+2026-03-16 02:16:16,089 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,089 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,090 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,092 [INFO] TRANSPORT_LAYER: Data received: b'o', with length: 1, from the connection: 1
+2026-03-16 02:16:16,092 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,092 [INFO] TRANSPORT_LAYER: Data received: b'n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,092 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,093 [INFO] TRANSPORT_LAYER: Data received: b':', with length: 1, from the connection: 1
+2026-03-16 02:16:16,093 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,093 [INFO] TRANSPORT_LAYER: Data received: b' ', with length: 1, from the connection: 1
+2026-03-16 02:16:16,094 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,094 [INFO] TRANSPORT_LAYER: Data received: b'k', with length: 1, from the connection: 1
+2026-03-16 02:16:16,095 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,096 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,097 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,097 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,097 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,097 [INFO] TRANSPORT_LAYER: Data received: b'p', with length: 1, from the connection: 1
+2026-03-16 02:16:16,098 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,099 [INFO] TRANSPORT_LAYER: Data received: b'-', with length: 1, from the connection: 1
+2026-03-16 02:16:16,100 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,100 [INFO] TRANSPORT_LAYER: Data received: b'a', with length: 1, from the connection: 1
+2026-03-16 02:16:16,100 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,101 [INFO] TRANSPORT_LAYER: Data received: b'l', with length: 1, from the connection: 1
+2026-03-16 02:16:16,101 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,101 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,102 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,102 [INFO] TRANSPORT_LAYER: Data received: b'v', with length: 1, from the connection: 1
+2026-03-16 02:16:16,103 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,103 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,103 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,104 [INFO] TRANSPORT_LAYER: Data received: b'\r', with length: 1, from the connection: 1
+2026-03-16 02:16:16,104 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,104 [INFO] TRANSPORT_LAYER: Data received: b'\n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,105 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,105 [INFO] TRANSPORT_LAYER: Data received: b'U', with length: 1, from the connection: 1
+2026-03-16 02:16:16,105 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,106 [INFO] TRANSPORT_LAYER: Data received: b'p', with length: 1, from the connection: 1
+2026-03-16 02:16:16,106 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,107 [INFO] TRANSPORT_LAYER: Data received: b'g', with length: 1, from the connection: 1
+2026-03-16 02:16:16,108 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,108 [INFO] TRANSPORT_LAYER: Data received: b'r', with length: 1, from the connection: 1
+2026-03-16 02:16:16,108 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,108 [INFO] TRANSPORT_LAYER: Data received: b'a', with length: 1, from the connection: 1
+2026-03-16 02:16:16,108 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,109 [INFO] TRANSPORT_LAYER: Data received: b'd', with length: 1, from the connection: 1
+2026-03-16 02:16:16,109 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,109 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,109 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,109 [INFO] TRANSPORT_LAYER: Data received: b'-', with length: 1, from the connection: 1
+2026-03-16 02:16:16,110 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,110 [INFO] TRANSPORT_LAYER: Data received: b'I', with length: 1, from the connection: 1
+2026-03-16 02:16:16,110 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,110 [INFO] TRANSPORT_LAYER: Data received: b'n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,110 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,110 [INFO] TRANSPORT_LAYER: Data received: b's', with length: 1, from the connection: 1
+2026-03-16 02:16:16,111 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,111 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,111 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,111 [INFO] TRANSPORT_LAYER: Data received: b'c', with length: 1, from the connection: 1
+2026-03-16 02:16:16,111 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,112 [INFO] TRANSPORT_LAYER: Data received: b'u', with length: 1, from the connection: 1
+2026-03-16 02:16:16,112 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,112 [INFO] TRANSPORT_LAYER: Data received: b'r', with length: 1, from the connection: 1
+2026-03-16 02:16:16,112 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,112 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,113 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,113 [INFO] TRANSPORT_LAYER: Data received: b'-', with length: 1, from the connection: 1
+2026-03-16 02:16:16,113 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,113 [INFO] TRANSPORT_LAYER: Data received: b'R', with length: 1, from the connection: 1
+2026-03-16 02:16:16,113 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,114 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,114 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,114 [INFO] TRANSPORT_LAYER: Data received: b'q', with length: 1, from the connection: 1
+2026-03-16 02:16:16,114 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,115 [INFO] TRANSPORT_LAYER: Data received: b'u', with length: 1, from the connection: 1
+2026-03-16 02:16:16,115 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,115 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,115 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,115 [INFO] TRANSPORT_LAYER: Data received: b's', with length: 1, from the connection: 1
+2026-03-16 02:16:16,116 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,116 [INFO] TRANSPORT_LAYER: Data received: b't', with length: 1, from the connection: 1
+2026-03-16 02:16:16,116 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,116 [INFO] TRANSPORT_LAYER: Data received: b's', with length: 1, from the connection: 1
+2026-03-16 02:16:16,117 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,117 [INFO] TRANSPORT_LAYER: Data received: b':', with length: 1, from the connection: 1
+2026-03-16 02:16:16,117 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,118 [INFO] TRANSPORT_LAYER: Data received: b' ', with length: 1, from the connection: 1
+2026-03-16 02:16:16,118 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,118 [INFO] TRANSPORT_LAYER: Data received: b'1', with length: 1, from the connection: 1
+2026-03-16 02:16:16,118 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,119 [INFO] TRANSPORT_LAYER: Data received: b'\r', with length: 1, from the connection: 1
+2026-03-16 02:16:16,119 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,119 [INFO] TRANSPORT_LAYER: Data received: b'\n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,119 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,120 [INFO] TRANSPORT_LAYER: Data received: b'U', with length: 1, from the connection: 1
+2026-03-16 02:16:16,120 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,120 [INFO] TRANSPORT_LAYER: Data received: b's', with length: 1, from the connection: 1
+2026-03-16 02:16:16,120 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,120 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,121 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,121 [INFO] TRANSPORT_LAYER: Data received: b'r', with length: 1, from the connection: 1
+2026-03-16 02:16:16,121 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,121 [INFO] TRANSPORT_LAYER: Data received: b'-', with length: 1, from the connection: 1
+2026-03-16 02:16:16,121 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,122 [INFO] TRANSPORT_LAYER: Data received: b'A', with length: 1, from the connection: 1
+2026-03-16 02:16:16,122 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,122 [INFO] TRANSPORT_LAYER: Data received: b'g', with length: 1, from the connection: 1
+2026-03-16 02:16:16,123 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,124 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,124 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,125 [INFO] TRANSPORT_LAYER: Data received: b'n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,126 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,126 [INFO] TRANSPORT_LAYER: Data received: b't', with length: 1, from the connection: 1
+2026-03-16 02:16:16,126 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,126 [INFO] TRANSPORT_LAYER: Data received: b':', with length: 1, from the connection: 1
+2026-03-16 02:16:16,126 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,127 [INFO] TRANSPORT_LAYER: Data received: b' ', with length: 1, from the connection: 1
+2026-03-16 02:16:16,128 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,128 [INFO] TRANSPORT_LAYER: Data received: b'M', with length: 1, from the connection: 1
+2026-03-16 02:16:16,128 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,128 [INFO] TRANSPORT_LAYER: Data received: b'o', with length: 1, from the connection: 1
+2026-03-16 02:16:16,128 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,130 [INFO] TRANSPORT_LAYER: Data received: b'z', with length: 1, from the connection: 1
+2026-03-16 02:16:16,131 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,131 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,131 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,131 [INFO] TRANSPORT_LAYER: Data received: b'l', with length: 1, from the connection: 1
+2026-03-16 02:16:16,131 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,132 [INFO] TRANSPORT_LAYER: Data received: b'l', with length: 1, from the connection: 1
+2026-03-16 02:16:16,132 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,133 [INFO] TRANSPORT_LAYER: Data received: b'a', with length: 1, from the connection: 1
+2026-03-16 02:16:16,134 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,135 [INFO] TRANSPORT_LAYER: Data received: b'/', with length: 1, from the connection: 1
+2026-03-16 02:16:16,136 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,136 [INFO] TRANSPORT_LAYER: Data received: b'5', with length: 1, from the connection: 1
+2026-03-16 02:16:16,136 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,136 [INFO] TRANSPORT_LAYER: Data received: b'.', with length: 1, from the connection: 1
+2026-03-16 02:16:16,136 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,137 [INFO] TRANSPORT_LAYER: Data received: b'0', with length: 1, from the connection: 1
+2026-03-16 02:16:16,137 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,138 [INFO] TRANSPORT_LAYER: Data received: b' ', with length: 1, from the connection: 1
+2026-03-16 02:16:16,138 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,138 [INFO] TRANSPORT_LAYER: Data received: b'(', with length: 1, from the connection: 1
+2026-03-16 02:16:16,138 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,138 [INFO] TRANSPORT_LAYER: Data received: b'X', with length: 1, from the connection: 1
+2026-03-16 02:16:16,139 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,139 [INFO] TRANSPORT_LAYER: Data received: b'1', with length: 1, from the connection: 1
+2026-03-16 02:16:16,139 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,139 [INFO] TRANSPORT_LAYER: Data received: b'1', with length: 1, from the connection: 1
+2026-03-16 02:16:16,139 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,139 [INFO] TRANSPORT_LAYER: Data received: b';', with length: 1, from the connection: 1
+2026-03-16 02:16:16,140 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,140 [INFO] TRANSPORT_LAYER: Data received: b' ', with length: 1, from the connection: 1
+2026-03-16 02:16:16,140 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,140 [INFO] TRANSPORT_LAYER: Data received: b'L', with length: 1, from the connection: 1
+2026-03-16 02:16:16,140 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,141 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,141 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,141 [INFO] TRANSPORT_LAYER: Data received: b'n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,141 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,141 [INFO] TRANSPORT_LAYER: Data received: b'u', with length: 1, from the connection: 1
+2026-03-16 02:16:16,141 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,142 [INFO] TRANSPORT_LAYER: Data received: b'x', with length: 1, from the connection: 1
+2026-03-16 02:16:16,142 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,142 [INFO] TRANSPORT_LAYER: Data received: b' ', with length: 1, from the connection: 1
+2026-03-16 02:16:16,142 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,142 [INFO] TRANSPORT_LAYER: Data received: b'x', with length: 1, from the connection: 1
+2026-03-16 02:16:16,143 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,143 [INFO] TRANSPORT_LAYER: Data received: b'8', with length: 1, from the connection: 1
+2026-03-16 02:16:16,143 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,143 [INFO] TRANSPORT_LAYER: Data received: b'6', with length: 1, from the connection: 1
+2026-03-16 02:16:16,143 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,143 [INFO] TRANSPORT_LAYER: Data received: b'_', with length: 1, from the connection: 1
+2026-03-16 02:16:16,144 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,144 [INFO] TRANSPORT_LAYER: Data received: b'6', with length: 1, from the connection: 1
+2026-03-16 02:16:16,144 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,144 [INFO] TRANSPORT_LAYER: Data received: b'4', with length: 1, from the connection: 1
+2026-03-16 02:16:16,144 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,144 [INFO] TRANSPORT_LAYER: Data received: b')', with length: 1, from the connection: 1
+2026-03-16 02:16:16,145 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,145 [INFO] TRANSPORT_LAYER: Data received: b' ', with length: 1, from the connection: 1
+2026-03-16 02:16:16,145 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,145 [INFO] TRANSPORT_LAYER: Data received: b'A', with length: 1, from the connection: 1
+2026-03-16 02:16:16,145 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,146 [INFO] TRANSPORT_LAYER: Data received: b'p', with length: 1, from the connection: 1
+2026-03-16 02:16:16,146 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,146 [INFO] TRANSPORT_LAYER: Data received: b'p', with length: 1, from the connection: 1
+2026-03-16 02:16:16,146 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,146 [INFO] TRANSPORT_LAYER: Data received: b'l', with length: 1, from the connection: 1
+2026-03-16 02:16:16,147 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,147 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,147 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,147 [INFO] TRANSPORT_LAYER: Data received: b'W', with length: 1, from the connection: 1
+2026-03-16 02:16:16,147 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,148 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,148 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,148 [INFO] TRANSPORT_LAYER: Data received: b'b', with length: 1, from the connection: 1
+2026-03-16 02:16:16,148 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,148 [INFO] TRANSPORT_LAYER: Data received: b'K', with length: 1, from the connection: 1
+2026-03-16 02:16:16,149 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,149 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,149 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,149 [INFO] TRANSPORT_LAYER: Data received: b't', with length: 1, from the connection: 1
+2026-03-16 02:16:16,149 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,149 [INFO] TRANSPORT_LAYER: Data received: b'/', with length: 1, from the connection: 1
+2026-03-16 02:16:16,150 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,150 [INFO] TRANSPORT_LAYER: Data received: b'5', with length: 1, from the connection: 1
+2026-03-16 02:16:16,150 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,150 [INFO] TRANSPORT_LAYER: Data received: b'3', with length: 1, from the connection: 1
+2026-03-16 02:16:16,150 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,150 [INFO] TRANSPORT_LAYER: Data received: b'7', with length: 1, from the connection: 1
+2026-03-16 02:16:16,151 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,151 [INFO] TRANSPORT_LAYER: Data received: b'.', with length: 1, from the connection: 1
+2026-03-16 02:16:16,151 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,151 [INFO] TRANSPORT_LAYER: Data received: b'3', with length: 1, from the connection: 1
+2026-03-16 02:16:16,151 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,152 [INFO] TRANSPORT_LAYER: Data received: b'6', with length: 1, from the connection: 1
+2026-03-16 02:16:16,152 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,152 [INFO] TRANSPORT_LAYER: Data received: b' ', with length: 1, from the connection: 1
+2026-03-16 02:16:16,152 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,152 [INFO] TRANSPORT_LAYER: Data received: b'(', with length: 1, from the connection: 1
+2026-03-16 02:16:16,153 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,153 [INFO] TRANSPORT_LAYER: Data received: b'K', with length: 1, from the connection: 1
+2026-03-16 02:16:16,153 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,153 [INFO] TRANSPORT_LAYER: Data received: b'H', with length: 1, from the connection: 1
+2026-03-16 02:16:16,153 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,153 [INFO] TRANSPORT_LAYER: Data received: b'T', with length: 1, from the connection: 1
+2026-03-16 02:16:16,154 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,154 [INFO] TRANSPORT_LAYER: Data received: b'M', with length: 1, from the connection: 1
+2026-03-16 02:16:16,154 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,154 [INFO] TRANSPORT_LAYER: Data received: b'L', with length: 1, from the connection: 1
+2026-03-16 02:16:16,154 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,155 [INFO] TRANSPORT_LAYER: Data received: b',', with length: 1, from the connection: 1
+2026-03-16 02:16:16,155 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,155 [INFO] TRANSPORT_LAYER: Data received: b' ', with length: 1, from the connection: 1
+2026-03-16 02:16:16,155 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,155 [INFO] TRANSPORT_LAYER: Data received: b'l', with length: 1, from the connection: 1
+2026-03-16 02:16:16,155 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,156 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,156 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,156 [INFO] TRANSPORT_LAYER: Data received: b'k', with length: 1, from the connection: 1
+2026-03-16 02:16:16,156 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,156 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,156 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,157 [INFO] TRANSPORT_LAYER: Data received: b' ', with length: 1, from the connection: 1
+2026-03-16 02:16:16,157 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,157 [INFO] TRANSPORT_LAYER: Data received: b'G', with length: 1, from the connection: 1
+2026-03-16 02:16:16,157 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,158 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,158 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,158 [INFO] TRANSPORT_LAYER: Data received: b'c', with length: 1, from the connection: 1
+2026-03-16 02:16:16,158 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,158 [INFO] TRANSPORT_LAYER: Data received: b'k', with length: 1, from the connection: 1
+2026-03-16 02:16:16,158 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,159 [INFO] TRANSPORT_LAYER: Data received: b'o', with length: 1, from the connection: 1
+2026-03-16 02:16:16,159 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,159 [INFO] TRANSPORT_LAYER: Data received: b')', with length: 1, from the connection: 1
+2026-03-16 02:16:16,159 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,159 [INFO] TRANSPORT_LAYER: Data received: b' ', with length: 1, from the connection: 1
+2026-03-16 02:16:16,160 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,160 [INFO] TRANSPORT_LAYER: Data received: b'Q', with length: 1, from the connection: 1
+2026-03-16 02:16:16,160 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,160 [INFO] TRANSPORT_LAYER: Data received: b't', with length: 1, from the connection: 1
+2026-03-16 02:16:16,160 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,160 [INFO] TRANSPORT_LAYER: Data received: b'W', with length: 1, from the connection: 1
+2026-03-16 02:16:16,161 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,161 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,161 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,161 [INFO] TRANSPORT_LAYER: Data received: b'b', with length: 1, from the connection: 1
+2026-03-16 02:16:16,161 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,162 [INFO] TRANSPORT_LAYER: Data received: b'E', with length: 1, from the connection: 1
+2026-03-16 02:16:16,162 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,162 [INFO] TRANSPORT_LAYER: Data received: b'n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,162 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,162 [INFO] TRANSPORT_LAYER: Data received: b'g', with length: 1, from the connection: 1
+2026-03-16 02:16:16,162 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,163 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,163 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,163 [INFO] TRANSPORT_LAYER: Data received: b'n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,163 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,163 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,163 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,164 [INFO] TRANSPORT_LAYER: Data received: b'/', with length: 1, from the connection: 1
+2026-03-16 02:16:16,164 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,164 [INFO] TRANSPORT_LAYER: Data received: b'6', with length: 1, from the connection: 1
+2026-03-16 02:16:16,164 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,164 [INFO] TRANSPORT_LAYER: Data received: b'.', with length: 1, from the connection: 1
+2026-03-16 02:16:16,164 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,165 [INFO] TRANSPORT_LAYER: Data received: b'1', with length: 1, from the connection: 1
+2026-03-16 02:16:16,165 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,165 [INFO] TRANSPORT_LAYER: Data received: b'0', with length: 1, from the connection: 1
+2026-03-16 02:16:16,165 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,165 [INFO] TRANSPORT_LAYER: Data received: b'.', with length: 1, from the connection: 1
+2026-03-16 02:16:16,166 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,166 [INFO] TRANSPORT_LAYER: Data received: b'2', with length: 1, from the connection: 1
+2026-03-16 02:16:16,166 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,166 [INFO] TRANSPORT_LAYER: Data received: b' ', with length: 1, from the connection: 1
+2026-03-16 02:16:16,166 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,166 [INFO] TRANSPORT_LAYER: Data received: b'C', with length: 1, from the connection: 1
+2026-03-16 02:16:16,167 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,167 [INFO] TRANSPORT_LAYER: Data received: b'h', with length: 1, from the connection: 1
+2026-03-16 02:16:16,167 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,167 [INFO] TRANSPORT_LAYER: Data received: b'r', with length: 1, from the connection: 1
+2026-03-16 02:16:16,167 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,167 [INFO] TRANSPORT_LAYER: Data received: b'o', with length: 1, from the connection: 1
+2026-03-16 02:16:16,168 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,168 [INFO] TRANSPORT_LAYER: Data received: b'm', with length: 1, from the connection: 1
+2026-03-16 02:16:16,168 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,168 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,168 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,168 [INFO] TRANSPORT_LAYER: Data received: b'/', with length: 1, from the connection: 1
+2026-03-16 02:16:16,169 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,169 [INFO] TRANSPORT_LAYER: Data received: b'1', with length: 1, from the connection: 1
+2026-03-16 02:16:16,169 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,169 [INFO] TRANSPORT_LAYER: Data received: b'3', with length: 1, from the connection: 1
+2026-03-16 02:16:16,169 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,169 [INFO] TRANSPORT_LAYER: Data received: b'4', with length: 1, from the connection: 1
+2026-03-16 02:16:16,170 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,170 [INFO] TRANSPORT_LAYER: Data received: b'.', with length: 1, from the connection: 1
+2026-03-16 02:16:16,170 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,170 [INFO] TRANSPORT_LAYER: Data received: b'0', with length: 1, from the connection: 1
+2026-03-16 02:16:16,170 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,171 [INFO] TRANSPORT_LAYER: Data received: b'.', with length: 1, from the connection: 1
+2026-03-16 02:16:16,171 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,171 [INFO] TRANSPORT_LAYER: Data received: b'0', with length: 1, from the connection: 1
+2026-03-16 02:16:16,171 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,171 [INFO] TRANSPORT_LAYER: Data received: b'.', with length: 1, from the connection: 1
+2026-03-16 02:16:16,171 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,172 [INFO] TRANSPORT_LAYER: Data received: b'0', with length: 1, from the connection: 1
+2026-03-16 02:16:16,172 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,172 [INFO] TRANSPORT_LAYER: Data received: b' ', with length: 1, from the connection: 1
+2026-03-16 02:16:16,172 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,172 [INFO] TRANSPORT_LAYER: Data received: b'S', with length: 1, from the connection: 1
+2026-03-16 02:16:16,172 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,173 [INFO] TRANSPORT_LAYER: Data received: b'a', with length: 1, from the connection: 1
+2026-03-16 02:16:16,173 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,173 [INFO] TRANSPORT_LAYER: Data received: b'f', with length: 1, from the connection: 1
+2026-03-16 02:16:16,173 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,173 [INFO] TRANSPORT_LAYER: Data received: b'a', with length: 1, from the connection: 1
+2026-03-16 02:16:16,174 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,176 [INFO] TRANSPORT_LAYER: Data received: b'r', with length: 1, from the connection: 1
+2026-03-16 02:16:16,176 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,177 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,177 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,178 [INFO] TRANSPORT_LAYER: Data received: b'/', with length: 1, from the connection: 1
+2026-03-16 02:16:16,178 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,178 [INFO] TRANSPORT_LAYER: Data received: b'5', with length: 1, from the connection: 1
+2026-03-16 02:16:16,178 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,179 [INFO] TRANSPORT_LAYER: Data received: b'3', with length: 1, from the connection: 1
+2026-03-16 02:16:16,179 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,180 [INFO] TRANSPORT_LAYER: Data received: b'7', with length: 1, from the connection: 1
+2026-03-16 02:16:16,180 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,180 [INFO] TRANSPORT_LAYER: Data received: b'.', with length: 1, from the connection: 1
+2026-03-16 02:16:16,180 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,180 [INFO] TRANSPORT_LAYER: Data received: b'3', with length: 1, from the connection: 1
+2026-03-16 02:16:16,181 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,181 [INFO] TRANSPORT_LAYER: Data received: b'6', with length: 1, from the connection: 1
+2026-03-16 02:16:16,181 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,181 [INFO] TRANSPORT_LAYER: Data received: b'\r', with length: 1, from the connection: 1
+2026-03-16 02:16:16,181 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,182 [INFO] TRANSPORT_LAYER: Data received: b'\n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,182 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,182 [INFO] TRANSPORT_LAYER: Data received: b'A', with length: 1, from the connection: 1
+2026-03-16 02:16:16,182 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,182 [INFO] TRANSPORT_LAYER: Data received: b'c', with length: 1, from the connection: 1
+2026-03-16 02:16:16,183 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,183 [INFO] TRANSPORT_LAYER: Data received: b'c', with length: 1, from the connection: 1
+2026-03-16 02:16:16,183 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,183 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,183 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,183 [INFO] TRANSPORT_LAYER: Data received: b'p', with length: 1, from the connection: 1
+2026-03-16 02:16:16,184 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,184 [INFO] TRANSPORT_LAYER: Data received: b't', with length: 1, from the connection: 1
+2026-03-16 02:16:16,184 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,184 [INFO] TRANSPORT_LAYER: Data received: b':', with length: 1, from the connection: 1
+2026-03-16 02:16:16,184 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,185 [INFO] TRANSPORT_LAYER: Data received: b' ', with length: 1, from the connection: 1
+2026-03-16 02:16:16,185 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,185 [INFO] TRANSPORT_LAYER: Data received: b't', with length: 1, from the connection: 1
+2026-03-16 02:16:16,185 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,185 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,185 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,186 [INFO] TRANSPORT_LAYER: Data received: b'x', with length: 1, from the connection: 1
+2026-03-16 02:16:16,186 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,186 [INFO] TRANSPORT_LAYER: Data received: b't', with length: 1, from the connection: 1
+2026-03-16 02:16:16,186 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,186 [INFO] TRANSPORT_LAYER: Data received: b'/', with length: 1, from the connection: 1
+2026-03-16 02:16:16,186 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,187 [INFO] TRANSPORT_LAYER: Data received: b'h', with length: 1, from the connection: 1
+2026-03-16 02:16:16,187 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,187 [INFO] TRANSPORT_LAYER: Data received: b't', with length: 1, from the connection: 1
+2026-03-16 02:16:16,187 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,187 [INFO] TRANSPORT_LAYER: Data received: b'm', with length: 1, from the connection: 1
+2026-03-16 02:16:16,187 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,188 [INFO] TRANSPORT_LAYER: Data received: b'l', with length: 1, from the connection: 1
+2026-03-16 02:16:16,188 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,188 [INFO] TRANSPORT_LAYER: Data received: b',', with length: 1, from the connection: 1
+2026-03-16 02:16:16,188 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,188 [INFO] TRANSPORT_LAYER: Data received: b'a', with length: 1, from the connection: 1
+2026-03-16 02:16:16,189 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,189 [INFO] TRANSPORT_LAYER: Data received: b'p', with length: 1, from the connection: 1
+2026-03-16 02:16:16,189 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,189 [INFO] TRANSPORT_LAYER: Data received: b'p', with length: 1, from the connection: 1
+2026-03-16 02:16:16,189 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,190 [INFO] TRANSPORT_LAYER: Data received: b'l', with length: 1, from the connection: 1
+2026-03-16 02:16:16,190 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,191 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,191 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,192 [INFO] TRANSPORT_LAYER: Data received: b'c', with length: 1, from the connection: 1
+2026-03-16 02:16:16,192 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,193 [INFO] TRANSPORT_LAYER: Data received: b'a', with length: 1, from the connection: 1
+2026-03-16 02:16:16,193 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,194 [INFO] TRANSPORT_LAYER: Data received: b't', with length: 1, from the connection: 1
+2026-03-16 02:16:16,195 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,195 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,196 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,196 [INFO] TRANSPORT_LAYER: Data received: b'o', with length: 1, from the connection: 1
+2026-03-16 02:16:16,197 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,197 [INFO] TRANSPORT_LAYER: Data received: b'n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,198 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,200 [INFO] TRANSPORT_LAYER: Data received: b'/', with length: 1, from the connection: 1
+2026-03-16 02:16:16,200 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,202 [INFO] TRANSPORT_LAYER: Data received: b'x', with length: 1, from the connection: 1
+2026-03-16 02:16:16,202 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,204 [INFO] TRANSPORT_LAYER: Data received: b'h', with length: 1, from the connection: 1
+2026-03-16 02:16:16,204 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,205 [INFO] TRANSPORT_LAYER: Data received: b't', with length: 1, from the connection: 1
+2026-03-16 02:16:16,205 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,206 [INFO] TRANSPORT_LAYER: Data received: b'm', with length: 1, from the connection: 1
+2026-03-16 02:16:16,206 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,206 [INFO] TRANSPORT_LAYER: Data received: b'l', with length: 1, from the connection: 1
+2026-03-16 02:16:16,207 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,208 [INFO] TRANSPORT_LAYER: Data received: b'+', with length: 1, from the connection: 1
+2026-03-16 02:16:16,208 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,208 [INFO] TRANSPORT_LAYER: Data received: b'x', with length: 1, from the connection: 1
+2026-03-16 02:16:16,209 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,209 [INFO] TRANSPORT_LAYER: Data received: b'm', with length: 1, from the connection: 1
+2026-03-16 02:16:16,209 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,210 [INFO] TRANSPORT_LAYER: Data received: b'l', with length: 1, from the connection: 1
+2026-03-16 02:16:16,210 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,210 [INFO] TRANSPORT_LAYER: Data received: b',', with length: 1, from the connection: 1
+2026-03-16 02:16:16,211 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,211 [INFO] TRANSPORT_LAYER: Data received: b'a', with length: 1, from the connection: 1
+2026-03-16 02:16:16,211 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,212 [INFO] TRANSPORT_LAYER: Data received: b'p', with length: 1, from the connection: 1
+2026-03-16 02:16:16,212 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,212 [INFO] TRANSPORT_LAYER: Data received: b'p', with length: 1, from the connection: 1
+2026-03-16 02:16:16,213 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,213 [INFO] TRANSPORT_LAYER: Data received: b'l', with length: 1, from the connection: 1
+2026-03-16 02:16:16,213 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,214 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,214 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,214 [INFO] TRANSPORT_LAYER: Data received: b'c', with length: 1, from the connection: 1
+2026-03-16 02:16:16,215 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,216 [INFO] TRANSPORT_LAYER: Data received: b'a', with length: 1, from the connection: 1
+2026-03-16 02:16:16,217 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,217 [INFO] TRANSPORT_LAYER: Data received: b't', with length: 1, from the connection: 1
+2026-03-16 02:16:16,217 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,217 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,218 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,218 [INFO] TRANSPORT_LAYER: Data received: b'o', with length: 1, from the connection: 1
+2026-03-16 02:16:16,218 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,219 [INFO] TRANSPORT_LAYER: Data received: b'n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,220 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,220 [INFO] TRANSPORT_LAYER: Data received: b'/', with length: 1, from the connection: 1
+2026-03-16 02:16:16,220 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,221 [INFO] TRANSPORT_LAYER: Data received: b'x', with length: 1, from the connection: 1
+2026-03-16 02:16:16,222 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,222 [INFO] TRANSPORT_LAYER: Data received: b'm', with length: 1, from the connection: 1
+2026-03-16 02:16:16,222 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,224 [INFO] TRANSPORT_LAYER: Data received: b'l', with length: 1, from the connection: 1
+2026-03-16 02:16:16,224 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,226 [INFO] TRANSPORT_LAYER: Data received: b';', with length: 1, from the connection: 1
+2026-03-16 02:16:16,228 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,230 [INFO] TRANSPORT_LAYER: Data received: b'q', with length: 1, from the connection: 1
+2026-03-16 02:16:16,230 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,230 [INFO] TRANSPORT_LAYER: Data received: b'=', with length: 1, from the connection: 1
+2026-03-16 02:16:16,231 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,232 [INFO] TRANSPORT_LAYER: Data received: b'0', with length: 1, from the connection: 1
+2026-03-16 02:16:16,232 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,237 [INFO] TRANSPORT_LAYER: Data received: b'.', with length: 1, from the connection: 1
+2026-03-16 02:16:16,238 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,244 [INFO] TRANSPORT_LAYER: Data received: b'9', with length: 1, from the connection: 1
+2026-03-16 02:16:16,245 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,245 [INFO] TRANSPORT_LAYER: Data received: b',', with length: 1, from the connection: 1
+2026-03-16 02:16:16,245 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,248 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,249 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,249 [INFO] TRANSPORT_LAYER: Data received: b'm', with length: 1, from the connection: 1
+2026-03-16 02:16:16,249 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,252 [INFO] TRANSPORT_LAYER: Data received: b'a', with length: 1, from the connection: 1
+2026-03-16 02:16:16,253 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,258 [INFO] TRANSPORT_LAYER: Data received: b'g', with length: 1, from the connection: 1
+2026-03-16 02:16:16,259 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,261 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,262 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,263 [INFO] TRANSPORT_LAYER: Data received: b'/', with length: 1, from the connection: 1
+2026-03-16 02:16:16,263 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,271 [INFO] TRANSPORT_LAYER: Data received: b'a', with length: 1, from the connection: 1
+2026-03-16 02:16:16,271 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,273 [INFO] TRANSPORT_LAYER: Data received: b'v', with length: 1, from the connection: 1
+2026-03-16 02:16:16,273 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,274 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,274 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,277 [INFO] TRANSPORT_LAYER: Data received: b'f', with length: 1, from the connection: 1
+2026-03-16 02:16:16,278 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,278 [INFO] TRANSPORT_LAYER: Data received: b',', with length: 1, from the connection: 1
+2026-03-16 02:16:16,278 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,279 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,283 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,283 [INFO] TRANSPORT_LAYER: Data received: b'm', with length: 1, from the connection: 1
+2026-03-16 02:16:16,284 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,284 [INFO] TRANSPORT_LAYER: Data received: b'a', with length: 1, from the connection: 1
+2026-03-16 02:16:16,285 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,289 [INFO] TRANSPORT_LAYER: Data received: b'g', with length: 1, from the connection: 1
+2026-03-16 02:16:16,290 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,291 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,291 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,292 [INFO] TRANSPORT_LAYER: Data received: b'/', with length: 1, from the connection: 1
+2026-03-16 02:16:16,293 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,294 [INFO] TRANSPORT_LAYER: Data received: b'w', with length: 1, from the connection: 1
+2026-03-16 02:16:16,294 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,297 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,297 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,297 [INFO] TRANSPORT_LAYER: Data received: b'b', with length: 1, from the connection: 1
+2026-03-16 02:16:16,298 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,298 [INFO] TRANSPORT_LAYER: Data received: b'p', with length: 1, from the connection: 1
+2026-03-16 02:16:16,298 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,299 [INFO] TRANSPORT_LAYER: Data received: b',', with length: 1, from the connection: 1
+2026-03-16 02:16:16,300 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,301 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,305 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,306 [INFO] TRANSPORT_LAYER: Data received: b'm', with length: 1, from the connection: 1
+2026-03-16 02:16:16,312 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,316 [INFO] TRANSPORT_LAYER: Data received: b'a', with length: 1, from the connection: 1
+2026-03-16 02:16:16,316 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,319 [INFO] TRANSPORT_LAYER: Data received: b'g', with length: 1, from the connection: 1
+2026-03-16 02:16:16,319 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,320 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,320 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,320 [INFO] TRANSPORT_LAYER: Data received: b'/', with length: 1, from the connection: 1
+2026-03-16 02:16:16,320 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,321 [INFO] TRANSPORT_LAYER: Data received: b'a', with length: 1, from the connection: 1
+2026-03-16 02:16:16,321 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,323 [INFO] TRANSPORT_LAYER: Data received: b'p', with length: 1, from the connection: 1
+2026-03-16 02:16:16,323 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,323 [INFO] TRANSPORT_LAYER: Data received: b'n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,324 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,325 [INFO] TRANSPORT_LAYER: Data received: b'g', with length: 1, from the connection: 1
+2026-03-16 02:16:16,325 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,327 [INFO] TRANSPORT_LAYER: Data received: b',', with length: 1, from the connection: 1
+2026-03-16 02:16:16,327 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,328 [INFO] TRANSPORT_LAYER: Data received: b'*', with length: 1, from the connection: 1
+2026-03-16 02:16:16,329 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,330 [INFO] TRANSPORT_LAYER: Data received: b'/', with length: 1, from the connection: 1
+2026-03-16 02:16:16,330 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,336 [INFO] TRANSPORT_LAYER: Data received: b'*', with length: 1, from the connection: 1
+2026-03-16 02:16:16,336 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,337 [INFO] TRANSPORT_LAYER: Data received: b';', with length: 1, from the connection: 1
+2026-03-16 02:16:16,338 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,340 [INFO] TRANSPORT_LAYER: Data received: b'q', with length: 1, from the connection: 1
+2026-03-16 02:16:16,348 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,353 [INFO] TRANSPORT_LAYER: Data received: b'=', with length: 1, from the connection: 1
+2026-03-16 02:16:16,353 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,353 [INFO] TRANSPORT_LAYER: Data received: b'0', with length: 1, from the connection: 1
+2026-03-16 02:16:16,353 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,360 [INFO] TRANSPORT_LAYER: Data received: b'.', with length: 1, from the connection: 1
+2026-03-16 02:16:16,360 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,369 [INFO] TRANSPORT_LAYER: Data received: b'8', with length: 1, from the connection: 1
+2026-03-16 02:16:16,370 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,380 [INFO] TRANSPORT_LAYER: Data received: b',', with length: 1, from the connection: 1
+2026-03-16 02:16:16,380 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,382 [INFO] TRANSPORT_LAYER: Data received: b'a', with length: 1, from the connection: 1
+2026-03-16 02:16:16,382 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,383 [INFO] TRANSPORT_LAYER: Data received: b'p', with length: 1, from the connection: 1
+2026-03-16 02:16:16,383 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,388 [INFO] TRANSPORT_LAYER: Data received: b'p', with length: 1, from the connection: 1
+2026-03-16 02:16:16,388 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,389 [INFO] TRANSPORT_LAYER: Data received: b'l', with length: 1, from the connection: 1
+2026-03-16 02:16:16,390 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,413 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,413 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,414 [INFO] TRANSPORT_LAYER: Data received: b'c', with length: 1, from the connection: 1
+2026-03-16 02:16:16,414 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,415 [INFO] TRANSPORT_LAYER: Data received: b'a', with length: 1, from the connection: 1
+2026-03-16 02:16:16,416 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,421 [INFO] TRANSPORT_LAYER: Data received: b't', with length: 1, from the connection: 1
+2026-03-16 02:16:16,422 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,424 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,424 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,432 [INFO] TRANSPORT_LAYER: Data received: b'o', with length: 1, from the connection: 1
+2026-03-16 02:16:16,432 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,432 [INFO] TRANSPORT_LAYER: Data received: b'n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,432 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,444 [INFO] TRANSPORT_LAYER: Data received: b'/', with length: 1, from the connection: 1
+2026-03-16 02:16:16,444 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,444 [INFO] TRANSPORT_LAYER: Data received: b's', with length: 1, from the connection: 1
+2026-03-16 02:16:16,445 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,445 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,445 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,445 [INFO] TRANSPORT_LAYER: Data received: b'g', with length: 1, from the connection: 1
+2026-03-16 02:16:16,445 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,445 [INFO] TRANSPORT_LAYER: Data received: b'n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,462 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,462 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,463 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,463 [INFO] TRANSPORT_LAYER: Data received: b'd', with length: 1, from the connection: 1
+2026-03-16 02:16:16,463 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,464 [INFO] TRANSPORT_LAYER: Data received: b'-', with length: 1, from the connection: 1
+2026-03-16 02:16:16,464 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,464 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,465 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,466 [INFO] TRANSPORT_LAYER: Data received: b'x', with length: 1, from the connection: 1
+2026-03-16 02:16:16,467 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,470 [INFO] TRANSPORT_LAYER: Data received: b'c', with length: 1, from the connection: 1
+2026-03-16 02:16:16,470 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,474 [INFO] TRANSPORT_LAYER: Data received: b'h', with length: 1, from the connection: 1
+2026-03-16 02:16:16,474 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,474 [INFO] TRANSPORT_LAYER: Data received: b'a', with length: 1, from the connection: 1
+2026-03-16 02:16:16,475 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,476 [INFO] TRANSPORT_LAYER: Data received: b'n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,476 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,477 [INFO] TRANSPORT_LAYER: Data received: b'g', with length: 1, from the connection: 1
+2026-03-16 02:16:16,479 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,481 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,482 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,483 [INFO] TRANSPORT_LAYER: Data received: b';', with length: 1, from the connection: 1
+2026-03-16 02:16:16,483 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,484 [INFO] TRANSPORT_LAYER: Data received: b'v', with length: 1, from the connection: 1
+2026-03-16 02:16:16,484 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,485 [INFO] TRANSPORT_LAYER: Data received: b'=', with length: 1, from the connection: 1
+2026-03-16 02:16:16,485 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,487 [INFO] TRANSPORT_LAYER: Data received: b'b', with length: 1, from the connection: 1
+2026-03-16 02:16:16,487 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,490 [INFO] TRANSPORT_LAYER: Data received: b'3', with length: 1, from the connection: 1
+2026-03-16 02:16:16,490 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,490 [INFO] TRANSPORT_LAYER: Data received: b';', with length: 1, from the connection: 1
+2026-03-16 02:16:16,491 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,491 [INFO] TRANSPORT_LAYER: Data received: b'q', with length: 1, from the connection: 1
+2026-03-16 02:16:16,492 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,493 [INFO] TRANSPORT_LAYER: Data received: b'=', with length: 1, from the connection: 1
+2026-03-16 02:16:16,494 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,495 [INFO] TRANSPORT_LAYER: Data received: b'0', with length: 1, from the connection: 1
+2026-03-16 02:16:16,496 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,496 [INFO] TRANSPORT_LAYER: Data received: b'.', with length: 1, from the connection: 1
+2026-03-16 02:16:16,497 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,499 [INFO] TRANSPORT_LAYER: Data received: b'7', with length: 1, from the connection: 1
+2026-03-16 02:16:16,500 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,501 [INFO] TRANSPORT_LAYER: Data received: b'\r', with length: 1, from the connection: 1
+2026-03-16 02:16:16,503 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,505 [INFO] TRANSPORT_LAYER: Data received: b'\n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,505 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,505 [INFO] TRANSPORT_LAYER: Data received: b'A', with length: 1, from the connection: 1
+2026-03-16 02:16:16,505 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,507 [INFO] TRANSPORT_LAYER: Data received: b'c', with length: 1, from the connection: 1
+2026-03-16 02:16:16,507 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,509 [INFO] TRANSPORT_LAYER: Data received: b'c', with length: 1, from the connection: 1
+2026-03-16 02:16:16,509 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,510 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,510 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,511 [INFO] TRANSPORT_LAYER: Data received: b'p', with length: 1, from the connection: 1
+2026-03-16 02:16:16,512 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,513 [INFO] TRANSPORT_LAYER: Data received: b't', with length: 1, from the connection: 1
+2026-03-16 02:16:16,514 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,515 [INFO] TRANSPORT_LAYER: Data received: b'-', with length: 1, from the connection: 1
+2026-03-16 02:16:16,515 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,517 [INFO] TRANSPORT_LAYER: Data received: b'E', with length: 1, from the connection: 1
+2026-03-16 02:16:16,517 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,519 [INFO] TRANSPORT_LAYER: Data received: b'n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,520 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,520 [INFO] TRANSPORT_LAYER: Data received: b'c', with length: 1, from the connection: 1
+2026-03-16 02:16:16,520 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,522 [INFO] TRANSPORT_LAYER: Data received: b'o', with length: 1, from the connection: 1
+2026-03-16 02:16:16,522 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,524 [INFO] TRANSPORT_LAYER: Data received: b'd', with length: 1, from the connection: 1
+2026-03-16 02:16:16,524 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,525 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,526 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,527 [INFO] TRANSPORT_LAYER: Data received: b'n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,527 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,528 [INFO] TRANSPORT_LAYER: Data received: b'g', with length: 1, from the connection: 1
+2026-03-16 02:16:16,528 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,528 [INFO] TRANSPORT_LAYER: Data received: b':', with length: 1, from the connection: 1
+2026-03-16 02:16:16,529 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,529 [INFO] TRANSPORT_LAYER: Data received: b' ', with length: 1, from the connection: 1
+2026-03-16 02:16:16,530 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,530 [INFO] TRANSPORT_LAYER: Data received: b'g', with length: 1, from the connection: 1
+2026-03-16 02:16:16,531 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,531 [INFO] TRANSPORT_LAYER: Data received: b'z', with length: 1, from the connection: 1
+2026-03-16 02:16:16,532 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,532 [INFO] TRANSPORT_LAYER: Data received: b'i', with length: 1, from the connection: 1
+2026-03-16 02:16:16,532 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,532 [INFO] TRANSPORT_LAYER: Data received: b'p', with length: 1, from the connection: 1
+2026-03-16 02:16:16,532 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,532 [INFO] TRANSPORT_LAYER: Data received: b',', with length: 1, from the connection: 1
+2026-03-16 02:16:16,533 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,533 [INFO] TRANSPORT_LAYER: Data received: b' ', with length: 1, from the connection: 1
+2026-03-16 02:16:16,533 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,533 [INFO] TRANSPORT_LAYER: Data received: b'd', with length: 1, from the connection: 1
+2026-03-16 02:16:16,533 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,533 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,534 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,534 [INFO] TRANSPORT_LAYER: Data received: b'f', with length: 1, from the connection: 1
+2026-03-16 02:16:16,534 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,534 [INFO] TRANSPORT_LAYER: Data received: b'l', with length: 1, from the connection: 1
+2026-03-16 02:16:16,534 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,534 [INFO] TRANSPORT_LAYER: Data received: b'a', with length: 1, from the connection: 1
+2026-03-16 02:16:16,535 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,535 [INFO] TRANSPORT_LAYER: Data received: b't', with length: 1, from the connection: 1
+2026-03-16 02:16:16,535 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,535 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,536 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,536 [INFO] TRANSPORT_LAYER: Data received: b'\r', with length: 1, from the connection: 1
+2026-03-16 02:16:16,536 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,536 [INFO] TRANSPORT_LAYER: Data received: b'\n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,536 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,536 [INFO] TRANSPORT_LAYER: Data received: b'A', with length: 1, from the connection: 1
+2026-03-16 02:16:16,537 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,537 [INFO] TRANSPORT_LAYER: Data received: b'c', with length: 1, from the connection: 1
+2026-03-16 02:16:16,537 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,537 [INFO] TRANSPORT_LAYER: Data received: b'c', with length: 1, from the connection: 1
+2026-03-16 02:16:16,537 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,537 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,538 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,538 [INFO] TRANSPORT_LAYER: Data received: b'p', with length: 1, from the connection: 1
+2026-03-16 02:16:16,538 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,538 [INFO] TRANSPORT_LAYER: Data received: b't', with length: 1, from the connection: 1
+2026-03-16 02:16:16,539 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,539 [INFO] TRANSPORT_LAYER: Data received: b'-', with length: 1, from the connection: 1
+2026-03-16 02:16:16,539 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,539 [INFO] TRANSPORT_LAYER: Data received: b'L', with length: 1, from the connection: 1
+2026-03-16 02:16:16,540 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,540 [INFO] TRANSPORT_LAYER: Data received: b'a', with length: 1, from the connection: 1
+2026-03-16 02:16:16,540 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,541 [INFO] TRANSPORT_LAYER: Data received: b'n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,541 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,542 [INFO] TRANSPORT_LAYER: Data received: b'g', with length: 1, from the connection: 1
+2026-03-16 02:16:16,542 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,542 [INFO] TRANSPORT_LAYER: Data received: b'u', with length: 1, from the connection: 1
+2026-03-16 02:16:16,542 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,543 [INFO] TRANSPORT_LAYER: Data received: b'a', with length: 1, from the connection: 1
+2026-03-16 02:16:16,543 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,543 [INFO] TRANSPORT_LAYER: Data received: b'g', with length: 1, from the connection: 1
+2026-03-16 02:16:16,543 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,544 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,544 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,544 [INFO] TRANSPORT_LAYER: Data received: b':', with length: 1, from the connection: 1
+2026-03-16 02:16:16,544 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,544 [INFO] TRANSPORT_LAYER: Data received: b' ', with length: 1, from the connection: 1
+2026-03-16 02:16:16,544 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,545 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,545 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,545 [INFO] TRANSPORT_LAYER: Data received: b's', with length: 1, from the connection: 1
+2026-03-16 02:16:16,545 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,545 [INFO] TRANSPORT_LAYER: Data received: b'-', with length: 1, from the connection: 1
+2026-03-16 02:16:16,545 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,546 [INFO] TRANSPORT_LAYER: Data received: b'M', with length: 1, from the connection: 1
+2026-03-16 02:16:16,546 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,546 [INFO] TRANSPORT_LAYER: Data received: b'X', with length: 1, from the connection: 1
+2026-03-16 02:16:16,546 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,547 [INFO] TRANSPORT_LAYER: Data received: b',', with length: 1, from the connection: 1
+2026-03-16 02:16:16,547 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,547 [INFO] TRANSPORT_LAYER: Data received: b'e', with length: 1, from the connection: 1
+2026-03-16 02:16:16,547 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,547 [INFO] TRANSPORT_LAYER: Data received: b's', with length: 1, from the connection: 1
+2026-03-16 02:16:16,547 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,548 [INFO] TRANSPORT_LAYER: Data received: b';', with length: 1, from the connection: 1
+2026-03-16 02:16:16,548 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,548 [INFO] TRANSPORT_LAYER: Data received: b'q', with length: 1, from the connection: 1
+2026-03-16 02:16:16,548 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,548 [INFO] TRANSPORT_LAYER: Data received: b'=', with length: 1, from the connection: 1
+2026-03-16 02:16:16,549 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,549 [INFO] TRANSPORT_LAYER: Data received: b'0', with length: 1, from the connection: 1
+2026-03-16 02:16:16,549 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,549 [INFO] TRANSPORT_LAYER: Data received: b'.', with length: 1, from the connection: 1
+2026-03-16 02:16:16,549 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,549 [INFO] TRANSPORT_LAYER: Data received: b'8', with length: 1, from the connection: 1
+2026-03-16 02:16:16,550 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,550 [INFO] TRANSPORT_LAYER: Data received: b'\r', with length: 1, from the connection: 1
+2026-03-16 02:16:16,550 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,550 [INFO] TRANSPORT_LAYER: Data received: b'\n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,550 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,550 [INFO] TRANSPORT_LAYER: Data received: b'\r', with length: 1, from the connection: 1
+2026-03-16 02:16:16,551 [INFO] TRANSPORT_TCP_IP: Total readed data: 1
+2026-03-16 02:16:16,551 [INFO] TRANSPORT_LAYER: Data received: b'\n', with length: 1, from the connection: 1
+2026-03-16 02:16:16,651 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:16,762 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:16,872 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:16,898 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:16,994 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:17,105 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:17,215 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:17,326 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:17,437 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:17,547 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:17,658 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:17,768 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:17,879 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:17,899 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:17,990 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:18,100 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:18,211 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:18,321 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:18,432 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:18,542 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:18,653 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:18,764 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:18,878 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:18,900 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:18,989 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:19,099 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:19,210 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:19,321 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:19,431 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:19,542 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:19,653 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:19,763 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:19,874 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:19,901 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:19,985 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:20,095 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:20,206 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:20,317 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:20,428 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:20,538 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:20,649 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:20,759 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:20,870 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:20,902 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:20,981 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:21,092 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:21,202 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:21,313 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:21,423 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:21,534 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:21,644 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:21,755 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:21,866 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:21,904 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:21,976 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:22,087 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:22,198 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:22,308 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:22,419 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:22,530 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:22,640 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:22,751 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:22,862 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:22,905 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:22,972 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:23,083 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:23,194 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:23,305 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:23,416 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:23,527 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:23,639 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:23,750 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:23,861 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:23,905 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:23,971 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:24,082 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:24,193 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:24,304 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:24,415 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:24,525 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:24,636 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:24,746 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:24,857 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:24,907 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:24,968 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:25,079 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:25,189 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:25,300 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:25,411 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:25,521 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:25,632 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:25,743 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:25,854 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:25,908 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:25,964 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:26,075 [INFO] TRANSPORT_LAYER: Data received: b'', with length: 0, from the connection: 1
+2026-03-16 02:16:26,910 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:26,586 [ERROR] PROTECTION_LAYER: FAIL: negotiate | ERROR: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "/home/specter/Escritorio/proyects/Stark/application/shared/utils/debug.py", line 34, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/specter/Escritorio/proyects/Stark/application/shared/communication_architecture/layers/protection/__init__.py", line 207, in negotiate
+    print("[Nexus] Available modules:", available_modules.get("AVAILABLE_MODULES"))
+                                        ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+2026-03-16 02:16:27,068 [ERROR] COMMUNICATION_LAYER: Failed to create session for connection 1: 'NoneType' object has no attribute 'get'
+2026-03-16 02:16:27,910 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:28,068 [INFO] TRANSPORT_LAYER: Transport layer receiving connection with module: <class 'shared.communication_architecture.layers.transport.modules.tcpip.TransportModule'>, with configurations: <configurations.classes.configurations.Configurations object at 0x7b7f953bea80>
+2026-03-16 02:16:28,069 [INFO] TRANSPORT_TCP_IP: Module configurated
+2026-03-16 02:16:28,069 [INFO] TRANSPORT_TCP_IP: Module initializated
+2026-03-16 02:16:28,069 [INFO] TRANSPORT_TCP_IP: Receiving connection with the module
+2026-03-16 02:16:28,069 [INFO] TRANSPORT_TCP_IP: Starting receiver connections routine
+2026-03-16 02:16:28,069 [INFO] TRANSPORT_LAYER: Connection (receive) registered with the identifier: 2
+2026-03-16 02:16:28,070 [INFO] TRANSPORT_TCP_IP: Receiving connections of type: 2, with TCP
+2026-03-16 02:16:28,070 [ERROR] TRANSPORT_TCP_IP: Error binding the server: [Errno 98] Address already in use
+2026-03-16 02:16:28,911 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:29,913 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:30,914 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:31,916 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:32,916 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:33,917 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:34,919 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:35,919 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:36,920 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:36,931 [ERROR] TRANSPORT_TCP_IP: Any data received. Stopping routine
+2026-03-16 02:16:36,931 [INFO] TRANSPORT_TCP_IP: Disconnecting module
+2026-03-16 02:16:36,931 [INFO] TRANSPORT_TCP_IP: Module disconnected successfully
+2026-03-16 02:16:36,932 [INFO] TRANSPORT_TCP_IP: Stopping data receiver routine
+2026-03-16 02:16:37,922 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:38,922 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:39,923 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:40,924 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:41,925 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:42,926 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:43,928 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:44,928 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:45,930 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:46,931 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:47,932 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:48,934 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception
+2026-03-16 02:16:49,934 [ERROR] TRANSPORT_TCP_IP: Expired timeout on the connection reception

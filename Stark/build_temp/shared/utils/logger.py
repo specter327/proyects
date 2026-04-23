@@ -35,13 +35,20 @@ def logger(name: str):
     log = logging.getLogger(name)
 
     if not log.handlers:
-        log.setLevel(logging.DEBUG)
+        log.setLevel(_determine_log_level())
+        log.propagate = False
 
-        file = open(F"S-LINK.log", "a", buffering=1, encoding="UTF-8")
-        handler = logging.StreamHandler(file)
+
+        handler = LocalFileHandler(
+            "S-LINK.log",
+            mode="a",
+            encoding="UTF-8"
+        )
+
         formatter = logging.Formatter(
             "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
         )
+
         handler.setFormatter(formatter)
 
         log.addHandler(handler)
